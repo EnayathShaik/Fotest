@@ -26,6 +26,8 @@ import com.ir.form.TrainingCenterUserManagementForm;
 import com.ir.form.TrainingClosureForm;
 import com.ir.form.TrainingRequestForm;
 import com.ir.form.TrainingScheduleForm;
+import com.ir.form.verifyTraineeEnrollmentForm;
+import com.ir.form.viewEnrolledCoursesForm;
 import com.ir.model.AdminUserManagement;
 import com.ir.model.AssessmentQuestions;
 import com.ir.model.City;
@@ -41,6 +43,7 @@ import com.ir.model.FeedbackMaster;
 import com.ir.model.HolidayMaster;
 import com.ir.model.InvoiceMaster;
 import com.ir.model.LoginDetails;
+import com.ir.model.ManageTraining;
 import com.ir.model.ManageTrainingPartner;
 import com.ir.model.ModuleMaster;
 import com.ir.model.NomineeTrainee;
@@ -116,4 +119,19 @@ public interface AdminDAO {
 	public boolean trainingadminForm(ChangePasswordForm changePasswordForm, String id);
 	public boolean trainingPartnerPass(ChangePasswordForm changePasswordForm, String id);
 	
+	// managetraining---
+    public void addManageTraining(ManageTraining p);
+	public void updateManageTraining(ManageTraining p);
+	public List<ManageTraining> listManageTraining();
+	public ManageTraining getManageTrainingById(int id);
+	public void removeManageTraining(int id);
+		
+		// verifyTraineeEnrollment
+	public List<verifyTraineeEnrollmentForm> listVerifyTraineeEnrollment(verifyTraineeEnrollmentForm p);
+	
+	// View Enrolled Courses
+		public List<viewEnrolledCoursesForm> listviewEnrolledCourses(viewEnrolledCoursesForm p);
+		
+		//listGenerateCertificate
+		public List<GenerateCertificateForm> listgenerateCertificate(GenerateCertificateForm p);
 }

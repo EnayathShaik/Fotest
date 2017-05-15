@@ -1,13 +1,12 @@
 package com.ir.form;
 
-public class GenerateCertificateForm {
- 
+public class verifyTraineeEnrollmentForm {
+
 	private String trainingLab;
 	private String courseName;
 	private String trainingDate;
-	private String trainingTime;
 	private String traineeName;
-	private String attendance;
+	private String trainingTime;
 	private int id;
 	
 	
@@ -17,18 +16,6 @@ public class GenerateCertificateForm {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getAttendance() {
-		return attendance;
-	}
-	public void setAttendance(String attendance) {
-		this.attendance = attendance;
-	}
-	public String getTraineeName() {
-		return traineeName;
-	}
-	public void setTraineeName(String traineeName) {
-		this.traineeName = traineeName;
 	}
 	public String getTrainingTime() {
 		return trainingTime;
@@ -54,5 +41,10 @@ public class GenerateCertificateForm {
 	public void setTrainingDate(String trainingDate) {
 		this.trainingDate = trainingDate;
 	}
-
+	public String getTraineeName() {
+		return traineeName;
+	}
+	public void setTraineeName(String traineeName) {
+		this.traineeName = traineeName;
+	}
 }

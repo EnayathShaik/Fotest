@@ -1010,17 +1010,6 @@
 		<put-attribute name="body" value="/website/admin/TrainingPartner.jsp" />
 	</definition>
 	
-	<definition name="GenerateCertificate" extends="base.user.afterLogin">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/GenerateCertificate.jsp" />
-	</definition>
-	
-	<definition name="GenerateCertificate/edit/{id}" extends="base.user.afterLogin">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/GenerateCertificate.jsp" />
-	</definition>
-	
-	
 	<definition name="TrainingClosure" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/TrainingClosure.jsp" />
@@ -1226,4 +1215,28 @@
 		<put-attribute name="body" value="/website/admin/InvoiceDetails.jsp" />
 	</definition>
 
+    <definition name="manageTraining" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/manageTraining.jsp" />
+	</definition>
+	
+	<definition name="verifyTraineeEnrollment" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/verifyTraineeEnrollment.jsp" />
+	</definition>
+	
+	 <definition name="viewEnrolledCourses" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/viewEnrolledCourses.jsp" />
+	</definition>
+	
+	<definition name="generateCertificate" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/generateCertificate.jsp" />
+	</definition>
+	
+	<definition name="onlineTraining" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"  value="/website/trainee/onlineTraining.jsp" />
+	</definition>
 </tiles-definitions>

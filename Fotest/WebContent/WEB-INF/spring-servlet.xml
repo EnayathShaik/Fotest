@@ -102,9 +102,9 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
-			<property name="url" value="jdbc:postgresql://localhost/FOTEST" />
-		<property name="username" value="postgres" />
-		<property name="password" value="test@1234" />
+			<property name="url" value="jdbc:postgresql://localhost/fotest" />
+		<property name="username" value="fotestadmin" />
+		<property name="password" value="fotest123" />
 			
 	</bean>
 
@@ -125,6 +125,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 				<value>com.ir.model.CityMaster</value>
 				<value>com.ir.model.RegionMaster</value>
 				<value>com.ir.model.LoginDetails</value>
+				<value>com.ir.model.ManageTraining</value>
 			<!-- 	<value>com.ir.model.AdminUserManagement</value>
 				<value>com.ir.model.ManageTrainingPartner</value>
 				<value>com.ir.model.FeedbackMaster</value>

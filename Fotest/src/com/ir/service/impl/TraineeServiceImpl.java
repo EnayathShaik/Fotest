@@ -14,7 +14,7 @@ import com.ir.form.CertificateForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
-import com.ir.form.GenerateCertificateForm;
+/*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
 import com.ir.form.OnlineTrainingForm;
@@ -384,27 +384,6 @@ public class TraineeServiceImpl implements TraineeService {
 		return personalInformationTraineInstitute;
 	}
 	
-	
-	
-	
-	
-	//trainee topic from online training
-	@Override
-	@Transactional
-	public UnitMaster listTrainingTopic(int id){
-		return this.traineeDAO.listTrainingTopic(id);
-		
-	}
-			@Override
-		@Transactional
-		public OnlineTrainingForm listOnlineTraining(int id) {
-			// TODO Auto-generated method stub
-			return this.traineeDAO.listOnlineTraining(id);
-		}
-	
-	
-
-
 		@Override
 		@Transactional
 		public List<AssessmentQuestionForm> listingAssessmentQuestion(
@@ -413,6 +392,12 @@ public class TraineeServiceImpl implements TraineeService {
 			return this.traineeDAO.listingAssessmentQuestion( assesQuestionForm, id);
 		}
 
-
+		//online training
+		@Override
+		@Transactional
+		public List<OnlineTrainingForm> listonlineTraining() {
+			// TODO Auto-generated method stub
+			return this.traineeDAO.listonlineTraining();
+		}
 
 }

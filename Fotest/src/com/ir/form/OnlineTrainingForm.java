@@ -1,80 +1,47 @@
 package com.ir.form;
 
 public class OnlineTrainingForm {
-	
-	private String trainingType;
-	private String trainingPhase;
-	private String trainingDuration;
-	private String trainingTopic;
-	private String TopicModule;
-	private String moduleName;
-	private String trainingstartdate;
-	private String trainingenddate;
-	
-	
-	
-	
-	
-	
-	public String getTrainingstartdate() {
-		return trainingstartdate;
+
+	private String trainingLab;
+	private String courseName;
+	private String trainingDate;
+	private String trainingTime;
+	private String traineeName;
+	private String attendance;
+	public String getAttendance() {
+		return attendance;
 	}
-	public void setTrainingstartdate(String trainingstartdate) {
-		this.trainingstartdate = trainingstartdate;
+	public void setAttendance(String attendance) {
+		this.attendance = attendance;
 	}
-	public String getTrainingenddate() {
-		return trainingenddate;
+	public String getTrainingTime() {
+		return trainingTime;
 	}
-	public void setTrainingenddate(String trainingenddate) {
-		this.trainingenddate = trainingenddate;
+	public void setTrainingTime(String trainingTime) {
+		this.trainingTime = trainingTime;
 	}
-	public String getModuleName() {
-		return moduleName;
+	public String getTrainingLab() {
+		return trainingLab;
 	}
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
+	public void setTrainingLab(String trainingLab) {
+		this.trainingLab = trainingLab;
 	}
-	public String getTopicModule() {
-		return TopicModule;
+	public String getCourseName() {
+		return courseName;
 	}
-	public void setTopicModule(String topicModule) {
-		TopicModule = topicModule;
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
-	public String getTrainingTopic() {
-		return trainingTopic;
+	public String getTrainingDate() {
+		return trainingDate;
 	}
-	public void setTrainingTopic(String trainingTopic) {
-		this.trainingTopic = trainingTopic;
+	public void setTrainingDate(String trainingDate) {
+		this.trainingDate = trainingDate;
 	}
-	public String getTrainingType() {
-		return trainingType;
+	public String getTraineeName() {
+		return traineeName;
 	}
-	public void setTrainingType(String trainingType) {
-		this.trainingType = trainingType;
+	public void setTraineeName(String traineeName) {
+		this.traineeName = traineeName;
 	}
-	public String getTrainingPhase() {
-		return trainingPhase;
-	}
-	public void setTrainingPhase(String trainingPhase) {
-		this.trainingPhase = trainingPhase;
-	}
-	public String getTrainingDuration() {
-		return trainingDuration;
-	}
-	public void setTrainingDuration(String trainingDuration) {
-		this.trainingDuration = trainingDuration;
-	}
-	/*@Override
-	public String toString() {
-		return  trainingType  + trainingPhase ;
-	}*/
-	@Override
-	public String toString() {
-		return trainingType + trainingPhase
-			 + trainingstartdate + trainingenddate ;
-	}
-	
-	
-	
-	
 }

@@ -38,7 +38,7 @@ import com.ir.form.CertificateForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
-import com.ir.form.GenerateCertificateForm;
+/*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
@@ -497,9 +497,9 @@ public class TraineeController {
 		Integer userId = 0;
 		try{
 			userId = (Integer) session.getAttribute("userId");
-			OnlineTrainingForm trainingDetails = traineeService.listOnlineTraining(userId);
+			//OnlineTrainingForm trainingDetails = traineeService.listOnlineTraining(userId);
 			
-			model.addAttribute("trainingDetails", trainingDetails);
+			//model.addAttribute("trainingDetails", trainingDetails);
 		
 		}catch(Exception e){
 			e.printStackTrace();
@@ -752,9 +752,9 @@ public class TraineeController {
 				int personalTraineeId=(int)session.getAttribute("personalTraineeId");
 				
 				model.addAttribute("GetScoreCardForm", new GetScoreCardForm());
-				model.addAttribute("listTrainingTopic", this.traineeService.listTrainingTopic(userId));
-				model.addAttribute("listOnlineTraining", this.traineeService.listOnlineTraining(userId));
-				model.addAttribute("listGetScoreCard", this.traineeService.listGetScoreCard(userId));
+				//model.addAttribute("listTrainingTopic", this.traineeService.listTrainingTopic(userId));
+				//model.addAttribute("listOnlineTraining", this.traineeService.listOnlineTraining(userId));
+				//model.addAttribute("listGetScoreCard", this.traineeService.listGetScoreCard(userId));
 				
 				traineeService.updateSteps(personalTraineeId, 4);
 				session.setAttribute("traineeSteps", 4);
@@ -778,27 +778,6 @@ public class TraineeController {
 				
 			return "GetScoreCard";
 		}*/
-	
-	//for online training
-
-        @RequestMapping(value = "/OnlineTraining", method = RequestMethod.GET)
-		public String OnlineTraining(@ModelAttribute("OnlineTrainingForm") OnlineTrainingForm OnlineTrainingForm ,Model model,HttpSession session){
-        	int userId = (int) session.getAttribute("userId");
-        	int personalTraineeId = (int)session.getAttribute("personalTraineeId");
-        	traineeService.updateSteps(personalTraineeId,2);
-        	session.setAttribute("traineeSteps", 2);
-        	
-   			
-   			System.out.println(" list online training "+this.traineeService.listOnlineTraining(userId));
-   			
-        	model.addAttribute("listTrainingTopic", this.traineeService.listTrainingTopic(userId));
-        	model.addAttribute("listOnlineTraining", this.traineeService.listOnlineTraining(userId));
-        	
-				System.out.println("listOnlineTraining");
-			
-				return "OnlineTraining";
-		
-		}
         
       //for online Assessment
 
@@ -980,6 +959,14 @@ public String GetCertificate(@ModelAttribute("PersonalInformationTrainee") Perso
 	return "certificatetraineeGEN";
 }
 
+//online training
 
+@RequestMapping(value="/onlineTraining" , method = { RequestMethod.POST , RequestMethod.GET })
+public String listonlineTraining( Model model){
+	  model.addAttribute("OnlineTrainingForm",  new OnlineTrainingForm());
+  model.addAttribute("listonlineTraining", this.traineeService.listonlineTraining());
+
+  return "onlineTraining";
+} 
 
 }

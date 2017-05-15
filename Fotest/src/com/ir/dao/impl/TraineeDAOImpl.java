@@ -26,7 +26,7 @@ import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
-import com.ir.form.GenerateCertificateForm;
+/*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.NominateTraineeForm;
@@ -1511,52 +1511,7 @@ System.out.println("list "+list);
 		return personalInformationTrainingInstitute;
 
 	}
-	//Online training-------
-
-	@Override
-	public UnitMaster listTrainingTopic(int id) {
-		// TODO Auto-generated method stub
-		System.out.println("inside listUnitMaster");
-		Session session = this.sessionFactory.getCurrentSession();
-		UnitMaster bean=new UnitMaster();
-		List<Object[]> list = session.createSQLQuery("select um.unitname,mst.contentname,mst.contenttype,mst.contentlink from nomineetrainee nt inner join trainingschedule ts on (nt.trainingscheduleid = ts.trainingscheduleid) left join modulemaster mst on (ts.moduleid = mst.moduleid)left join unitmaster um on (um.unitid = mst.unitid)where nt.logindetails='"+ id +"'").list();
 		
-		if(list.size() > 0){
-			 Object[] obj=	list.get(0);
-			 bean.setUnitName((String)obj[0]);
-			 bean.setContentName((String)obj[1]);
-			 bean.setContentType((String)obj[2]);
-			 bean.setContentLink((String)obj[3]);
-			
-			}
-		
-		return bean; 
-		
-	}
-	
-		//@Override
-		public OnlineTrainingForm listOnlineTraining(int id) {
-			// TODO Auto-generated method stub
-			System.out.println("inside listOnlineTrainingForm");
-			OnlineTrainingForm bean = new OnlineTrainingForm();
-		//	List<OnlineTrainingForm> list = new ArrayList<OnlineTrainingForm>();
-			Session session = this.sessionFactory.getCurrentSession();
-			List<Object[]> lst = session.createSQLQuery("select trainingtype , trainingphase ,mm.modulename,  trainingstartdate , trainingenddate  from nomineetrainee nt  left join trainingschedule ts on  (nt.trainingscheduleid = ts.trainingscheduleid) left join modulemaster mm on (mm.moduleid = ts.moduleid) where nt.logindetails ='"+ id +"'").list();
-			
-			if(lst.size() > 0){
-			 Object[] obj=	lst.get(0);
-			 bean.setTrainingType((String)obj[0]);
-			 bean.setTrainingPhase((String)obj[1]);
-			 bean.setModuleName((String)obj[2]);
-			 bean.setTrainingstartdate((String)obj[3]);
-			 bean.setTrainingenddate((String)obj[4]);
-			}
-			    
-		
-			return  bean;
-		}
-
-			
 		//listing online question
 		@Override
 		public List<AssessmentQuestionForm> listingAssessmentQuestion(AssessmentQuestionForm assesQuestionForm, int id) {
@@ -1613,4 +1568,25 @@ System.out.println("list "+list);
 				
 				
 			}
+		
+		// online training
+				@Override
+				public List<OnlineTrainingForm> listonlineTraining() {
+					// TODO Auto-generated method stub
+					System.out.println("inside listfotestonlineTraining");
+					OnlineTrainingForm bean = new OnlineTrainingForm();
+					List<OnlineTrainingForm> resulList = new ArrayList<OnlineTrainingForm>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+					for (Object[] li : list ) {
+						
+						bean.setCourseName((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setTrainingLab((String) li[3]);
+						//logger.info("fotestonlineTrainingForm List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
 		}

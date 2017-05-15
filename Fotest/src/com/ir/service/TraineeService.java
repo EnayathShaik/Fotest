@@ -9,10 +9,11 @@ import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
-import com.ir.form.GenerateCertificateForm;
+import com.ir.form.OnlineTrainingForm;
+/*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
-import com.ir.form.OnlineTrainingForm;
+
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
 import com.ir.model.AdmitCardForm;
@@ -175,15 +176,13 @@ public interface TraineeService {
  * public List<UnitMaster> dynListTrainingType();
 	public List<UnitMaster> dynListUserType();*/
 	
-	public OnlineTrainingForm listOnlineTraining(int id);
-	public UnitMaster listTrainingTopic(int id);
-
-
  public List<AssessmentQuestionForm> listingAssessmentQuestion(
 			AssessmentQuestionForm assesQuestionForm, int id);
 	
+ //online training
+ public List<OnlineTrainingForm> listonlineTraining();
 	
-	
+ 
 	
 	
 	

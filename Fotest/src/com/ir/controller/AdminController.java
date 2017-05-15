@@ -2,8 +2,8 @@ package com.ir.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
-
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,10 +28,15 @@ import com.google.gson.Gson;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.CityMasterForm;
 import com.ir.form.DistrictMasterForm;
+import com.ir.form.GenerateCertificateForm;
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.RegionMasterForm;
+import com.ir.form.manageTrainingForm;
+import com.ir.form.verifyTraineeEnrollmentForm;
+import com.ir.form.viewEnrolledCoursesForm;
 import com.ir.model.CityMaster;
 import com.ir.model.DistrictMaster;
+import com.ir.model.ManageTraining;
 import com.ir.model.RegionMaster;
 import com.ir.model.StateMaster;
 import com.ir.service.AdminService;
@@ -443,6 +448,109 @@ public class AdminController {
 		return "changePasswordTp";
 	}
 	
+	// Manage Training
+
+		@RequestMapping(value = "/manageTraining", method = RequestMethod.GET)
+		public String listmanageTraining(Model model) {
+			System.out.println("listmanageTraining");
+
+			model.addAttribute("manageTrainingForm", new manageTrainingForm());
+			model.addAttribute("listmanageTraining", this.adminService.listManageTraining());
+			return "manageTraining";
+		}
+
+		// For add and update state both
+		@RequestMapping(value = "/manageTraining/add", method = RequestMethod.POST)
+		public String addmanageTraining(@ModelAttribute("manageTrainingForm") ManageTraining p) {
+			System.out.println("id1" + p.getId());
+			if (p.getId() == 0) {
+				// new person, add it
+				this.adminService.addManageTraining(p);
+			} else {
+				// existing person, call update
+				this.adminService.updateManageTraining(p);
+			}
+			return "redirect:/manageTraining.fssai";
+		}
+
+		@RequestMapping("/manageTraining/remove/{id}")
+		public String removeManageTraining(@PathVariable("id") int id) {
+
+			this.adminService.removeManageTraining(id);
+			return "redirect:/manageTraining.fssai";
+		}
+
+		@RequestMapping("/manageTraining/edit/{id}")
+		public void editManageTraining(@PathVariable("id") int id, Model model, HttpServletRequest httpServletRequest,
+				HttpServletResponse response) throws IOException {
+			System.out.println("id2" + id);
+			ManageTraining mt = this.adminService.getManageTrainingById(id);
+			PrintWriter out = response.getWriter();
+			Gson g = new Gson();
+			String newList = g.toJson(mt);
+			System.out.println("newList " + newList);
+			out.write(newList);
+			out.flush();
+		}
+
+		// Verify Trainee Enrollment
+
+				@RequestMapping(value = "/verifyTraineeEnrollment", method = RequestMethod.GET)
+				public String verifyTraineeEnrollment(Model model) {
+					System.out.println("verifyTraineeEnrollment");
+					Map<String, String> courseNameMap = lst.courseNameMap;
+					model.addAttribute("verifyTraineeEnrollmentForm", new verifyTraineeEnrollmentForm());
+					model.addAttribute("courseNameMap", courseNameMap);
+					return "verifyTraineeEnrollment";
+				}
+
+				@RequestMapping(value = "/verifyTraineeEnrollmentlist", method = RequestMethod.POST)
+				public String listVerifyTraineeEnrollment(
+						@ModelAttribute("verifyTraineeEnrollmentForm") verifyTraineeEnrollmentForm p, Model model) {
+					model.addAttribute("listVerifyTraineeEnrollment", this.adminService.listVerifyTraineeEnrollment(p));
+					List<verifyTraineeEnrollmentForm> list = this.adminService.listVerifyTraineeEnrollment(p);
+					return "verifyTraineeEnrollment";
+				}
+				
+				// View Enrolled Courses
+
+				@RequestMapping(value = "/viewEnrolledCourses", method = RequestMethod.GET)
+				public String viewEnrolledCourses(Model model) {
+					System.out.println("viewEnrolledCourses");
+					Map<String, String> courseNameMap = lst.courseNameMap;
+					model.addAttribute("viewEnrolledCoursesForm", new viewEnrolledCoursesForm());
+					model.addAttribute("courseNameMap", courseNameMap);
+					return "viewEnrolledCourses";
+				}
+
+				@RequestMapping(value = "/viewEnrolledCourseslist", method = RequestMethod.POST)
+				public String listviewEnrolledCourses(@ModelAttribute("viewEnrolledCoursesForm") viewEnrolledCoursesForm p,
+						Model model) {
+					model.addAttribute("listviewEnrolledCourses", this.adminService.listviewEnrolledCourses(p));
+					return "viewEnrolledCourses";
+				}
+				
+				 //Generate Certificate
+			    
+			    @RequestMapping(value = "/generateCertificate", method = RequestMethod.GET)
+			 	public String generateCertificate(Model model) {
+			 		System.out.println("GenerateCertificate");
+			 		Map<String , String> courseNameMap = lst.courseNameMap;
+			 		
+			 		model.addAttribute("GenerateCertificateForm" , new GenerateCertificateForm());
+			 		model.addAttribute("courseNameMap", courseNameMap);
+			 		
+			 		return "generateCertificate";
+			 	}
+			  	
+			   
+			    
+				 @RequestMapping(value="/generateCertificatelist" , method = RequestMethod.POST)
+			    public String listgenerateCertificate(@ModelAttribute("GenerateCertificateForm") GenerateCertificateForm p , Model model){
+			  	  model.addAttribute("GenerateCertificateForm" , new GenerateCertificateForm());
+			        model.addAttribute("listgenerateCertificate", this.adminService.listgenerateCertificate(p));
+			        return "generateCertificate";
+			    } 
 
 	
 }

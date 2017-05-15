@@ -7,7 +7,7 @@ import com.ir.form.CertificateForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
-import com.ir.form.GenerateCertificateForm;
+/*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
@@ -124,11 +124,10 @@ public interface TraineeDAO {
 	
 	public PersonalInformationTrainingInstitute FullDetailTrainingInstitude(int loginId);
 	
-	public OnlineTrainingForm listOnlineTraining(int id);
-	public UnitMaster listTrainingTopic(int id);
-	
-	
 	public List<AssessmentQuestionForm> listingAssessmentQuestion(AssessmentQuestionForm assesQuestionForm, int id);
+	
+	// fotest online training-
+		public List<OnlineTrainingForm> listonlineTraining();
 	
 	
 }

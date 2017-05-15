@@ -45,7 +45,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="online-training.html">Online Training</a>
+                            <a href="onlineTraining.fssai">Online Training</a>
                         </li>
                         <li>
                             <a href="feedback.html">Feedback</a>
@@ -136,17 +136,17 @@
                     <ul class="sidebar-nav">
                         <!-- <li class="sidebar-brand"></li> -->
                         <li><a href="RegionMapping.fssai">Region Mapping</a></li>
-                        <li><a href="manageCourseContent.fssai">Manage Training</a></li>
+                        <li><a href="manageTraining.fssai">Manage Training</a></li>
                         <li> <a href="trainingCalendarForm.fssai">Manage Course Curricullum</a> </li>
                         <li> <a href="trainingpartnerassessmentcalendar.fssai">Assessment Questions</a> </li>
                         <li> <a href="manageAssessmentQuestions.fssai">Feedback Master</a> </li>
-                        <li> <a href="updateTrainerAssessmentForm.fssai">Verify Trainee Enrollment</a> </li>
+                        <li> <a href="verifyTraineeEnrollment.fssai">Verify Trainee Enrollment</a> </li>
                         <li> <a href="feedbackMaster.fssai">Manage Training Calendar</a> </li>
                         <li> <a href="feedbackMaster.fssai">Activate Training</a> </li>
                         <li> <a href="feedbackMaster.fssai">Activate Assessment</a> </li>
                         <li> <a href="feedbackMaster.fssai"> View Training Calendar</a> </li>
-                        <li> <a href="feedbackMaster.fssai"> View Enrolled Courses</a> </li>
-                        <li> <a href="feedbackMaster.fssai">Generate Certificate</a> </li>
+                        <li> <a href="viewEnrolledCourses.fssai"> View Enrolled Courses</a> </li>
+                        <li> <a href="generateCertificate.fssai">Generate Certificate</a> </li>
                     </ul>
                 </div>
 
