@@ -146,8 +146,6 @@ public class LoginController {
 		session.setAttribute("loginIdUnique", loginDetails.getId());
 		if(loginDetails!=null && loginDetails.getProfileId()==1 && loginDetails.getStatus().equalsIgnoreCase("A")){
 			model.addAttribute("loginDetails", loginDetails);
-			List<TrainingPartner_old> trainingPartnerList = trainingPartnerList();
-			session.setAttribute("trainingPartnerList", trainingPartnerList);
 			session.setAttribute("loginUser", loginDetails);  
 			session.setAttribute("logId",loginDetails.getLoginId());
 			session.setAttribute("profileId", loginDetails.getProfileId());
@@ -165,42 +163,27 @@ public class LoginController {
 			return "stateAdminHomepage";
 		}else if(loginDetails !=null && loginDetails.getProfileId() == 3 && loginDetails.getStatus().equalsIgnoreCase("A"))
 		{
-			PersonalInformationTrainee personalInformationTrainee = loginService.FullDetail(loginDetails.getId() );
-			new ZLogger("loginProcess","in trainee login  "+ personalInformationTrainee.getFirstName(), "LoginController.java");
-			//session.setAttribute("logId", personalInformationTrainee.getLoginDetails().getLoginId());
+			
 			session.setAttribute("profileId", loginDetails.getProfileId());
 			session.setAttribute("userId", loginDetails.getId());
-			session.setAttribute("userName", loginDetails.getLoginId());
-			session.setAttribute("traineeSteps", personalInformationTrainee.getSteps());
-			session.setAttribute("personalTraineeId", personalInformationTrainee.getId());
-			
+			session.setAttribute("userName", loginDetails.getLoginId());			
 			return "traineeHomepage";
 		}else if(loginDetails!=null && loginDetails.getProfileId() == 4 && loginDetails.getStatus().equalsIgnoreCase("A")){
 		
-			PersonalInformationTrainer personalInformationTrainer = loginService.FullDetailTrainer(loginDetails.getId());
-			session.setAttribute("loginId", personalInformationTrainer.getLoginDetails().getLoginId());
 			session.setAttribute("profileId", loginDetails.getProfileId());
 			session.setAttribute("userId", loginDetails.getId());
 			session.setAttribute("userName", loginDetails.getLoginId());
 			session.setAttribute("loginUser2", personalInformationTrainer.getId());
 			session.setAttribute("logId", personalInformationTrainer.getLoginDetails().getLoginId());
-			session.setAttribute("Id",personalInformationTrainer.getLoginDetails().getId());
-			System.out.println("assosiated "+personalInformationTrainer.getAssociatedWithAnyTrainingInstitute());
-			model.addAttribute("listTrainingSchedule", this.adminService.listTrainingSchedule(personalInformationTrainer.getId(), 4));
+
+		
 			return "trainerHomepage";
 		}else if(loginDetails!=null && loginDetails.getProfileId() == 5){
 			if(loginDetails.getStatus().equalsIgnoreCase("A")){
-				PersonalInformationTrainingInstitute persoInformationTrainingInstitute ;
-				persoInformationTrainingInstitute = loginService.FullDetailtrainingInstitute(loginDetails.getId());
-				new ZLogger("loginProcess","in trainer login aadhar is "+persoInformationTrainingInstitute.getFirstName(), "LoginController.java");
-				new ZLogger("loginProcess","**************"+persoInformationTrainingInstitute.getId(), "LoginController.java");
-				session.setAttribute("persoInformationTrainingInstitute", persoInformationTrainingInstitute.getId());
-				session.setAttribute("logId", persoInformationTrainingInstitute.getLoginDetails().getLoginId());
+				
 				session.setAttribute("profileId", loginDetails.getProfileId());
 				session.setAttribute("userId", loginDetails.getId());
-				session.setAttribute("userTableId", persoInformationTrainingInstitute.getId());
 				session.setAttribute("userName", loginDetails.getLoginId());	
-				model.addAttribute("listTrainingSchedule", this.adminService.listTrainingSchedule(persoInformationTrainingInstitute.getId(), 5));
 				return "trainingInstitudeHomepage";
 			}else{
 				model.addAttribute("error" , "Oops , you are not authorized !!!");
@@ -211,19 +194,10 @@ public class LoginController {
 		else if(loginDetails != null && loginDetails.getProfileId() == 6 ){
 			new ZLogger("loginProcess","in login when assessor", "LoginController.java");
 			if(loginDetails.getStatus().equalsIgnoreCase("A")){
-				
-				
-				PersonalInformationAssessor personalInformationAssessor ;
-				personalInformationAssessor = loginService.fullDetailAssessor(loginDetails.getId());
-				session.setAttribute("loginUserAssessor", personalInformationAssessor.getId());
-				session.setAttribute("logId", personalInformationAssessor.getLoginDetails().getLoginId());
+
 				session.setAttribute("profileId", loginDetails.getProfileId());
 				session.setAttribute("userId", loginDetails.getId());
 				session.setAttribute("userName", loginDetails.getLoginId());
-				session.setAttribute("assessmentId", personalInformationAssessor.getAssessmentAgencyName().getManageAssessmentAgencyId());
-				
-				session.setAttribute("agencyName", personalInformationAssessor.getAssessmentAgencyName().getAssessmentAgencyName());
-				System.out.println( personalInformationAssessor.getAssessmentAgencyName().getManageAssessmentAgencyId() + " "+personalInformationAssessor.getAssessmentAgencyName().getAssessmentAgencyName());
 				return "AssessorPage";
 			}else{
 				model.addAttribute("error" , "Oops , you are not authorized !!!");
@@ -232,29 +206,17 @@ public class LoginController {
 			
 		}
 		else if(loginDetails!=null && loginDetails.getProfileId() == 7 && loginDetails.getStatus().equalsIgnoreCase("A")){
-			ManageTrainingPartner manageTrainingPartner = new ManageTrainingPartner();
-			manageTrainingPartner = loginService.FullDetailTP(loginDetails.getId());
-			session.setAttribute("logId", manageTrainingPartner.getLoginDetails().getLoginId());
 			session.setAttribute("profileId", loginDetails.getProfileId());
 			session.setAttribute("userId", loginDetails.getId());
-			session.setAttribute("partnerId", manageTrainingPartner.getManageTrainingPartnerId());
 			session.setAttribute("userName", loginDetails.getLoginId());
 			return "trainingPartnerDashboard";
 		}else if(loginDetails!=null && loginDetails.getProfileId() == 8 && loginDetails.getStatus().equalsIgnoreCase("A")){
 			new ZLogger("loginProcess","in assessment agency", "LoginController.java");
-			ManageAssessmentAgency manageAssessmentAgency = new ManageAssessmentAgency();
-			manageAssessmentAgency = loginService.FullDetailAssessmentAgency(loginDetails.getId());
-			session.setAttribute("loginUserAssessor", manageAssessmentAgency.getManageAssessmentAgencyId());
-			new ZLogger("loginProcess","in assessment Agency Homepage "+manageAssessmentAgency.getManageAssessmentAgencyId(), "LoginController.java");
-			session.setAttribute("logId", manageAssessmentAgency.getLoginDetails().getLoginId());
 			session.setAttribute("logerClass","ManageAssessmentAgency");
 			session.setAttribute("loginIdUnique", loginDetails.getId());
-			new ZLogger("loginProcess","id Is "+manageAssessmentAgency.getLoginDetails().getLoginId(), "LoginController.java");
 			session.setAttribute("profileId", loginDetails.getProfileId());
 			session.setAttribute("userId", loginDetails.getId());
 			session.setAttribute("userName", loginDetails.getLoginId());
-			session.setAttribute("assessmentId", manageAssessmentAgency.getManageAssessmentAgencyId());
-			session.setAttribute("agencyName", manageAssessmentAgency.getAssessmentAgencyName());
 			return "assessmentAgencyHomepage";
 		}else if(loginDetails!=null && loginDetails.getProfileId() == 10 && loginDetails.getStatus().equalsIgnoreCase("A")){
 			
@@ -336,10 +298,10 @@ public class LoginController {
 			}else if(profileID == 3){
 				return "traineeHomepage";
 			}else if(profileID == 4){
-				model.addAttribute("listTrainingSchedule", this.adminService.listTrainingSchedule((int)session.getAttribute("loginUser2"),4));
+				
 				return "trainerHomepage";
 			}else if(profileID == 5){
-				model.addAttribute("listTrainingSchedule", this.adminService.listTrainingSchedule((int)session.getAttribute("userTableId"), 5));
+				
 				return "trainingInstitudeHomepage";
 			}else if(profileID == 6){
 				return "AssessorPage";

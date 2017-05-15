@@ -27,8 +27,8 @@ public class UserManagement {
 		try{
 			System.out.println("sfdsfdsfsd");
 			TraineeUserManagementForm traineeUserManagementForm = new TraineeUserManagementForm();
-			List<PersonalInformationTrainee> informationTrainers = new AdminDAOImpl().traineeUserManagementSearch(traineeUserManagementForm);
-			System.out.println(informationTrainers.size());
+			//List<PersonalInformationTrainee> informationTrainers = new AdminDAOImpl().traineeUserManagementSearch(traineeUserManagementForm);
+		//	System.out.println(informationTrainers.size());
 		
 		}catch(Exception e){
 			e.printStackTrace();
