@@ -102,9 +102,9 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
-			<property name="url" value="jdbc:postgresql://localhost/fosrest" />
-		<property name="username" value="fosrestadmin" />
-		<property name="password" value="Fss2iZentech" />
+			<property name="url" value="jdbc:postgresql://localhost/FOTEST" />
+		<property name="username" value="postgres" />
+		<property name="password" value="test@1234" />
 			
 	</bean>
 
@@ -120,8 +120,12 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 		</property> -->
 		<property name="annotatedClasses">
 			<list>
+			<value>com.ir.model.StateMaster</value>
+				<value>com.ir.model.DistrictMaster</value>
+				<value>com.ir.model.CityMaster</value>
+				<value>com.ir.model.RegionMaster</value>
 				<value>com.ir.model.LoginDetails</value>
-				<value>com.ir.model.AdminUserManagement</value>
+			<!-- 	<value>com.ir.model.AdminUserManagement</value>
 				<value>com.ir.model.ManageTrainingPartner</value>
 				<value>com.ir.model.FeedbackMaster</value>
 				<value>com.ir.model.FeedbackForm</value>
@@ -163,10 +167,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 				<value>com.ir.model.UnitMaster</value>
 				<value>com.ir.model.ModuleMaster</value>
 				<value>com.ir.model.SubjectMaster</value>
-				<value>com.ir.model.StateMaster</value>
-				<value>com.ir.model.DistrictMaster</value>
-				<value>com.ir.model.CityMaster</value>
-				<value>com.ir.model.RegionMaster</value>
+				
 				<value>com.ir.model.TrainingPartner</value>
 				<value>com.ir.model.TrainingSchedule</value>
 				<value>com.ir.model.CustomerMaster</value>
@@ -176,14 +177,14 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 				<value>com.ir.model.CustomerDetails</value>
 				<value>com.ir.model.AssessmentQuestions</value>
 				<value>com.ir.model.InvoiceMaster</value>
-			
+			 -->
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				
 				
 				
@@ -228,7 +229,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<bean id="trainingPartnerService" class="com.ir.service.impl.TrainingPartnerServiceImpl" />
 	<bean id = "assessmentService" class = "com.ir.service.impl.AssessmentServiceImpl" />
 	<bean id="commonService" class="com.ir.service.impl.CommonServiceImpl" />
-	<bean id="assessmentDao" class = "com.ir.dao.impl.AssessmentDaoImpl"/>
+	 <bean id="assessmentDao" class = "com.ir.dao.impl.AssessmentDaoImpl"/> 
 	<bean id="adminDAO" class="com.ir.dao.impl.AdminDAOImpl"/>
 	<bean id="commonDao" class="com.ir.dao.impl.CommonDaoImpl"/>
 	<bean id="pageLoadDao" class="com.ir.dao.impl.PageLoadDaoImpl"/>
@@ -240,7 +241,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<bean id="updateDAO" class="com.ir.dao.impl.UpdateDAOImpl"/>
 	<bean id="traineeDAO" class="com.ir.dao.impl.TraineeDAOImpl"/>
 	<bean id="trainerDAO" class="com.ir.dao.impl.TrainerDAOImpl"/>
-	<bean id="trainingInstitudeDAO" class="com.ir.dao.impl.TrainingInstitudeDAOImpl"/>
+	 <bean id="trainingInstitudeDAO" class="com.ir.dao.impl.TrainingInstitudeDAOImpl"/> 
 	<bean id="assessmentAgencyDao" class="com.ir.dao.impl.AssessmentAgencyDaoImpl"/>
 	<bean id="trainerContactDao" class="com.ir.dao.impl.TrainerContactDaoIMPL"/>
 	<bean id="trainingPartnerDAO" class="com.ir.dao.impl.TrainingPartnerDaoImpl" />
@@ -253,27 +254,27 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<bean id="courseEnrolled" class="com.ir.model.CourseEnrolled" scope="prototype" />
 	<bean id="courseEnrolledUser" class="com.ir.model.CourseEnrolledUser" scope="prototype" />
 	<bean id="trainingPartnerName" class="com.ir.model.ManageTrainingPartner" scope="prototype" />
-	<bean id="kindOfBusiness" class="com.ir.model.KindOfBusiness" scope="prototype" />
-	<bean id="courseTypeS" class="com.ir.model.CourseType" scope="prototype" />
+ 	<bean id="kindOfBusiness" class="com.ir.model.KindOfBusiness" scope="prototype" /> 
+	 <bean id="courseTypeS" class="com.ir.model.CourseType" scope="prototype" />
 	<bean id="feedBackMasterS" class="com.ir.model.FeedbackMaster" scope="prototype" />
 	<bean id="feedBackFormS" class="com.ir.model.FeedbackForm" scope="prototype" />
 	<bean id="courseNameS" class="com.ir.model.CourseName" scope="prototype" />
-	<!-- <bean id="assessmentQuestions" class="com.ir.model.AssessmentQuestions" scope="prototype"/> -->
+	<bean id="assessmentQuestions" class="com.ir.model.AssessmentQuestions" scope="prototype"/> 
 	<bean id="personalInformationTrainee" class="com.ir.model.PersonalInformationTrainee"  scope="prototype"/>
 	<bean id="personalInformationTrainer" class="com.ir.model.PersonalInformationTrainer"  scope="prototype"/>
 	<bean id="personalInformationTrainingPartner" class="com.ir.model.PersonalInformationTrainingPartner"  scope="prototype"/>
-	<bean id="personalInformationAssessor" class="com.ir.model.PersonalInformationAssessor"  scope="prototype"/>
-	<bean id="postVacancyTrainingCenter" class="com.ir.model.PostVacancyTrainingCenter"  scope="prototype"/>
+ 	<bean id="personalInformationAssessor" class="com.ir.model.PersonalInformationAssessor"  scope="prototype"/> 
+	 <bean id="postVacancyTrainingCenter" class="com.ir.model.PostVacancyTrainingCenter"  scope="prototype"/>
 	<bean id="assessorAttendance" class="com.ir.model.assessor.AssessorAttendance"  scope="prototype"/>
 	<bean id="assessmentResult" class="com.ir.model.assessor.AssessmentResult"  scope="prototype"/>
 	<bean id="postVacancyTrainingCenterBeanS" class="com.ir.model.PostVacancyTrainingCenterBean"  scope="prototype"/>
 	<bean id="assessmentEvaluationTrainee" class="com.ir.model.trainee.TraineeAssessmentEvaluation"  scope="prototype"/>
 	<bean id="assessmentEvaluationTrainer" class="com.ir.model.trainer.TrainerAssessmentEvaluation"  scope="prototype"/>
 	
-	<!-- <bean id="generateID" class="com.ir.util.GenerateUniqueID">
+<!-- 	<bean id="generateID" class="com.ir.util.GenerateUniqueID"> 
     <property name="sessionFactory" ref="sessionFactory"></property>
-</bean> -->
-	
+</bean>-->
+
 	
 	<bean id="transactionManager"
         class="org.springframework.orm.hibernate4.HibernateTransactionManager">

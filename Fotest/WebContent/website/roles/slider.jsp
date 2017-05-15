@@ -19,20 +19,42 @@
 		System.out.println("Profile ID : "
 				+ session.getAttribute("profileId"));
 %>
-<div id="sidebar-wrapper">
-	<ul class="sidebar-nav">
-		        <li><a href="OnlineTraining.fssai">Online Training </a></li>
-				<li><a href="assessment-instructions-trainee.fssai">Online Assessment</a></li>
-				<li><a href="GetScoreCard.fssai">Get Score Card </a></li>
-				<li><a href="Certificate.fssai">Certificate</a></li>
-		<!-- <li><a href="course-training.fssai?courseTypeId=1">Online Assessment</a></li>-->
-		<!-- <li><a href="assessment-instructions-trainee.fssai">Assessment</a></li> -->
-		<!-- <li><a href="feedbackForm.fssai">Feedback</a></li>
-		<li><a href="generateCertificatetrainee.fssai">Certification</a>
-		<li><a href="generateCourseCertificate.fssai">Past Certificate</a> </li> -->
-		</li>
-	</ul>
-</div>
+
+
+  <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <!-- <li class="sidebar-brand">
+                        </li> -->
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Enrollment<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="hov"><a href="course-enrollment-gen.html" class="clr">General</a></li>
+                                <li class="hov"><a href="course-enrollment-lc.html" class="clr">LC-MS/MS</a></li>
+                                <li class="hov"><a href="course-enrollment-Gc.html" class="clr">GC-MS/MS</a></li>
+                                <li class="hov"><a href="course-enrollment-icp.html" class="clr" style="margin-bottom: 1px;">ICP-MS</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="admit-card.html">Print Admit Card</a>
+                        </li>
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assessment<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="hov"><a href="assessment-before-training-instruction.html" class="clr">Before Training</a></li>
+                                <li class="hov"><a href="assessment-after-training-instruction.html" class="clr" style="margin-bottom: 1px;">After Training</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="online-training.html">Online Training</a>
+                        </li>
+                        <li>
+                            <a href="feedback.html">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="certification.html">Certification</a>
+                        </li>
+                    </ul>
+                </div>
 <%
 	} else if (session.getAttribute("profileId").equals(4)) {
 %>
@@ -111,23 +133,22 @@
 	} else if (session.getAttribute("profileId").equals(1)) {
 %>
 <div id="sidebar-wrapper">
-	<ul class="sidebar-nav">
-		<li><a href="TrainingSchedule.fssai">Training Schedule Master</a></li>
-	<!-- 	<li><a href="TrainingClosure.fssai">Training Closure Report</a></li> -->
-		<li><a href="GenerateCertificate.fssai">Generate Certificate</a>
-		</li>
-		<!-- <li><a href="UpdateTrainingSchedule.fssai">Update Training
-				Schedule</a></li> -->
-		<li><a href="HolidayMaster.fssai">Holiday Master</a></li>
-		<li><a href="UnitMaster.fssai">Unit Master</a></li>
-		<li><a href="ModuleMaster.fssai">Module Master</a></li>
-		<li><a href="manageAssessmentQuestions.fssai">Assessment Questions</a></li>
-		<li><a href="SubjectMaster.fssai">Subject Master</a></li>
-		<li><a href="">Training Calendar</a></li>
-		
-                   
-	</ul>
-</div>
+                    <ul class="sidebar-nav">
+                        <!-- <li class="sidebar-brand"></li> -->
+                        <li><a href="RegionMapping.fssai">Region Mapping</a></li>
+                        <li><a href="manageCourseContent.fssai">Manage Training</a></li>
+                        <li> <a href="trainingCalendarForm.fssai">Manage Course Curricullum</a> </li>
+                        <li> <a href="trainingpartnerassessmentcalendar.fssai">Assessment Questions</a> </li>
+                        <li> <a href="manageAssessmentQuestions.fssai">Feedback Master</a> </li>
+                        <li> <a href="updateTrainerAssessmentForm.fssai">Verify Trainee Enrollment</a> </li>
+                        <li> <a href="feedbackMaster.fssai">Manage Training Calendar</a> </li>
+                        <li> <a href="feedbackMaster.fssai">Activate Training</a> </li>
+                        <li> <a href="feedbackMaster.fssai">Activate Assessment</a> </li>
+                        <li> <a href="feedbackMaster.fssai"> View Training Calendar</a> </li>
+                        <li> <a href="feedbackMaster.fssai"> View Enrolled Courses</a> </li>
+                        <li> <a href="feedbackMaster.fssai">Generate Certificate</a> </li>
+                    </ul>
+                </div>
 
 <%
 	} else if (session.getAttribute("profileId").equals(2)) {

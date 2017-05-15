@@ -21,7 +21,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>Fosrest</title>
+<title>FOTEST</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -29,7 +29,7 @@
 <meta http-equiv="description" content="This is my page">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOSTAC - Food Safety Training and Certification</title>
+<title>FOTEST - Food Testing Staff Training </title>
 <!-- core CSS -->
 <link href="website/css/bootstrap.min.css" rel="stylesheet">
 <link href="website/css/font-awesome.min.css" rel="stylesheet">
