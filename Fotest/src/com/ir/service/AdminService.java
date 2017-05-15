@@ -6,6 +6,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.ir.bean.common.IntStringBean;
+import com.ir.form.ActivateAssessmentOfTraineeForm;
+import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.AdminUserManagementForm;
 import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
@@ -57,6 +59,7 @@ import com.ir.model.PersonalInformationTrainee;
 import com.ir.model.PersonalInformationTrainer;
 import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
+import com.ir.model.RegionMapping;
 import com.ir.model.RegionMaster;
 import com.ir.model.State;
 import com.ir.model.StateMaster;
@@ -128,6 +131,21 @@ public interface AdminService {
 	// Manage Course Carriculum
 	public void addManageCourseCarricullum(ManageCourseCarricullum p);
 
+	// listactivateAssessmentOfTrainee
+	public List<ActivateAssessmentOfTraineeForm> listactivateAssessmentOfTrainee(ActivateAssessmentOfTraineeForm p);
+	//listactivateTrainingOfTrainee
+	public List<ActivateTrainingOfTraineeForm> listactivateTrainingOfTrainee(ActivateTrainingOfTraineeForm p);
+	 //Region Mapping
+	
+		public void updateRegionMapping(RegionMapping p);
+
+		public List<RegionMapping> listRegionMapping();
+
+		public RegionMapping getRegionMappingById(int id);
+
+		public void removeRegionMapping(int id);
+
+		public void addRegionMapping(RegionMapping p);
 	public void updateManageCourseCarricullum(ManageCourseCarricullum p);
 
 	public List<ManageCourseCarricullum> listManageCourseCarricullum();
@@ -145,6 +163,16 @@ public interface AdminService {
 	public List getQuestions(String data);
 
 	
+		// Feedback Master
+		public void addFeedbackMaster(FeedbackMaster p);
+
+		public void updateFeedbackMaster(FeedbackMaster p);
+
+		public List<FeedbackMaster> listFeedbackMasterForm();
+
+		public FeedbackMaster getFeedbackMasterById(int id);
+
+		public void removeFeedbackMaster(int id);
 
 	
 }

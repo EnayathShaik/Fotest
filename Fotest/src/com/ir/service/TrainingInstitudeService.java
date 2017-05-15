@@ -15,7 +15,6 @@ import com.ir.model.CheckAadhar;
 import com.ir.model.CourseName;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
-import com.ir.model.FeedbackForm;
 import com.ir.model.FeedbackMaster;
 import com.ir.model.ManageTrainingPartner;
 import com.ir.model.PersonalInformationTrainee;

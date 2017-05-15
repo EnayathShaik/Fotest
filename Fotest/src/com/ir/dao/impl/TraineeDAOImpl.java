@@ -19,11 +19,13 @@ import com.ir.constantes.Constantes;
 import com.ir.constantes.TableLink;
 import com.ir.dao.AdminDAO;
 import com.ir.dao.TraineeDAO;
+import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.CertificateForm;
 import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
 /*import com.ir.form.GenerateCertificateForm;*/
@@ -44,7 +46,6 @@ import com.ir.model.CourseName;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
 import com.ir.model.District;
-import com.ir.model.FeedbackForm;
 import com.ir.model.FeedbackMaster;
 import com.ir.model.KindOfBusiness;
 import com.ir.model.LoginDetails;
@@ -708,30 +709,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		return admitcard;
 	}
 
-	@Override
-	public List<FeedbackForm> getFeedbackDetails(Utility utility) {
-		String str_query = "select fbd.feedbackId as feedBackFormId ,fdm.feedback as feedbackId,fbd.feedbackrating as feedbackRating,fbd.userid as userid from  feedbackdetail fbd inner join personalinformationtrainingpartner pitp on pitp.personalinformationtrainingpartnerid="
-				+ utility.getFeedbackId()
-				+ " and "
-				+ " pitp.logindetails=CAST(CAST (fbd.userid AS NUMERIC(19,4)) AS INT) inner join trainingcalendar tc on";
-		if (utility.getTrainingDate() != null
-				&& utility.getTrainingDate() != "") {
-			str_query += " tc.trainingdate='" + utility.getTrainingDate()
-					+ "' and ";
-		}
-		str_query += " tc.coursetype="
-				+ utility.getCourseTypeId()
-				+ " and "
-				+ "coursename="
-				+ utility.getCourseNameId()
-				+ " "
-				+ "inner join feedbackmaster fdm on fdm.feedbacktypeid=CAST(CAST (fbd.feedbackId AS NUMERIC(19,4)) AS INT)";
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createSQLQuery(str_query);
-		List<FeedbackForm> list = query.list();
-		return list;
-	}
-
+	
 	@Override
 	public int getCurrentModuleId(int loginId) {
 		Session session = sessionFactory.getCurrentSession();
@@ -1534,25 +1512,51 @@ System.out.println("list "+list);
 		return resulList;
 	}
 	
-		//certification
+		
+		//traineeFeedback
 		@Override
-				public List<CertificationForm> listcertification() {
-					// TODO Auto-generated method stub
-					System.out.println("inside listprintAdmitCard");
-					CertificationForm bean = new CertificationForm();
-					List<CertificationForm> resulList = new ArrayList< CertificationForm>();
-					Session session = this.sessionFactory.getCurrentSession();
-					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
-					for (Object[] li : list ) {
+		public List<FeedbackForm> listFeedback() {
+			System.out.println("inside listprintAdmitCard");
+			FeedbackForm bean = new FeedbackForm();
+			List<FeedbackForm> resulList = new ArrayList<FeedbackForm>();
+			Session session = this.sessionFactory.getCurrentSession();
+			List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+			for (Object[] li : list ) {
+				
+				bean.setCourseName((String) li[0]);
+				bean.setTrainingDate((String) li[1]);
+				bean.setTrainingTime((String) li[2]);
+				bean.setTrainingLab((String) li[3]);
+				new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
+				//logger.info("traineeFeedback List::" + li);
+				resulList.add(bean);
+			}
+			return resulList;
+		}
+
+		//certification
+				@Override
+						public List<CertificationForm> listcertification() {
+							// TODO Auto-generated method stub
+							System.out.println("inside listprintAdmitCard");
+							CertificationForm bean = new CertificationForm();
+							List<CertificationForm> resulList = new ArrayList< CertificationForm>();
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+							for (Object[] li : list ) {
+								
+								bean.setCourseName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								bean.setTrainingTime((String) li[2]);
+								bean.setTrainingLab((String) li[3]);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
 						
-						bean.setCourseName((String) li[0]);
-						bean.setTrainingDate((String) li[1]);
-						bean.setTrainingTime((String) li[2]);
-						bean.setTrainingLab((String) li[3]);
-						resulList.add(bean);
-					}
-					return resulList;
-				}
+
+		
+		
 				
 				
 				

@@ -39,7 +39,6 @@ import com.ir.form.trainingPartner.TrainingPartnerSearchForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
-import com.ir.model.FeedbackForm;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
@@ -590,20 +589,7 @@ public class TrainingPartnerController {
         out.print(newJSON);
         out.flush();
 	}
-	@RequestMapping(value="/getFeedbackDetails" , method=RequestMethod.POST)
-	@ResponseBody
-	public void getFeedbackDetails(@RequestBody Utility utility,HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException{
-		List<FeedbackForm> feedbackFormList=new ArrayList<>();
-		try{
-			feedbackFormList=traineeService.getFeedbackDetails(utility);
-		}catch(Exception e){
-			new ZLogger("getFeedbackDetails", "Exception while getFeedbackDetails  "+e.getMessage() , "TrainingPartnerController.java");	
-		}
-		response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.print(new Gson().toJson(feedbackFormList));
-        out.flush();
-	}
+	
 	
 	
 	@RequestMapping(value="/trainingPartnerSearch", method = RequestMethod.GET)

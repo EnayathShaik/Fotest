@@ -7,10 +7,9 @@
 
 
 
-<%-- <ct:url var="addAction" value="/fotestfeedbackMasteradd"></ct:url> --%>
-<cf:form action="feedbackMasterAdd.fssai" name="myForm"
-	method="POST" commandName="FeedbackMasterForm"
-	onsubmit="return validateFields();">
+<ct:url var="addAction" value="/regionMappingAdd.fssai"></ct:url>
+<cf:form action="${addAction}" name="myForm" method="POST"
+	commandName="RegionMappingForm" onsubmit="return validateFields();">
 
 	<section>
 		<%@include file="/website/roles/top-menu.jsp"%>
@@ -40,12 +39,12 @@
 
 							<div class="col-xs-12">
 								<h1>
-									Feedback Master <label id="created">${created }</label>
+									Region Mapping <label id="created">${created }</label>
 								</h1>
 								<div class="row">
 									<div class="col-xs-12">
 										<fieldset>
-											<legend>Feedback Master</legend>
+											<legend>Region Mapping</legend>
 											<cf:input path="id" type="hidden" />
 
 											<!-- left side -->
@@ -53,42 +52,20 @@
 												<div class="form-group">
 													<div>
 														<ul class="lab-no">
-															<li class="style-li"><strong>User Type: <span
+															<li class="style-li"><strong>Region Name: <span
 																	style="color: red;">*</span>
 
 															</strong></li>
-															<li id="userTypeErr" style="display: none;"
-																class="style-li error-red">User Type should not be
-																blank.</li>
+															<li id="regionNameErr" style="display: none;"
+																class="style-li error-red">Region Name should not
+																be blank.</li>
 
 														</ul>
 													</div>
+													<cf:input path="regionName" placeholder="Region Name"
+														class="form-control" />
 
-													<cf:select path="userType" class="form-control">
-														<cf:option value="" label="Select userType" />
-														<cf:options items="${userTypeMap}" />
-													</cf:select>
 												</div>
-												<div class="form-group">
-													<div>
-														<ul class="lab-no">
-															<li class="style-li"><strong>Feedback
-																	Category: <span style="color: red;">*</span>
-
-															</strong></li>
-															<li id="feedbackCategoryErr" style="display: none;"
-																class="style-li error-red">Feedback Category should
-																not be blank.</li>
-
-														</ul>
-													</div>
-
-													<cf:select path="feedbackCategory" class="form-control">
-														<cf:option value="" label="Select feedbackCategory" />
-														<cf:options items="${feedbackCategoryMap}" />
-													</cf:select>
-												</div>
-
 
 											</div>
 											<!-- right side -->
@@ -100,32 +77,21 @@
 													<div class="form-group">
 														<div>
 															<ul class="lab-no">
-																<li class="style-li"><strong>feedback:</strong></li>
+																<li class="style-li"><strong>District:</strong></li>
 																<li class="style-li error-red"></li>
-																<li id="feedbackErr" style="display: none;"
-																	class="style-li error-red">Feedback should not be
+																<li id="districtErr" style="display: none;"
+																	class="style-li error-red">District should not be
 																	blank.</li>
 															</ul>
 														</div>
-														<cf:input path="feedback" placeholder="feedbackCategory"
-															class="form-control" />
 
-													</div>
-													<div class="form-group">
-														<div>
-															<ul class="lab-no">
-																<li class="style-li"><strong> Status:</strong></li>
-																<li class="style-li error-red"></li>
-															</ul>
-														</div>
-														<cf:select path="status" class="form-control">
-															<cf:option value="A" label="Active" />
-															<cf:option value="I" label="In-Active" />
+														<cf:select path="district" class="form-control">
+															<cf:option value="" label="Select District" />
+															<cf:options items="${DistrictMap}" />
 														</cf:select>
 													</div>
 
-
-														<div
+													<div
 														style="float: right;">
 														<input type="submit" id="updatebtn" style="display: none;"
 															value="Update" class="btn login-btn" /> <input
@@ -147,37 +113,31 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<fieldset>
-											<legend>Feedback Master</legend>
-											<ct:if test="${!empty listFeedbackMaster}">
-												<table id="datatablesfosrest"
+											<legend>Region Mapping</legend>
+											<ct:if test="${!empty listRegionMapping}">
+												<table border="1" id="datatablesfosrest"
 													class="table table-bordered table-responsive">
 													<thead>
 														<tr class="background-open-vacancies">
 															<th>S.No.</th>
-															<th>User Type</th>
-															<th>Feedback Category</th>
-															<th>Feedback</th>
-															<th>Status</th>
+															<th>Region Name</th>
+															<th>District</th>
 															<th>Edit</th>
 															<th>Delete</th>
 														</tr>
 													</thead>
 
-													<ct:forEach items="${listFeedbackMaster}"
-														var="FeedbackMaster" varStatus="loop">
+													<ct:forEach items="${listRegionMapping}"
+														var="RegionMapping" varStatus="loop">
 
 														<tr>
 															<td>${loop.count}</td>
-															<td>${FeedbackMaster.userType}</td>
-															<td>${FeedbackMaster.feedbackCategory}</td>
-															<td>${FeedbackMaster.feedback}</td>
-															<td>${FeedbackMaster.status}</td>
+															<td>${RegionMapping.regionName}</td>
+															<td>${RegionMapping.district}</td>
 															<td><button
-																	onclick='editFeedback(${FeedbackMaster.id});return false;'>Edit</button>
-															</td>
-															<!-- /feedbackMaster/remove/ -->
+																	onclick='editRegion(${RegionMapping.id});return false;'>Edit</button></td>
 															<td><a
-																href="<ct:url value='/feedbackMasterRemove/${FeedbackMaster.id}.fssai' />">Delete</a></td>
+																href="<ct:url value='/regionMappingRemove/${RegionMapping.id}.fssai' />">Delete</a></td>
 														</tr>
 													</ct:forEach>
 												</table>
@@ -186,9 +146,12 @@
 									</div>
 								</div>
 							</div>
+
 							<!-- search div ends -->
+
 						</div>
 						<!-- row ends -->
+
 					</div>
 				</div>
 			</div>
@@ -196,43 +159,43 @@
 	</section>
 	<input type="hidden" id="idH" value="" />
 </cf:form>
-</body>
-</html>
 <script>
-function editFeedback(id){
-                    var name1=JSON.stringify({
+             /*    var id = localStorage.getItem('activeID');
+                document.getElementById(id).className = "active";
+                 */
+
+function editRegion(id){
+
+                var name1=JSON.stringify({
             		courseName:0
               })
             	$.ajax({
             	      type: 'post',
-            	      url: 'feedbackMasterEdit/'+id+'.fssai',
+            	      url: 'regionMappingEdit/'+id+'.fssai',
             	      contentType : "application/json",
             		  data:name1,
             	      success: function (response) {      
             	      var mainData1 = jQuery.parseJSON(response);
             	    $("#id").val(mainData1.id);
-            	    $("#userType").val(mainData1.userType);
-            	    $("#feedbackCategory").val(mainData1.feedbackCategory);
-            	    $("#feedback").val(mainData1.feedback);
-            	    $("#status").val(mainData1.status);
+            	    $("#regionName").val(mainData1.regionName);
+            	    $("#district").val(mainData1.district);
             	     $("#updatebtn").css("display" , "block");
+            	     
             	     $("#createbtn").css("display" , "none");
             	      }
             	      });     
-                }
                 
-function validateFields(){
-    if($("#userType").val() == 0){
- 		 $("#userTypeErr").css("display" , "block");
-  		return false; 
- 	 }
-  	if($("#feedback").val() == ''){
-		 $("#feedbackErr").css("display" , "block");
- 		return false; 
-	 }
-	if($("#feedbackCategory").val() == 0){
-		 $("#feedbackCategoryErr").css("display" , "block");
-		return false; 
-	 }
-}
- </script>
+                }
+                 
+               function validateFields(){
+                     
+                  	if($("#regionName").val() == ''){
+                 		 $("#regionNameErr").css("display" , "block");
+                  		return false; 
+                 	 }
+                  	if($("#district").val() == 0){
+                		 $("#districtErr").css("display" , "block");
+                 		return false; 
+                	 }
+              }
+                </script>

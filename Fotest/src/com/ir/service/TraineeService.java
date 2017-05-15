@@ -7,6 +7,7 @@ import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
 import com.ir.form.OnlineTrainingForm;
@@ -22,7 +23,6 @@ import com.ir.model.CheckAadhar;
 import com.ir.model.CourseName;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
-import com.ir.model.FeedbackForm;
 import com.ir.model.FeedbackMaster;
 import com.ir.model.ManageTrainingPartner;
 import com.ir.model.ModuleMaster;
@@ -99,7 +99,7 @@ public interface TraineeService {
 	public AdmitCardForm generateAdmitCard(int loginId,int profileId);
 	
 	
-	public List<FeedbackForm> getFeedbackDetails(Utility utility);
+	
 	
 	
 	public int getCurrentModuleId(int loginId);
@@ -181,17 +181,19 @@ public interface TraineeService {
 
  public List<AssessmentQuestionForm> listingAssessmentQuestion(
 			AssessmentQuestionForm assesQuestionForm, int id);
+
+*/
+public List<FeedbackForm> listFeedback();
 	
-	*/
+	
 	
 	 //online training
 	 public List<OnlineTrainingForm> listonlineTraining();
 		
 	 
- public List<CertificationForm> listcertification();
+public List<CertificationForm> listcertification();
+
 	
-
-
 	
 	
 	

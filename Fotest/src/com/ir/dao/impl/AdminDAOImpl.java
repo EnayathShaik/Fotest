@@ -24,6 +24,8 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 import com.ir.bean.common.IntStringBean;
 import com.ir.dao.AdminDAO;
+import com.ir.form.ActivateAssessmentOfTraineeForm;
+import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.AdminUserManagementForm;
 import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
@@ -87,6 +89,7 @@ import com.ir.model.PersonalInformationTrainer;
 import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.Region;
+import com.ir.model.RegionMapping;
 import com.ir.model.RegionMaster;
 import com.ir.model.State;
 import com.ir.model.StateMaster;
@@ -758,7 +761,183 @@ public class AdminDAOImpl implements AdminDAO {
 		return resulList;
 	}
 	
+	@Override
+	public List<ActivateAssessmentOfTraineeForm> listactivateAssessmentOfTrainee(ActivateAssessmentOfTraineeForm p) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		System.out.println("inside listactivateTrainingOfTrainee");
+		String courseName = p.getCourseName();
+		String traineeName = p.getTrainingDate();
+		ActivateAssessmentOfTraineeForm bean = new ActivateAssessmentOfTraineeForm();
+		List<ActivateAssessmentOfTraineeForm> resulList = new ArrayList<ActivateAssessmentOfTraineeForm>();
+		System.out.println("courseName " + courseName + " traineeName " + traineeName);
+
+		List<Object[]> list = session
+				.createSQLQuery(
+						"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
+				.list();
+		for (Object[] li : list) {
+
+			bean.setCourseName((String) li[0]);
+			bean.setTrainingDate((String) li[1]);
+			bean.setTrainingLab((String) li[2]);
+			bean.setTraineeName((String) li[3]);
+			bean.setAttendance((String) li[4]);
+			new ZLogger("listactivateTrainingOfTrainee", "", "List:" + li);
+			// logger.info("listactivateTrainingOfTrainee List::" + li);
+			resulList.add(bean);
+		}
+		return resulList;
+	}
 	
+	// listactivateTrainingOfTrainee
+			@Override
+			public List<ActivateTrainingOfTraineeForm> listactivateTrainingOfTrainee(ActivateTrainingOfTraineeForm form) {
+				// TODO Auto-generated method stub
+				System.out.println("inside listactivaaaaaaaaaaateTrainingOfTrainee");
+				ActivateTrainingOfTraineeForm bean = new ActivateTrainingOfTraineeForm();
+				List<ActivateTrainingOfTraineeForm> resulList = new ArrayList<ActivateTrainingOfTraineeForm>();
+
+				Session session = this.sessionFactory.getCurrentSession();
+				List<Object[]> list = session
+						.createSQLQuery(
+								"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
+						.list();
+				for (Object[] li : list) {
+
+					bean.setCourseName((String) li[0]);
+					bean.setTrainingDate((String) li[1]);
+					bean.setTrainingLab((String) li[2]);
+					bean.setTraineeName((String) li[3]);
+					bean.setAttendance((String) li[4]);
+					new ZLogger("listactivateTrainingOfTrainee List::" + li,"","");
+					//logger.info("listactivateTrainingOfTrainee List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
+			// Region Mapping
+
+			@Override
+			public void addRegionMapping(RegionMapping p) {
+				// TODO Auto-generated method stub
+				System.out.println("RegionMapping " + p.getRegionName());
+				Session session = this.sessionFactory.getCurrentSession();
+				session.persist(p);
+				new ZLogger("RegionMapping", " RegionMapping Details= " + p, "AdminDAOImpl.java");
+				/*
+				 * logger.info(
+				 * "RegionMapping saved successfully, RegionMapping Details=" + p);
+				 */
+			}
+
+			@Override
+			public void updateRegionMapping(RegionMapping p) {
+				// TODO Auto-generated method stub
+				Session session = this.sessionFactory.getCurrentSession();
+				session.update(p);
+				/*
+				 * logger.info(
+				 * "RegionMapping updated successfully, RegionMapping Details=" + p);
+				 */
+			}
+
+			@SuppressWarnings("unchecked")
+			@Override
+			public List<RegionMapping> listRegionMapping() {
+				// TODO Auto-generated method stub
+				System.out.println("inside RegionMapping");
+				Session session = this.sessionFactory.getCurrentSession();
+				List<RegionMapping> mccList = session.createQuery("from RegionMapping ").list();
+				for (RegionMapping p : mccList) {
+
+					new ZLogger("RegionMapping", "list.size() " + p, "AdminDAOImpl.java");
+				}
+
+				return mccList;
+			}
+
+			@Override
+			public RegionMapping getRegionMappingById(int id) {
+				// TODO Auto-generated method stub
+				Session session = this.sessionFactory.getCurrentSession();
+				Query query = session.createQuery("from RegionMapping where id=" + id);
+				List<RegionMapping> RegionMappingList = query.list();
+				RegionMapping p = RegionMappingList.get(0);
+				return p;
+			}
+
+			@Override
+			public void removeRegionMapping(int id) {
+				// TODO Auto-generated method stub
+				Session session = this.sessionFactory.getCurrentSession();
+				RegionMapping p = (RegionMapping) session.load(RegionMapping.class, new Integer(id));
+				if (null != p) {
+					session.delete(p);
+				}
+				/*
+				 * logger.info(
+				 * "RegionMapping deleted successfully, RegionMapping details=" + p);
+				 */
+			}
+
+			// Feedback Master
+
+			@Override
+			public void addFeedbackMaster(FeedbackMaster p) {
+				// TODO Auto-generated method stub
+				System.out.println("feedback " + p.getFeedback());
+				Session session = this.sessionFactory.getCurrentSession();
+				session.persist(p);
+				new ZLogger("FeedbackMaster saved successfully", "", "FeedbackMaster Details=" + p);
+
+			}
+
+			@Override
+			public void updateFeedbackMaster(FeedbackMaster p) {
+				// TODO Auto-generated method stub
+				Session session = this.sessionFactory.getCurrentSession();
+				session.update(p);
+				new ZLogger("FeedbackMaster updated successfully", "", "FeedbackMaster Details=" + p);
+				// logger.info("FeedbackMaster updated successfully, FeedbackMaster
+				// Details=" + p);
+			}
+
+			@SuppressWarnings("unchecked")
+			@Override
+			public List<FeedbackMaster> listFeedbackMasterForm() {
+				// TODO Auto-generated method stub
+				System.out.println("inside listFeedbackMasterForm");
+				Session session = this.sessionFactory.getCurrentSession();
+				List<FeedbackMaster> mccList = session.createQuery("from FeedbackMaster").list();
+				for (FeedbackMaster p : mccList) {
+					new ZLogger("FeedbackMaster list", "", "FeedbackMaster Details=" + p);
+				}
+				return mccList;
+			}
+
+			@Override
+			public FeedbackMaster getFeedbackMasterById(int id) {
+				// TODO Auto-generated method stub
+				Session session = this.sessionFactory.getCurrentSession();
+				Query query = session.createQuery("from FeedbackMaster where id=" + id);
+				List<FeedbackMaster> FeedbackMasterList = query.list();
+				FeedbackMaster p = FeedbackMasterList.get(0);
+				return p;
+			}
+
+			@Override
+			public void removeFeedbackMaster(int id) {
+				// TODO Auto-generated method stub
+				Session session = this.sessionFactory.getCurrentSession();
+				FeedbackMaster p = (FeedbackMaster) session.load(FeedbackMaster.class, new Integer(id));
+				if (null != p) {
+					session.delete(p);
+				}
+				new ZLogger("FeedbackMaster deleted successfully", "", "FeedbackMaster Details=" + p);
+				// logger.info("FeedbackMaster deleted successfully, FeedbackMaster
+				// details=" + p);
+			}
 	
 	
 	// fotestGetQuestions

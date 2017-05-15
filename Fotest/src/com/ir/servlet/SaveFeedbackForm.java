@@ -15,7 +15,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.ir.model.FeedbackForm;
 /**
  * Servlet implementation class DeleteState
  */
@@ -72,7 +71,7 @@ public class SaveFeedbackForm extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//doGet(request, response);
 		response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -105,6 +104,6 @@ public class SaveFeedbackForm extends HttpServlet {
 			out.flush();
 
 		}
-	}
+	}*/
 
 }

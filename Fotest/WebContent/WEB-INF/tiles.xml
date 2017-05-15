@@ -86,10 +86,7 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/disclaimer.jsp" />
 	</definition>
-	<definition name="feedback" extends="base.before.login">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/feedback.jsp" />
-	</definition>
+	
 	<definition name="trainee" extends="base.before.login">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee.html" />
@@ -755,10 +752,7 @@
 		<put-attribute name="body"
 			value="/website/admin/adminUserManagement.jsp" />
 	</definition>
-	<definition name="feedbackMaster" extends="base.user.afterLogin">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/feedbackMaster.jsp" />
-	</definition>
+
 	<definition name="trainingCalendarForm" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"
@@ -893,9 +887,10 @@
 
 	<definition name="Assessmentquestion/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/AssessmentQuestions.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/AssessmentQuestions.jsp" />
 	</definition>
-	
+
 
 	<definition name="UnitMaster" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
@@ -929,34 +924,40 @@
 		<put-attribute name="body" value="/website/admin/SubjectMaster.jsp" />
 	</definition>
 
-<definition name="TrainingSchedule" extends="base.user.afterLogin">
+	<definition name="TrainingSchedule" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/TrainingSchedule.jsp" />
-	</definition>
-	
-	<definition name="TrainingSchedule/edit/{id}" extends="base.user.afterLogin">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/TrainingSchedule.jsp" />
-	</definition>
-	
-	
-		<definition name="PersonalInformationTrainee" extends="base.before.login">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/personalInformationTrainee.jsp" />
-	</definition>
-	
-	
-		<definition name="PersonalInformationTrainer" extends="base.before.login">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/personalInformationTrainer.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/TrainingSchedule.jsp" />
 	</definition>
 
-	<definition name="PersonalInformationTrainingInstitute" extends="base.before.login">
+	<definition name="TrainingSchedule/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/personalInformationTrainingInstitute.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/TrainingSchedule.jsp" />
 	</definition>
-	
-		<definition name="StateMaster" extends="base.user.afterLogin">
+
+
+	<definition name="PersonalInformationTrainee" extends="base.before.login">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/personalInformationTrainee.jsp" />
+	</definition>
+
+
+	<definition name="PersonalInformationTrainer" extends="base.before.login">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/personalInformationTrainer.jsp" />
+	</definition>
+
+	<definition name="PersonalInformationTrainingInstitute"
+		extends="base.before.login">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/personalInformationTrainingInstitute.jsp" />
+	</definition>
+
+	<definition name="StateMaster" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/State.jsp" />
 	</definition>
@@ -965,9 +966,9 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/State.jsp" />
 	</definition>
-	
-	
-		<definition name="DistrictMaster" extends="base.user.afterLogin">
+
+
+	<definition name="DistrictMaster" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/District.jsp" />
 	</definition>
@@ -976,9 +977,9 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/District.jsp" />
 	</definition>
-	
 
-		<definition name="CityMaster" extends="base.user.afterLogin">
+
+	<definition name="CityMaster" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/City.jsp" />
 	</definition>
@@ -987,8 +988,8 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/City.jsp" />
 	</definition>
-	
-		<definition name="RegionMaster" extends="base.user.afterLogin">
+
+	<definition name="RegionMaster" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/RegionMaster.jsp" />
 	</definition>
@@ -997,10 +998,10 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/RegionMaster.jsp" />
 	</definition>
-	
-	
-	
-		<definition name="TrainingPartner" extends="base.user.afterLogin">
+
+
+
+	<definition name="TrainingPartner" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/TrainingPartner.jsp" />
 	</definition>
@@ -1009,113 +1010,113 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/TrainingPartner.jsp" />
 	</definition>
-	
-	<definition name="TrainingClosure" extends="base.user.afterLogin">
+<definition name="TrainingClosure" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/TrainingClosure.jsp" />
 	</definition>
-	
+
 	<definition name="TrainingClosure/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/TrainingClosure.jsp" />
 	</definition>
-	
+
 	<definition name="MyTraining" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/MyTraining.jsp" />
 	</definition>
-	
+
 	<definition name="MyTraining/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/MyTraining.jsp" />
 	</definition>
-	
+
 	<definition name="GetScoreCard" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/GetScoreCard.jsp" />
 	</definition>
-	
+
 	<definition name="GetScoreCard/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/GetScoreCard.jsp" />
 	</definition>
-	
+
 	<definition name="OnlineTraining" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/trainee/OnlineTraining.jsp" />
+		<put-attribute name="body"
+			value="/website/trainee/OnlineTraining.jsp" />
 	</definition>
-	
+
 	<definition name="OnlineTraining/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/trainee/OnlineTraining.jsp" />
+		<put-attribute name="body"
+			value="/website/trainee/OnlineTraining.jsp" />
 	</definition>
-	
+
 	<definition name="OnlineAssessment" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/trainee/OnlineAssessment.jsp" />
+		<put-attribute name="body"
+			value="/website/trainee/OnlineAssessment.jsp" />
 	</definition>
-	
+
 	<definition name="OnlineAssessment/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/trainee/OnlineAssessment.jsp" />
+		<put-attribute name="body"
+			value="/website/trainee/OnlineAssessment.jsp" />
 	</definition>
-	
+
 	<definition name="Certificate" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/Certificate.jsp" />
 	</definition>
-	
+
 	<definition name="Certificate/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/Certificate.jsp" />
 	</definition>
-	
-		<definition name="TrainingRequest" extends="base.user.afterLogin">
+
+	<definition name="TrainingRequest" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/TrainingRequest.jsp" />
 	</definition>
-	
+
 	<definition name="TrainingRequest/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/TrainingRequest.jsp" />
 	</definition>
-	
-	
-		<definition name="MarkAttendance" extends="base.user.afterLogin">
+
+
+	<definition name="MarkAttendance" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/MarkAttendance.jsp" />
 	</definition>
-	
- 	<definition name="MarkAttendance/edit/{id}" extends="base.user.afterLogin">
+
+	<definition name="MarkAttendance/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/MarkAttendance.jsp" />
 	</definition>
-	
-		<definition name="mycalendar" extends="base.user.afterLogin">
+
+	<definition name="mycalendar" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/InstituteMyCalendar.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/InstituteMyCalendar.jsp" />
 	</definition>
-	
- 	<definition name="mycalendar/edit/{id}" extends="base.user.afterLogin">
+
+	<definition name="mycalendar/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/InstituteMyCalendar.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/InstituteMyCalendar.jsp" />
 	</definition>
-	
-	
-	<!-- 	<definition name="assessmentquestions" extends="base.user.afterLogin">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/AssessmentQuestions.jsp" />
-	</definition>
-	
- 	<definition name="assessmentquestions/edit/{id}" extends="base.user.afterLogin">
-		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/AssessmentQuestions.jsp" />
-	</definition>
-	
-	 -->
-	
-	
-		<definition name="CustomerMaster" extends="base.user.afterLogin">
+
+
+	<!-- <definition name="assessmentquestions" extends="base.user.afterLogin"> 
+		<put-attribute name="title" value="Fssai E-Learning System" /> <put-attribute 
+		name="body" value="/website/admin/AssessmentQuestions.jsp" /> </definition> 
+		<definition name="assessmentquestions/edit/{id}" extends="base.user.afterLogin"> 
+		<put-attribute name="title" value="Fssai E-Learning System" /> <put-attribute 
+		name="body" value="/website/admin/AssessmentQuestions.jsp" /> </definition> -->
+
+
+	<definition name="CustomerMaster" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/CustomerMaster.jsp" />
 	</definition>
@@ -1141,28 +1142,31 @@
 
 	<definition name="EmployeeMonthlyCharges" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/EmployeeMonthlyCharges.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/EmployeeMonthlyCharges.jsp" />
 	</definition>
 
 
 
 	<definition name="EmployeeMonthlyCharges/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/EmployeeMonthlyCharges.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/EmployeeMonthlyCharges.jsp" />
 	</definition>
-	
-		<definition name="stateAdminHomepage" extends="base.user.afterLogin">
+
+	<definition name="stateAdminHomepage" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/stateAdminHomepage.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/stateAdminHomepage.jsp" />
 	</definition>
-	
-		<definition name="NominateTrainee" extends="base.user.afterLogin">
+
+	<definition name="NominateTrainee" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/NominateTrainee.jsp" />
 	</definition>
-	
-	
-		<definition name="TrainerRequest" extends="base.user.afterLogin">
+
+
+	<definition name="TrainerRequest" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"
 			value="/website/trainer/TrainerRequest.jsp" />
@@ -1183,25 +1187,28 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainer/MyCalendar.jsp" />
 	</definition>
-	
+
 	<!-- for tainee online question listing -->
-		<definition name="listingquestions" extends="base.user.afterLogin">
+	<definition name="listingquestions" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/ListingAssessmentQuestion.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/ListingAssessmentQuestion.jsp" />
 	</definition>
-	
+
 	<!-- try 2 for admin assessment question -->
-		<definition name="assessmentquestions" extends="base.user.afterLogin">
+	<definition name="assessmentquestions" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/AssessmentQuestions2.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/AssessmentQuestions2.jsp" />
 	</definition>
 
-		<definition name="Assessmentquestion/edit/{id}" extends="base.user.afterLogin">
+	<definition name="Assessmentquestion/edit/{id}" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body" value="/website/admin/AssessmentQuestions2.jsp" />
+		<put-attribute name="body"
+			value="/website/admin/AssessmentQuestions2.jsp" />
 	</definition>
 
-		<definition name="invoicePrint" extends="base.user.afterLogin">
+	<definition name="invoicePrint" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/invoice.jsp" />
 	</definition>
@@ -1217,6 +1224,32 @@
 	
 	<!--  -->
 
+
+
+
+	<definition name="activateAssessmentOfTrainee" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/admin/activateAssessmentOfTrainee.jsp" />
+	</definition>
+	<definition name="activateTrainingOfTrainee" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/admin/activateTrainingOfTrainee.jsp" />
+	</definition>
+	<definition name="regionMapping" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/RegionMapping.jsp" />
+	</definition>
+	<definition name="feedbackMaster" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/feedbackMaster.jsp" />
+	</definition>
+	
+	<definition name="feedback123" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainee/feedback.jsp" />
+	</definition>
  <definition name="manageTraining" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/manageTraining.jsp" />

@@ -1,116 +1,87 @@
 package com.ir.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
+/**
+ * Entity bean with JPA annotations Hibernate provides JPA implementation
+ * 
+ * @author pankaj
+ *
+ */
 @Entity
-@Table(name="feedBackMaster")
+@Table(name = "FEEDBACKMASTER")
 public class FeedbackMaster {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int feedbackTypeID;
-	private String courseType;
-	private String catogery;
-	@NotNull
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "FBM_SEQ", allocationSize = 1, initialValue = 1)
+	private int id;
+
+	private String userType;
+
+	private String feedbackCategory;
+
 	private String feedback;
+
 	private String status;
-	
-	/**
-	 * @return the feedbackTypeID
-	 */
-	public int getFeedbackTypeID() {
-		return feedbackTypeID;
-	}
-	/**
-	 * @param feedbackTypeID the feedbackTypeID to set
-	 */
-	public void setFeedbackTypeID(int feedbackTypeID) {
-		this.feedbackTypeID = feedbackTypeID;
-	}
-	/**
-	 * @return the courseType
-	 */
-	public String getCourseType() {
-		return courseType;
-	}
-	/**
-	 * @param courseType the courseType to set
-	 */
-	public void setCourseType(String courseType) {
-		this.courseType = courseType;
-	}
-	/**
-	 * @return the catogery
-	 */
-	public String getCatogery() {
-		return catogery;
-	}
-	/**
-	 * @param catogery the catogery to set
-	 */
-	public void setCatogery(String catogery) {
-		this.catogery = catogery;
-	}
-	/**
-	 * @return the feedback
-	 */
-	public String getFeedback() {
-		return feedback;
-	}
-	/**
-	 * @param feedback the feedback to set
-	 */
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
-	}
-	/**
-	 * @return the status
-	 */
+
 	public String getStatus() {
 		return status;
 	}
-	/**
-	 * @param status the status to set
-	 */
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public String getFeedbackCategory() {
+		return feedbackCategory;
+	}
+
+	public void setFeedbackCategory(String feedbackCategory) {
+		this.feedbackCategory = feedbackCategory;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	@CreationTimestamp
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "create_date")
-	private Date createDate;
 
-	@UpdateTimestamp
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "modify_date")
-	private Date modifyDate;
-
-	public Date getCreateDate() {
-		return createDate;
+	public int getId() {
+		return id;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public Date getModifyDate() {
-		return modifyDate;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ManageTraining [id=" + id + ", userType=" + userType + ", feedbackCategory=" + feedbackCategory
+				+ " , feedback " + feedback + " , status" + status + "]";
+
 	}
 
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
-	}
 }

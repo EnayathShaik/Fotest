@@ -104,7 +104,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 		<property name="driverClassName" value="org.postgresql.Driver" />
 			<property name="url" value="jdbc:postgresql://localhost/fotest" />
 		<property name="username" value="fotestadmin" />
-		<property name="password" value="Fss2iZentech" />
+		<property name="password" value="fotest123" />
 			
 	</bean>
 
@@ -182,6 +182,8 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 				
 			<value>com.ir.model.FotestAssessmentQuestions</value>
 			 -->
+			  <value>com.ir.model.RegionMapping</value>
+			    <value>com.ir.model.FeedbackMaster</value>
 			  <value>com.ir.model.ManageCourseCarricullum</value>
 			</list>
 		</property>
@@ -262,7 +264,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
  	<bean id="kindOfBusiness" class="com.ir.model.KindOfBusiness" scope="prototype" /> 
 	 <bean id="courseTypeS" class="com.ir.model.CourseType" scope="prototype" />
 	<bean id="feedBackMasterS" class="com.ir.model.FeedbackMaster" scope="prototype" />
-	<bean id="feedBackFormS" class="com.ir.model.FeedbackForm" scope="prototype" />
+	<!-- <bean id="feedBackFormS" class="com.ir.model.FeedbackForm" scope="prototype" /> -->
 	<bean id="courseNameS" class="com.ir.model.CourseName" scope="prototype" />
 	<bean id="assessmentQuestions" class="com.ir.model.AssessmentQuestions" scope="prototype"/> 
 	<bean id="personalInformationTrainee" class="com.ir.model.PersonalInformationTrainee"  scope="prototype"/>

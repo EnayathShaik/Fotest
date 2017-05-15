@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.ir.bean.common.IntStringBean;
 import com.ir.dao.AdminDAO;
+import com.ir.form.ActivateAssessmentOfTraineeForm;
+import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.AdminUserManagementForm;
 import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
@@ -62,6 +64,7 @@ import com.ir.model.PersonalInformationTrainee;
 import com.ir.model.PersonalInformationTrainer;
 import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
+import com.ir.model.RegionMapping;
 import com.ir.model.RegionMaster;
 import com.ir.model.State;
 import com.ir.model.StateMaster;
@@ -323,48 +326,13 @@ public class AdminServiceImpl implements AdminService {
 				return this.adminDAO.listManageTraining();
 			}
 
-			@Override
-			@Transactional
-			public ManageTraining getManageTrainingById(int id) {
-				// TODO Auto-generated method stub
-				return this.adminDAO.getManageTrainingById(id);
-			}
-
-			@Override
-			@Transactional
-			public void removeManageTraining(int id) {
-				// TODO Auto-generated method stub
-				this.adminDAO.removeManageTraining(id);
-			}
-			
-			//verifyTraineeEnrollment	
-					@Override
-					@Transactional
-					public List<verifyTraineeEnrollmentForm> listVerifyTraineeEnrollment(verifyTraineeEnrollmentForm p ) {
-						// TODO Auto-generated method stub
-						return this.adminDAO.listVerifyTraineeEnrollment(p);
-					}
-					
-					//View Enrolled Courses
-					@Override
-					@Transactional
-					public List<viewEnrolledCoursesForm> listviewEnrolledCourses(viewEnrolledCoursesForm p ) {
-						// TODO Auto-generated method stub
-						return this.adminDAO.listviewEnrolledCourses(p);
-					}
-		
-					//generate certificate
-					@Override
-					@Transactional
-					public List<GenerateCertificateForm> listgenerateCertificate(GenerateCertificateForm p) {
-						// TODO Auto-generated method stub
-						return this.adminDAO.listgenerateCertificate(p);
-					}
-					
-					
-
-	// Manage course Carriculum
-
+	@Override
+	@Transactional
+	public List<ActivateAssessmentOfTraineeForm> listactivateAssessmentOfTrainee(ActivateAssessmentOfTraineeForm p) {
+		// TODO Auto-generated method stub
+		return this.adminDAO.listactivateAssessmentOfTrainee(p);
+	}
+	// managetraining
 		@Override
 		@Transactional
 		public void addManageCourseCarricullum(ManageCourseCarricullum p) {
@@ -428,6 +396,117 @@ public class AdminServiceImpl implements AdminService {
 			
 	
 	
+	//listactivateTrainingOfTrainee
 	
+	@Override
+	@Transactional
+	public List<ActivateTrainingOfTraineeForm> listactivateTrainingOfTrainee(ActivateTrainingOfTraineeForm p ) {
+		// TODO Auto-generated method stub
+		return this.adminDAO.listactivateTrainingOfTrainee(p);
+	}
+	@Override
+	@Transactional
+	public void updateRegionMapping(RegionMapping p) {
+		// TODO Auto-generated method stub
+		this.adminDAO.updateRegionMapping(p);
+	}
+
+	@Override
+	@Transactional
+	public List<RegionMapping> listRegionMapping() {
+		// TODO Auto-generated method stub
+		return this.adminDAO.listRegionMapping();
+	}
+
+	@Override
+	@Transactional
+	public RegionMapping getRegionMappingById(int id) {
+		// TODO Auto-generated method stub
+		return this.adminDAO.getRegionMappingById(id);
+	}
+
+	@Override
+	@Transactional
+	public void removeRegionMapping(int id) {
+		// TODO Auto-generated method stub
+		this.adminDAO.removeRegionMapping(id);
+	}
+
+	@Override
+	@Transactional
+	public void addRegionMapping(RegionMapping p) {
+		// TODO Auto-generated method stub
+		this.adminDAO.addRegionMapping(p);
+	}
+	// Feedback Master
+		@Override
+		@Transactional
+		public void addFeedbackMaster(FeedbackMaster p) {
+			// TODO Auto-generated method stub
+			this.adminDAO.addFeedbackMaster(p);
+		}
+
+		@Override
+		@Transactional
+		public void updateFeedbackMaster(FeedbackMaster p) {
+			// TODO Auto-generated method stub
+			this.adminDAO.updateFeedbackMaster(p);
+		}
+
+		@Override
+		@Transactional
+		public List<FeedbackMaster> listFeedbackMasterForm() {
+			// TODO Auto-generated method stub
+			return this.adminDAO.listFeedbackMasterForm();
+		}
+
+		@Override
+		@Transactional
+		public FeedbackMaster getFeedbackMasterById(int id) {
+			// TODO Auto-generated method stub
+			return this.adminDAO.getFeedbackMasterById(id);
+		}
+
+		@Override
+		@Transactional
+		public void removeFeedbackMaster(int id) {
+			// TODO Auto-generated method stub
+			this.adminDAO.removeFeedbackMaster(id);
+		}
+
+		@Override
+		public ManageTraining getManageTrainingById(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void removeManageTraining(int id) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public List<verifyTraineeEnrollmentForm> listVerifyTraineeEnrollment(verifyTraineeEnrollmentForm p) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public List<viewEnrolledCoursesForm> listviewEnrolledCourses(viewEnrolledCoursesForm p) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		//generate certificate
+		@Override
+		@Transactional
+		public List<GenerateCertificateForm> listgenerateCertificate(GenerateCertificateForm p) {
+			// TODO Auto-generated method stub
+			return this.adminDAO.listgenerateCertificate(p);
+		}
+
+		
+
 		
 }

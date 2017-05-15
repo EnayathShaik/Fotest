@@ -2,6 +2,8 @@ package com.ir.dao;
 import java.util.List;
 
 import com.ir.bean.common.IntStringBean;
+import com.ir.form.ActivateAssessmentOfTraineeForm;
+import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.AdminUserManagementForm;
 import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
@@ -55,6 +57,7 @@ import com.ir.model.PersonalInformationTrainee;
 import com.ir.model.PersonalInformationTrainer;
 import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
+import com.ir.model.RegionMapping;
 import com.ir.model.RegionMaster;
 import com.ir.model.State;
 import com.ir.model.StateMaster;
@@ -121,7 +124,35 @@ public interface AdminDAO {
 	public List<RegionMaster> listRegionMaster();
 	public boolean trainingadminForm(ChangePasswordForm changePasswordForm, String id);
 	public boolean trainingPartnerPass(ChangePasswordForm changePasswordForm, String id);
-	
+
+	// listactivateAssessmentOfTrainee
+		public List<ActivateAssessmentOfTraineeForm> listactivateAssessmentOfTrainee(ActivateAssessmentOfTraineeForm p);
+
+		public List<ActivateTrainingOfTraineeForm> listactivateTrainingOfTrainee(ActivateTrainingOfTraineeForm p);
+		// region Mapping
+
+		// public void addRegionMapping(RegionMapping p);
+		public void updateRegionMapping(RegionMapping p);
+
+		public List<RegionMapping> listRegionMapping();
+
+		public RegionMapping getRegionMappingById(int id);
+
+		public void removeRegionMapping(int id);
+
+		public void addRegionMapping(RegionMapping p);
+		
+		// Feedback Master
+		public void addFeedbackMaster(FeedbackMaster p);
+
+		public void updateFeedbackMaster(FeedbackMaster p);
+
+		public List<FeedbackMaster> listFeedbackMasterForm();
+
+		public FeedbackMaster getFeedbackMasterById(int id);
+
+		public void removeFeedbackMaster(int id);
+
 	// managetraining---
     public void addManageTraining(ManageTraining p);
 	public void updateManageTraining(ManageTraining p);

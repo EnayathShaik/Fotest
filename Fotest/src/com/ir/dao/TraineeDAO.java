@@ -2,12 +2,13 @@ package com.ir.dao;
 
 import java.util.List;
 
-
+import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.CertificateForm;
 import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
 /*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.InstituteMyCalendarForm;
@@ -24,7 +25,6 @@ import com.ir.model.CourseName;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
 import com.ir.model.District;
-import com.ir.model.FeedbackForm;
 import com.ir.model.FeedbackMaster;
 import com.ir.model.KindOfBusiness;
 import com.ir.model.ManageTrainingPartner;
@@ -80,7 +80,7 @@ public interface TraineeDAO {
 
 	public boolean changePasswordAssesorSave(ChangePasswordForm changePasswordForm, String id);
 	public AdmitCardForm generateAdmitCard(int loginId,int profileId);
-	public List<FeedbackForm> getFeedbackDetails(Utility utility);
+	
 	public int getCurrentModuleId(int loginId);
 	
 	public AdmitCardForm generateTrainerAdmitCard(int loginId,int profileId);
@@ -128,5 +128,9 @@ public interface TraineeDAO {
 	// fotest online training-
 		public List<OnlineTrainingForm> listonlineTraining();
 	
+	//traineeFeedback
+	public List<FeedbackForm> listFeedback();
+	
 		public List<CertificationForm> listcertification();
+	
 }

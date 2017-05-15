@@ -39,6 +39,8 @@ import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
+import com.ir.form.FeedbackMasterForm;
 /*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.InstituteMyCalendarForm;
@@ -57,7 +59,6 @@ import com.ir.model.CertificateInfo;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
 import com.ir.model.District;
-import com.ir.model.FeedbackForm;
 import com.ir.model.FeedbackMaster;
 import com.ir.model.KindOfBusiness;
 import com.ir.model.ManageTrainingPartner;
@@ -444,24 +445,7 @@ public class TraineeController {
 		}
 		return responseText;
 	}
-	@RequestMapping(value="/feedbackForm" , method=RequestMethod.GET)
-	public String feedback(@ModelAttribute("courseEnrolledUserForm") CourseEnrolledUserForm courseEnrolledUserForm ,BindingResult bindingResult, HttpSession session , Model model){
-		Integer profileId = (Integer) session.getAttribute("profileId");
-		Integer userId=Integer.parseInt(session.getAttribute("userId").toString());
-		try{
-			if(userId>0){
-				CourseTrainee  courseTrainee= traineeService.getCourseTrainingByCourseTypeID(userId);
-				model.addAttribute("courseTrainee", courseTrainee);
-			}
-			
-			List<FeedbackMaster> feedbackMasters=traineeService.getFeedMasterList(profileId);
-			model.addAttribute("feedbackMasters",feedbackMasters);
-		}catch(Exception e){
-			e.printStackTrace();
-			new ZLogger("feedbackForm","Exception while feedbackForm"+e.getMessage()  , "TraineeController.java");
-		}
-		return "feedbackForm";
-	}
+	
 	@RequestMapping(value="/generateCertificatetrainee" , method=RequestMethod.GET)
 	public String generateCertificatetrainee(@ModelAttribute("courseEnrolledUserForm") CourseEnrolledUserForm courseEnrolledUserForm ,BindingResult bindingResult, HttpSession session , Model model){
 		Integer userId=Integer.parseInt(session.getAttribute("userId").toString());
@@ -603,20 +587,7 @@ public class TraineeController {
 		return "course-training-trainee";
 		
 	}
-	@RequestMapping(value="/saveFeedbackForm" , method=RequestMethod.POST)
-	public String saveFeedbackForm(@ModelAttribute("feedbackforms") List<FeedbackForm> feedbackforms ,BindingResult bindingResult, HttpSession session , Model model){
-		try{
-			for(FeedbackForm feedbackForm:feedbackforms){
-				feedbackForm.setUserId(session.getAttribute("loginIdUnique").toString());			
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-			new ZLogger("saveFeedbackForm", "Exception while saveFeedbackForm  "+e.getMessage() , "TraineeController.java");
-		}
-		
-		
-		return "feedbackForm";
-	}
+	
 	
 	
 	
@@ -960,13 +931,21 @@ public String GetCertificate(@ModelAttribute("PersonalInformationTrainee") Perso
 	return "certificatetraineeGEN";
 }
 
+//trainee Feedback
+@RequestMapping(value="/feedback123" , method = { RequestMethod.POST , RequestMethod.GET })
+public String listtraineeFeedback( Model model){
+	System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	  model.addAttribute("FeedbackForm",  new FeedbackForm());
+  model.addAttribute("listtraineeFeedback", this.traineeService.listFeedback());
+  return "feedback123";
+}
 //online training
 
 @RequestMapping(value="/onlineTraining" , method = { RequestMethod.POST , RequestMethod.GET })
 public String listonlineTraining( Model model){
 	  model.addAttribute("OnlineTrainingForm",  new OnlineTrainingForm());
   model.addAttribute("listonlineTraining", this.traineeService.listonlineTraining());
-  
+
   return "onlineTraining";
 } 
   

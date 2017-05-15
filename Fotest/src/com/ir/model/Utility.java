@@ -293,7 +293,7 @@ private static String removeExtraParam(StringBuilder strblder) {
 	}
 	return localQueryParam;
 }
-public static String save(HttpServletRequest request, Session session) {
+/*public static String save(HttpServletRequest request, Session session) {
 	String userId=request.getSession(false).getAttribute("loginIdUnique").toString();
 	String[] feedbackMastersIds=request.getParameter("feedbackMastersIds").split(",");
 	String courseId = request.getParameter("courseId");
@@ -313,7 +313,7 @@ public static String save(HttpServletRequest request, Session session) {
 	}
 	transaction.commit();
 	return null;
-}
+}*/
 /**
  * @return the loginId
  */

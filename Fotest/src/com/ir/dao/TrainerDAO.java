@@ -16,7 +16,6 @@ import com.ir.model.CourseName;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
 import com.ir.model.District;
-import com.ir.model.FeedbackForm;
 import com.ir.model.FeedbackMaster;
 import com.ir.model.KindOfBusiness;
 import com.ir.model.ManageTrainingPartner;

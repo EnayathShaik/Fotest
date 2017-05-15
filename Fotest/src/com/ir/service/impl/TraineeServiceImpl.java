@@ -14,6 +14,7 @@ import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
 /*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
@@ -28,7 +29,6 @@ import com.ir.model.CheckAadhar;
 import com.ir.model.CourseName;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
-import com.ir.model.FeedbackForm;
 import com.ir.model.FeedbackMaster;
 import com.ir.model.ManageTrainingPartner;
 import com.ir.model.ModuleMaster;
@@ -183,11 +183,7 @@ public class TraineeServiceImpl implements TraineeService {
 		AdmitCardForm admitCardObj = traineeDAO.generateAdmitCard(loginId,profileId);
 		return admitCardObj;
 	}
-	@Override
-	@Transactional
-	public List<FeedbackForm> getFeedbackDetails(Utility utility) {
-		return traineeDAO.getFeedbackDetails(utility);
-	}
+	
 	@Override
 	@Transactional
 	public int getCurrentModuleId(int loginId){
@@ -401,14 +397,25 @@ public class TraineeServiceImpl implements TraineeService {
 			// TODO Auto-generated method stub
 			return this.traineeDAO.listingAssessmentQuestion( assesQuestionForm, id);
 		}*/
+			//certification
+			@Override
+			@Transactional
+			public List<CertificationForm> listcertification() {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listcertification();
+			}
+		
+			//traineeFeedback
+			@Override
+			@Transactional
+			public List<FeedbackForm> listFeedback() {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listFeedback();
+			}
+	
 
-		//certification
-				@Override
-				@Transactional
-				public List<CertificationForm> listcertification() {
-					// TODO Auto-generated method stub
-					return this.traineeDAO.listcertification();
-				}
+		
 
+		
 
 }
