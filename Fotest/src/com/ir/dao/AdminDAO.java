@@ -3,7 +3,7 @@ import java.util.List;
 
 import com.ir.bean.common.IntStringBean;
 import com.ir.form.AdminUserManagementForm;
-import com.ir.form.AssessmentQuestionForm;
+import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
 import com.ir.form.AssessorUserManagementForm;
 import com.ir.form.ChangePasswordForm;
@@ -16,6 +16,7 @@ import com.ir.form.InvoiceMasterForm;
 import com.ir.form.ManageAssessmentAgencyForm;
 import com.ir.form.ManageCourse;
 import com.ir.form.ManageCourseContentForm;
+import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.ManageTrainingPartnerForm;
 import com.ir.form.RegionForm;
 import com.ir.form.StateForm;
@@ -26,6 +27,7 @@ import com.ir.form.TrainingCenterUserManagementForm;
 import com.ir.form.TrainingClosureForm;
 import com.ir.form.TrainingRequestForm;
 import com.ir.form.TrainingScheduleForm;
+import com.ir.form.ViewTrainingCalendarForm;
 import com.ir.form.verifyTraineeEnrollmentForm;
 import com.ir.form.viewEnrolledCoursesForm;
 import com.ir.model.AdminUserManagement;
@@ -43,6 +45,7 @@ import com.ir.model.FeedbackMaster;
 import com.ir.model.HolidayMaster;
 import com.ir.model.InvoiceMaster;
 import com.ir.model.LoginDetails;
+import com.ir.model.ManageCourseCarricullum;
 import com.ir.model.ManageTraining;
 import com.ir.model.ManageTrainingPartner;
 import com.ir.model.ModuleMaster;
@@ -134,4 +137,23 @@ public interface AdminDAO {
 		
 		//listGenerateCertificate
 		public List<GenerateCertificateForm> listgenerateCertificate(GenerateCertificateForm p);
+	
+	// Manage course carricullum
+		public void addManageCourseCarricullum(ManageCourseCarricullum p);
+
+		public void updateManageCourseCarricullum(ManageCourseCarricullum p);
+
+		public List<ManageCourseCarricullum> listManageCourseCarricullum();
+
+		public ManageCourseCarricullum getManageCourseCarricullumById(int id);
+
+		public void removeManageCourseCarricullum(int id);
+
+		
+		//listviewTrainingCalendar
+			public List<ViewTrainingCalendarForm> listviewTrainingCalendar(ViewTrainingCalendarForm p);
+					
+			public	List<ManageTrainingCalendarForm> listmanageTrainingCalendar(ManageTrainingCalendarForm p);
+						
+			public List getQuestions(String data);
 }

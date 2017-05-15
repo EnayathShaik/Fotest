@@ -1214,8 +1214,10 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/InvoiceDetails.jsp" />
 	</definition>
+	
+	<!--  -->
 
-    <definition name="manageTraining" extends="base.user.afterLogin">
+ <definition name="manageTraining" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/manageTraining.jsp" />
 	</definition>
@@ -1239,4 +1241,29 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"  value="/website/trainee/onlineTraining.jsp" />
 	</definition>
+
+		<definition name="managecoursecurriculum" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/ManageCourseCurriculum.jsp" />
+	</definition>
+	<definition name="managetrainingcalendar" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/ManageTrainingCalendar.jsp" />
+	</definition>
+	<definition name="viewtrainingcalendar" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/ViewTrainingCalendar.jsp" />
+	</definition>
+	
+		<definition name="assessmentquestions" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/AssessmentQuestions.jsp" />
+	</definition>
+	
+	<definition name="certification" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainee/Certification.jsp" />
+	</definition>
+
+   
 </tiles-definitions>

@@ -3,7 +3,6 @@ package com.ir.service;
 import java.util.List;
 
 import com.ir.bean.common.IntStringBean;
-import com.ir.form.AssessmentQuestionForm;
 import com.ir.model.AssessmentQuestions;
 import com.ir.model.City;
 import com.ir.model.CourseName;

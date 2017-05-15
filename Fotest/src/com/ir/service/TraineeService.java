@@ -2,8 +2,8 @@ package com.ir.service;
 
 import java.util.List;
 
-import com.ir.form.AssessmentQuestionForm;
 import com.ir.form.CertificateForm;
+import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -176,15 +176,19 @@ public interface TraineeService {
  * public List<UnitMaster> dynListTrainingType();
 	public List<UnitMaster> dynListUserType();*/
 	
+
+/*
+
  public List<AssessmentQuestionForm> listingAssessmentQuestion(
 			AssessmentQuestionForm assesQuestionForm, int id);
 	
- //online training
- public List<OnlineTrainingForm> listonlineTraining();
+	*/
 	
- 
-	
-	
+	 //online training
+	 public List<OnlineTrainingForm> listonlineTraining();
+		
+	 
+ public List<CertificationForm> listcertification();
 	
 
 

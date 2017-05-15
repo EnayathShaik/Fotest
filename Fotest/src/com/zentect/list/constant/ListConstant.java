@@ -248,6 +248,14 @@ public class ListConstant {
     	contentType = Collections.unmodifiableMap(atrainingInstituteMap);
     }
     
+    public static final Map<String, String> TrainerMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("Mr.Anuj", "Mr.Anuj");
+        auserTypeMap.put("Mr.mnuj", "Mr.mnuj");
+        TrainerMap = Collections.unmodifiableMap(auserTypeMap);
+    }
+    
     
 
 }

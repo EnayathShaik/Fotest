@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.ir.dao.TraineeDAO;
-import com.ir.form.AssessmentQuestionForm;
 import com.ir.form.CertificateForm;
+import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -384,20 +384,31 @@ public class TraineeServiceImpl implements TraineeService {
 		return personalInformationTraineInstitute;
 	}
 	
+	
+	
+			//online training
+			@Override
+			@Transactional
+			public List<OnlineTrainingForm> listonlineTraining() {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listonlineTraining();
+			}
+/*
 		@Override
 		@Transactional
 		public List<AssessmentQuestionForm> listingAssessmentQuestion(
 				AssessmentQuestionForm assesQuestionForm , int id) {
 			// TODO Auto-generated method stub
 			return this.traineeDAO.listingAssessmentQuestion( assesQuestionForm, id);
-		}
+		}*/
 
-		//online training
-		@Override
-		@Transactional
-		public List<OnlineTrainingForm> listonlineTraining() {
-			// TODO Auto-generated method stub
-			return this.traineeDAO.listonlineTraining();
-		}
+		//certification
+				@Override
+				@Transactional
+				public List<CertificationForm> listcertification() {
+					// TODO Auto-generated method stub
+					return this.traineeDAO.listcertification();
+				}
+
 
 }

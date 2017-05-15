@@ -2,8 +2,9 @@ package com.ir.dao;
 
 import java.util.List;
 
-import com.ir.form.AssessmentQuestionForm;
+
 import com.ir.form.CertificateForm;
+import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -124,10 +125,8 @@ public interface TraineeDAO {
 	
 	public PersonalInformationTrainingInstitute FullDetailTrainingInstitude(int loginId);
 	
-	public List<AssessmentQuestionForm> listingAssessmentQuestion(AssessmentQuestionForm assesQuestionForm, int id);
-	
 	// fotest online training-
 		public List<OnlineTrainingForm> listonlineTraining();
 	
-	
+		public List<CertificationForm> listcertification();
 }

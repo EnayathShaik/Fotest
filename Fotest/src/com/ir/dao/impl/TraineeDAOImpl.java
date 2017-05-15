@@ -19,8 +19,8 @@ import com.ir.constantes.Constantes;
 import com.ir.constantes.TableLink;
 import com.ir.dao.AdminDAO;
 import com.ir.dao.TraineeDAO;
-import com.ir.form.AssessmentQuestionForm;
 import com.ir.form.CertificateForm;
+import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -1512,70 +1512,35 @@ System.out.println("list "+list);
 
 	}
 		
-		//listing online question
-		@Override
-		public List<AssessmentQuestionForm> listingAssessmentQuestion(AssessmentQuestionForm assesQuestionForm, int id) {
-			// TODO Auto-generated method stub
-		
-				AssessmentQuestionForm bean;
-				List<AssessmentQuestionForm> list = new ArrayList<AssessmentQuestionForm>();
-				Session session = this.sessionFactory.getCurrentSession();
-	System.out.println("........................."+assesQuestionForm.getModuleCode() );
-		
-	List<Object[]> nomtable  = session.createSQLQuery("select * from nomineetrainee where logindetails="+id) .list();	
-	
-	int ucode=-99,mcode=-99;
-	
-	
-	for (Object[] li : nomtable ) { 
-		mcode=(int)li[1];
-		ucode=(int)li[6];
-	System.out.println(li[0]);
-	System.out.println(li[1]);
-	System.out.println(li[6]);
-	
+
+	// online training
+	@Override
+	public List<OnlineTrainingForm> listonlineTraining() {
+		// TODO Auto-generated method stub
+		System.out.println("inside listfotestonlineTraining");
+		OnlineTrainingForm bean = new OnlineTrainingForm();
+		List<OnlineTrainingForm> resulList = new ArrayList<OnlineTrainingForm>();
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+		for (Object[] li : list ) {
+			
+			bean.setCourseName((String) li[0]);
+			bean.setTrainingDate((String) li[1]);
+			bean.setTrainingTime((String) li[2]);
+			bean.setTrainingLab((String) li[3]);
+			//logger.info("fotestonlineTrainingForm List::" + li);
+			resulList.add(bean);
+		}
+		return resulList;
 	}
-		List<Object[]> mccList  = session.createSQLQuery("select * from assessmentquestions where unitcode='"+ucode+"' and modulecode='"+mcode+"'" ) .list();	
-		System.out.println("aaaaa");
-		for (Object[] li : mccList ) { 
-			 bean= new AssessmentQuestionForm();
-					
-			 //
-			 System.out.println(li[0]);
-			 bean.setId((int) li[0]);
-			 bean.setModuleCode((int) li[2]);
-			 System.out.println(li[12]);
-			 bean.setNoOfOption((int) li[3]);
-			 bean.setUnitCode((int) li[13]);
-			 bean.setQuestionNumber((int) li[11]);
-			 bean.setQuestionHint((String) li[10]);
-			 bean.setQuestionTitle((String) li[12]);
-			 bean.setCorrectAnswer((int) li[1]);
-				
-			 bean.setOptionOne((String) li[6]);
-			 bean.setOptionTwo((String) li[9]);
-			 bean.setOptionThree((String) li[8]);
-			 bean.setOptionFour((String) li[5]);
-			 bean.setOptionFive((String) li[4]);
-			 bean.setOptionSix((String) li[7]);
-			 //
-					
-					System.out.println(bean);
-					list.add(bean);
-				}
-		System.out.println("list "+list);
-				return list;
-				
-				
-			}
-		
-		// online training
-				@Override
-				public List<OnlineTrainingForm> listonlineTraining() {
+	
+		//certification
+		@Override
+				public List<CertificationForm> listcertification() {
 					// TODO Auto-generated method stub
-					System.out.println("inside listfotestonlineTraining");
-					OnlineTrainingForm bean = new OnlineTrainingForm();
-					List<OnlineTrainingForm> resulList = new ArrayList<OnlineTrainingForm>();
+					System.out.println("inside listprintAdmitCard");
+					CertificationForm bean = new CertificationForm();
+					List<CertificationForm> resulList = new ArrayList< CertificationForm>();
 					Session session = this.sessionFactory.getCurrentSession();
 					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
 					for (Object[] li : list ) {
@@ -1584,9 +1549,12 @@ System.out.println("list "+list);
 						bean.setTrainingDate((String) li[1]);
 						bean.setTrainingTime((String) li[2]);
 						bean.setTrainingLab((String) li[3]);
-						//logger.info("fotestonlineTrainingForm List::" + li);
 						resulList.add(bean);
 					}
 					return resulList;
 				}
+				
+				
+				
+				
 		}

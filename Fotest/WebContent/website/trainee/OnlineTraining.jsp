@@ -1,43 +1,15 @@
-package com.ir.dao;
-import java.util.List;
-
-import com.ir.bean.common.IntStringBean;
-import com.ir.form.AdminUserManagementForm;
-import com.ir.form.AssessmentQuestionForm;
-import com.ir.form.AssessmentQuestionForm_old;
-import com.ir.form.AssessorUserManagementForm;
-import com.ir.form.ChangePasswordForm;
-import com.ir.form.CityForm;
-import com.ir.form.ContactTrainee;
-import com.ir.form.DistrictForm;
-import com.ir.form.GenerateCertificateForm;<%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="cs" uri="http://www.springframework.org/tags" %> 
 <%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core" %>
- 
- <script type="text/javascript">
 
- function OnStart(){
-	var steps = 1;
-	var traineeSteps =
-		<%=(Integer) session.getAttribute("traineeSteps")%>
-	alert(" steps "+steps + " traineeSteps "+traineeSteps);
-	if(steps >= traineeSteps){
-	}else{
-		if(steps-1 == traineeSteps){
-			alert('Please Complete Your Previous Training First')
-		}else{
-			alert('Please Flow Step By Step..');
-		}
-		window.location.href ='/Fosrest/loginProcess.fssai';
-	}
-}
-window.onload = OnStart; 
+               
+<!--
 
-</script> 
-
+//-->
+</script>
 
  <%-- <ct:url var="addAction" value="/TrainingSchedule/add.fssai" ></ct:url> --%>
-<cf:form action="ListOnlineTraining.fssai" name="myForm" method="POST" commandName="OnlineTrainingForm" onsubmit="return validateFields();"> 
+<cf:form action="onlineTraining.fssai" name="myForm" method="POST" commandName="OnlineTrainingForm" onsubmit="return validateFields();"> 
 
     <section>
          <%@include file="../roles/top-menu.jsp"%>
@@ -56,51 +28,58 @@ window.onload = OnStart;
                         <!-- vertical button -->
                         <div class="row">
                             <div class="col-lg-12">
-                                <a href="#menu-toggle" class="vertical-menu-position-btn" id="menu-toggle"> <i class="fa fa-bars"></i> <span class="orange-font">Welcome ${userName}</span> </a>
+                                <a href="#menu-toggle" class="vertical-menu-position-btn" id="menu-toggle"> <i class="fa fa-bars"></i> <span class="orange-font">Welcome FotestTrainee</span> </a>
                             </div>
                         </div>
                         <!-- add the content here for main body -->
                         <!-- timeline  -->
-                       
                         <div class="row">
-                             <div class="container-fluid">
-                            <div class="row">
-                                <!-- legend -->
+
                                 <div class="col-xs-12">
-                                    <fieldset>
-                                    
-                                     
-                                        <legend> Online Training</legend>
-                                        
-                                        <h4> Training Type: ${listOnlineTraining.trainingType}</h4>
-                                        <h4>Training Phase: ${listOnlineTraining.trainingPhase}</h4>
-                                        <h4>Training Duration: ${listOnlineTraining.trainingstartdate} to ${listOnlineTraining.trainingenddate} </h4>
-                                        <%--  <ct:out value="${listOnlineTraining}"></ct:out> --%>
-                                          
-                                           <%-- <ct:forEach items="${listOnlineTraining}" var="OnlineTraining">
-                                                 ${OnlineTraining.trainingPhase}
-                                                    </ct:forEach>  --%>
-                                                     
-                                       
-                                    
-                                    
-                                        <br> </fieldset>
-                                    <br> </div>
-                              
-                              
-                              
                                 
-                                <!-- search Results -->
-                                          <div class="col-xs-12">
-                                    <fieldset>
-                                        <legend> Course Curriculum</legend>
-                                        
-                                         <h4>${listTrainingTopic.unitName}</h4>
-                                         <ul> <li>${listOnlineTraining.moduleName}
-                                         <ul><li>${listTrainingTopic.contentType}</li></ul>
-                                          <ul> <li>${listTrainingTopic.contentName}</li></ul>
-                                         <ul> <li><a href="">${listTrainingTopic.contentLink}</a></li> 
-                                           </li></ul>
+                                 <!-- search Results -->
+                                            <div class="col-xs-12 " id="testt">
+
+                                                <!-- table -->
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                            <fieldset>
+                                           <legend>Online Training</legend>
+                                         <ct:if test="${!empty listonlineTraining}">
+                                            <table id="datatablesfosrest" class="table table-bordered table-responsive">
+                                               <thead>
+                                                    <tr class="background-open-vacancies">
+                                                        <th>S.No.</th>
+                                                        <th>Course Name</th>
+                                                         <th>Training Date & Time</th>
+                                                          <th>Training Lab Name</th>
+                                                           <th>Online Training</th>
+                                                       
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <ct:forEach items="${listonlineTraining}" var="onlineTraining" varStatus="loop">
+                                                <tr>
+												<td>${loop.count}</td>
+												<td>${onlineTraining.courseName}</td>
+												<td>${onlineTraining.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${onlineTraining.trainingTime}  </td>
+												<td>${onlineTraining.trainingLab}</td>
+												<td> <input type="button" class="form-control login-btn" value="Start Here"></td>
+                                                 </tr>
+												</ct:forEach>
+                                            </table>
+                                           </ct:if> 
+                                        </fieldset>
+												
+                                                       
+                                                        
+                                              
+											
+										
+                                                    </div>
+                                                </div>
+                                            </div>
                              <!-- search div ends -->
                         </div><!-- row ends -->
                     </div>

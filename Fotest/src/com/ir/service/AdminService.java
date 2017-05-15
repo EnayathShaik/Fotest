@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 
 import com.ir.bean.common.IntStringBean;
 import com.ir.form.AdminUserManagementForm;
-import com.ir.form.AssessmentQuestionForm;
+import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
 import com.ir.form.AssessorUserManagementForm;
 import com.ir.form.ChangePasswordForm;
@@ -20,6 +20,7 @@ import com.ir.form.InvoiceMasterForm;
 import com.ir.form.ManageAssessmentAgencyForm;
 import com.ir.form.ManageCourse;
 import com.ir.form.ManageCourseContentForm;
+import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.ManageTrainingPartnerForm;
 import com.ir.form.RegionForm;
 import com.ir.form.StateForm;
@@ -29,6 +30,7 @@ import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingCenterUserManagementForm;
 import com.ir.form.TrainingClosureForm;
 import com.ir.form.TrainingScheduleForm;
+import com.ir.form.ViewTrainingCalendarForm;
 import com.ir.form.verifyTraineeEnrollmentForm;
 import com.ir.form.viewEnrolledCoursesForm;
 import com.ir.model.AdminUserManagement;
@@ -45,6 +47,7 @@ import com.ir.model.FeedbackMaster;
 import com.ir.model.HolidayMaster;
 import com.ir.model.InvoiceMaster;
 import com.ir.model.LoginDetails;
+import com.ir.model.ManageCourseCarricullum;
 import com.ir.model.ManageTraining;
 import com.ir.model.ManageTrainingPartner;
 import com.ir.model.ModuleMaster;
@@ -104,21 +107,45 @@ public interface AdminService {
 	
 	boolean changePasswordTPSave(ChangePasswordForm changePasswordForm, String id);
 	boolean changePasswordadminSave(ChangePasswordForm changePasswordForm, String id);
-
+	
 	//manageTraining
-	public void addManageTraining(ManageTraining p);
-	public void updateManageTraining(ManageTraining p);
-	public List<ManageTraining> listManageTraining();
-	public ManageTraining getManageTrainingById(int id);
-	public void removeManageTraining(int id);
-	
-	//verifyTraineeEnrollment
-	public List<verifyTraineeEnrollmentForm> listVerifyTraineeEnrollment(verifyTraineeEnrollmentForm p);
-	
-	//View Enrolled Courses
-		public List<viewEnrolledCoursesForm> listviewEnrolledCourses(viewEnrolledCoursesForm p);
+		public void addManageTraining(ManageTraining p);
+		public void updateManageTraining(ManageTraining p);
+		public List<ManageTraining> listManageTraining();
+		public ManageTraining getManageTrainingById(int id);
+		public void removeManageTraining(int id);
 		
-		//GenerateCertificate
-		public List<GenerateCertificateForm> listgenerateCertificate(GenerateCertificateForm p);
+		//verifyTraineeEnrollment
+		public List<verifyTraineeEnrollmentForm> listVerifyTraineeEnrollment(verifyTraineeEnrollmentForm p);
+		
+		//View Enrolled Courses
+			public List<viewEnrolledCoursesForm> listviewEnrolledCourses(viewEnrolledCoursesForm p);
+			
+			//GenerateCertificate
+			public List<GenerateCertificateForm> listgenerateCertificate(GenerateCertificateForm p);
+
+
+	// Manage Course Carriculum
+	public void addManageCourseCarricullum(ManageCourseCarricullum p);
+
+	public void updateManageCourseCarricullum(ManageCourseCarricullum p);
+
+	public List<ManageCourseCarricullum> listManageCourseCarricullum();
+
+	public ManageCourseCarricullum getManageCourseCarricullumById(int id);
+
+	public void removeManageCourseCarricullum(int id);
+
+
+	//listviewTrainingCalendar
+	public List<ViewTrainingCalendarForm> listviewTrainingCalendar(ViewTrainingCalendarForm p);
+	//listmanageTrainingCalendar
+	public List<ManageTrainingCalendarForm> listmanageTrainingCalendar(ManageTrainingCalendarForm p);
+
+	public List getQuestions(String data);
+
+	
+
+	
 }
 

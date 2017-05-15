@@ -33,8 +33,9 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.google.gson.Gson;
 import com.ir.dao.TrainingInstitudeDAO;
-import com.ir.form.AssessmentQuestionForm;
+
 import com.ir.form.CertificateForm;
+import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -920,7 +921,7 @@ public String mmyCalendar(@ModelAttribute("InstituteMyCalendarForm") InstituteMy
 return "mycalendar";
 }
 
-//niranjan
+/*//niranjan
 //for onlinelisting
 
 @RequestMapping(value = "/ListOnlineAssessment", method = RequestMethod.POST)
@@ -932,7 +933,7 @@ public String onlinelistassessquestion(@ModelAttribute("AssessmentQuestionForm")
 	return "listingquestions";
 }
 
-
+*/
 
 
 /**
@@ -965,8 +966,22 @@ public String GetCertificate(@ModelAttribute("PersonalInformationTrainee") Perso
 public String listonlineTraining( Model model){
 	  model.addAttribute("OnlineTrainingForm",  new OnlineTrainingForm());
   model.addAttribute("listonlineTraining", this.traineeService.listonlineTraining());
-
+  
   return "onlineTraining";
 } 
+  
+//fotestcertification
+
+
+@RequestMapping(value="/certification" , method = RequestMethod.GET )
+public String listcertification( Model model){
+	  model.addAttribute("certification",  new CertificationForm());
+  model.addAttribute("listcertification", this.traineeService.listcertification());
+  System.out.println(this.traineeService.listcertification());
+
+  return "certification";
+}
+
+
 
 }
