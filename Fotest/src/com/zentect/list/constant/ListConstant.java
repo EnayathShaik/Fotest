@@ -266,5 +266,27 @@ public class ListConstant {
         auserTypeMap.put("Thane", "Thane");
         DistrictMap = Collections.unmodifiableMap(auserTypeMap);
     }
-
+ // QualCategory
+    public static final Map<String, String> QualCategoryMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("BSC", "BSC");
+        auserTypeMap.put("MSC", "MSC");
+        auserTypeMap.put("PHD/Doctorate", "PHD/Doctorate");
+        auserTypeMap.put("B.Tech", "B.Tech");
+        auserTypeMap.put("M.Tech", "M.Tech");
+        auserTypeMap.put("Others", "Others");
+        QualCategoryMap = Collections.unmodifiableMap(auserTypeMap);
+    }
+ // SubQualCategory
+    public static final Map<String, String> SubQualCategoryMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("MicroBiology", "MicroBiology");
+        auserTypeMap.put("BioChemistry", "BioChemistry");
+        auserTypeMap.put("BioTechnology", "BioTechnology");
+        auserTypeMap.put("Food Technology", "Food Technology");
+        auserTypeMap.put("Others", "Others");
+        SubQualCategoryMap = Collections.unmodifiableMap(auserTypeMap);
+    }
 }
