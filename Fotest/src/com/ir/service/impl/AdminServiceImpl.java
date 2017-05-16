@@ -325,6 +325,19 @@ public class AdminServiceImpl implements AdminService {
 				// TODO Auto-generated method stub
 				return this.adminDAO.listManageTraining();
 			}
+			@Override
+			@Transactional
+			public ManageTraining getManageTrainingById(int id) {
+				// TODO Auto-generated method stub
+				return this.adminDAO.getManageTrainingById(id);
+			}
+
+			@Override
+			@Transactional
+			public void removeManageTraining(int id) {
+				// TODO Auto-generated method stub
+				this.adminDAO.removeManageTraining(id);
+			}
 
 	@Override
 	@Transactional
@@ -475,27 +488,17 @@ public class AdminServiceImpl implements AdminService {
 		}
 
 		@Override
-		public ManageTraining getManageTrainingById(int id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public void removeManageTraining(int id) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
+		@Transactional
 		public List<verifyTraineeEnrollmentForm> listVerifyTraineeEnrollment(verifyTraineeEnrollmentForm p) {
 			// TODO Auto-generated method stub
-			return null;
+			return this.adminDAO.listVerifyTraineeEnrollment(p);
 		}
 
 		@Override
+		@Transactional
 		public List<viewEnrolledCoursesForm> listviewEnrolledCourses(viewEnrolledCoursesForm p) {
 			// TODO Auto-generated method stub
-			return null;
+			return this.adminDAO.listviewEnrolledCourses(p);
 		}
 
 		//generate certificate
