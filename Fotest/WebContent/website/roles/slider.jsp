@@ -137,8 +137,8 @@
                        <!--  <li class="sidebar-brand"></li>  -->
                         <li><a href="regionMapping.fssai">Region Mapping</a></li>
                         <li><a href="manageTraining.fssai">Manage Training</a></li>
-                        <li> <a href="trainingCalendarForm.fssai">Manage Course Curricullum</a> </li>
-                        <li> <a href="trainingpartnerassessmentcalendar.fssai">Assessment Questions</a> </li>
+                        <li> <a href="managecoursecurriculum.fssai">Manage Course Curricullum</a> </li>
+                        <li> <a href="assessmentquestions.fssai">Assessment Questions</a> </li>
                         <li> <a href="feedbackMaster.fssai">Feedback Master</a> </li>
                        <li> <a href="verifyTraineeEnrollment.fssai">Verify Trainee Enrollment</a> </li>
                         <li> <a href="managetrainingcalendar.fssai">Manage Training Calendar</a> </li>
