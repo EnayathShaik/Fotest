@@ -19,7 +19,9 @@ import com.ir.constantes.Constantes;
 import com.ir.constantes.TableLink;
 import com.ir.dao.AdminDAO;
 import com.ir.dao.TraineeDAO;
+import com.ir.form.AfterTraining;
 import com.ir.form.AssessmentQuestionsForm;
+import com.ir.form.BeforeTraining;
 import com.ir.form.CertificateForm;
 import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
@@ -33,6 +35,7 @@ import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.NominateTraineeForm;
 import com.ir.form.OnlineTrainingForm;
+import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
 import com.ir.form.TrainingClosureForm;
@@ -1276,26 +1279,25 @@ public class TraineeDAOImpl implements TraineeDAO {
 		return passwordString+"&"+nextSequenceUserID;
 	}	
 	
-	
 	@Override
 	public  String updatePersonalInfoTrainer(PersonalInformationTrainer p){
 
 		int id =  p.getId();
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformationTrainer personalInformationTrainer = (PersonalInformationTrainer) session.load(PersonalInformationTrainer.class, id);
-		personalInformationTrainer.setUserType(p.getUserType());
+		//personalInformationTrainer.setUserType(p.getUserType());
 		personalInformationTrainer.setTitle(p.getTitle());
 		personalInformationTrainer.setAadharNumber(p.getAadharNumber());
-		personalInformationTrainer.setEmpID(p.getEmpID());
+		/*personalInformationTrainer.setEmpID(p.getEmpID());*/
 		personalInformationTrainer.setDob(p.getDob());
 		personalInformationTrainer.setGender(p.getGender());
 		personalInformationTrainer.setFirstName(p.getFirstName());
-		personalInformationTrainer.setFatherName(p.getFatherName());
+		//personalInformationTrainer.setFatherName(p.getFatherName());
 		personalInformationTrainer.setLastName(p.getLastName());
 		personalInformationTrainer.setMiddleName(p.getMiddleName());
 		personalInformationTrainer.setEmail(p.getEmail());
-		personalInformationTrainer.setMobile(p.getMobile());
-		personalInformationTrainer.setCorrespondenceAddress1(p.getCorrespondenceAddress1());
+		//personalInformationTrainer.setMobile(p.getMobile1());
+		/*personalInformationTrainer.setCorrespondenceAddress1(p.getCorrespondenceAddress1());
 		personalInformationTrainer.setCorrespondenceAddress2(p.getCorrespondenceAddress2());
 		personalInformationTrainer.setCorrespondenceState(p.getCorrespondenceState());
 		personalInformationTrainer.setCorrespondenceDistrict(p.getCorrespondenceDistrict());
@@ -1311,7 +1313,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		personalInformationTrainer.setExpInMonth(p.getExpInMonth());
 		personalInformationTrainer.setExpInYear(p.getExpInYear());
 		personalInformationTrainer.setSessWishToConduct(p.getSessWishToConduct());
-		personalInformationTrainer.setAssociatedWithAnyTrainingInstitute(p.getAssociatedWithAnyTrainingInstitute());
+		personalInformationTrainer.setAssociatedWithAnyTrainingInstitute(p.getAssociatedWithAnyTrainingInstitute());*/
 		session.update(personalInformationTrainer);
 		return "updated";
 	}	
@@ -1324,7 +1326,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		int id =  p.getId();
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformationTrainingInstitute personalInformationTrainingInstitute = (PersonalInformationTrainingInstitute) session.load(PersonalInformationTrainingInstitute.class, id);
-		personalInformationTrainingInstitute.setUserType(p.getUserType());
+		/*personalInformationTrainingInstitute.setUserType(p.getUserType());
 		personalInformationTrainingInstitute.setTitle(p.getTitle());
 		personalInformationTrainingInstitute.setFirstName(p.getFirstName());
 		personalInformationTrainingInstitute.setLastName(p.getLastName());
@@ -1342,7 +1344,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		personalInformationTrainingInstitute.setSeatingCapacity(p.getSeatingCapacity());
 		personalInformationTrainingInstitute.setNoOfInHouseTrainer(p.getNoOfInHouseTrainer());
 		personalInformationTrainingInstitute.setNoOfYearExp(p.getNoOfYearExp());
-		personalInformationTrainingInstitute.setSessWishToConduct(p.getSessWishToConduct());
+		personalInformationTrainingInstitute.setSessWishToConduct(p.getSessWishToConduct());*/
 		session.update(personalInformationTrainingInstitute);
 		return "updated";
 	}	
@@ -1553,12 +1555,75 @@ System.out.println("list "+list);
 							}
 							return resulList;
 						}
-						
 
 		
+						
+
+				//BeforeTraining
+				@Override
+				public List<BeforeTraining> listBeforeTraining() {
+					System.out.println("inside BeforeTraining");
+					BeforeTraining bean = new BeforeTraining();
+					List<BeforeTraining> resulList = new ArrayList<BeforeTraining>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+					for (Object[] li : list ) {
+						
+						bean.setCourseName((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setTrainingLab((String) li[3]);
+						new ZLogger("BeforeTraining", "List:" + li, "TraineeDAOImpl.java");
+						//logger.info("traineeFeedback List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
 		
+
+				//AfterTraining
+				@Override
+				public List<AfterTraining> listAfterTraining() {
+					System.out.println("inside AfterTraining");
+					AfterTraining bean = new AfterTraining();
+					List<AfterTraining> resulList = new ArrayList<AfterTraining>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+					for (Object[] li : list ) {
+						
+						bean.setCourseName((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setTrainingLab((String) li[3]);
+						new ZLogger("AfterTraining", "List:" + li, "TraineeDAOImpl.java");
+						//logger.info("traineeFeedback List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
+
+			
 				
-				
+				//BeforeTraining
+				@Override
+				public List<PrintAdmitCard> listPrintAdmitCard() {
+					System.out.println("inside PrintAdmitCard");
+					PrintAdmitCard bean = new PrintAdmitCard();
+					List<PrintAdmitCard> resulList = new ArrayList<PrintAdmitCard>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+					for (Object[] li : list ) {
+						
+						bean.setCourseName((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setTrainingLab((String) li[3]);
+						new ZLogger("PrintAdmitCard", "List:" + li, "TraineeDAOImpl.java");
+						//logger.info("traineeFeedback List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}	
 				
 				
 		}

@@ -174,7 +174,7 @@ public class LoginController {
 			session.setAttribute("userId", loginDetails.getId());
 			session.setAttribute("userName", loginDetails.getLoginId());
 			session.setAttribute("loginUser2", personalInformationTrainer.getId());
-			session.setAttribute("logId", personalInformationTrainer.getLoginDetails().getLoginId());
+			//session.setAttribute("logId", personalInformationTrainer.getLoginDetails().getLoginId());
 
 		
 			return "trainerHomepage";

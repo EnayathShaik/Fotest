@@ -3,8 +3,6 @@
 <%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<html>
-<!-- <head> -->
 
 <script src="website/js/commonController.js"></script>
 <script>
@@ -15,7 +13,7 @@
 		var d = Math.ceil(Math.random() * 7) + '';
 		var e = Math.ceil(Math.random() * 7) + '';
 		var f = Math.ceil(Math.random() * 7) + '';
-		var code = a + ' ' + b + ' '  + c + ' ' + d + ' ' + e + ' ' + f;
+		var code = a + ' ' + b + ' ' + c + ' ' + d + ' ' + e + ' ' + f;
 		document.getElementById("txtCaptcha").value = code
 	}
 
@@ -23,41 +21,41 @@
 		var isUpdate = '${isUpdate}';
 		if (isUpdate != null && isUpdate == "Y") {
 
-			var name = '${PersonalInformationTrainer.firstName}';
-			$("#correspondenceState").val(
-					'${PersonalInformationTrainer.correspondenceState}');
-			$("#correspondenceState").trigger("change");
-			window
-					.setTimeout(
-							function() {
-								$("#correspondenceDistrict")
-										.val(
-												'${PersonalInformationTrainer.correspondenceDistrict}');
-								$("#correspondenceDistrict").trigger("change");
-								window
-										.setTimeout(
-												function() {
-													$("#correspondenceCity")
-															.val(
-																	'${PersonalInformationTrainer.correspondenceCity}');
-												}, 1000);
-							}, 1000);
-			$("#resState").val('');
-			$("#residentialDistrict").val('');
-			$("#resCity").val('');
-			$("#ResidentialLine1").val('');
-			$("#ResidentialLine2").val('');
-			$("#createUpdateBtn").val("Update");
-			$("#captcha").css("display", "none");
-			 $("#chkunit").css("display" , "none");
-			 $("#check").attr("checked","checked");
+			/* 	var name = '${PersonalInformationTrainer.firstName}';
+				$("#correspondenceState").val(
+						'${PersonalInformationTrainer.correspondenceState}');
+				$("#correspondenceState").trigger("change");
+				window
+						.setTimeout(
+								function() {
+									$("#correspondenceDistrict")
+											.val(
+													'${PersonalInformationTrainer.correspondenceDistrict}');
+									$("#correspondenceDistrict").trigger("change");
+									window
+											.setTimeout(
+													function() {
+														$("#correspondenceCity")
+																.val(
+																		'${PersonalInformationTrainer.correspondenceCity}');
+													}, 1000);
+								}, 1000);
+				$("#resState").val('');
+				$("#residentialDistrict").val('');
+				$("#resCity").val('');
+				$("#ResidentialLine1").val('');
+				$("#ResidentialLine2").val('');
+				$("#createUpdateBtn").val("Update");
+				$("#captcha").css("display", "none");
+				$("#chkunit").css("display", "none");
+				$("#check").attr("checked", "checked"); */
 
 		}
 		DrawCaptcha();
 
 		flatpickr("#dob", {});
 
-		$('#sameAddr')
+		/* $('#sameAddr')
 				.change(
 						function() {
 
@@ -103,14 +101,13 @@
 								$("#ResidentialLine2").val('');
 							}
 						});
-
+		 */
 	}
 	window.onload = OnStart;
-  // Remove the spaces from the entered and generated code
-    function removeSpaces(string) {
-        return string.split(' ').join('');
-    }
-    
+	// Remove the spaces from the entered and generated code
+	function removeSpaces(string) {
+		return string.split(' ').join('');
+	}
 </script>
 
 
@@ -146,51 +143,15 @@
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>User Type:</strong></li>
+											<li class="style-li"><strong>User Id:</strong></li>
 											<li class="style-li error-red">*</li>
 											<li id="userTypeErr" style="display: none;"
 												class="style-li error-red">Please Select User Type.</li>
 										</ul>
 									</div>
-									<cf:select path="userType" class="form-control">
-										<cf:option value="" label="Select User Type" />
-										<cf:options items="${userType}" />
-									</cf:select>
+									<cf:input type="text" path="userId" class="form-control"
+										placeholder="userId" />
 								</div>
-
-								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Aadhar Number:</strong></li>
-											
-											<li class="style-li error-red">*</li>
-											<li id="AadharNumberErr" style="display: none;"
-												class="style-li error-red">Please Enter Aadhar
-												No.</li>
-										        <li class="style-li error-red">
-                                            <span id="aadhar_status" ></span>
-									</ul>
-									</div>
-									<cf:input type="text" path="AadharNumber" class="form-control"
-										minlength="12" maxlength="12" placeholder="Aadhar Number"
-										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" 
-										                                      onblur="ck_aadhar('personalinformationtrainer');" 
-										/>
-								</div>
-
-								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Emp Id:</strong></li>
-											<li class="style-li error-red">*</li>
-											<li id="empIDErr" style="display: none;"
-												class="style-li error-red">Please Enter Emp ID.</li>
-										</ul>
-									</div>
-									<cf:input type="text" path="empID" class="form-control"
-										placeholder="Emp ID" />
-								</div>
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -203,24 +164,50 @@
 									<cf:input type="text" path="dob" id="dob" name="dob"
 										class="form-control" />
 								</div>
-
-
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>Gender:</strong></li>
+											<li class="style-li"><strong>Aadhar Number:</strong></li>
 
 											<li class="style-li error-red">*</li>
+											<li id="AadharNumberErr" style="display: none;"
+												class="style-li error-red">Please Enter Aadhar No.</li>
+											<li class="style-li error-red"><span id="aadhar_status"></span>
 										</ul>
 									</div>
-									<cf:radiobutton path="gender" value="M" checked="true" />
-									Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<cf:radiobutton path="gender" value="F" />
-									Female
+									<cf:input type="text" path="AadharNumber" class="form-control"
+										minlength="12" maxlength="12" placeholder="Aadhar Number"
+										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+										onblur="ck_aadhar('personalinformationtrainer');" />
 								</div>
 
-
+								<%-- <div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Emp Id:</strong></li>
+											<li class="style-li error-red">*</li>
+											<li id="empIDErr" style="display: none;"
+												class="style-li error-red">Please Enter Emp ID.</li>
+										</ul>
+									</div>
+									<cf:input type="text" path="empID" class="form-control"
+										placeholder="Emp ID" />
+								</div>
+ --%>
+								<div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Mobile:</strong></li>
+											<li class="style-li error-red">*</li>
+											<li id="mobileErr" style="display: none;"
+												class="style-li error-red">Mobile cannot be blank</li>
+										</ul>
+									</div>
+									<cf:input type="text" path="mobile1" class="form-control"
+										placeholder="Mobile Number" minlength="10" maxlength="10"
+										required=""
+										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" />
+								</div>
 
 							</div>
 							<!-- left side ends -->
@@ -235,7 +222,7 @@
 											<li class="style-li error-red">*</li>
 											<li id="titleErr" style="display: none;"
 												class="style-li error-red">Please Select Title.</li>
-											
+
 										</ul>
 									</div>
 									<cf:select path="title" class="form-control">
@@ -251,11 +238,12 @@
 											<li class="style-li error-red">*</li>
 											<li id="firstNameErr" style="display: none;"
 												class="style-li error-red">Please Enter First Name.</li>
-											
+
 										</ul>
 									</div>
 									<cf:input type="text" path="firstName" class="form-control"
-										placeholder="First Name" onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')"/>
+										placeholder="First Name"
+										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
 
 								<div class="form-group">
@@ -265,11 +253,12 @@
 											<li class="style-li error-red"></li>
 											<li id="MiddleNameErr" style="display: none;"
 												class="style-li error-red">Please Enter Middle Name.</li>
-											
+
 										</ul>
 									</div>
 									<cf:input type="text" path="MiddleName" class="form-control"
-										placeholder="Middle Name" onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')"/>
+										placeholder="Middle Name"
+										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
 
 								<div class="form-group">
@@ -279,27 +268,26 @@
 											<li class="style-li error-red"></li>
 											<li id="LastNameErr" style="display: none;"
 												class="style-li error-red">Please Enter Last Name.</li>
-											
+
 										</ul>
 									</div>
 									<cf:input type="text" path="LastName" class="form-control"
-										placeholder="Last Name" onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')"/>
+										placeholder="Last Name"
+										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>Father's Name:</strong></li>
+											<li class="style-li"><strong>Gender:</strong></li>
+
 											<li class="style-li error-red">*</li>
-											<li id="FatherNameErr" style="display: none;"
-												class="style-li error-red">Please Enter Father's Name.</li>
-											
 										</ul>
 									</div>
-									<cf:input type="text" path="FatherName" class="form-control"
-										placeholder="Father's Name" onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')"/>
+									<cf:radiobutton path="gender" value="M" checked="true" />
+									Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<cf:radiobutton path="gender" value="F" />
+									Female
 								</div>
-
-
 
 							</div>
 							<!-- right side ends -->
@@ -310,7 +298,7 @@
 
 						<!-- Correspondence Address -->
 						<fieldset>
-							<legend>Correspondence Address</legend>
+							<legend>Contact Details</legend>
 
 							<!-- form field starts here -->
 
@@ -320,41 +308,37 @@
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>Correspondence
-													Address Line 1:</strong></li>
-													<li class="style-li error-red">*</li>
+											<li class="style-li"><strong>Residence Address
+													Line 1:</strong></li>
+											<li class="style-li error-red">*</li>
 											<li id="correspondenceAddress1Err" style="display: none;"
 												class="style-li error-red">Please Enter Address.</li>
-											
+
 										</ul>
 									</div>
-									<cf:input type="text" path="correspondenceAddress1"
+									<cf:input type="text" path="residenceAddress1"
 										class="form-control" placeholder="Address" required="" />
 								</div>
 
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>Correspondence
-													Address Line 2:</strong></li>
+											<li class="style-li"><strong>Residence Address
+													Line 2:</strong></li>
 											<li class="style-li error-red"></li>
 										</ul>
 									</div>
-									<cf:input type="text" path="correspondenceAddress2"
+									<cf:input type="text" path="residenceAddress2"
 										class="form-control" placeholder="Address" required="" />
 								</div>
-
-
-
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>State:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="correspondenceStateErr" style="display: none;"
+											<li id="residenceStateErr" style="display: none;"
 												class="style-li error-red">Please Select State.</li>
-											
+
 										</ul>
 									</div>
 									<cf:select path="correspondenceState" class="form-control"
@@ -364,35 +348,14 @@
 											itemLabel="stateName" />
 									</cf:select>
 								</div>
-
-								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Email:</strong></li>
-											<li class="style-li error-red">*</li>
-											<li id="EmailErr" style="display: none;"
-												class="style-li error-red">Please Enter Valid Email ID.</li>
-											
-										</ul>
-									</div>
-									<cf:input type="text" path="Email" class="form-control" placeholder="Email" onblur="emailVal(this.id,this.value)" required=""/>
-                                
-								</div>
-
-							</div>
-							<!-- left side ends -->
-
-							<!-- right side -->
-							<div class="col-md-6 col-xs-12">
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>District:</strong></li>
-												<li class="style-li error-red">*</li>
-											<li id="correspondenceDistrictErr" style="display: none;"
+											<li class="style-li error-red">*</li>
+											<li id="residenceDistrictErr" style="display: none;"
 												class="style-li error-red">Please Select District.</li>
-										
+
 										</ul>
 									</div>
 									<cf:select path="correspondenceDistrict" class="form-control"
@@ -401,6 +364,15 @@
 									</cf:select>
 								</div>
 
+
+							</div>
+							<!-- left side ends -->
+
+							<!-- right side -->
+							<div class="col-md-6 col-xs-12">
+
+
+
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -408,7 +380,7 @@
 											<li class="style-li error-red">*</li>
 											<li id="correspondenceCityErr" style="display: none;"
 												class="style-li error-red">Please Select City.</li>
-											
+
 										</ul>
 									</div>
 									<cf:select path="correspondenceCity" class="form-control">
@@ -418,7 +390,7 @@
 
 
 
-								<div class="form-group">
+								<%--  <div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Pin Code:</strong></li>
@@ -432,19 +404,35 @@
 									<cf:input type="text" path="correspondencePincode"
 										class="form-control" minlength="6" maxlength="6"
 										placeholder="Pin Code" required=""  onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
-								</div>
+								</div> --%>
+								<div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Email:</strong></li>
+											<li class="style-li error-red">*</li>
+											<li id="EmailErr" style="display: none;"
+												class="style-li error-red">Please Enter Valid Email ID.</li>
 
+										</ul>
+									</div>
+									<cf:input type="text" path="Email" class="form-control"
+										placeholder="Email" onblur="emailVal(this.id,this.value)"
+										required="" />
+
+								</div>
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Mobile:</strong></li>
 											<li class="style-li error-red">*</li>
-											 <li id="mobileErr" style="display:none;" class="style-li error-red" > Mobile cannot be blank</li>
+											<li id="mobileErr" style="display: none;"
+												class="style-li error-red">Mobile cannot be blank</li>
 										</ul>
 									</div>
-									<cf:input type="text" path="mobile" class="form-control"
+									<cf:input type="text" path="mobile2" class="form-control"
 										placeholder="Mobile Number" minlength="10" maxlength="10"
-										required="" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
+										required=""
+										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" />
 								</div>
 
 
@@ -456,67 +444,40 @@
 
 						<!-- permanent Address -->
 						<fieldset>
-							<legend>Permanent Address</legend>
+							<legend>Qualification Details</legend>
 
 							<!-- form field starts here -->
-
-							<div class="col-xs-12">
-								<label class="checkbox-inline"> <input id="sameAddr"
-									type="checkbox" />Is your permanent address same as
-									correspondence address.
-								</label>
-
-							</div>
-
 							<!-- left side -->
 							<div class="col-md-6 col-xs-12">
 
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>Permanent Address
-													Line 1:</strong></li>
-														<li class="style-li error-red"></li>
-													<li id="ResidentialLine1Err" style="display:none;" class="style-li error-red" >Correspondence Address can not be blank.</li>
-										
-										</ul>
-									</div>
-									<cf:input type="text" path="ResidentialLine1"
-										class="form-control" placeholder="Address" required="" />
-								</div>
-
-								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Permanent Address
-													Line 2:</strong></li>
-													
-											
-										</ul>
-									</div>
-									<cf:input type="text" path="ResidentialLine2"
-										class="form-control" placeholder="Address" required="" />
-								</div>
-
-
-
-
-								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>State:</strong></li>
+											<li class="style-li"><strong>Qualification
+													Category:</strong></li>
 											<li class="style-li error-red"></li>
-											<li id="resStateErr" style="display:none;" class="style-li error-red" >State can not be blank.</li>
+											<li id="ResidentialLine1Err" style="display: none;"
+												class="style-li error-red">Correspondence Address can
+												not be blank.</li>
+
 										</ul>
 									</div>
-									<cf:select path="resState" class="form-control"
-										onchange="getDistrict(this.value , 'residentialDistrict')">
-										<cf:option value="0" label="Select state Name" />
-										<cf:options items="${listStateMaster}" itemValue="stateId"
-											itemLabel="stateName" />
+
+									<cf:select path="qualCategory" class="form-control">
+										<cf:option value="0" label="Select Qualification Category" />
+										<cf:options items="${QualCategoryMap}" />
 									</cf:select>
 								</div>
 
+								<div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Others:</strong></li>
+										</ul>
+									</div>
+									<cf:input type="text" path="others1" class="form-control"
+										placeholder="Address" required="" />
+								</div>
 
 							</div>
 							<!-- left side ends -->
@@ -527,33 +488,36 @@
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>District:</strong></li>
+											<li class="style-li"><strong>Qualification Sub
+													Category:</strong></li>
 											<li class="style-li error-red"></li>
-											<li id="residentialDistrictErr" style="display:none;" class="style-li error-red" >District can not be blank.</li>
+											<li id="residentialDistrictErr" style="display: none;"
+												class="style-li error-red">District can not be blank.</li>
 										</ul>
 									</div>
-									<cf:select path="residentialDistrict" class="form-control"
-										onchange="getCity(this.value , 'resCity')">
 
+									<cf:select path="qualSubCategory" class="form-control">
+										<cf:option value="0" label="Select Qualification SubCategory" />
+										<cf:options items="${SubQualCategoryMap}" />
 									</cf:select>
 								</div>
 
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>City:</strong></li>
+											<li class="style-li"><strong>Others:</strong></li>
 											<li class="style-li error-red"></li>
-											 <li id="resCityErr" style="display:none;" class="style-li error-red" >City can not be blank.</li>
+											<li id="resCityErr" style="display: none;"
+												class="style-li error-red">City can not be blank.</li>
 										</ul>
 									</div>
-									<cf:select path="resCity" class="form-control">
-
-									</cf:select>
+									<cf:input type="text" path="others2" class="form-control"
+										placeholder="Address" required="" />
 								</div>
 
 
 
-								<div class="form-group">
+								<%-- 	<div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Pin Code:</strong></li>
@@ -563,7 +527,7 @@
 									</div>
 									<cf:input type="text" path="resPincode" class="form-control" minlength="6"  maxlength="6"
 										placeholder="Pin Code" required=""  onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
-								</div>
+								</div> --%>
 							</div>
 							<!-- right side ends -->
 						</fieldset>
@@ -576,42 +540,40 @@
 							<!-- left side -->
 							<div class="col-md-6 col-xs-12">
 								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Experience
-													Background:</strong></li>
-											<li class="style-li error-red"></li>
-											<li id="ExpBackgroundErr" style="display:none;" class="style-li error-red" > Select your Experience Background.</li>
-									 
-										</ul>
-									</div>
-									<cf:select path="ExpBackground" class="form-control">
-										<cf:option value="" label="Select Expe Background" />
-										<cf:options items="${ExpBackgroundMap}" />
-									</cf:select>
+									<label>Are you NABL/ ISO 17025 certified lead assessor
+										? ?</label> <br> <label class="radio-inline"> <input
+										type="radio" name="optradio" checked="checked" /> Yes
+									</label> <label class="radio-inline"> <input type="radio"
+										name="optradio" /> No
+									</label>
 								</div>
+
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>Food Safety
-													Experience:</strong></li>
+											<li class="style-li"><strong>If Yes Relevant
+													Experience as Assessor:</strong></li>
 											<li class="style-li error-red"></li>
-											
-											 <li id="expInYearErr" style="display:none;" class="style-li error-red" >Exp. in YEAR can not be blank.</li>
-										     <li id="expInMonthErr" style="display:none;" class="style-li error-red" >Exp. in MONTH can not be blank.</li>
-										 
+
+											<li id="expInYearErr" style="display: none;"
+												class="style-li error-red">Exp. in YEAR can not be
+												blank.</li>
+											<li id="expInMonthErr" style="display: none;"
+												class="style-li error-red">Exp. in MONTH can not be
+												blank.</li>
+
 										</ul>
 									</div>
 									<div class="row">
 										<div class="col-xs-6">
-											<cf:select path="expInYear" class="form-control">
+											<cf:select path="assExpInYear" class="form-control">
 												<cf:option value="0" label="Select Exp in Year" />
 												<cf:options items="${ExpInYearMap}" />
 											</cf:select>
 										</div>
 										<div class="col-xs-6">
 
-											<cf:select path="expInMonth" class="form-control">
+											<cf:select path="assExpInMonth" class="form-control">
 												<cf:option value="0" label="Select Exp in Month" />
 												<cf:options items="${ExpInMonthMap}" />
 											</cf:select>
@@ -619,59 +581,73 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>No. Of Training
-													Sessions Conducted:</strong></li>
-											<li class="style-li error-red"></li>
-											
-											 <li id="noOfSessionConductedErr" style="display:none;" class="style-li error-red" >No. Of Training Sessions Conducted can not be blank.</li>
-									 
-										</ul>
-									</div>
-									
-									<cf:input type="text" path="noOfSessionConducted" class="form-control" placeholder="Session Number" required="" />
+									<label>Modules wish to conduct training on it ?</label>
+								</div>
+								<div id=a1 style="float: left; width: 99%;">
+									<input type="checkbox" id="check" style="margin-left: 1%;">
+									General Training
+								</div>
+								<div id=a2 style="float: left; width: 99%;">
+									<input type="checkbox" id="check" style="margin-left: 1%;">
+									GC MS/MS
+								</div>
+								<div id=a3 style="float: left; width: 99%;">
+									<input type="checkbox" id="check" style="margin-left: 1%;">
+									LC MS/MS
+								</div>
+								<div id=a4 style="float: left; width: 99%;">
+									<input type="checkbox" id="check" style="margin-left: 1%;">
+									ICP-MS
 								</div>
 							</div>
 							<!-- left side ends -->
 							<!-- right side -->
 							<div class="col-md-6 col-xs-12">
-								<div class="form-group">
-									<label>How Many Trainings (4Hrs) Sessions Wish To
-										Conduct in a Month ?</label> 
-										 <div id="sessWishToConductErr" style="display:none;" class="style-li error-red" >Session hrs cannot be 0 or blank	 .</div>
-										
-										<cf:input type="text" path="sessWishToConduct" class="form-control" placeholder="Hours" />
-								</div>
-								<div class="form-group">
-									<label>Associated with any Training Institute ?</label> <br>
-									<label class="radio-inline"> <input type="radio"
-										name="optradio" checked="checked" /> Yes
-									</label> <label class="radio-inline"> <input type="radio"
-										name="optradio" /> No
-									</label>
-								</div>
+
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-											<li class="style-li"><strong>If Yes Training
-													Institute Name:</strong></li>
-												<li class="style-li error-red"></li>
-											  
-											 <li id="AssociatedWithAnyTrainingInstituteErr" style="display:none;" class="style-li error-red" >Select the associated Training Institute.</li>
-										
+											<li class="style-li"><strong>Training
+													experience related to food sector:</strong></li>
+											<li class="style-li error-red"></li>
+
+											<li id="expInYearErr" style="display: none;"
+												class="style-li error-red">Exp. in YEAR can not be
+												blank.</li>
+											<li id="expInMonthErr" style="display: none;"
+												class="style-li error-red">Exp. in MONTH can not be
+												blank.</li>
+
 										</ul>
 									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<cf:select path="trExpInYear" class="form-control">
+												<cf:option value="0" label="Select Exp in Year" />
+												<cf:options items="${ExpInYearMap}" />
+											</cf:select>
+										</div>
+										<div class="col-xs-6">
 
-									<cf:select path="AssociatedWithAnyTrainingInstitute"
-										class="form-control" onchange="">
-										<cf:option value="0" label="Select Training Institude" />
-										<cf:options items="${listTrainingInstitude}" itemValue="id"
-											itemLabel="trainingCenterName" />
-									</cf:select>
+											<cf:select path="trRxpInMonth" class="form-control">
+												<cf:option value="0" label="Select Exp in Month" />
+												<cf:options items="${ExpInMonthMap}" />
+											</cf:select>
+										</div>
+									</div>
 								</div>
+								<div class="form-group">
+									<label>Area Specialization</label>
+									<div id="sessWishToConductErr" style="display: none;"
+										class="style-li error-red">Session hrs cannot be 0 or
+										blank .</div>
+									<cf:textarea class="form-control" path="areaSpecialization"
+										placeholder="Enter Your Message (250 Words)" />
+
 								</div>
-								<!-- right side ends -->
+
+							</div>
+							<!-- right side ends -->
 						</fieldset>
 						<!-- Experience end -->
 
@@ -692,10 +668,12 @@
 										<input type="text" id="txtCaptcha"
 											style="background-image: url(1.jpg); text-align: center; border: none; width: 140px; margin-left: 8px; font-weight: bold; font-family: Modern"
 											disabled="disabled" /> <input type="button" id="btnrefresh"
-											value="Refresh" onclick="DrawCaptcha();" /> 
-											 <div id="txtInputErr" style="display:none;" class="style-li error-red" >Captcha is required.</div>
-											 <input type="text" id="txtInput" placeholder="Captcha" style="width: 140px;" />
-											 
+											value="Refresh" onclick="DrawCaptcha();" />
+										<div id="txtInputErr" style="display: none;"
+											class="style-li error-red">Captcha is required.</div>
+										<input type="text" id="txtInput" placeholder="Captcha"
+											style="width: 140px;" />
+
 									</div>
 								</div>
 								<div id=chkunit style="float: left; width: 99%;">
@@ -754,7 +732,7 @@
 			success : function(response) {
 				var mainData1 = jQuery.parseJSON(response);
 				//  $("#trainingScheduleId").val(mainData1.trainingScheduleId);
-				$("#userType").val(mainData1.userType);
+				/* $("#userType").val(mainData1.userType);
 				$("#title").val(mainData1.title);
 				$("#AadharNumber").val(mainData1.AadharNumber);
 				$("#firstName").val(mainData1.firstName);
@@ -774,8 +752,7 @@
 				$("#correspondencePincode")
 						.val(mainData1.correspondencePincode);
 				$("#mobile").val(mainData1.mobile);
-				$("#empID").val(mainData1.empID);
-				
+				$("#empID").val(mainData1.empID); */
 
 				$("#updatebtn").css("display", "block");
 
@@ -786,213 +763,206 @@
 	}
 	function validateFields() {
 		var isUpdate = '${isUpdate}';
-		
-		 $("#userTypeErr").css("display" , "none");
-			$("#titleErr").css("display" , "none");
+
+		$("#userTypeErr").css("display", "none");
+		$("#titleErr").css("display", "none");
 		$("#correspondencePincodeErr").css("display", "none");
 		$("#correspondencePincodeErr1").css("display", "none");
-		$("#mobileErr").css("display" , "none");
-		$("#AadharNumberErr").css("display" , "none");
-		$("#firstNameErr").css("display" , "none");
-		$("#MiddleNameErr").css("display" , "none");
-		$("#LastNameErr").css("display" , "none");
-		$("#FatherNameErr").css("display" , "none");
-		$("#empIDErr").css("display" , "none");
-		$("#dobErr").css("display" , "none");
-		$("#correspondenceAddress1Err").css("display" , "none");
-		$("#correspondenceStateErr").css("display" , "none");
-		$("#EmailErr").css("display" , "none");
-		 $("#correspondenceDistrictErr").css("display" , "none");
-		 $("#correspondenceCityErr").css("display" , "none");
-		 
-		 
-		 
-		 $("#ResidentialLine1Err").css("display" , "none");
-		 $("#ResidentialLine2Err").css("display" , "none");
-		 $("#resStateErr").css("display" , "none");
-		 $("#residentialDistrictErr").css("display" , "none");
-		 $("#resCityErr").css("display" , "none");
-		 $("#resPincodeErr").css("display" , "none");
-		 
-		 $("#txtInputErr").css("display" , "none");
-		  $("#ExpBackgroundErr").css("display" , "none");
-		 $("#sessWishToConductErr").css("display" , "none");
-		 $("#expInYearErr").css("display" , "none");
-		 $("#expInMonthErr").css("display" , "none");
-		 $("#AssociatedWithAnyTrainingInstituteErr").css("display" , "none"); 
-		 
-		 if($("#userType").val() == ''){
-		 $("#userTypeErr").css("display" , "block");
-		 
-			return false; 
+		$("#mobileErr").css("display", "none");
+		$("#AadharNumberErr").css("display", "none");
+		$("#firstNameErr").css("display", "none");
+		$("#MiddleNameErr").css("display", "none");
+		$("#LastNameErr").css("display", "none");
+		$("#FatherNameErr").css("display", "none");
+		$("#empIDErr").css("display", "none");
+		$("#dobErr").css("display", "none");
+		$("#correspondenceAddress1Err").css("display", "none");
+		$("#correspondenceStateErr").css("display", "none");
+		$("#EmailErr").css("display", "none");
+		$("#correspondenceDistrictErr").css("display", "none");
+		$("#correspondenceCityErr").css("display", "none");
+
+		$("#ResidentialLine1Err").css("display", "none");
+		$("#ResidentialLine2Err").css("display", "none");
+		$("#resStateErr").css("display", "none");
+		$("#residentialDistrictErr").css("display", "none");
+		$("#resCityErr").css("display", "none");
+		$("#resPincodeErr").css("display", "none");
+
+		$("#txtInputErr").css("display", "none");
+		$("#ExpBackgroundErr").css("display", "none");
+		$("#sessWishToConductErr").css("display", "none");
+		$("#expInYearErr").css("display", "none");
+		$("#expInMonthErr").css("display", "none");
+		$("#AssociatedWithAnyTrainingInstituteErr").css("display", "none");
+
+		if ($("#userType").val() == '') {
+			$("#userTypeErr").css("display", "block");
+
+			return false;
 		}
-	 	if($("#title").val() == 0){
-		 
-		$("#titleErr").css("display" , "block");
-		return false;
+		if ($("#title").val() == 0) {
+
+			$("#titleErr").css("display", "block");
+			return false;
 		}
-		
-		if($("#AadharNumber").val() == 0){
-		 
-		$("#AadharNumberErr").css("display" , "block");
-		return false;
+
+		if ($("#AadharNumber").val() == 0) {
+
+			$("#AadharNumberErr").css("display", "block");
+			return false;
 		}
-		
-		 if($("#firstName").val() == 0){
-		 
-		$("#firstNameErr").css("display" , "block");
-		return false;
+
+		if ($("#firstName").val() == 0) {
+
+			$("#firstNameErr").css("display", "block");
+			return false;
 		}
-		if($("#MiddleName").val() == 0){
-		 
-		$("#MiddleNameErr").css("display" , "block");
-		return false;
+		if ($("#MiddleName").val() == 0) {
+
+			$("#MiddleNameErr").css("display", "block");
+			return false;
 		}
-		if($("#LastName").val() == 0){
-		 
-		$("#LastNameErr").css("display" , "block");
-		return false;
+		if ($("#LastName").val() == 0) {
+
+			$("#LastNameErr").css("display", "block");
+			return false;
 		}
-		if($("#FatherName").val() == 0){
-		 
-		$("#FatherNameErr").css("display" , "block");
-		return false;
+		if ($("#FatherName").val() == 0) {
+
+			$("#FatherNameErr").css("display", "block");
+			return false;
 		}
-		if($("#empID").val() == 0){
-		 
-		$("#empIDErr").css("display" , "block");
-		return false;
+		if ($("#empID").val() == 0) {
+
+			$("#empIDErr").css("display", "block");
+			return false;
 		}
-		 if($("#dob").val() == 0){
-		 
-		$("#dobErr").css("display" , "block");
-		return false;
+		if ($("#dob").val() == 0) {
+
+			$("#dobErr").css("display", "block");
+			return false;
 		}
-		if($("#correspondenceAddress1").val() == 0){
-		 
-		$("#correspondenceAddress1Err").css("display" , "block");
-		return false;
+		if ($("#correspondenceAddress1").val() == 0) {
+
+			$("#correspondenceAddress1Err").css("display", "block");
+			return false;
 		}
-		
-		
-		if($("#correspondenceState").val() == 0){
-		 
-		$("#correspondenceStateErr").css("display" , "block");
-		return false;
+
+		/* if ($("#correspondenceState").val() == 0) {
+
+			$("#correspondenceStateErr").css("display", "block");
+			return false;
+		} */
+		if ($("#Email").val() == 0) {
+
+			$("#EmailErr").css("display", "block");
+			return false;
 		}
-		if($("#Email").val() == 0){
-		 
-		$("#EmailErr").css("display" , "block");
-		return false;
+		if ($("#correspondenceDistrict").val() == 0) {
+
+			$("#correspondenceDistrictErr").css("display", "block");
+			return false;
 		}
-		 if($("#correspondenceDistrict").val() == 0){
-		 
-		$("#correspondenceDistrictErr").css("display" , "block");
-		return false;
+		if ($("#correspondenceCity").val() == 0) {
+
+			$("#correspondenceCityErr").css("display", "block");
+			return false;
 		}
-		 if($("#correspondenceCity").val() == 0){
-		 
-		$("#correspondenceCityErr").css("display" , "block");
-		return false;
-		}
-		 
-		 if ($("#correspondencePincode").val() == '') {
-			
+
+		if ($("#correspondencePincode").val() == '') {
+
 			$("#correspondencePincodeErr").css("display", "block");
 			return false;
 
 		}
 		if (($("#correspondencePincode").val()).match(/^[0-9]{6}$/) == null) {
-		
+
 			$("#correspondencePincodeErr1").css("display", "block");
 			return false;
-		}  
+		}
 
-		 /* if($("#mobile").val() == 0){
+		/* if($("#mobile").val() == 0){
 		
 		$("#mobileErr").css("display" , "block");
 		return false;
 		} */
-		if($("#mobile").val().match(/^[0-9]{10}$/) == null){
-	    	
-     		 $("#mobileErr").css("display" , "block");
-     		return false;
- 	 }
-		 
-		 
-			
-		   if($("#ResidentialLine1").val() == ''){
-		  		 $("#ResidentialLine1Err").css("display" , "block");
-		   		return false;
-			 }
-		
-			 if($("#resState").val() == 0){
-				 $("#resStateErr").css("display" , "block");
-		 		return false;
-			 }
-		 if($("#residentialDistrict").val() == 0){
-				 $("#residentialDistrictErr").css("display" , "block");
-				return false;
-			 }
-			
-			if($("#resCity").val() == 0){
-				 $("#resCityErr").css("display" , "block");
-				return false;
-			 }
-			 if($("#resPincode").val().match(/^[0-9]{6}$/) == null){
-				 $("#resPincodeErr").css("display" , "block");
-				return false;
-			} 
-			 
-				 
-		     if($("#ExpBackground").val() == ''){
-			$("#ExpBackgroundErr").css("display" , "block");
+		if ($("#mobile").val().match(/^[0-9]{10}$/) == null) {
+
+			$("#mobileErr").css("display", "block");
 			return false;
-		 }	 
-	
-		 if($("#expInYear").val() == 0){
-			 $("#expInYearErr").css("display" , "block");
+		}
+
+		if ($("#ResidentialLine1").val() == '') {
+			$("#ResidentialLine1Err").css("display", "block");
 			return false;
-		} 
-		 if($("#expInMonth").val() == 0){
-			 $("#expInMonthErr").css("display" , "block");
+		}
+
+		if ($("#resState").val() == 0) {
+			$("#resStateErr").css("display", "block");
 			return false;
-		 } 
-		 if($("#noOfSessionConducted").val()==''){
-			 $("#noOfSessionConductedErr").css("display" , "block");
+		}
+		if ($("#residentialDistrict").val() == 0) {
+			$("#residentialDistrictErr").css("display", "block");
+			return false;
+		}
+
+		if ($("#resCity").val() == 0) {
+			$("#resCityErr").css("display", "block");
+			return false;
+		}
+		if ($("#resPincode").val().match(/^[0-9]{6}$/) == null) {
+			$("#resPincodeErr").css("display", "block");
+			return false;
+		}
+
+		if ($("#ExpBackground").val() == '') {
+			$("#ExpBackgroundErr").css("display", "block");
+			return false;
+		}
+
+		if ($("#expInYear").val() == 0) {
+			$("#expInYearErr").css("display", "block");
+			return false;
+		}
+		if ($("#expInMonth").val() == 0) {
+			$("#expInMonthErr").css("display", "block");
+			return false;
+		}
+		if ($("#noOfSessionConducted").val() == '') {
+			$("#noOfSessionConductedErr").css("display", "block");
+			return false;
+
+		}
+		if ($("#sessWishToConduct").val() < 1) {
+			$("#sessWishToConductErr").css("display", "block");
+			return false;
+
+		}
+		if ($("#AssociatedWithAnyTrainingInstitute").val() == 0) {
+			$("#AssociatedWithAnyTrainingInstituteErr").css("display", "block");
+			return false;
+		}
+
+		if (!(isUpdate != null && isUpdate == "Y")) {
+
+			if ($("#txtInput").val() == '') {
+				$("#txtInputErr").css("display", "block");
 				return false;
-			 
-	   }
-		 if($("#sessWishToConduct").val() < 1){
-			 $("#sessWishToConductErr").css("display" , "block");
+			}
+			var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+			var str2 = removeSpaces(document.getElementById('txtInput').value);
+			if (!(str1 == str2)) {
+				alert("Please Enter correct captcha");
+				document.getElementById('txtInput').value = "";
 				return false;
-			 
-	   } 
-			  if($("#AssociatedWithAnyTrainingInstitute").val() == 0){
-				 $("#AssociatedWithAnyTrainingInstituteErr").css("display" , "block");
-				return false;
-			 }
-	       
-			  if (!(isUpdate != null && isUpdate == "Y")){
-					
-					 if($("#txtInput").val() == ''){
-						 $("#txtInputErr").css("display" , "block");
-							return false;
-				  }
-					var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
-			        var str2 = removeSpaces(document.getElementById('txtInput').value);
-			        if (!(str1 == str2)) {
-			        	alert("Please Enter correct captcha");
-			            document.getElementById('txtInput').value = "";
-			            return false;
-			        } 
-			      
-				} 
- if($("#check").is(":checked")==false){
-			 alert("check the checkbox to agree to term and conditions");
-			 return false;
-		 }
-	
+			}
+
+		}
+		if ($("#check").is(":checked") == false) {
+			alert("check the checkbox to agree to term and conditions");
+			return false;
+		}
 
 	}
 </script>

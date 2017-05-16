@@ -185,6 +185,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 			  <value>com.ir.model.RegionMapping</value>
 			    <value>com.ir.model.FeedbackMaster</value>
 			  <value>com.ir.model.ManageCourseCarricullum</value>
+			  <value>com.ir.model.PersonalInformationTrainer</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

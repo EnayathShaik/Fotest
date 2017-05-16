@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.ir.dao.TraineeDAO;
+import com.ir.form.AfterTraining;
+import com.ir.form.BeforeTraining;
 import com.ir.form.CertificateForm;
 import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
@@ -19,6 +21,7 @@ import com.ir.form.FeedbackForm;
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
 import com.ir.form.OnlineTrainingForm;
+import com.ir.form.PrintAdmitCard;
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.RegistrationFormTrainee;
@@ -389,14 +392,7 @@ public class TraineeServiceImpl implements TraineeService {
 				// TODO Auto-generated method stub
 				return this.traineeDAO.listonlineTraining();
 			}
-/*
-		@Override
-		@Transactional
-		public List<AssessmentQuestionForm> listingAssessmentQuestion(
-				AssessmentQuestionForm assesQuestionForm , int id) {
-			// TODO Auto-generated method stub
-			return this.traineeDAO.listingAssessmentQuestion( assesQuestionForm, id);
-		}*/
+
 			//certification
 			@Override
 			@Transactional
@@ -413,7 +409,28 @@ public class TraineeServiceImpl implements TraineeService {
 				return this.traineeDAO.listFeedback();
 			}
 	
+	
 
+			@Override
+			@Transactional
+			public List<BeforeTraining> listBeforeTraining() {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listBeforeTraining();
+			}
+
+			@Override
+			@Transactional
+			public List<AfterTraining> listAfterTraining() {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listAfterTraining();
+			}
+
+			@Override
+			@Transactional
+			public List<PrintAdmitCard> listPrintAdmitCard() {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listPrintAdmitCard();
+			}
 		
 
 		

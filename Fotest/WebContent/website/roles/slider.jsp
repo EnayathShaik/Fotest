@@ -35,20 +35,20 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="admit-card.html">Print Admit Card</a>
+                            <a href="printAdmitCard.fssai">Print Admit Card</a>
                         </li>
                         <li class="dropdown active">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assessment<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li class="hov"><a href="assessment-before-training-instruction.html" class="clr">Before Training</a></li>
-                                <li class="hov"><a href="assessment-after-training-instruction.html" class="clr" style="margin-bottom: 1px;">After Training</a></li>
+                                <li class="hov"><a href="beforeTraining.fssai" class="clr">Before Training</a></li>
+                                <li class="hov"><a href="afterTraining.fssai" class="clr" style="margin-bottom: 1px;">After Training</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="onlineTraining.fssai">Online Training</a>
                         </li>
                         <li>
-                          <a href="feedback123.fssai">Feedback</a>
+                          <a href="traineefeedback.fssai">Feedback</a>
                         </li>
                         <li>
                             <a href="certification.fssai">Certification</a>

@@ -33,7 +33,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.google.gson.Gson;
 import com.ir.dao.TrainingInstitudeDAO;
-
+import com.ir.form.AfterTraining;
+import com.ir.form.BeforeTraining;
 import com.ir.form.CertificateForm;
 import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
@@ -49,6 +50,7 @@ import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
 import com.ir.form.OnlineAssessmentForm;
 import com.ir.form.OnlineTrainingForm;
+import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.RegistrationFormTrainer;
 import com.ir.form.TrainingRequestForm;
@@ -932,12 +934,11 @@ public String GetCertificate(@ModelAttribute("PersonalInformationTrainee") Perso
 }
 
 //trainee Feedback
-@RequestMapping(value="/feedback123" , method = { RequestMethod.POST , RequestMethod.GET })
+@RequestMapping(value="/traineefeedback" , method = { RequestMethod.POST , RequestMethod.GET })
 public String listtraineeFeedback( Model model){
-	System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	  model.addAttribute("FeedbackForm",  new FeedbackForm());
   model.addAttribute("listtraineeFeedback", this.traineeService.listFeedback());
-  return "feedback123";
+  return "traineefeedback";
 }
 //online training
 
@@ -961,6 +962,26 @@ public String listcertification( Model model){
   return "certification";
 }
 
-
+//Before Training
+@RequestMapping(value="/beforeTraining" , method = { RequestMethod.POST , RequestMethod.GET })
+public String listbeforeTraining( Model model){
+	  model.addAttribute("BeforeTraining",  new BeforeTraining());
+model.addAttribute("listBeforeTraining", this.traineeService.listBeforeTraining());
+return "beforeTraining";
+}
+//After Training
+@RequestMapping(value="/afterTraining" , method = { RequestMethod.POST , RequestMethod.GET })
+public String listAfterTraining( Model model){
+	  model.addAttribute("AfterTraining",  new AfterTraining());
+model.addAttribute("listAfterTraining", this.traineeService.listAfterTraining());
+return "afterTraining";
+}
+//After Training
+@RequestMapping(value="/printAdmitCard" , method = { RequestMethod.POST , RequestMethod.GET })
+public String listPrintAdmitCard( Model model){
+	  model.addAttribute("PrintAdmitCard",  new PrintAdmitCard());
+model.addAttribute("listPrintAdmitCard", this.traineeService.listPrintAdmitCard());
+return "printAdmitCard";
+}
 
 }

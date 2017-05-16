@@ -2,7 +2,9 @@ package com.ir.dao;
 
 import java.util.List;
 
+import com.ir.form.AfterTraining;
 import com.ir.form.AssessmentQuestionsForm;
+import com.ir.form.BeforeTraining;
 import com.ir.form.CertificateForm;
 import com.ir.form.CertificationForm;
 import com.ir.form.ChangePasswordForm;
@@ -15,6 +17,7 @@ import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.MyTrainingForm;
 import com.ir.form.OnlineTrainingForm;
+import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
 import com.ir.model.AdmitCardForm;
@@ -132,5 +135,9 @@ public interface TraineeDAO {
 	public List<FeedbackForm> listFeedback();
 	
 		public List<CertificationForm> listcertification();
+		public List<BeforeTraining> listBeforeTraining();
+		public List<AfterTraining> listAfterTraining();
+		public List<PrintAdmitCard> listPrintAdmitCard();
+
 	
 }

@@ -1246,7 +1246,7 @@
 		<put-attribute name="body" value="/website/admin/feedbackMaster.jsp" />
 	</definition>
 	
-	<definition name="feedback123" extends="base.user.afterLogin">
+	<definition name="traineefeedback" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/feedback.jsp" />
 	</definition>
@@ -1298,5 +1298,16 @@
 		<put-attribute name="body" value="/website/trainee/Certification.jsp" />
 	</definition>
 
-   
+   <definition name="beforeTraining" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainee/beforeTraining.jsp" />
+	</definition>
+	 <definition name="afterTraining" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainee/afterTraining.jsp" />
+	</definition>
+	 <definition name="printAdmitCard" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainee/printAdmitCard.jsp" />
+	</definition>
 </tiles-definitions>

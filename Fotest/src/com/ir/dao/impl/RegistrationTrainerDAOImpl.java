@@ -106,7 +106,7 @@ private Title title;
 				}catch(NoSuchAlgorithmException e){
 					System.out.println( " no such algo exception error catch ");
 				}
-				/*		String uniqueID = pageLoadService.getNextCombinationId("TR", "personalinformationtrainer" , "000000");
+				String uniqueID = pageLoadService.getNextCombinationId("TR", "personalinformationtrainer" , "000000");
 				
 				State ps = getState(registrationFormTrainer.getTrainingCenterPermanentState()); 
 				State cs = getState(registrationFormTrainer.getTrainingCenterCorrespondenceState());
@@ -131,13 +131,13 @@ private Title title;
 				loginDetails.setStatus("A");
 				
 				PersonalInformationTrainer personalInformationTrainer = new PersonalInformationTrainer();
-				personalInformationTrainer.setTitle(tt);
+				//personalInformationTrainer.setTitle(tt);
 				personalInformationTrainer.setSteps(0);
 				personalInformationTrainer.setAadharNumber(registrationFormTrainer.getAadharNumber() == null ? "" : registrationFormTrainer.getAadharNumber());
 				personalInformationTrainer.setFirstName(registrationFormTrainer.getFirstName() == null ? "" : registrationFormTrainer.getFirstName());
 				personalInformationTrainer.setLastName(registrationFormTrainer.getLastName() == null ? "" : registrationFormTrainer.getLastName());
 				personalInformationTrainer.setMiddleName(registrationFormTrainer.getMiddleName() == null ? "" :registrationFormTrainer.getMiddleName());
-				personalInformationTrainer.setDOB(registrationFormTrainer.getDOB() == null ? "" : registrationFormTrainer.getDOB());
+				/*personalInformationTrainer.setDOB(registrationFormTrainer.getDOB() == null ? "" : registrationFormTrainer.getDOB());
 				personalInformationTrainer.setCaste(registrationFormTrainer.getCaste() == null ? "" : registrationFormTrainer.getCaste());
 				personalInformationTrainer.setGender(registrationFormTrainer.getGender() == null ? "" : registrationFormTrainer.getGender());
 				personalInformationTrainer.setTrainingCenterCorrespondenceLine1(registrationFormTrainer.getTrainingCenterCorrespondenceLine1() == null ? "" : registrationFormTrainer.getTrainingCenterCorrespondenceLine1());
@@ -156,24 +156,28 @@ private Title title;
 				personalInformationTrainer.setAssociatedWithAnyTrainingPartner(registrationFormTrainer.getAssociatedWithAnyTrainingPartner() == null ? "" :  registrationFormTrainer.getAssociatedWithAnyTrainingPartner());
 				personalInformationTrainer.setNoOfTrainingSessionConducted(registrationFormTrainer.getNoOfTrainingSessionConducted());
 				personalInformationTrainer.setAssociatedTrainingpartnerName(mtp);
+				*/
 				if(checkPeramanent){
-					personalInformationTrainer.setTrainingCenterPermanentLine1(registrationFormTrainer.getTrainingCenterCorrespondenceLine1() == null ? "" : registrationFormTrainer.getTrainingCenterCorrespondenceLine1());
+					/*personalInformationTrainer.setTrainingCenterPermanentLine1(registrationFormTrainer.getTrainingCenterCorrespondenceLine1() == null ? "" : registrationFormTrainer.getTrainingCenterCorrespondenceLine1());
 					personalInformationTrainer.setTrainingCenterPermanentLine2(registrationFormTrainer.getTrainingCenterCorrespondenceLine2() == null ? "" : registrationFormTrainer.getTrainingCenterCorrespondenceLine2());
 					personalInformationTrainer.setPermanentcity(cc);
 					personalInformationTrainer.setPermanentdistrict(cd);
 					personalInformationTrainer.setPermanentstate(cs);
 					personalInformationTrainer.setCheckAddress("true");
 					personalInformationTrainer.setTrainingCenterPermanentPincode(registrationFormTrainer.getTrainingCenterCorrespondencePincode() == null ? "" : registrationFormTrainer.getTrainingCenterCorrespondencePincode());
+				*/
 				}
 				else{
-				personalInformationTrainer.setTrainingCenterPermanentLine1(registrationFormTrainer.getTrainingCenterPermanentLine1() == null ? "" : registrationFormTrainer.getTrainingCenterPermanentLine1());
+				/*personalInformationTrainer.setTrainingCenterPermanentLine1(registrationFormTrainer.getTrainingCenterPermanentLine1() == null ? "" : registrationFormTrainer.getTrainingCenterPermanentLine1());
 				personalInformationTrainer.setTrainingCenterPermanentLine2(registrationFormTrainer.getTrainingCenterPermanentLine2() == null ? "" : registrationFormTrainer.getTrainingCenterPermanentLine2());
 				personalInformationTrainer.setPermanentstate(ps);
 				personalInformationTrainer.setPermanentdistrict(pd);
+				*/
 				//System.out.println(pd.getDistrictId() + "dist id");
-				personalInformationTrainer.setPermanentcity(pc);
+				/*personalInformationTrainer.setPermanentcity(pc);
 				personalInformationTrainer.setCheckAddress("false");
 				personalInformationTrainer.setTrainingCenterPermanentPincode(registrationFormTrainer.getTrainingCenterPermanentPincode() == null ? "" : registrationFormTrainer.getTrainingCenterPermanentPincode());
+				*/
 				}
 				personalInformationTrainer.setLoginDetails(loginDetails);
 				
@@ -226,7 +230,7 @@ private Title title;
 							session.save(courseEnrolledSpecial);
 						}
 					}
-				}*/
+				}
 				return passwordString+"&";
 	}
 	
