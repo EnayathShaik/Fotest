@@ -40,6 +40,7 @@ import com.ir.form.ViewTrainingCalendarForm;
 import com.ir.form.manageTrainingForm;
 import com.ir.form.verifyTraineeEnrollmentForm;
 import com.ir.form.viewEnrolledCoursesForm;
+import com.ir.model.City;
 import com.ir.model.CityMaster;
 import com.ir.model.DistrictMaster;
 import com.ir.model.FeedbackMaster;
@@ -810,4 +811,41 @@ public class AdminController {
 			        model.addAttribute("listgenerateCertificate", this.adminService.listgenerateCertificate(p));
 			        return "generateCertificate";
 			    } 
+				 
+				 
+				 
+				// loadCity
+
+					@RequestMapping(value = "/loadCity", method = RequestMethod.POST)
+					@ResponseBody
+					public void loadCity(@RequestParam("data") String data,
+							@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
+							HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+						new ZLogger("loadCity", "loadCity............" + data, "AdminController.java");
+						String districtid = data;
+						List<City> cityList = pageLoadService.loadCity(districtid);
+						PrintWriter out = response.getWriter();
+						Gson g = new Gson();
+						String newList = g.toJson(cityList);
+						new ZLogger("loadCity", "newList " + newList, "AdminController.java");
+						out.write(newList);
+						out.flush();
+
+					}
+					@RequestMapping(value = "/loadDistrict", method = RequestMethod.POST)
+					@ResponseBody
+					public void getCourseName(@RequestParam("data") String data,
+							@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
+							HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+						new ZLogger("loadDistrict", "loadDistrict............" + data, "AdminController.java");
+						String stateId = data;
+						List districtList = pageLoadService.loadDistrict(stateId);
+						PrintWriter out = response.getWriter();
+						Gson g = new Gson();
+						String newList = g.toJson(districtList);
+						new ZLogger("loadDistrict", "newList " + newList, "AdminController.java");
+						out.write(newList);
+						out.flush();
+
+					}
 }
