@@ -42,7 +42,6 @@ import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.FeedbackForm;
 import com.ir.form.FeedbackMasterForm;
-/*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
@@ -54,6 +53,7 @@ import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.RegistrationFormTrainer;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.generalCourseEnrollmentForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.AssessmentQuestion_old;
 import com.ir.model.AssessmentQuestions;
@@ -621,8 +621,7 @@ public class TraineeController {
 			System.out.println("PersonalInformationTrainee ");
 			String userId = request.getParameter("userId");
 			
-			Map<String , String> userType = lst.userTypeMap;			
-			Map<String , String> titleMap = lst.titleMap;
+			
 			
 			if(userId != null && Integer.parseInt(userId) > 0){
 				personalInformationTrainee = traineeService.FullDetail(Integer.parseInt(userId));	
@@ -633,8 +632,20 @@ public class TraineeController {
 			}
 		
 			model.addAttribute("listStateMaster", this.adminService.listStateMaster());
-			model.addAttribute("userType",userType);
-			model.addAttribute("titleMap",titleMap);
+		    Map<String, String> titleMap = lst.titleMap;
+			Map<String, String> opt = lst.noOfOptionMap;
+			Map<String, String> qual = lst.QualCategoryMap;
+			Map<String, String> subqual = lst.SubQualCategoryMap;
+			Map<String, String> empcat = lst.employerCategoryMap;
+			Map<String, String> des = lst.designationMap;
+
+	        model.addAttribute("titleMap", titleMap);
+			model.addAttribute("ExpInYearMap", opt);
+			model.addAttribute("ExpInMonthMap", opt);
+			model.addAttribute("QualCategoryMap", qual);
+			model.addAttribute("SubQualCategoryMap", subqual);
+			model.addAttribute("employerCategoryMap", empcat);
+			model.addAttribute("designationMap", des);
 			
 			System.out.println("ttt"+session.getAttribute("profileId"));
 			if(session.getAttribute("profileId")==null)
@@ -646,8 +657,9 @@ public class TraineeController {
 	
 	@RequestMapping(value = "/PersonalInformationTraineeAdd", method = RequestMethod.POST)
 	public String addPersonalInfoTrainee(@Valid @ModelAttribute("PersonalInformationTrainee") PersonalInformationTrainee p , BindingResult result, Model model){
+		
 		System.out.println("Add PersonalInformationTrainee" + p.getId());
-		String personalInformationTrainee = null;
+	     String personalInformationTrainee = null;
 
 		try{
 			
@@ -962,6 +974,29 @@ public String listcertification( Model model){
   return "certification";
 }
 
+//course enrollment-general
+
+@RequestMapping(value = "/GeneralCourseEnrollment", method = RequestMethod.GET)
+	public String generalCourseEnrollment(Model model) {
+		System.out.println("applyForPost");
+		Map<String , String> trainingLabMap = lst.trainingLabMap;
+		model.addAttribute("trainingLabMap", trainingLabMap);
+		model.addAttribute("generalCourseEnrollmentForm" , new generalCourseEnrollmentForm());
+
+		return "GeneralCourseEnrollment";
+	}
+	
+  @RequestMapping(value="/GeneralCourseEnrollmentlist" , method = RequestMethod.POST)
+  public String listtraineeTrainerFeedback(@ModelAttribute("applyForPost") generalCourseEnrollmentForm p , Model model){
+      model.addAttribute("listgeneralCourseEnrollment", this.traineeService.listgeneralCourseEnrollment(p));
+      model.addAttribute("generalCourseEnrollmentForm" , new generalCourseEnrollmentForm());
+      List<generalCourseEnrollmentForm> list = this.traineeService.listgeneralCourseEnrollment(p);
+      for( generalCourseEnrollmentForm li :   list){
+      	System.out.println("li "+li.getTrainingLab());
+      }
+      return "GeneralCourseEnrollment";
+  }
+  
 //Before Training
 @RequestMapping(value="/beforeTraining" , method = { RequestMethod.POST , RequestMethod.GET })
 public String listbeforeTraining( Model model){
@@ -983,5 +1018,6 @@ public String listPrintAdmitCard( Model model){
 model.addAttribute("listPrintAdmitCard", this.traineeService.listPrintAdmitCard());
 return "printAdmitCard";
 }
+
 
 }

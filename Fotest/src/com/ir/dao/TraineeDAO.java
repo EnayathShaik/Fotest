@@ -20,6 +20,7 @@ import com.ir.form.OnlineTrainingForm;
 import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.generalCourseEnrollmentForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CheckAadhar;
@@ -135,6 +136,8 @@ public interface TraineeDAO {
 	public List<FeedbackForm> listFeedback();
 	
 		public List<CertificationForm> listcertification();
+		
+		public List<generalCourseEnrollmentForm> listgeneralCourseEnrollment(generalCourseEnrollmentForm p);
 		public List<BeforeTraining> listBeforeTraining();
 		public List<AfterTraining> listAfterTraining();
 		public List<PrintAdmitCard> listPrintAdmitCard();

@@ -38,6 +38,7 @@ import com.ir.form.OnlineTrainingForm;
 import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.generalCourseEnrollmentForm;
 import com.ir.form.TrainingClosureForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -462,21 +463,21 @@ public class TraineeDAOImpl implements TraineeDAO {
 			}
 		}
 
-		personalInformationTrainee
+		/*personalInformationTrainee
 				.setCorrespondenceAddress1(registrationFormTrainee
 						.getCorrespondenceAddress1());
 		personalInformationTrainee
 				.setCorrespondenceAddress2(registrationFormTrainee
-						.getCorrespondenceAddress2());
+						.getCorrespondenceAddress2());*/
 		/*personalInformationTrainee.setCorrespondenceState(cs);
 		personalInformationTrainee.setCorrespondenceDistrict(cd);
 		personalInformationTrainee.setCorrespondenceCity(cc);*/
 		personalInformationTrainee.setEmail(registrationFormTrainee.getEmail());
 		personalInformationTrainee.setMobile(registrationFormTrainee
 				.getMobile());
-		personalInformationTrainee
+		/*personalInformationTrainee
 				.setCorrespondencePincode(registrationFormTrainee
-						.getCorrespondencePincode());
+						.getCorrespondencePincode());*/
 		if (correspondADD) {
 			/*personalInformationTrainee
 					.setResidentialLine1(registrationFormTrainee
@@ -1170,7 +1171,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 	
 	@Override
 	public  String addPersonalInfoTrainee(PersonalInformationTrainee p){
-
+		
 		PasswordGenerator passwordGenerator = new PasswordGenerator(6);
 		char[] pass = passwordGenerator.get();
 		String passwordString = String.valueOf(pass);
@@ -1190,7 +1191,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		loginDetails.setLoginId(nextSequenceUserID);
 		loginDetails.setPassword(passwordString);
 		loginDetails.setEncrypted_Password(encryprPassword);
-		loginDetails.setStatus("I");
+		loginDetails.setStatus("A");
 		loginDetails.setProfileId(3);
 		p.setLoginDetails(loginDetails);
 		
@@ -1206,7 +1207,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		int id =  p.getId();
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformationTrainee personalInformationTrainee = (PersonalInformationTrainee) session.load(PersonalInformationTrainee.class, id);
-		personalInformationTrainee.setUserType(p.getUserType());
+		/*personalInformationTrainee.setUserType(p.getUserType());
 		personalInformationTrainee.setTitle(p.getTitle());
 		personalInformationTrainee.setAadharNumber(p.getAadharNumber());
 		personalInformationTrainee.setEmpID(p.getEmpID());
@@ -1229,7 +1230,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		personalInformationTrainee.setResState(p.getResState());
 		personalInformationTrainee.setResidentialDistrict(p.getResidentialDistrict());
 		personalInformationTrainee.setResCity(p.getResCity());
-		personalInformationTrainee.setResPincode(p.getResPincode());
+		personalInformationTrainee.setResPincode(p.getResPincode());*/
 		System.out.println(" status "+p.getStatus());
 		if(p.getStatus() != null){
 			System.out.println(" loginId "+p.getLogId() );
@@ -1555,10 +1556,30 @@ System.out.println("list "+list);
 							}
 							return resulList;
 						}
-
-		
 						
 
+				@Override
+				public List<generalCourseEnrollmentForm> listgeneralCourseEnrollment(generalCourseEnrollmentForm form) {
+					// TODO Auto-generated method stub
+					System.out.println("inside generalCourseEnrollmentForm");
+					generalCourseEnrollmentForm bean = new generalCourseEnrollmentForm();
+					List<generalCourseEnrollmentForm> resulList = new ArrayList<generalCourseEnrollmentForm>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('FSSAI - ITO' as varchar(20)) as trainingLab , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Mr Anuj, 123456789, anuj@gmail.com' as varchar(20)) as contactPerson  , cast('150' as varchar(20)) as seatingCapacity , cast('250' as varchar(20)) as seatsAvailable   ").list();
+					for (Object[] li : list ) {
+						
+						bean.setTrainingLab((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setContactPerson((String) li[3]);
+						bean.setSeatingCapacity((String) li[4]);
+						bean.setSeatsavailable((String) li[5]);
+						//logger.info("listfeedback List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
+				
 				//BeforeTraining
 				@Override
 				public List<BeforeTraining> listBeforeTraining() {
@@ -1624,6 +1645,8 @@ System.out.println("list "+list);
 					}
 					return resulList;
 				}	
+				
+				
 				
 				
 		}

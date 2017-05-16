@@ -196,13 +196,13 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 		personalInformationTrainee.setGender(registrationFormTrainee.getGender() == null ? "" : registrationFormTrainee.getGender().trim());
 		personalInformationTrainee.setEmail(registrationFormTrainee.getEmail() == null ? "" : registrationFormTrainee.getEmail().trim());
 		personalInformationTrainee.setMobile(registrationFormTrainee.getMobile() == null ? "" : registrationFormTrainee.getMobile().trim());		
-		personalInformationTrainee.setCorrespondenceAddress1(registrationFormTrainee.getCorrespondenceAddress1() == null ? "" : registrationFormTrainee.getCorrespondenceAddress1().trim());
-		personalInformationTrainee.setCorrespondenceAddress2(registrationFormTrainee.getCorrespondenceAddress2() == null ? "" : registrationFormTrainee.getCorrespondenceAddress2().trim());
+	/*	personalInformationTrainee.setCorrespondenceAddress1(registrationFormTrainee.getCorrespondenceAddress1() == null ? "" : registrationFormTrainee.getCorrespondenceAddress1().trim());
+		personalInformationTrainee.setCorrespondenceAddress2(registrationFormTrainee.getCorrespondenceAddress2() == null ? "" : registrationFormTrainee.getCorrespondenceAddress2().trim());*/
 	//	personalInformationTrainee.setCorrespondenceState(cs);
 		//personalInformationTrainee.setCorrespondenceDistrict(cd);
 		//personalInformationTrainee.setCorrespondenceCity(cc);
-		personalInformationTrainee.setCorrespondencePincode(registrationFormTrainee.getCorrespondencePincode() == null ? "" : registrationFormTrainee.getCorrespondencePincode().trim());
-		personalInformationTrainee.setFatherName(registrationFormTrainee.getFatherName() == null ? "" : registrationFormTrainee.getFatherName().trim());
+		/*personalInformationTrainee.setCorrespondencePincode(registrationFormTrainee.getCorrespondencePincode() == null ? "" : registrationFormTrainee.getCorrespondencePincode().trim());
+		personalInformationTrainee.setFatherName(registrationFormTrainee.getFatherName() == null ? "" : registrationFormTrainee.getFatherName().trim());*/
 		
 		
 		
@@ -212,7 +212,7 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 		//	personalInformationTrainee.setResState(cs);
 		//	personalInformationTrainee.setResCity(cc);
 		//  personalInformationTrainee.setResidentialDistrict(cd);
-			personalInformationTrainee.setResPincode(registrationFormTrainee.getCorrespondencePincode() == null ? "" : registrationFormTrainee.getCorrespondencePincode().trim());
+		/*	personalInformationTrainee.setResPincode(registrationFormTrainee.getCorrespondencePincode() == null ? "" : registrationFormTrainee.getCorrespondencePincode().trim());*/
 			//personalInformationTrainee.setCheckPermanent("true");
 		}else{
 			personalInformationTrainee.setResidentialLine1(registrationFormTrainee.getResidentialAddressLine1() == null ? "" : registrationFormTrainee.getResidentialAddressLine1().trim());
@@ -220,7 +220,7 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 		//	personalInformationTrainee.setResState(ps);
 		//	personalInformationTrainee.setResCity(pc);
 		//	personalInformationTrainee.setResidentialDistrict(pd);
-			personalInformationTrainee.setResPincode(registrationFormTrainee.getResPincode() == null ? "" : registrationFormTrainee.getResPincode().trim());
+			/*personalInformationTrainee.setResPincode(registrationFormTrainee.getResPincode() == null ? "" : registrationFormTrainee.getResPincode().trim());*/
 			//personalInformationTrainee.setCheckPermanent("false");
 			}
 		

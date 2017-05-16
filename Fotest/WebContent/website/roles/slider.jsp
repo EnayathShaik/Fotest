@@ -28,7 +28,7 @@
                         <li class="dropdown active">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Enrollment<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li class="hov"><a href="course-enrollment-gen.html" class="clr">General</a></li>
+                                <li class="hov"><a href="GeneralCourseEnrollment.fssai" class="clr">General</a></li>
                                 <li class="hov"><a href="course-enrollment-lc.html" class="clr">LC-MS/MS</a></li>
                                 <li class="hov"><a href="course-enrollment-Gc.html" class="clr">GC-MS/MS</a></li>
                                 <li class="hov"><a href="course-enrollment-icp.html" class="clr" style="margin-bottom: 1px;">ICP-MS</a></li>

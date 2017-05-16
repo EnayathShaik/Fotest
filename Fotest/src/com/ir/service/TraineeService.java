@@ -20,6 +20,7 @@ import com.ir.form.MarkAttendanceForm;
 
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.generalCourseEnrollmentForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CheckAadhar;
@@ -196,13 +197,18 @@ public List<FeedbackForm> listFeedback();
 	 
 public List<CertificationForm> listcertification();
 
+//General Course listgeneralCourseEnrollment
 
-public List<BeforeTraining> listBeforeTraining();
+	public	List<generalCourseEnrollmentForm> listgeneralCourseEnrollment(generalCourseEnrollmentForm p);
+
+	public List<BeforeTraining> listBeforeTraining();
 
 
-public List<AfterTraining> listAfterTraining();
+	public List<AfterTraining> listAfterTraining();
 
-public List<PrintAdmitCard> listPrintAdmitCard();
+	public List<PrintAdmitCard> listPrintAdmitCard();
+		
+	
 	
 	
 	

@@ -1,41 +1,4 @@
-
- <%@ include file="/website/TraineeRegisterationDetails.jsp" %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%-- <%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="cs" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="website/js/jquery-2.1.0.min.js"></script>
@@ -77,7 +40,7 @@
 	 if(isUpdate !=null && isUpdate== "Y"){
 		 alert("Update Your Details");
 		 var name = '${PersonalInformationTrainee.firstName}';
-		$("#logId").val('${PersonalInformationTrainee.loginDetails.id}');
+		/* $("#logId").val('${PersonalInformationTrainee.loginDetails.id}');
 		$("#correspondenceState").val('${PersonalInformationTrainee.correspondenceState}');
 		$("#correspondenceState").trigger("change");
         window.setTimeout(function() {
@@ -92,7 +55,7 @@
         $("#resCity").val('');
         $("#ResidentialLine1").val('');
         $("#ResidentialLine2").val('');
-		 $("#createUpdateBtn").val("Update");
+		 $("#createUpdateBtn").val("Update"); */
 		$("#captcha").css("display" , "none");
 		 $("#chkunit").css("display" , "none");
 		 $("#check").attr("checked","checked");
@@ -104,7 +67,7 @@
 		 flatpickr("#dob" ,{});	
 		
 	 		 
-		 		$('#sameAddr').change(function(){
+		 		/* $('#sameAddr').change(function(){
 		 			
 		 			if(this.checked){
 		 				$("#resState").val($("#correspondenceState").val());
@@ -133,7 +96,7 @@
 		 				
 		 			}
 		 		 
-		 		}); 		  
+		 		}); 	 */	  
 		 		
  
 		 
@@ -148,7 +111,7 @@
 <body>
 	 
 	<cf:form action="PersonalInformationTraineeAdd.fssai" name="myForm" method="POST"
-		commandName="PersonalInformationTrainee"  onsubmit="return validateFields();">
+		commandName="PersonalInformationTrainee">
 
   <section>
         <div class="container">
@@ -171,27 +134,36 @@
 
 										<cf:input type="hidden" path="id"/>
                                     
-                                        <div class="form-group">
-                                            <div>
-                                                <ul class="lab-no">
-                                                    <li class="style-li"><strong>User Type:</strong></li> <li class="style-li error-red"> * </li>
-                                                     <!--  valid -->
-                                                            <li id="userTypeErr" style="display:none;" class="style-li error-red" >User Type can not be blank.</li>
-                                                   
-                                                </ul>
-                                            </div>
-                                          	<cf:select path="userType" class="form-control">
-													<cf:option value="" label="Select User Type" />
-													<cf:options items="${userType}" />
-												</cf:select>
-                                        </div>
+                                         <div class="form-group">
+                                              <div>
+                                                  <ul class="lab-no">
+                                                   <li class="style-li"><strong>User Id:</strong></li><li class="style-li error-red"> * </li>
+                                                   <!--  valid -->
+                                                  <!-- <li id="userIdErr" style="display:none;" class="style-li error-red" >User Id can not be blank.</li> -->
+                                            
+                                                 </ul>
+                                             </div>
+                                           <cf:input type="text" path="userId" class="form-control" placeholder="User ID"/>
+                                         </div>
 
+                                <div class="form-group">
+                                    <div>
+                                        <ul class="lab-no">
+                                            <li class="style-li"><strong>Date of Birth:</strong></li> <li class="style-li error-red"> * </li>
+                                             <!--  valid -->
+                                          <!--   <li id="dobErr" style="display:none;" class="style-li error-red" >Date of Birth can not be blank.</li> -->
+                                           
+                                        </ul>
+                                    </div>
+                                    <cf:input type="text" path="dob" id="dob" name="dob" class="form-control"/>
+                                </div>
+                                
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Aadhar Number:</strong></li><li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                            <li id="AadharNumberErr" style="display:none;" class="style-li error-red" >Aadhar Number can not be blank.</li>
+                                            <!-- <li id="AadharNumberErr" style="display:none;" class="style-li error-red" >Aadhar Number can not be blank.</li> -->
                                             <li class="style-li error-red">
                                             <span id="aadhar_status" ></span>
 									
@@ -201,32 +173,6 @@
                                     onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                       onblur="ck_aadhar('personalinformationtrainee');" />
                                 </div>
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Emp Id:</strong></li><li class="style-li error-red"> * </li>
-                                              <!--  valid -->
-                                            <li id="empIDErr" style="display:none;" class="style-li error-red" >Emp Id can not be blank.</li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <cf:input type="text" path="empID" class="form-control" placeholder="Emp ID"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Date of Birth:</strong></li> <li class="style-li error-red"> * </li>
-                                             <!--  valid -->
-                                            <li id="dobErr" style="display:none;" class="style-li error-red" >Date of Birth can not be blank.</li>
-                                           
-                                        </ul>
-                                    </div>
-                                    <cf:input type="text" path="dob" id="dob" name="dob" class="form-control"/>
-                                </div>
-
-
 
                                 <div class="form-group">
                                     <div>
@@ -241,7 +187,7 @@
 									<cf:radiobutton path="gender" value="F" />Female
                                 </div>
 
-                                <div class="form-group">
+                                <%-- <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Induction Training Completed:</strong></li>
@@ -252,7 +198,7 @@
                                           <cf:radiobutton
 										path="inductionTrainee" value="Y" checked="true" />Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<cf:radiobutton path="inductionTrainee" value="N" />No
-                                </div>
+                                </div> --%>
 
                             </div>
                             <!-- left side ends -->
@@ -265,7 +211,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Title:</strong></li>
                                             <!--  valid -->
-                                            <li id="titleErr" style="display:none;" class="style-li error-red" >Title can not be blank.</li>
+                                          <!--   <li id="titleErr" style="display:none;" class="style-li error-red" >Title can not be blank.</li> -->
                                             <li class="style-li error-red"> * </li>
                                         </ul>
                                     </div>
@@ -280,7 +226,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>First Name:</strong></li> <li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                                            <li id="firstNameErr" style="display:none;" class="style-li error-red" >First Name can not be blank.</li>
+                                                            <!-- <li id="firstNameErr" style="display:none;" class="style-li error-red" >First Name can not be blank.</li> -->
                                            
                                         </ul>
                                     </div>
@@ -293,7 +239,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Middle Name:</strong></li> <li class="style-li error-red"> </li>
                                              <!--  valid -->
-                                                            <li id="MiddleNameErr" style="display:none;" class="style-li error-red" >Middle Name can not be blank.</li>
+                                                          <!--   <li id="MiddleNameErr" style="display:none;" class="style-li error-red" >Middle Name can not be blank.</li> -->
                                            
                                         </ul>
                                     </div>
@@ -306,55 +252,21 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Last Name:</strong></li><li class="style-li error-red"> </li>
                                              <!--  valid -->
-                                                            <li id="LastNameErr" style="display:none;" class="style-li error-red" >Last Name can not be blank.</li>
+                                                            <!-- <li id="LastNameErr" style="display:none;" class="style-li error-red" >Last Name can not be blank.</li> -->
                                             
                                         </ul>
                                     </div>
                                     <cf:input type="text" path="LastName" class="form-control" placeholder="Last Name"
                                     onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
                                 </div>
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Father's Name:</strong></li> <li class="style-li error-red"> * </li>
-                                             <!--  valid -->
-                                             <li id="FatherNameErr" style="display:none;" class="style-li error-red" >Father Name can not be blank.</li>
-                                           
-                                        </ul>
-                                    </div>
-                                    <cf:input type="text" path="FatherName" class="form-control" placeholder="Father's Name"
-                                    onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
-                                </div>
-                                
-                                
-                                      <div class="form-group" style="display:none;" id="statusDIV" >
-                                                                <div>
-                                                                    <ul class="lab-no">
-                                                                        <li class="style-li"><strong>Approved Trainee As:</strong></li>
-                                                                        <li class="style-li error-red">
-                                                                            <cf:errors path="status" cssClass="error" />
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <cf:select path="status" class="form-control">
-                                                                    <cf:option value="A" label="Active" />
-                                                                    <cf:option value="I" label="In-Active" />
-                                                                </cf:select>
-
-                                                            </div>
-
-
-
+                               
                             </div>
                             <!-- right side ends -->
                         </fieldset>
-
-
-
 
                         <!-- Correspondence Address -->
                         <fieldset>
-                            <legend>Correspondence Address</legend>
+                            <legend>Contact Details</legend>
 
                             <!-- form field starts here -->
 
@@ -364,150 +276,11 @@
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>Correspondence Address Line 1:</strong></li> <li class="style-li error-red"> * </li>
+                                            <li class="style-li"><strong>Residence Address Line1:</strong></li> <li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                             <li id="correspondenceAddress1Err" style="display:none;" class="style-li error-red" >correspondence Address can not be blank.</li>
+                                            <!--  <li id="ResidentialLine1Err" style="display:none;" class="style-li error-red" >correspondence Address can not be blank.</li> -->
                                            
                                         </ul>
-                                    </div>
-                                    <cf:input type="text" path="correspondenceAddress1" class="form-control" placeholder="Address" required=""/>
-                                </div>
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Correspondence Address Line 2:</strong></li> <li class="style-li error-red"> </li>
-                                             <!--  valid -->
-                                            <!--  <li id="correspondenceAddress2Err" style="display:none;" class="style-li error-red" >correspondence Address can not be blank.</li> -->
-                                           
-                                        </ul>
-                                    </div>
-                                    <cf:input type="text" path="correspondenceAddress2" class="form-control" placeholder="Address" required=""/>
-                                </div>
-
-
-
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>State:</strong></li><li class="style-li error-red"> * </li>
-                                            <!--  valid -->
-                                             <li id="correspondenceStateErr" style="display:none;" class="style-li error-red" >correspondence State can not be blank.</li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <cf:select path="correspondenceState" class="form-control" onchange="getDistrict(this.value , 'correspondenceDistrict')">
-                                	<cf:option value="0" label="Select state Name" />
-									<cf:options items="${listStateMaster}" itemValue="stateId" itemLabel="stateName"/>
-                                    </cf:select>
-                                </div>
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Email:</strong></li> <li class="style-li error-red"> * </li>
-                                            <!--  valid -->
-                                            <li id="EmailErr" style="display:none;" class="style-li error-red" >Email can not be blank.</li>
-                                           
-                                        </ul>
-                                    </div>
-                  
-                                    <cf:input type="text" path="Email" class="form-control" placeholder="Email" onblur="emailVal(this.id,this.value)" required=""/>
-                                </div>
-
-                            </div>
-                            <!-- left side ends -->
-
-                            <!-- right side -->
-                            <div class="col-md-6 col-xs-12">
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>District:</strong></li>  <li class="style-li error-red"> * </li>
-                                             <!--  valid -->
-                                            <li id="correspondenceDistrictErr" style="display:none;" class="style-li error-red" >District can not be blank.</li>
-                                          
-                                        </ul>
-                                    </div>
-                                    <cf:select path="correspondenceDistrict" class="form-control" onchange="getCity(this.value , 'correspondenceCity')">
-                                     <cf:option value="0" label="select District"></cf:option>
-                                    </cf:select>
-                                </div>
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>City:</strong></li> <li class="style-li error-red"> * </li>
-                                            <!--  valid -->
-                                            <li id="correspondenceCityErr" style="display:none;" class="style-li error-red" >City can not be blank.</li>
-                                           
-                                        </ul>
-                                    </div>
-                                    <cf:select path="correspondenceCity" class="form-control">
-                                    
-                                    </cf:select>
-                                </div>
-
-
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Pin Code:</strong></li> <li class="style-li error-red"> * </li>
-                                           <!--  valid -->
-                                            <li id="correspondencePincodeErr" style="display:none;" class="style-li error-red" >Pin code can not be blank.</li>
-                                           
-                                        </ul>
-                                    </div>
-                                    <cf:input type="text" path="correspondencePincode" class="form-control"  minlength="6"  maxlength="6" placeholder="Pin Code" required=""
-                                    onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Mobile:</strong></li> <li class="style-li error-red"> * </li>
-                                              <!--  valid -->
-                                            <li id="mobileErr" style="display:none;" class="style-li error-red" >Mobile can not be blank.</li>
-                                           
-                                        </ul>
-                                    </div>
-                                
-                                     <cf:input type="text" path="mobile" class="form-control" minlength="10"  maxlength="10" placeholder="Mobile Number" required=""
-                                     onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
-                                    
-                                </div>
-
-
-                            </div>
-                            <!-- right side ends -->
-                        </fieldset>
-                        <!-- Correspondence address ends -->
-
-
-                        <!-- permanent Address -->
-                        <fieldset>
-                            <legend>Permanent Address</legend>
-
-                            <!-- form field starts here -->
-
-                            <div class="col-xs-12">
-                                <label class="checkbox-inline">
-                                    <input id="sameAddr" type="checkbox"/>Is your permanent address same as correspondence address. </label>
-
-                            </div>
-
-                            <!-- left side -->
-                            <div class="col-md-6 col-xs-12">
-
-                                <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Permanent Address Line 1:</strong></li>
-                                            <li id="ResidentialLine1Err" style="display:none;" class="style-li error-red" >Correspondence Address can not be blank.</li>
-                                       </ul>
                                     </div>
                                     <cf:input type="text" path="ResidentialLine1" class="form-control" placeholder="Address" required=""/>
                                 </div>
@@ -515,9 +288,11 @@
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>Permanent Address Line 2:</strong></li>
-                                             <li id="ResidentialLine2Err" style="display:none;" class="style-li error-red" >Correspondence Address can not be blank.</li>
-                                       </ul>
+                                            <li class="style-li"><strong>Residence Address Line2:</strong></li> <li class="style-li error-red"> </li>
+                                             <!--  valid -->
+                                            <!--  <li id="correspondenceAddress2Err" style="display:none;" class="style-li error-red" >correspondence Address can not be blank.</li> -->
+                                           
+                                        </ul>
                                     </div>
                                     <cf:input type="text" path="ResidentialLine2" class="form-control" placeholder="Address" required=""/>
                                 </div>
@@ -528,16 +303,31 @@
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>State:</strong></li>
-                                            <li id="resStateErr" style="display:none;" class="style-li error-red" >State can not be blank.</li>
-                                       </ul>
+                                            <li class="style-li"><strong>State:</strong></li><li class="style-li error-red"> * </li>
+                                            <!--  valid -->
+                                            <!--  <li id="correspondenceStateErr" style="display:none;" class="style-li error-red" >correspondence State can not be blank.</li> -->
+                                            
+                                        </ul>
                                     </div>
-                                   <cf:select path="resState" class="form-control" onchange="getDistrict(this.value , 'residentialDistrict')">
-                                        <cf:option value="0" label="Select state Name" />
+                                    <cf:select path="correspondenceState" class="form-control" onchange="getDistrict(this.value , 'correspondenceDistrict')">
+                                	<cf:option value="0" label="Select state Name" />
 									<cf:options items="${listStateMaster}" itemValue="stateId" itemLabel="stateName"/>
                                     </cf:select>
                                 </div>
-
+                                
+                                <div class="form-group">
+                                    <div>
+                                        <ul class="lab-no">
+                                            <li class="style-li"><strong>District:</strong></li>  <li class="style-li error-red"> * </li>
+                                             <!--  valid -->
+                                            <!-- <li id="correspondenceDistrictErr" style="display:none;" class="style-li error-red" >District can not be blank.</li> -->
+                                          
+                                        </ul>
+                                    </div>
+                                    <cf:select path="correspondenceDistrict" class="form-control" onchange="getCity(this.value , 'correspondenceCity')">
+                                     <cf:option value="0" label="select District"></cf:option>
+                                    </cf:select>
+                                </div>
 
                             </div>
                             <!-- left side ends -->
@@ -548,45 +338,291 @@
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>District:</strong></li>
-                                             <li id="residentialDistrictErr" style="display:none;" class="style-li error-red" >District can not be blank.</li>
-                                       </ul>
+                                            <li class="style-li"><strong>Closest City:</strong></li> <li class="style-li error-red"> * </li>
+                                            <!--  valid -->
+                                            <!-- <li id="correspondenceCityErr" style="display:none;" class="style-li error-red" >City can not be blank.</li> -->
+                                           
+                                        </ul>
                                     </div>
-                                   <cf:select path="residentialDistrict" class="form-control" onchange="getCity(this.value , 'resCity')">
-                                        
+                                    <cf:select path="correspondenceCity" class="form-control">
+                                    
                                     </cf:select>
                                 </div>
-
+                                
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>City:</strong></li>
-                                              <li id="resCityErr" style="display:none;" class="style-li error-red" >City can not be blank.</li>
-                                       </ul>
+                                            <li class="style-li"><strong>Email:</strong></li> <li class="style-li error-red"> * </li>
+                                            <!--  valid -->
+                                            <!-- <li id="EmailErr" style="display:none;" class="style-li error-red" >Email can not be blank.</li> -->
+                                           
+                                        </ul>
                                     </div>
-                                   <cf:select path="resCity" class="form-control">
-                                      
-                                    </cf:select>
+                  
+                                    <cf:input type="text" path="Email" class="form-control" placeholder="Email" onblur="emailVal(this.id,this.value)" required=""/>
                                 </div>
-
-
-
+                                
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>Pin Code:</strong></li>
-                                                <li id="resPincodeErr" style="display:none;" class="style-li error-red" >Pin code can not be blank.</li>
-                                      </ul>
+                                            <li class="style-li"><strong>Mobile:</strong></li> <li class="style-li error-red"> * </li>
+                                              <!--  valid -->
+                                            <!-- <li id="mobileErr" style="display:none;" class="style-li error-red" >Mobile can not be blank.</li> -->
+                                           
+                                        </ul>
                                     </div>
-                                    <cf:input type="text" path="resPincode" class="form-control"  minlength="6"  maxlength="6" placeholder="Pin Code" 
-                                    onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" required=""/>
+                                
+                                     <cf:input type="text" path="mobile" class="form-control" minlength="10"  maxlength="10" placeholder="Mobile Number" required=""
+                                     onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
+                                    
+                                </div>
+
+                                <%-- <div class="form-group">
+                                    <div>
+                                        <ul class="lab-no">
+                                            <li class="style-li"><strong>Pin Code:</strong></li> <li class="style-li error-red"> * </li>
+                                           <!--  valid -->
+                                            <li id="correspondencePincodeErr" style="display:none;" class="style-li error-red" >Pin code can not be blank.</li>
+                                           
+                                        </ul>
+                                    </div>
+                                    <cf:input type="text" path="correspondencePincode" class="form-control"  minlength="6"  maxlength="6" placeholder="Pin Code" required=""
+                                    onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
+                                </div> --%>
+
+                                
+
+
+                            </div>
+                            <!-- right side ends -->
+                        </fieldset>
+                        <!-- Correspondence address ends -->
+
+
+                        <!-- permanent Address -->
+                        <fieldset>
+                            <legend>Qualification Details</legend>
+
+                            <!-- left side -->
+                            <div class="col-md-6 col-xs-12">
+
+                               <div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Qualification Category:</strong></li>
+											<li class="style-li error-red">*</li>
+											<li id="qualificationCategoryErr" style="display: none;"
+												class="style-li error-red">Please Qualification Category.</li>
+										</ul>
+									</div>
+									
+									<cf:select path="qualificationCategory" class="form-control">
+										<cf:option value="" label="Select Qualification Category" />
+										<cf:options items="${QualCategoryMap}" />
+									</cf:select>
+								</div>
+								
+								         <div class="form-group">
+                                              <div>
+                                                  <ul class="lab-no">
+                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> * </li>
+                                                   <!--  valid -->
+                                                 <!--  <li id="other1Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> -->
+                                            
+                                                 </ul>
+                                             </div>
+                                           <cf:input type="text" path="other1" class="form-control" placeholder="Others"/>
+                                         </div>
+                            </div>
+                            <!-- left side ends -->
+
+                            <!-- right side -->
+                            <div class="col-md-6 col-xs-12">
+
+                                <div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Qualification Sub Category:</strong></li>
+											<li class="style-li error-red">*</li>
+											<li id="qsubCategoryErr" style="display: none;"
+												class="style-li error-red">Please Qualification Sub Category.</li>
+										</ul>
+									</div>
+									
+									 <cf:select path="qsubCategory" class="form-control">
+										<cf:option value="" label="Select Qualification sub Category" />
+										<cf:options items="${SubQualCategoryMap}" />
+									</cf:select> 
+								</div>
+
+                                 <div class="form-group">
+                                              <div>
+                                                  <ul class="lab-no">
+                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> * </li>
+                                                   <!--  valid -->
+                                                  <li id="other2Err" style="display:none;" class="style-li error-red" >others can not be blank.</li>
+                                            
+                                                 </ul>
+                                             </div>
+                                           <cf:input type="text" path="other2" class="form-control" placeholder="Others"/>
+                                </div>
+
+                            <!-- right side ends -->
+                        </fieldset>
+                        <!-- Permanent address ends -->
+                         <fieldset>
+                            <legend>Experience Details</legend>
+                             <!-- left side -->
+                            <div class="col-md-6 col-xs-12">
+                            
+                            <div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Total Work Experience</strong></li>
+											<li class="style-li error-red"></li>
+											
+											 <li id="expInYearErr" style="display:none;" class="style-li error-red" >Exp. in YEAR can not be blank.</li>
+										     <li id="expInMonthErr" style="display:none;" class="style-li error-red" >Exp. in MONTH can not be blank.</li>
+										 
+										</ul>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+										<%-- <cf:input type="text" path="expInYear" class="form-control" placeholder="Others"/> --%>
+											 <cf:select path="expInYear" class="form-control">
+												<cf:option value="0" label="Select Exp in Year" />
+												<cf:options items="${ExpInYearMap}" /> 
+											</cf:select> 
+										</div>
+										<div class="col-xs-6">
+                                
+											 <cf:select path="expInMonth" class="form-control">
+												<cf:option value="0" label="Select Exp in Month" />
+												<cf:options items="${ExpInMonthMap}" />
+											</cf:select> 
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Relevant Lab Experience</strong></li>
+											<li class="style-li error-red"></li>
+											
+											 <li id="rexpInYearErr" style="display:none;" class="style-li error-red" >Relevant exp. in YEAR can not be blank.</li>
+										     <li id="rexpInMonthErr" style="display:none;" class="style-li error-red" >Relevant exp. in MONTH can not be blank.</li>
+										 
+										</ul>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											 <cf:select path="rexpInYear" class="form-control">
+												<cf:option value="0" label="Select Exp in Year" />
+												<cf:options items="${ExpInYearMap}" />
+											</cf:select>
+											
+										</div>
+										<div class="col-xs-6">
+
+											 <cf:select path="rexpInMonth" class="form-control">
+												<cf:option value="0" label="Select Exp in Month" />
+												<cf:options items="${ExpInMonthMap}" />
+											</cf:select> 
+											
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Employer Category:</strong></li>
+											<li class="style-li error-red">*</li>
+											<li id="qsubCategoryErr" style="display: none;"
+												class="style-li error-red">Please Employer Category.</li>
+										</ul>
+									</div>
+									 <cf:select path="employerCategory" class="form-control">
+										<cf:option value="" label="Select Employer Category" />
+										<cf:options items="${employerCategoryMap}" />
+									</cf:select>
+									 
+								</div>
+								
+								 <div class="form-group">
+                                              <div>
+                                                  <ul class="lab-no">
+                                                   <li class="style-li"><strong>Current Organization:</strong></li><li class="style-li error-red"> * </li>
+                                                   <!--  valid -->
+                                                  <li id="currentOrganizationErr" style="display:none;" class="style-li error-red" >current Organization can not be blank.</li>
+                                            
+                                                 </ul>
+                                             </div>
+                                           <cf:input type="text" path="currentOrganization" class="form-control" placeholder="current Organization"/>
+                                         </div>
+                              </div>
+                               <!-- left side ends -->
+
+                            <!-- right side -->
+                            <div class="col-md-6 col-xs-12">
+                            
+                               <div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Designation:</strong></li>
+											<li class="style-li error-red">*</li>
+											<li id="designationErr" style="display: none;"
+												class="style-li error-red">Please select Designation.</li>
+										</ul>
+									</div>
+									<cf:select path="designation" class="form-control">
+										<cf:option value="" label="Select designation" />
+										<cf:options items="${designationMap}" />
+									</cf:select> 
+									 
+								</div>
+								 <div class="form-group">
+                                              <div>
+                                                  <ul class="lab-no">
+                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> * </li>
+                                                   <!--  valid -->
+                                                  <li id="other3Err" style="display:none;" class="style-li error-red" >others can not be blank.</li>
+                                            
+                                                 </ul>
+                                             </div>
+                                           <cf:input type="text" path="other3" class="form-control" placeholder="Others"/>
+                                </div>
+                                
+                                 <div class="form-group">
+                                              <div>
+                                                  <ul class="lab-no">
+                                                   <li class="style-li"><strong>Job Description:</strong></li><li class="style-li error-red"> * </li>
+                                                   <!--  valid -->
+                                                  <li id="jobDescriptionErr" style="display:none;" class="style-li error-red" >others can not be blank.</li>
+                                            
+                                                 </ul>
+                                             </div>
+                                          
+                                            <cf:textarea class="form-control" path="jobDescription" placeholder="Enter Your Message (250 Words)" />
+                                </div>
+                                
+                                <div class="form-group">
+                                              <div>
+                                                  <ul class="lab-no">
+                                                   <li class="style-li"><strong>Training program undergone in the past:</strong></li>
+                                                   <li class="style-li error-red"> * </li>
+                                                   <!--  valid -->
+                                                  <li id="trProgramErr" style="display:none;" class="style-li error-red" >others can not be blank.</li>
+                                            
+                                                 </ul>
+                                             </div>
+                                           
+                                           <cf:textarea class="form-control" path="trProgram" placeholder="Enter Your Message (250 Words)" />
                                 </div>
                             </div>
                             <!-- right side ends -->
                         </fieldset>
-                        <!-- Permanent address ends -->
-
-
                         <!-- captcha -->
                        <fieldset id="captcha">
                             <div class="col-md-2 col-xs-12"></div>
@@ -614,7 +650,6 @@
 					</div>
 					<div id="chkunit" style="float: left; width: 99%;">
 						<input type="checkbox" id="check"   style="margin-left: 1%;">
-						<a href="#" target="_blank" class="terms-font-size"> 
 						I have read and understood the Terms & Conditions and the Privacy
 						Policy of FSSAI.
 						</a>
@@ -653,7 +688,7 @@
    <script>
    
    
-   function validateFields(){
+   /* function validateFields(){
 	   var isUpdate = '${isUpdate}';
 
    	 //alert($("#userType").val());
@@ -688,7 +723,7 @@
    		return false;
    	 } else if($("#AadharNumber").val().match(/^[0-9]{12}$/) == null){
  		/* alert("Please Enter 12 digit Adhar number"); */
- 		 $("#AadharNumberErr").css("display" , "block");
+ 		/* $("#AadharNumberErr").css("display" , "block");
  	     return false;
    	 }else if($("#empID").val() == ''){
    		 $("#empIDErr").css("display" , "block");
@@ -788,10 +823,9 @@
    function removeSpaces(string) {
        return string.split(' ').join('');
    }
-
+ */
  
 
 
    
    </script>
-	 --%>

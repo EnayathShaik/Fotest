@@ -26,6 +26,7 @@ import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.generalCourseEnrollmentForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CheckAadhar;
@@ -392,7 +393,14 @@ public class TraineeServiceImpl implements TraineeService {
 				// TODO Auto-generated method stub
 				return this.traineeDAO.listonlineTraining();
 			}
-
+/*
+		@Override
+		@Transactional
+		public List<AssessmentQuestionForm> listingAssessmentQuestion(
+				AssessmentQuestionForm assesQuestionForm , int id) {
+			// TODO Auto-generated method stub
+			return this.traineeDAO.listingAssessmentQuestion( assesQuestionForm, id);
+		}*/
 			//certification
 			@Override
 			@Transactional
@@ -409,8 +417,12 @@ public class TraineeServiceImpl implements TraineeService {
 				return this.traineeDAO.listFeedback();
 			}
 	
-	
-
+			@Override
+			@Transactional
+			public List<generalCourseEnrollmentForm> listgeneralCourseEnrollment(generalCourseEnrollmentForm p) {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listgeneralCourseEnrollment(p);
+			}
 			@Override
 			@Transactional
 			public List<BeforeTraining> listBeforeTraining() {
@@ -431,7 +443,6 @@ public class TraineeServiceImpl implements TraineeService {
 				// TODO Auto-generated method stub
 				return this.traineeDAO.listPrintAdmitCard();
 			}
-		
 
 		
 

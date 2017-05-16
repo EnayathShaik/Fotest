@@ -1297,8 +1297,11 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/Certification.jsp" />
 	</definition>
-
-   <definition name="beforeTraining" extends="base.user.afterLogin">
+	<definition name="GeneralCourseEnrollment" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainee/GeneralCourseEnrollment.jsp" />
+	</definition>
+ <definition name="beforeTraining" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/beforeTraining.jsp" />
 	</definition>
@@ -1310,4 +1313,5 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/printAdmitCard.jsp" />
 	</definition>
+   
 </tiles-definitions>

@@ -289,4 +289,35 @@ public class ListConstant {
         auserTypeMap.put("Others", "Others");
         SubQualCategoryMap = Collections.unmodifiableMap(auserTypeMap);
     }
+    
+    //employer catagry
+    public static final Map<String, String> employerCategoryMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("Central gov", "Central gov");
+        auserTypeMap.put("State gov", "State gov");
+        auserTypeMap.put("private", "private");
+        auserTypeMap.put("Municipality", "Municipality");
+        employerCategoryMap = Collections.unmodifiableMap(auserTypeMap);
+    }
+    
+  //designation
+    public static final Map<String, String> designationMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("Junior scientist", "Junior scientist");
+        auserTypeMap.put("Senior scientist", "Senior scientist");
+        auserTypeMap.put("other", "other");
+        designationMap = Collections.unmodifiableMap(auserTypeMap);
+    }
+    
+    //Training Lab
+    public static final Map<String, String> trainingLabMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("Lorem", "Lorem");
+        auserTypeMap.put("Lorem", "Lorem");
+        trainingLabMap = Collections.unmodifiableMap(auserTypeMap);
+    }
+    
 }

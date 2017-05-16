@@ -126,6 +126,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 				<value>com.ir.model.RegionMaster</value>
 				<value>com.ir.model.LoginDetails</value>
 				<value>com.ir.model.ManageTraining</value>
+				<value>com.ir.model.PersonalInformationTrainee</value>
 			<!-- 	<value>com.ir.model.AdminUserManagement</value>
 				<value>com.ir.model.ManageTrainingPartner</value>
 				<value>com.ir.model.FeedbackMaster</value>
