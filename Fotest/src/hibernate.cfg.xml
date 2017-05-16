@@ -102,7 +102,7 @@
 	
 		<mapping class="com.ir.model.ManageCourseCarricullum" />
 		<!-- <mapping class="com.ir.model.FotestAssessmentQuestions" /> -->
-
+<mapping class="com.ir.model.PersonalInformationTrainer"/>
 	<mapping class="com.ir.model.RegionMapping" />
 	<mapping class="com.ir.model.FeedbackMaster" />
 	</session-factory>
