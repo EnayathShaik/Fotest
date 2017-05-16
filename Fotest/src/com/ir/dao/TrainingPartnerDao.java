@@ -10,6 +10,7 @@ import com.ir.form.TrainingCalendarForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
+import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
@@ -101,6 +102,7 @@ public interface TrainingPartnerDao {
 	public List editMTP(String data);
 	
 	public String updateMTP(String data);
+	public String addTrainingPartner(PersonalInformationTrainingPartner p);
 	
-	
+	public String updateTrainingPartner(PersonalInformationTrainingPartner p);
 }

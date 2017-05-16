@@ -1,5 +1,6 @@
 package com.ir.dao.impl;
 
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +33,9 @@ import com.ir.model.CourseEnrolledUser;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
 import com.ir.model.District;
+import com.ir.model.LoginDetails;
 import com.ir.model.ManageCourseContent;
+import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
@@ -41,7 +44,11 @@ import com.ir.model.TraineeDailyAttendance;
 import com.ir.model.TrainingCalendar;
 import com.ir.model.TrainingCalendarHistoryLogs;
 import com.ir.model.Utility;
+import com.ir.service.AdminService;
+import com.ir.service.PageLoadService;
 import com.ir.util.ChangePasswordUtility;
+import com.ir.util.EncryptionPasswordANDVerification;
+import com.ir.util.PasswordGenerator;
 import com.zentech.logger.ZLogger;
 import com.zentect.ajax.AjaxRequest;
 
@@ -68,6 +75,10 @@ public class TrainingPartnerDaoImpl implements TrainingPartnerDao {
 	@Autowired
 	@Qualifier("changePasswordUtility")
 	public ChangePasswordUtility changePasswordUtility;
+	
+	@Autowired
+	@Qualifier("pageLoadService")
+	public PageLoadService pageLoadService;
 	
 	@Override
 	public CourseType getCourseType(int id){
@@ -619,7 +630,7 @@ public class TrainingPartnerDaoImpl implements TrainingPartnerDao {
 		
 		CourseName courseName = (CourseName) session.load(CourseName.class, trainingCalendarForm.getCourseName());
 		PersonalInformationTrainingPartner personalInformationTrainingPartner = (PersonalInformationTrainingPartner) session.load(PersonalInformationTrainingPartner.class, trainingCalendarForm.getTrainingCenter());
-		tc.setTrainingPartner(personalInformationTrainingPartner.getTrainingPartnerName());
+	//	tc.setTrainingPartner(personalInformationTrainingPartner.getTrainingPartnerName());
 		if(courseName != null && courseName.getCourseCode() != null && courseName.getCourseCode().length() > 1){
 			tc.setBatchCode(courseName.getCourseCode()+"/"+StringUtils.leftPad(String.valueOf(maxId), 5, "0"));
 			tc.setSeqNo(maxId);
@@ -1606,5 +1617,84 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		
 		return newList;
 	}
+
 	
+	///
+
+	@Override
+	public  String updateTrainingPartner(PersonalInformationTrainingPartner p) {
+
+		int id =  p.getId();
+		Session session = sessionFactory.getCurrentSession();
+		PersonalInformationTrainingPartner personalInformationTrainingPartner = (PersonalInformationTrainingPartner) session.load(PersonalInformationTrainingPartner.class, id);
+		
+		personalInformationTrainingPartner.setAvailabiltyAudioVideoRecording(p.getAvailabiltyAudioVideoRecording());
+		personalInformationTrainingPartner.setAvailabiltyOfTVProjector(p.getAvailabiltyOfTVProjector());
+		personalInformationTrainingPartner.setBiologicalFieldValidity(p.getBiologicalFieldValidity());
+		personalInformationTrainingPartner.setChemicalFieldValidity(p.getChemicalFieldValidity());
+		personalInformationTrainingPartner.setClosestCity(p.getClosestCity());
+		personalInformationTrainingPartner.setContactNumber(p.getContactNumber());
+		//personalInformationTrainingPartner.setCreateDate(createDate);
+		personalInformationTrainingPartner.setDesignation(p.getDesignation());
+		personalInformationTrainingPartner.setDistrict(p.getDistrict());
+		personalInformationTrainingPartner.setDob(p.getDob());
+		personalInformationTrainingPartner.setEmailId(p.getEmailId());
+		personalInformationTrainingPartner.setFirstName(p.getFirstName());
+		personalInformationTrainingPartner.setGender(p.getGender());
+		//personalInformationTrainingPartner.setId(id);
+		personalInformationTrainingPartner.setLabAddressLine1(p.getLabAddressLine1());
+		personalInformationTrainingPartner.setLabAddressLine2(p.getLabAddressLine2());
+		personalInformationTrainingPartner.setLabName(p.getLabName());
+		personalInformationTrainingPartner.setLabNotified(p.getLabNotified());
+		personalInformationTrainingPartner.setLastName(p.getLastName());
+		//personalInformationTrainingPartner.setLoginDetails(loginDetails);
+		personalInformationTrainingPartner.setMiddleName(p.getMiddleName());
+		//personalInformationTrainingPartner.setModifyDate(modifyDate);
+		personalInformationTrainingPartner.setNABLStatus(p.getNABLStatus());
+		personalInformationTrainingPartner.setPincode(p.getPincode());
+		personalInformationTrainingPartner.setRegistrationNumber(p.getRegistrationNumber());
+		personalInformationTrainingPartner.setSeatingCapacity(p.getSeatingCapacity());
+		personalInformationTrainingPartner.setState(p.getState());
+		personalInformationTrainingPartner.setTestingFacilities(p.getTestingFacilities());
+		personalInformationTrainingPartner.setTitle(p.getTitle());
+		personalInformationTrainingPartner.setUserId(p.getUserId());
+	
+		
+		session.update(personalInformationTrainingPartner);
+		return "updated";
+	}	
+	
+
+	
+	@Override
+	public  String addTrainingPartner(PersonalInformationTrainingPartner p) {
+
+		PasswordGenerator passwordGenerator = new PasswordGenerator(6);
+		char[] pass = passwordGenerator.get();
+		String passwordString = String.valueOf(pass);
+		
+		Session session = sessionFactory.getCurrentSession();
+		String encryprPassword = null;
+		try{
+			EncryptionPasswordANDVerification encryptionPasswordANDVerification = new EncryptionPasswordANDVerification();
+			encryprPassword = encryptionPasswordANDVerification.encryptPass(passwordString);
+			
+		}catch(NoSuchAlgorithmException e){
+			System.out.println( " no such algo exception error catch ");
+		}
+		
+	System.out.println(	p.getUserId() + " ");
+		String nextSequenceUserID = pageLoadService.getNextCombinationId("TP", "personalinformationtrainingpartner" , "000000");
+		LoginDetails loginDetails = new LoginDetails();
+		loginDetails.setLoginId(nextSequenceUserID);
+		loginDetails.setPassword(passwordString);
+		loginDetails.setEncrypted_Password(encryprPassword);
+		loginDetails.setStatus("A");
+		loginDetails.setProfileId(5);
+		p.setLoginDetails(loginDetails);
+		
+		session.save(p);
+		return passwordString+"&"+nextSequenceUserID;
+	}
+
 }

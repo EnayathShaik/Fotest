@@ -31,6 +31,7 @@ import com.ir.bean.common.StringStringBean;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.GenerateCourseCertificateForm;
+import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TraineeAttendanceForm;
 import com.ir.form.TrainingCalendarForm;
@@ -39,14 +40,17 @@ import com.ir.form.trainingPartner.TrainingPartnerSearchForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
+import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
 import com.ir.model.TrainingPartnerCalendarForm;
 import com.ir.model.TrainingPartnerTrainingCalender;
 import com.ir.model.Utility;
+import com.ir.service.AdminService;
 import com.ir.service.TraineeService;
 import com.ir.service.TrainingPartnerService;
+import com.zentech.backgroundservices.Mail;
 import com.zentech.logger.ZLogger;
 import com.zentect.list.constant.ListConstant;
 
@@ -64,6 +68,10 @@ public class TrainingPartnerController {
 	@Autowired
 	@Qualifier("traineeService")
 	public TraineeService traineeService;
+	
+	@Autowired
+	@Qualifier("adminService")
+	public AdminService adminService;
 
 	
 	public List<PersonalInformationTrainingPartner> trainingCenterList(){
@@ -990,6 +998,92 @@ public class TrainingPartnerController {
 		out.write(result);
 		out.flush();
 		
+	}
+	// Fotest
+	@RequestMapping(value = "/registerpersonalinformationtrainingpartner", method = RequestMethod.GET)
+	public String personalInformationTrainingPartner(
+			@ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartnerForm personalInformationTrainingPartner,
+			HttpServletRequest request, Model model) {
+		System.out.println("PersonalInformationTrainingPartnerForm");
+		Map<String, String> titleMap = lst.titleMap;
+		model.addAttribute("titleMap", titleMap);
+		
+		model.addAttribute("listStateMaster",
+				this.adminService.listStateMaster());
+		model.addAttribute("courseNameMap",
+				lst.courseNameMap);
+	
+		/*String userId = request.getParameter("userId");
+		Map<String, String> userType = lst.userTypeMap;
+		Map<String, String> titleMap = lst.titleMap;
+		Map<String, String> opt = lst.noOfOptionMap;
+		Map<String, String> trainingTypeMap = lst.trainingTypeMap;
+
+		// titleMap
+		model.addAttribute("userType", userType);
+		model.addAttribute("titleMap", titleMap);
+		model.addAttribute("trainingTypeMap", trainingTypeMap);
+		model.addAttribute("ExpInYearMap", opt);
+		model.addAttribute("ExpInMonthMap", opt);
+	//	model.addAttribute("listTrainingPartner",
+		//		adminService.listTrainingPartner());
+		model.addAttribute("listStateMaster",
+				this.adminService.listStateMaster());
+		if (userId != null && Integer.parseInt(userId) > 0) {
+			personalInformationTrainingInstitute = this.traineeService
+					.FullDetailTrainingInstitude(Integer.parseInt(userId));
+			model.addAttribute("PersonalInformationTrainingInstitute",
+					personalInformationTrainingInstitute);
+			model.addAttribute("isUpdate", "Y");
+		} else {
+
+			model.addAttribute("PersonalInformationTrainingInstitute",
+					new PersonalInformationTrainingInstitute());
+
+		}*/
+		model.addAttribute("PersonalInformationTrainingPartnerForm",
+				new PersonalInformationTrainingPartnerForm());
+		return "registerpersonalinformationtrainingpartner";
+	}
+
+	@RequestMapping(value = "/registerpersonalinformationtrainingpartnerAdd", method = RequestMethod.POST)
+	public String addUpdateTrainingPartner(
+			@Valid @ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner p,
+			BindingResult result, Model model) {
+		System.out.println("Add PersonalInformationTrainingPartner");
+		String personalInformationTrainingPartner= null;
+
+		try {
+			if (p.getId() == 0) {
+				personalInformationTrainingPartner = this.trainingPartnerService.addTrainingPartner(p);
+			} else {
+				personalInformationTrainingPartner = this.trainingPartnerService.updateTrainingPartner(p);
+						
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return "registerpersonalinformationtrainingpartner";
+		}
+
+		if (personalInformationTrainingPartner != null
+				&& !personalInformationTrainingPartner
+						.equalsIgnoreCase("updated")) {
+			String[] all = personalInformationTrainingPartner.split("&");
+			model.addAttribute("id", all[1]);
+			model.addAttribute("pwd", all[0]);
+			new Thread(new Mail("Thanks", p.getEmailId(), all[1], all[0], all[1]))
+					.start();
+			return "welcome";
+		} else if (personalInformationTrainingPartner
+				.equalsIgnoreCase("updated")) {
+			return "redirect:/trainingCenterUserManagementForm.fssai";
+
+		} else {
+			return "registerpersonalinformationtrainingpartner";
+		}
+
 	}
 	
 }

@@ -181,7 +181,7 @@ public class RegistrationTrainingPartnerDAOImpl implements RegistrationTrainingP
 			loginDetails.setEncrypted_Password(encryprPassword);
 			loginDetails.setProfileId(5);
 			
-			
+			/*
 			personalInformationTrainingPartner.setUserID(nextSequenceUserID == null ? "" : nextSequenceUserID);
 			personalInformationTrainingPartner.setTitle(registrationFormTrainingPartner.getTitle());
 			personalInformationTrainingPartner.setTrainingCentreName(registrationFormTrainingPartner.getTrainingCentreName() == null ? "" : registrationFormTrainingPartner.getTrainingCentreName());
@@ -212,7 +212,7 @@ public class RegistrationTrainingPartnerDAOImpl implements RegistrationTrainingP
 			personalInformationTrainingPartner.setAvailabiltyOfInHouseTrainersInFoodSafety(registrationFormTrainingPartner.getAvailabiltyOfInHouseTrainersInFoodSafety() == null ? "" : registrationFormTrainingPartner.getAvailabiltyOfInHouseTrainersInFoodSafety());
 			//personalInformationTrainingPartner.setNoOfTrainingSessionWishToConductInAMonth(registrationFormTrainingPartner.getNoOfTrainingSessionWishToConductInAMonth());
 			personalInformationTrainingPartner.setLoginDetails(loginDetails);
-			personalInformationTrainingPartner.setProfileCode(5);
+			personalInformationTrainingPartner.setProfileCode(5);*/
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -298,7 +298,7 @@ public class RegistrationTrainingPartnerDAOImpl implements RegistrationTrainingP
 		Session s=sessionFactory.getCurrentSession();
 		
 		PersonalInformationTrainingPartner personalInformationTrainingPartner=(PersonalInformationTrainingPartner) s.load(PersonalInformationTrainingPartner.class,id);
-		
+	/*	
 		System.out.println("ID == "+personalInformationTrainingPartner.getPersonalInformationTrainingPartnerId());
 		
 		System.out.println("id is in dao "+id);
@@ -325,7 +325,7 @@ public class RegistrationTrainingPartnerDAOImpl implements RegistrationTrainingP
 		personalInformationTrainingPartner.setFacilityOfDrinkingWater(registrationFormTrainingPartner.getFacilityOfDrinkingWater());
 		personalInformationTrainingPartner.setFacilityOfWashroom(registrationFormTrainingPartner.getFacilityOfWashroom());
 		personalInformationTrainingPartner.setAvailabiltyOfInHouseTrainersInFoodSafety(registrationFormTrainingPartner.getAvailabiltyOfInHouseTrainersInFoodSafety());		
-		s.update(personalInformationTrainingPartner);
+		s.update(personalInformationTrainingPartner);*/
 		return "updated";
 		
 	}

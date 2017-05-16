@@ -156,7 +156,7 @@
 											src="website/images/trainer.png"></a>
 									</div>
 									<div class="col-md-4 col-xs-12" align="center">
-										<a href="PersonalInformationTrainingInstitute.fssai"><img
+										<a href="registerpersonalinformationtrainingpartner.fssai"><img
 											src="website/images/assessor.png"></a>
 									</div>
 

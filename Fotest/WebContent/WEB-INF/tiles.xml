@@ -950,11 +950,11 @@
 			value="/website/personalInformationTrainer.jsp" />
 	</definition>
 
-	<definition name="PersonalInformationTrainingInstitute"
+	<definition name="registerpersonalinformationtrainingpartner"
 		extends="base.before.login">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"
-			value="/website/personalInformationTrainingInstitute.jsp" />
+			value="/website/TrainingPartnerRegistrationDetails.jsp" />
 	</definition>
 
 	<definition name="StateMaster" extends="base.user.afterLogin">
