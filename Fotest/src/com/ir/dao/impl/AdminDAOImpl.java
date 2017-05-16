@@ -141,11 +141,11 @@ public class AdminDAOImpl implements AdminDAO {
 		// TODO Auto-generated method stub
 
 		Session session = sessionFactory.getCurrentSession();
-		State state = new State();
+		StateMaster state = new StateMaster();
 		state.setStateName(p.getStateName().replaceAll("%20", " "));
 		state.setStatus(p.getStatus());
 		Integer stateIdd = null;
-		String sql = "select * from state where upper(stateName) = '"
+		String sql = "select * from StateMaster where upper(stateName) = '"
 				+ p.getStateName().replaceAll("%20", " ").toUpperCase() + "'";
 		Query query = session.createSQLQuery(sql);
 		List l = query.list();
