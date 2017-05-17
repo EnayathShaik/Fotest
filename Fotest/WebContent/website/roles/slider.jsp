@@ -48,7 +48,7 @@
                             <a href="onlineTraining.fssai">Online Training</a>
                         </li>
                         <li>
-                          <a href="traineefeedback.fssai">Feedback</a>
+                          <a href="commonfeedback.fssai">Feedback</a>
                         </li>
                         <li>
                             <a href="certification.fssai">Certification</a>
@@ -62,7 +62,7 @@
 	<ul class="sidebar-nav">
 		<!-- <li><a href="search-and-apply.fssai">Search	& Apply Vacancy</a></li> -->
 	<li><a href="TrainerRequest.fssai">Training Request</a></li>
-	<li> <a href="trainerfeedback.fssai">Feedback</a> </li>
+	<li> <a href="commonfeedback.fssai">Feedback</a> </li>
 	</ul>
 </div>
 
@@ -75,7 +75,7 @@
                         </li> -->
 		<li><a href="TrainingRequest.fssai">Training Request</a></li>
 		<li> <a href="traineeAttendance.fssai">Mark Attendance</a> </li>
-	
+
 	</ul>
 </div>
 
@@ -107,11 +107,9 @@
 		<li> <a href="updatecalendar.fssai">Update Calendar</a> </li>
 		<li><a href="applicationstatus.fssai">Application Status</a></li>
 		<li> <a href="markattendance.fssai">Mark Attendance</a> </li>
-		<li><a href="activateassessment.fssai">Activate Assessment</a></li>
-		<li> <a href="activatetraining.fssai">Activate Training</a> </li>
-		<li><a href="feedbackfortrainer.fssai">Feedback for Trainer</a></li>
-
-	
+	<li> <a href="trainingPartnerActivateTraining.fssai">Activate Training</a> </li>
+	<li> <a href="trainingPartnerActivateAssessment.fssai">Activate Assessment</a> </li>
+		<li> <a href="commonfeedback.fssai">Feedback for Trainer</a> </li>
 	</ul>
 </div>
 <%

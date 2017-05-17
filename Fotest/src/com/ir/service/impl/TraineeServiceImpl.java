@@ -24,6 +24,7 @@ import com.ir.form.OnlineTrainingForm;
 import com.ir.form.PrintAdmitCard;
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.MyCoursesForm;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
 import com.ir.form.generalCourseEnrollmentForm;
@@ -442,6 +443,13 @@ public class TraineeServiceImpl implements TraineeService {
 			public List<PrintAdmitCard> listPrintAdmitCard() {
 				// TODO Auto-generated method stub
 				return this.traineeDAO.listPrintAdmitCard();
+			}
+
+			@Override
+			@Transactional
+			public List<MyCoursesForm> listMyCourses() {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listMyCourses();
 			}
 
 		

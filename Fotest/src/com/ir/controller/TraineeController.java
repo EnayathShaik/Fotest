@@ -45,6 +45,7 @@ import com.ir.form.FeedbackMasterForm;
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.MyCoursesForm;
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.MyTrainingForm;
 import com.ir.form.OnlineAssessmentForm;
@@ -1011,7 +1012,7 @@ public String listAfterTraining( Model model){
 model.addAttribute("listAfterTraining", this.traineeService.listAfterTraining());
 return "afterTraining";
 }
-//After Training
+//printAdmitCard
 @RequestMapping(value="/printAdmitCard" , method = { RequestMethod.POST , RequestMethod.GET })
 public String listPrintAdmitCard( Model model){
 	  model.addAttribute("PrintAdmitCard",  new PrintAdmitCard());
@@ -1019,5 +1020,11 @@ model.addAttribute("listPrintAdmitCard", this.traineeService.listPrintAdmitCard(
 return "printAdmitCard";
 }
 
-
+//mycourses
+@RequestMapping(value="/mycourses" , method = { RequestMethod.POST , RequestMethod.GET })
+public String listMyCourses( Model model){
+	  model.addAttribute("MyCoursesForm",  new MyCoursesForm());
+model.addAttribute("listMyCourses", this.traineeService.listMyCourses());
+return "mycourses";
+}
 }

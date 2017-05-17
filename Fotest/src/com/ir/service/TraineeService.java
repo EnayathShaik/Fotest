@@ -17,8 +17,9 @@ import com.ir.form.PrintAdmitCard;
 /*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
-
+import com.ir.form.MyCoursesForm;
 import com.ir.form.RegistrationFormTrainee;
+import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainingRequestForm;
 import com.ir.form.generalCourseEnrollmentForm;
 import com.ir.model.AdmitCardForm;
@@ -207,6 +208,10 @@ public List<CertificationForm> listcertification();
 	public List<AfterTraining> listAfterTraining();
 
 	public List<PrintAdmitCard> listPrintAdmitCard();
+
+	public List<MyCoursesForm> listMyCourses();
+
+
 		
 	
 	

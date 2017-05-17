@@ -31,6 +31,7 @@ import com.ir.form.TrainerUserManagementForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingCenterUserManagementForm;
 import com.ir.form.TrainingClosureForm;
+import com.ir.form.TrainingPartnerActivateTrainingForm;
 import com.ir.form.TrainingScheduleForm;
 import com.ir.form.ViewTrainingCalendarForm;
 import com.ir.form.verifyTraineeEnrollmentForm;

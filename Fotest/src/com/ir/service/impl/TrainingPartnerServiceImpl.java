@@ -15,6 +15,9 @@ import com.ir.dao.TrainingPartnerDao;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
+import com.ir.form.TrainingPartnerActivateAssessmentForm;
+import com.ir.form.TrainingPartnerActivateTrainingForm;
+import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
@@ -387,5 +390,28 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 		// TODO Auto-generated method stub
 		return trainingPartnerDAO.updateTrainingPartner(p);
 		
+	}
+
+	@Override
+	@Transactional
+	public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(
+			TrainingPartnerActivateTrainingForm p) {
+		// TODO Auto-generated method stub
+		return trainingPartnerDAO.listtrainingPartnerActivateTraining(p);
+	}
+
+	@Override
+	@Transactional
+	public List<TrainingPartnerActivateAssessmentForm> listtrainingPartnerActivateAssessor(
+			TrainingPartnerActivateAssessmentForm p) {
+		// TODO Auto-generated method stub
+		return trainingPartnerDAO.listtrainingPartnerActivateAssessor(p);
+	}
+
+	@Override
+	@Transactional
+	public List<TrainingPartnerFeedbackForm> listtrainingPartnerFeedback() {
+		// TODO Auto-generated method stub
+		return trainingPartnerDAO.listtrainingPartnerFeedback();
 	}
 }

@@ -33,6 +33,7 @@ import com.ir.form.MyTrainingForm;
 /*import com.ir.form.GenerateCertificateForm;*/
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.MyCoursesForm;
 import com.ir.form.NominateTraineeForm;
 import com.ir.form.OnlineTrainingForm;
 import com.ir.form.PrintAdmitCard;
@@ -1523,7 +1524,7 @@ System.out.println("list "+list);
 			FeedbackForm bean = new FeedbackForm();
 			List<FeedbackForm> resulList = new ArrayList<FeedbackForm>();
 			Session session = this.sessionFactory.getCurrentSession();
-			List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+			List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('19/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
 			for (Object[] li : list ) {
 				
 				bean.setCourseName((String) li[0]);
@@ -1625,20 +1626,21 @@ System.out.println("list "+list);
 
 			
 				
-				//BeforeTraining
+				//PrintAdmitCard
 				@Override
 				public List<PrintAdmitCard> listPrintAdmitCard() {
 					System.out.println("inside PrintAdmitCard");
 					PrintAdmitCard bean = new PrintAdmitCard();
 					List<PrintAdmitCard> resulList = new ArrayList<PrintAdmitCard>();
 					Session session = this.sessionFactory.getCurrentSession();
-					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab   ").list();
 					for (Object[] li : list ) {
 						
 						bean.setCourseName((String) li[0]);
 						bean.setTrainingDate((String) li[1]);
 						bean.setTrainingTime((String) li[2]);
 						bean.setTrainingLab((String) li[3]);
+						
 						new ZLogger("PrintAdmitCard", "List:" + li, "TraineeDAOImpl.java");
 						//logger.info("traineeFeedback List::" + li);
 						resulList.add(bean);
@@ -1646,7 +1648,29 @@ System.out.println("list "+list);
 					return resulList;
 				}	
 				
-				
+				//MyCourses
+				@Override
+				public List<MyCoursesForm> listMyCourses() {
+					System.out.println("inside listMyCourses");
+					MyCoursesForm bean = new MyCoursesForm();
+					List<MyCoursesForm> resulList = new ArrayList<MyCoursesForm>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab,cast('supriya' as varchar(20)) as name ,cast('zentech@zentechinfo.com' as varchar(20)) as email,cast('pending' as varchar(20)) as status     ").list();
+					for (Object[] li : list ) {
+						
+						bean.setCourseName((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setTrainingLab((String) li[3]);
+						bean.setName((String) li[4]);
+						bean.setEmail((String) li[5]);
+						bean.setStatus((String) li[6]);
+						new ZLogger("MyCoursesForm", "List:" + li, "TraineeDAOImpl.java");
+						//logger.info("traineeFeedback List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
 				
 				
 		}

@@ -15,6 +15,7 @@ import com.ir.form.FeedbackForm;
 import com.ir.form.GetScoreCardForm;
 import com.ir.form.InstituteMyCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.MyCoursesForm;
 import com.ir.form.MyTrainingForm;
 import com.ir.form.OnlineTrainingForm;
 import com.ir.form.PrintAdmitCard;
@@ -141,6 +142,7 @@ public interface TraineeDAO {
 		public List<BeforeTraining> listBeforeTraining();
 		public List<AfterTraining> listAfterTraining();
 		public List<PrintAdmitCard> listPrintAdmitCard();
+		public List<MyCoursesForm> listMyCourses();
 
 	
 }

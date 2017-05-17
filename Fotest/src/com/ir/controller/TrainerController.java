@@ -27,6 +27,7 @@ import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainer;
 import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
+import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CourseName;
 import com.ir.model.FeedbackMaster;
@@ -42,6 +43,7 @@ import com.ir.service.PageLoadService;
 import com.ir.service.TraineeService;
 import com.ir.service.TrainerContactService;
 import com.ir.service.TrainerService;
+import com.ir.service.TrainingPartnerService;
 import com.ir.util.Profiles;
 import com.zentech.backgroundservices.Mail;
 import com.zentech.logger.ZLogger;
@@ -50,6 +52,11 @@ import com.zentect.list.constant.ListConstant;
 @Controller
 @SessionAttributes
 public class TrainerController {
+	@Autowired
+	@Qualifier("trainingPartnerService")
+	TrainingPartnerService trainingPartnerService; 
+	
+	
 	@Autowired
 	@Qualifier("traineeService")
 	public TraineeService traineeService;
@@ -490,14 +497,28 @@ public class TrainerController {
 	 * }
 	 */
 	//trainee Feedback
-	@RequestMapping(value="/trainerfeedback" , method = { RequestMethod.POST , RequestMethod.GET })
-	public String listtrainerFeedback( Model model){
-		  model.addAttribute("TrainerFeedbackForm",  new TrainerFeedbackForm());
-	  model.addAttribute("listtrainerFeedback", this.trainerService.listtrainerFeedback());
-	  return "trainerfeedback";
+	@RequestMapping(value="/commonfeedback" , method = { RequestMethod.POST , RequestMethod.GET })
+	public String listtrainerFeedback( Model model,HttpSession session){
+		System.out.println("profile id="+session.getAttribute("profileId"));
+		int profileid= (int) session.getAttribute("profileId");
+		model.addAttribute("TrainerFeedbackForm",  new TrainerFeedbackForm());
+		if(profileid==3){
+			
+			 model.addAttribute("listFeedback", this.traineeService.listFeedback());
+			  return "commonfeedback";
+		}
+		else if(profileid==4){
+			model.addAttribute("listFeedback", this.trainerService.listtrainerFeedback());
+			  return "commonfeedback";
+		}
+		else{
+			  model.addAttribute("listFeedback", this.trainingPartnerService.listtrainingPartnerFeedback());
+			  return "commonfeedback";
+		}
+		
 	}
 	
-	//mycourses
+	//plannedTrainingCalendar
 	@RequestMapping(value="/plannedTrainingCalendar" , method = { RequestMethod.POST , RequestMethod.GET })
 	public String listPlannedTrainingCalendar( Model model){
 		  model.addAttribute("PlannedTrainingCalendarForm",  new PlannedTrainingCalendarForm());

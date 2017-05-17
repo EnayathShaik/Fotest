@@ -3,7 +3,7 @@
 <%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
- <cf:form action="feedback123.fssai" name="myForm" method="POST"
+ <cf:form action="traineefeedback.fssai" name="myForm" method="POST"
 	commandName="FeedbackForm" onsubmit="return validateFields();">
     <section>
          <%@include file="../roles/top-menu.jsp"%>

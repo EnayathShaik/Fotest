@@ -7,6 +7,9 @@ import com.ir.bean.common.StringStringBean;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
+import com.ir.form.TrainingPartnerActivateAssessmentForm;
+import com.ir.form.TrainingPartnerActivateTrainingForm;
+import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
@@ -105,4 +108,10 @@ public interface TrainingPartnerDao {
 	public String addTrainingPartner(PersonalInformationTrainingPartner p);
 	
 	public String updateTrainingPartner(PersonalInformationTrainingPartner p);
+	public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(
+			TrainingPartnerActivateTrainingForm p);
+	public List<TrainingPartnerActivateAssessmentForm> listtrainingPartnerActivateAssessor(
+			TrainingPartnerActivateAssessmentForm p);
+	public List<TrainingPartnerFeedbackForm> listtrainingPartnerFeedback();
+	
 }
