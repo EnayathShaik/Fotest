@@ -580,10 +580,10 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
+								<%-- <div class="form-group">
 									<label>Modules wish to conduct training on it ?</label>
 								</div>
-								<div id=a1 style="float: left; width: 99%;">
+								<!-- <div id=a1 style="float: left; width: 99%;">
 									<input type="checkbox" id="check" style="margin-left: 1%;">
 									General Training
 								</div>
@@ -598,7 +598,29 @@
 								<div id=a4 style="float: left; width: 99%;">
 									<input type="checkbox" id="check" style="margin-left: 1%;">
 									ICP-MS
+								</div> -->
+								<ct:forEach items="${courseNameMap}" var="map">
+									<cf:checkbox path="testingFacilities" id="testingFacilities"
+										value="${map.value}" label=" ${map.value}" />
+									<br>
+								</ct:forEach>
+							</div> --%>
+							
+							<div class="form-group">
+								<div>
+									<ul class="lab-no">
+										<li class="style-li"><strong>Modules wish to conduct training on it ?</strong></li>
+										<li id="testingFacilitiesErr" style="display: none;"
+											class="style-li error-red">Correspondence Address can
+											not be blank.</li>
+									</ul>
 								</div>
+								<ct:forEach items="${courseNameMap}" var="map">
+									<cf:checkbox path="modules" id="testingFacilities"
+										value="${map.value}" label=" ${map.value}" />
+									<br>
+								</ct:forEach>
+							</div>
 							</div>
 							<!-- left side ends -->
 							<!-- right side -->

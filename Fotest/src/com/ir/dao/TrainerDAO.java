@@ -6,7 +6,9 @@ import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.MyCalendarForm;
+import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
+import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -30,6 +32,10 @@ public interface TrainerDAO {
 	public List<TrainerRequestForm> listTrainerRequest(TrainerRequestForm s);
 
 	public List<MyCalendarForm> listMyCalendar();
+
+	public List<TrainerFeedbackForm> listtrainerFeedback();
+
+	public List<PlannedTrainingCalendarForm> listPlannedTrainingCalendar();
 
 
 

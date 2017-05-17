@@ -20,8 +20,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
+import com.ir.form.MyCoursesForm;
+import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainer;
+import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CourseName;
@@ -225,14 +229,14 @@ public class TrainerController {
 		Map<String, String> opt = lst.noOfOptionMap;
 		Map<String, String> qual = lst.QualCategoryMap;
 		Map<String, String> subqual = lst.SubQualCategoryMap;
-		
+		Map<String, String> courseNameMap = lst.courseNameMap;
 		/*model.addAttribute("userType", userType);*/
 		model.addAttribute("titleMap", titleMap);
 		model.addAttribute("ExpInYearMap", opt);
 		model.addAttribute("ExpInMonthMap", opt);
 		model.addAttribute("QualCategoryMap", qual);
 		model.addAttribute("SubQualCategoryMap", subqual);
-		
+		model.addAttribute("courseNameMap", courseNameMap);
 		model.addAttribute("listStateMaster",
 				this.adminService.listStateMaster());
 		//model.addAttribute("listTrainingInstitude",
@@ -485,5 +489,22 @@ public class TrainerController {
 	 * 
 	 * }
 	 */
-
+	//trainee Feedback
+	@RequestMapping(value="/trainerfeedback" , method = { RequestMethod.POST , RequestMethod.GET })
+	public String listtrainerFeedback( Model model){
+		  model.addAttribute("TrainerFeedbackForm",  new TrainerFeedbackForm());
+	  model.addAttribute("listtrainerFeedback", this.trainerService.listtrainerFeedback());
+	  return "trainerfeedback";
+	}
+	
+	//mycourses
+	@RequestMapping(value="/plannedTrainingCalendar" , method = { RequestMethod.POST , RequestMethod.GET })
+	public String listPlannedTrainingCalendar( Model model){
+		  model.addAttribute("PlannedTrainingCalendarForm",  new PlannedTrainingCalendarForm());
+	model.addAttribute("listPlannedTrainingCalendar", this.trainerService.listPlannedTrainingCalendar());
+	return "plannedTrainingCalendar";
+	}
+	
+	
+	
 }

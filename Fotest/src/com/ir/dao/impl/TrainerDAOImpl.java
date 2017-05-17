@@ -23,8 +23,12 @@ import com.ir.dao.TrainerDAO;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
+import com.ir.form.MyCoursesForm;
+import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
+import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -158,5 +162,50 @@ public class TrainerDAOImpl implements TrainerDAO {
 	 * for (UnitMaster p : mccList) { System.out.println("unitmaster List::" +
 	 * p); } return mccList; }
 	 */
+	//traineeFeedback
+			@Override
+			public List<TrainerFeedbackForm> listtrainerFeedback() {
+				System.out.println("inside listprintAdmitCard");
+				TrainerFeedbackForm bean = new TrainerFeedbackForm();
+				List<TrainerFeedbackForm> resulList = new ArrayList<TrainerFeedbackForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainingDate((String) li[1]);
+					bean.setTrainingTime((String) li[2]);
+					bean.setTrainingLab((String) li[3]);
+					new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
+					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
 
+			
+			//PlannedTrainingCalendar
+			@Override
+			public List<PlannedTrainingCalendarForm> listPlannedTrainingCalendar() {
+				System.out.println("inside listMyCourses");
+				PlannedTrainingCalendarForm bean = new PlannedTrainingCalendarForm();
+				List<PlannedTrainingCalendarForm> resulList = new ArrayList<PlannedTrainingCalendarForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab,cast('supriya' as varchar(20)) as name ,cast('zentech@zentechinfo.com' as varchar(20)) as email,cast('pending' as varchar(20)) as status     ").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainingDate((String) li[1]);
+					bean.setTrainingTime((String) li[2]);
+					bean.setTrainingLab((String) li[3]);
+					bean.setName((String) li[4]);
+					bean.setEmail((String) li[5]);
+					bean.setStatus((String) li[6]);
+					new ZLogger("MyCoursesForm", "List:" + li, "TraineeDAOImpl.java");
+					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
+		
 }

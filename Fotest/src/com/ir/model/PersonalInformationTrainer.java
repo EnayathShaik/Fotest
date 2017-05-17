@@ -44,6 +44,7 @@ public class PersonalInformationTrainer {
 	private String qualSubCategory;
 	private String qualCategory;
 	private String others1;
+	private String modules;
 	
 /*	private String residenceCity;
 	private String residenceDistrict;
@@ -57,6 +58,14 @@ public class PersonalInformationTrainer {
 		this.correspondenceState = correspondenceState;
 	}*/
 	
+	public String getModules() {
+		return modules;
+	}
+
+	public void setModules(String modules) {
+		this.modules = modules;
+	}
+
 	@NotNull
 	@Size(min=1, max=100 , message="enter your residenceAddress1")
 	private String residenceAddress1;
