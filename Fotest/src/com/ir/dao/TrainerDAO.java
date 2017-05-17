@@ -37,6 +37,10 @@ public interface TrainerDAO {
 
 	public List<PlannedTrainingCalendarForm> listPlannedTrainingCalendar();
 
+	public List<TrainerFeedbackForm> listtrainingPartnerFeedback();
+
+	public List<TrainerFeedbackForm> listFeedback();
+
 
 
 	/*

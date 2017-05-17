@@ -31,6 +31,8 @@ public interface TrainerService {
 
 	public List<MyCalendarForm> listMyCalendar();
 
+	public List<TrainerFeedbackForm> listFeedback();
+	public List<TrainerFeedbackForm> listtrainingPartnerFeedback();
 	public List<TrainerFeedbackForm> listtrainerFeedback();
 	/*
 	 * public List<UnitMaster> listTrainingType(); public List<UnitMaster>

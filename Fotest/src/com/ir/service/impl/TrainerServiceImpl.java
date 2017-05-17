@@ -69,7 +69,18 @@ public class TrainerServiceImpl implements TrainerService {
 		return this.trainerDAO.listPlannedTrainingCalendar();
 	}
 
-
+	@Override
+	@Transactional
+	public List<TrainerFeedbackForm> listtrainingPartnerFeedback() {
+		// TODO Auto-generated method stub
+		return this.trainerDAO.listtrainingPartnerFeedback();
+	}
+	@Override
+	@Transactional
+	public List<TrainerFeedbackForm> listFeedback() {
+		// TODO Auto-generated method stub
+		return this.trainerDAO.listFeedback();
+	}
 	/*@Override
 	@Transactional
 	public List<UnitMaster> listTrainingType() {

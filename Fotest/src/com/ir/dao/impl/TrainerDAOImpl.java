@@ -30,6 +30,7 @@ import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
+import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CheckAadhar;
@@ -207,5 +208,45 @@ public class TrainerDAOImpl implements TrainerDAO {
 				}
 				return resulList;
 			}
-		
+			//traineeFeedback
+			@Override
+			public List<TrainerFeedbackForm> listtrainingPartnerFeedback() {
+				System.out.println("inside TrainingPartnerFeedbackForm");
+				TrainerFeedbackForm bean = new TrainerFeedbackForm();
+				List<TrainerFeedbackForm> resulList = new ArrayList<TrainerFeedbackForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/06/1995' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainingDate((String) li[1]);
+					bean.setTrainingTime((String) li[2]);
+					bean.setTrainingLab((String) li[3]);
+					new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
+					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
+			//traineeFeedback
+			@Override
+			public List<TrainerFeedbackForm> listFeedback() {
+				System.out.println("inside listprintAdmitCard");
+				TrainerFeedbackForm bean = new TrainerFeedbackForm();
+				List<TrainerFeedbackForm> resulList = new ArrayList<TrainerFeedbackForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				System.out.println("fffffffffffffffffffffffffffff");
+				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('19/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainingDate((String) li[1]);
+					bean.setTrainingTime((String) li[2]);
+					bean.setTrainingLab((String) li[3]);
+					new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
+					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
 }

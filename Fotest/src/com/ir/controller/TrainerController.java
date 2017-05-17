@@ -504,7 +504,7 @@ public class TrainerController {
 		model.addAttribute("TrainerFeedbackForm",  new TrainerFeedbackForm());
 		if(profileid==3){
 			
-			 model.addAttribute("listFeedback", this.traineeService.listFeedback());
+			 model.addAttribute("listFeedback", this.trainerService.listFeedback());
 			  return "commonfeedback";
 		}
 		else if(profileid==4){
@@ -512,7 +512,7 @@ public class TrainerController {
 			  return "commonfeedback";
 		}
 		else{
-			  model.addAttribute("listFeedback", this.trainingPartnerService.listtrainingPartnerFeedback());
+			  model.addAttribute("listFeedback", this.trainerService.listtrainingPartnerFeedback());
 			  return "commonfeedback";
 		}
 		
