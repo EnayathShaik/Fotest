@@ -1313,7 +1313,12 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/printAdmitCard.jsp" />
 	</definition>
-   <definition name="mycourses" extends="base.user.afterLogin">
+   	<definition name="applicationstatus" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/trainingPartner/ApplicationStatus.jsp" />
+	</definition>
+	 <definition name="mycourses" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/myCourses.jsp" />
 	</definition>
@@ -1324,5 +1329,9 @@
 	<definition name="plannedTrainingCalendar" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainer/plannedTrainingCalendar.jsp" />
+	</definition>
+		<definition name="trainingpartnerhomepage" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainingPartner/Training-PartnerHomepage.jsp" /> 
 	</definition>
 </tiles-definitions>

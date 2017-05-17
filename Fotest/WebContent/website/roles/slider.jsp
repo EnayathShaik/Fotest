@@ -103,18 +103,17 @@
 	<ul class="sidebar-nav">
 		<!-- <li class="sidebar-brand">
                         </li> -->
-		<li><a href="postVacancyTrainingPartner.fssai">Post Vacancy
-				for Trainer</a></li>
-		<li><a href="trainingpartnerapplicationstatus.fssai">Application
-				Status</a></li>
-		<li><a href="trainingCalendarForm.fssai">View Training
-				Calendar</a></li>
-		<li><a href="viewFeedbackDetails.fssai">View Feedback</a></li>
-		<li><a href="registrationFormTrainingPartner.fssai">Register
-				Training Center</a></li>
+		<li><a href="createviewcalendar.fssai">Create View Calendar</a></li>
+		<li> <a href="updatecalendar.fssai">Update Calendar</a> </li>
+		<li><a href="applicationstatus.fssai">Application Status</a></li>
+		<li> <a href="markattendance.fssai">Mark Attendance</a> </li>
+		<li><a href="activateassessment.fssai">Activate Assessment</a></li>
+		<li> <a href="activatetraining.fssai">Activate Training</a> </li>
+		<li><a href="feedbackfortrainer.fssai">Feedback for Trainer</a></li>
+
+	
 	</ul>
 </div>
-
 <%
 	} else if (session.getAttribute("profileId").equals(8)) {
 %>

@@ -207,12 +207,13 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li></li>
+						<%System.out.println("topmenu");%>
 							<li class="active hori"><a href="loginProcess.fssai">Home</a></li>
-							<li><a href="trainingCenterUserManagementForm.fssai">Training
-									Center Management</a></li>
-							<li class="hori"><a href="contactTrainee.fssai">Contact
-									Us</a></li>
+						<li class="hori"><a href="viewfeedback.fssai">View Feedback</a></li>
+							<li class="hori"><a href="updateinfotrainingpartner.fssai">View
+									Update Info</a></li>
+							<li class="hori"><a href="contactus.fssai">Contact
+									Us</a></li> 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown active"><a href="#"
@@ -232,6 +233,48 @@
 		</div>
 		</nav>
 	</div>
+	<!-- <div class="container-fluid">
+		<nav
+			class="navbar navbar-default navbar-fixed-top horizontal-nav-top horizontal-top-nav-border">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li></li>
+							<li class="active hori"><a href="loginProcess.fssai">Home</a></li>
+							<li><a href="trainingCenterUserManagementForm.fssai">Training
+									Center Management</a></li>
+							<li class="hori"><a href="contactTrainee.fssai">Contact
+									Us</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown active"><a href="#"
+								class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false"><i
+									class="fa fa-cog fa-spin"></i> <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="changePasswordTrainee.fssai">Change
+											Password</a></li>
+									<li><a href="fostac.fssai">Logout</a></li>
+								</ul></li>
+						</ul>
+					</div>
+					/.nav-collapse
+				</div>
+			</div>
+		</div>
+		</nav>
+	</div> -->
 
 	<%
 		} else if (session.getAttribute("profileId").equals(8)) {

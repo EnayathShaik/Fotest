@@ -209,7 +209,7 @@ public class LoginController {
 			session.setAttribute("profileId", loginDetails.getProfileId());
 			session.setAttribute("userId", loginDetails.getId());
 			session.setAttribute("userName", loginDetails.getLoginId());
-			return "trainingPartnerDashboard";
+			return "trainingpartnerhomepage";
 		}else if(loginDetails!=null && loginDetails.getProfileId() == 8 && loginDetails.getStatus().equalsIgnoreCase("A")){
 			new ZLogger("loginProcess","in assessment agency", "LoginController.java");
 			session.setAttribute("logerClass","ManageAssessmentAgency");
@@ -270,7 +270,7 @@ public class LoginController {
 			}else if(profileID == 6){
 				return "AssessorPage";
 			}else if(profileID == 7){
-				return "trainingPartnerDashboard";
+				return "trainingpartnerhomepage";
 			}else if(profileID == 8){
 				return "assessmentAgencyHomepage";
 			}
@@ -306,7 +306,7 @@ public class LoginController {
 			}else if(profileID == 6){
 				return "AssessorPage";
 			}else if(profileID == 7){
-				return "trainingPartnerDashboard";
+				return "trainingpartnerhomepage";
 			}else if(profileID == 8){
 				return "assessmentAgencyHomepage";
 			}
