@@ -107,5 +107,6 @@
 	<mapping class="com.ir.model.RegionMapping" />
 	<mapping class="com.ir.model.FeedbackMaster" />
 	<mapping class="com.ir.model.PersonalInformationTrainingPartner"/>
+		<mapping class="com.ir.model.ViewFeedback"/>
 	</session-factory>
 </hibernate-configuration>

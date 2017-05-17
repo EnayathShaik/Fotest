@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.JsonResponse;
 import com.ir.bean.common.StringStringBean;
+import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
@@ -41,6 +42,7 @@ import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingPartnerActivateTrainingForm;
 import com.ir.form.TrainingPartnerFeedbackForm;
+import com.ir.form.ViewFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.form.trainingPartner.TrainingPartnerSearchForm;
 import com.ir.model.CertificateInfo;
@@ -1005,7 +1007,8 @@ public class TrainingPartnerController {
 		out.flush();
 		
 	}
-	// Fotest
+	
+	// Fotest...............................................................................................................................
 	@RequestMapping(value = "/registerpersonalinformationtrainingpartner", method = RequestMethod.GET)
 	public String personalInformationTrainingPartner(
 			@ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartnerForm personalInformationTrainingPartner,
@@ -1131,25 +1134,53 @@ public class TrainingPartnerController {
 				  model.addAttribute("listtrainingPartnerFeedback", this.trainingPartnerService.listtrainingPartnerFeedback());
 				  return "trainingPartnerFeedback";
 				}*/
+	@RequestMapping(value="/applicationstatus" , method=RequestMethod.GET)
+	public String applicationStatus(@ModelAttribute("applicationStatusForm") ApplicationStatusForm ApplicationStatusForm,HttpSession session,BindingResult result , Model model){
+	
+		System.out.println("applicationstatusGET");
+		return "applicationstatus";
+	}
+	
+	@RequestMapping(value="/applicationstatusshowdetails" , method=RequestMethod.POST)
+	public String applicationStatusShowDetails(@ModelAttribute("applicationStatusForm") ApplicationStatusForm asf,HttpSession session,BindingResult result , Model model){
+	
+		model.addAttribute("listDetails",this.trainingPartnerService.applicationStatusShowDetails(asf));
+		System.out.println("applicationstatusPOST");
+		return "applicationstatus";
+	}
+	
+	@RequestMapping(value="/viewfeedback" , method=RequestMethod.GET)
+	public String viewFeedback(@ModelAttribute("viewFeedbackForm") ViewFeedbackForm ViewFeedbackForm,HttpSession session,BindingResult result , Model model){
+	
+		System.out.println("viewFeedbackGET");
+		return "viewfeedback";
+	}
+	
+	@RequestMapping(value="/viewfeedbacksearch" , method=RequestMethod.POST)
+	public String viewFeedbackSearch(@ModelAttribute("viewFeedbackForm") ViewFeedbackForm vff,HttpSession session,BindingResult result , Model model){
+		model.addAttribute("listDetails",this.trainingPartnerService.viewFeedbackSearch(vff));
+		System.out.println("viewFeedbackPOST");
+		return "viewfeedback";
+	}
 	//mark attendance
 	
-	@RequestMapping(value = "/markAttendance", method = RequestMethod.GET)
-  	public String markAttendance(Model model) {
-  		System.out.println("markAttendance");
-  		Map<String , String> courseNameMap = lst.courseNameMap;
-  		model.addAttribute("courseNameMap", courseNameMap);
-  		model.addAttribute("MarkAttendanceForm" , new MarkAttendanceForm());
+		@RequestMapping(value = "/markAttendance", method = RequestMethod.GET)
+	  	public String markAttendance(Model model) {
+	  		System.out.println("markAttendance");
+	  		Map<String , String> courseNameMap = lst.courseNameMap;
+	  		model.addAttribute("courseNameMap", courseNameMap);
+	  		model.addAttribute("MarkAttendanceForm" , new MarkAttendanceForm());
 
-  		return "markAttendance";
-  	}
-   	
-      @RequestMapping(value="/markAttendancelist" , method = RequestMethod.POST)
-      public String listmarkAttendance(@ModelAttribute("MarkAttendanceForm") MarkAttendanceForm p , Model model){
-          model.addAttribute("listmarkAttendance", this.trainingPartnerService.listmarkAttendance(p));
-          List<MarkAttendanceForm> list = this.trainingPartnerService.listmarkAttendance(p);
-          for( MarkAttendanceForm li :   list){
-          	System.out.println("li "+li.getCourseName());
-          }
-          return "markAttendance";
-      }
+	  		return "markAttendance";
+	  	}
+	   	
+	      @RequestMapping(value="/markAttendancelist" , method = RequestMethod.POST)
+	      public String listmarkAttendance(@ModelAttribute("MarkAttendanceForm") MarkAttendanceForm p , Model model){
+	          model.addAttribute("listmarkAttendance", this.trainingPartnerService.listmarkAttendance(p));
+	          List<MarkAttendanceForm> list = this.trainingPartnerService.listmarkAttendance(p);
+	          for( MarkAttendanceForm li :   list){
+	          	System.out.println("li "+li.getCourseName());
+	          }
+	          return "markAttendance";
+	      }
 }

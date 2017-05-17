@@ -9,6 +9,18 @@
 <script src="website/js/commonController.js"></script>
 
 <script>
+
+function OnStart() {
+
+	flatpickr("#dob", {
+		enableTime : true
+	});
+	
+	DrawCaptcha();
+}
+window.onload = OnStart;
+
+
 	function DrawCaptcha() {
 		var a = Math.ceil(Math.random() * 7) + '';
 		var b = Math.ceil(Math.random() * 7) + '';
@@ -639,6 +651,95 @@
 						<!-- right side ends -->
 					</fieldset>
 
+			<fieldset>
+						<legend>Previous Training Experience</legend>
+						<div class="col-md-6 col-xs-12">
+<br />
+<div class="form-group">
+<h4>Details of previous trainings conducted by Lab in the area of food testing:</h4>
+						<table  id="datatablesfosrest" class="table table-bordered table-responsive">
+	<tr>
+		<th> Sr. No.</th>
+		<th>Subject</th>
+		<th >From Date</th>
+		<th >To date</th>
+		<th >No. of participants</th>
+		<th >Trainer's Name</th>
+	</tr>
+	<ct:forEach var="i" begin="0" end="4" varStatus="loop">
+	
+	
+	
+		<tr>
+			<td>${loop.count}</td>
+			<td><input type="text"></td>
+			<td><input type="text" id="fromD"></td>
+			<td><input type="text" id="toD"></td>
+			<td><input type="text"></td>
+			<td><input type="text"></td>
+		
+			
+		</tr>
+	</ct:forEach>
+	</table>
+	<br />
+	<br />
+	</div>
+	<div class="form-group">
+	<h4>Details of ISO 17025 Trained Staff Available in Lab:</h4>
+		<table  id="datatablesfosrest" class="table table-bordered table-responsive">
+	<tr>
+		<th> Sr. No.</th>
+		<th>Name</th>
+		<th >Details of Training</th>
+		<th >Relevant experience in Audit and Training</th>
+		
+	</tr>
+	<ct:forEach var="i" begin="0" end="4" varStatus="loop">
+	
+	
+	
+		<tr>
+			<td>${loop.count}</td>
+			<td><input type="text"></td>
+			<td><input type="text"></td>
+			<td><input type="text"></td>
+		
+			
+		</tr>
+	</ct:forEach>
+	</table>
+	Qualified Food analyst Available in lab: <input type="radio" value="yes" /> Yes <input type="radio" value="No" /> No
+	
+	</div>
+	<br /><br />
+	<div class="form-group">
+		<h4>Details of ISO 17025 Trained Staff Available in Lab:</h4>
+			<table  id="datatablesfosrest" class="table table-bordered table-responsive">
+	<tr>
+		<th> Sr. No.</th>
+		<th>Name</th>
+		<th >Qualifying Year</th>
+
+		
+	</tr>
+	<ct:forEach var="i" begin="0" end="4" varStatus="loop">
+	
+	
+	
+		<tr>
+			<td>${loop.count}</td>
+			<td><input type="text"></td>
+			<td><input type="text"></td>
+		
+		
+			
+		</tr>
+	</ct:forEach>
+	</table>
+				</div>
+					</fieldset>
+
 
 					<!-- captcha -->
 					<fieldset id="captcha">
@@ -668,10 +769,9 @@
 								</div>
 							</div>
 							<div id="chkunit" style="float: left; width: 99%;">
-								<input type="checkbox" id="check" style="margin-left: 1%;">
-								<a href="#" target="_blank" class="terms-font-size"> I have
-									read and understood the Terms & Conditions and the Privacy
-									Policy of FSSAI. </a>
+								<p><input type="checkbox" id="check" style="margin-left: 1%;">
+								 I have read and understood the Terms & Conditions and the Privacy
+									Policy of FSSAI. </p>
 							</div>
 						</div>
 					</fieldset>

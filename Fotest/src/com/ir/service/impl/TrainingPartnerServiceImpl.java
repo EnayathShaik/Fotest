@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.StringStringBean;
 import com.ir.dao.TrainingPartnerDao;
+import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
@@ -19,7 +20,9 @@ import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingPartnerActivateAssessmentForm;
 import com.ir.form.TrainingPartnerActivateTrainingForm;
 import com.ir.form.TrainingPartnerFeedbackForm;
+import com.ir.form.ViewFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
+import com.ir.model.ApplicationStatus;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
 import com.ir.model.PersonalInformationTrainingInstitute;
@@ -27,6 +30,7 @@ import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
 import com.ir.model.Utility;
+import com.ir.model.ViewFeedback;
 import com.ir.service.TrainingPartnerService;
 
 @Service
@@ -394,31 +398,42 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 	}
 	@Override
 	@Transactional
+	public List<ApplicationStatus> applicationStatusShowDetails(ApplicationStatusForm asf) {
+		// TODO Auto-generated method stub
+		return trainingPartnerDAO.applicationStatusShowDetails(asf);
+	}
+
+	@Override
+	@Transactional
 	public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm p ) {
 		// TODO Auto-generated method stub
 		return this.trainingPartnerDAO.listmarkAttendance(p);
 	}
+	
 	@Override
-	@Transactional
 	public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(
 			TrainingPartnerActivateTrainingForm p) {
 		// TODO Auto-generated method stub
-		return trainingPartnerDAO.listtrainingPartnerActivateTraining(p);
+		return null;	
 	}
 
 	@Override
-	@Transactional
 	public List<TrainingPartnerActivateAssessmentForm> listtrainingPartnerActivateAssessor(
 			TrainingPartnerActivateAssessmentForm p) {
 		// TODO Auto-generated method stub
-		return trainingPartnerDAO.listtrainingPartnerActivateAssessor(p);
+		return null;
+	}
+
+	@Override
+	public List<TrainingPartnerFeedbackForm> listtrainingPartnerFeedback() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	@Transactional
-	public List<TrainingPartnerFeedbackForm> listtrainingPartnerFeedback() {
+	public List<ViewFeedback> viewFeedbackSearch(ViewFeedbackForm vff) {
 		// TODO Auto-generated method stub
-		return trainingPartnerDAO.listtrainingPartnerFeedback();
+		return trainingPartnerDAO.viewFeedbackSearch(vff);
 	}
-	
 }

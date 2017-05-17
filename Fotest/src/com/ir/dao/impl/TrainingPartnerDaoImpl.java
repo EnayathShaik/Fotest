@@ -24,9 +24,11 @@ import org.springframework.stereotype.Service;
 import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.StringStringBean;
 import com.ir.dao.TrainingPartnerDao;
+import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
+import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainerFeedbackForm;
@@ -34,7 +36,9 @@ import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingPartnerActivateAssessmentForm;
 import com.ir.form.TrainingPartnerActivateTrainingForm;
 import com.ir.form.TrainingPartnerFeedbackForm;
+import com.ir.form.ViewFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
+import com.ir.model.ApplicationStatus;
 import com.ir.model.City;
 import com.ir.model.CourseEnrolledUser;
 import com.ir.model.CourseName;
@@ -51,6 +55,7 @@ import com.ir.model.TraineeDailyAttendance;
 import com.ir.model.TrainingCalendar;
 import com.ir.model.TrainingCalendarHistoryLogs;
 import com.ir.model.Utility;
+import com.ir.model.ViewFeedback;
 import com.ir.service.AdminService;
 import com.ir.service.PageLoadService;
 import com.ir.util.ChangePasswordUtility;
@@ -1697,14 +1702,39 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		loginDetails.setPassword(passwordString);
 		loginDetails.setEncrypted_Password(encryprPassword);
 		loginDetails.setStatus("A");
-		loginDetails.setProfileId(5);
+		loginDetails.setProfileId(7);
 		p.setLoginDetails(loginDetails);
 		
 		session.save(p);
 		return passwordString+"&"+nextSequenceUserID;
 	}
 
-	
+
+	@Override
+	public List<ApplicationStatus> applicationStatusShowDetails(ApplicationStatusForm form) {
+		// TODO Auto-generated method stub
+		System.out.println("inside applicationStatusShowDetails");
+		String trainingName = form.getTrainingName();
+		String trainingDate = form.getTrainingDate();
+		ApplicationStatus bean = new ApplicationStatus();
+		List<ApplicationStatus> resulList = new ArrayList<ApplicationStatus>();
+		System.out.println("courseName "+trainingName + " traineeName "+trainingDate);
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Object[]> list = session.createSQLQuery("select cast('Java' as varchar(20)) as trainingName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('12:20 pm' as varchar(20) ) as numberOfVacancies , cast('20' as varchar(20)) as noOfApplicants").list();
+		for (Object[] li : list ) {
+			
+			bean.setTrainingName((String) li[0]);
+			bean.setTrainingDate((String) li[1]);
+			bean.setNumberOfVacancies((String) li[2]);
+			bean.setNoOfApplicants((String) li[3]);
+		
+
+			//new ZLogger("listmanageTrainingCalendar List::" + li,"","");
+			resulList.add(bean);
+		}
+		return resulList;
+	}
+
 	//listmarkAttendance
 		@Override
 		public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm form) {
@@ -1828,6 +1858,29 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 								bean.setTrainingLab((String) li[3]);
 								new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
 								//logger.info("traineeFeedback List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
+						@Override
+						public List<ViewFeedback> viewFeedbackSearch(ViewFeedbackForm form) {
+							// TODO Auto-generated method stub
+							System.out.println("inside viewFeedbackSearch");
+							String trainingName = form.getCourseName();
+							String userType = form.getUserType();
+							String sessionDate = form.getSessionDate();
+							ViewFeedback bean = new ViewFeedback();
+							List<ViewFeedback> resulList = new ArrayList<ViewFeedback>();
+							System.out.println("courseName "+trainingName + " traineeName "+sessionDate);
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session.createSQLQuery("select cast('Java' as varchar(20)) as courseName , cast('2016-12-16 12:00' as varchar(20)) as sessionDate , cast('Trainer' as varchar(20) ) as userType ").list();
+							for (Object[] li : list ) {
+								
+								bean.setCourseName((String) li[0]);
+								bean.setSessionDate((String) li[1]);
+								bean.setUserType((String) li[2]);
+							
+								//new ZLogger("listmanageTrainingCalendar List::" + li,"","");
 								resulList.add(bean);
 							}
 							return resulList;

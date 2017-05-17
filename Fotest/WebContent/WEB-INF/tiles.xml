@@ -1371,4 +1371,8 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainingPartner/Training-PartnerHomepage.jsp" /> 
 	</definition>
+	<definition name="viewfeedback" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainingPartner/ViewFeedback.jsp" /> 
+	</definition>
 </tiles-definitions>

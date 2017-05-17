@@ -33,11 +33,11 @@
 	  <table id="datatablesfosrest" class="table table-bordered table-responsive">
 	<thead>
 	<tr>
-	<th width="80">Sr. No</th>
-		<th width="80">Course Name</th>
-		<th width="120">Training Date and Time</th>
-		<th width="120">Training LAB Name</th>
-		<th width="120">certification</th>
+	<th >Sr. No</th>
+		<th >Course Name</th>
+		<th >Training Date and Time</th>
+		<th >Training LAB Name</th>
+		<th >Certification</th>
 
 	
 	</tr>
@@ -50,7 +50,7 @@
 			<td>${listcertification.courseName}</td>
 			<td>${listcertification.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${listcertification.trainingTime}  </td>
 			<td>${listcertification.trainingLab}</td>
-			<td><input type="button" value="Start Here"  class="form-control login-btn"></td>
+			<td><input type="button" value="Get Certificate"  class="form-control login-btn"></td>
 		</tr>
 	</ct:forEach>
 	</table>

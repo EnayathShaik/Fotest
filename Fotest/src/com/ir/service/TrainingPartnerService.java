@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.StringStringBean;
+import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
@@ -14,7 +15,9 @@ import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingPartnerActivateAssessmentForm;
 import com.ir.form.TrainingPartnerActivateTrainingForm;
 import com.ir.form.TrainingPartnerFeedbackForm;
+import com.ir.form.ViewFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
+import com.ir.model.ApplicationStatus;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
 import com.ir.model.PersonalInformationTrainingInstitute;
@@ -22,6 +25,7 @@ import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
 import com.ir.model.Utility;
+import com.ir.model.ViewFeedback;
 
 public interface TrainingPartnerService {
 	
@@ -161,6 +165,9 @@ public interface TrainingPartnerService {
 	public String addTrainingPartner(PersonalInformationTrainingPartner p );
 	public String updateTrainingPartner(PersonalInformationTrainingPartner p );
 
+
+	public List<ApplicationStatus> applicationStatusShowDetails(ApplicationStatusForm asf);
+
 	public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(TrainingPartnerActivateTrainingForm p);
 
 	public List<TrainingPartnerActivateAssessmentForm> listtrainingPartnerActivateAssessor(TrainingPartnerActivateAssessmentForm p);
@@ -172,5 +179,8 @@ public interface TrainingPartnerService {
 
 	//mark attendance
 	public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm p);
+
+
+	public List<ViewFeedback> viewFeedbackSearch(ViewFeedbackForm vff);
 	
 }
