@@ -32,7 +32,7 @@
 						<ul class="nav navbar-nav">
 							<li class="active hori"><a href="loginProcess.fssai">Home</a></li>
 							<!-- <li class="hori"><a href="MyTraining.fssai?userId=0">My trainings</a></li> -->
-									
+								<li class="hori"><a href="mycourses.fssai">My Courses</a></li>	
 							<li class="hori"><a href="contactTrainee.fssai">Contact
 									Us</a></li>
 						</ul>
@@ -80,8 +80,8 @@
 									& Apply Vacancy</a></li> -->
 					<!-- 		<li class="hori"><a href="MyCalendar.fssai">My Calendar
 								</a></li> -->
-							<!-- <li class="hori"><a href="contactTrainee.fssai">Contact
-									Us</a></li> -->
+							 <li class="hori"><a href="plannedTrainingCalendar.fssai">Planned Training Calendar
+									</a></li> 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown active"><a href="#"

@@ -62,6 +62,7 @@
 	<ul class="sidebar-nav">
 		<!-- <li><a href="search-and-apply.fssai">Search	& Apply Vacancy</a></li> -->
 	<li><a href="TrainerRequest.fssai">Training Request</a></li>
+	<li> <a href="trainerfeedback.fssai">Feedback</a> </li>
 	</ul>
 </div>
 
