@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ir.dao.TraineeDAO;
 import com.ir.dao.TrainerDAO;
+import com.ir.form.ApplyForPostForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -69,6 +70,13 @@ public class TrainerServiceImpl implements TrainerService {
 		return this.trainerDAO.listPlannedTrainingCalendar();
 	}
 
+	//apply for post
+	@Override
+	@Transactional
+	public List<ApplyForPostForm> listapplyForPost(ApplyForPostForm form) {
+		// TODO Auto-generated method stub
+		return this.trainerDAO.listapplyForPost(form);
+	}
 	@Override
 	@Transactional
 	public List<TrainerFeedbackForm> listtrainingPartnerFeedback() {

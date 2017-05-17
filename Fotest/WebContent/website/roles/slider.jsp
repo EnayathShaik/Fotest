@@ -29,9 +29,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Enrollment<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="hov"><a href="GeneralCourseEnrollment.fssai" class="clr">General</a></li>
-                                <li class="hov"><a href="course-enrollment-lc.html" class="clr">LC-MS/MS</a></li>
-                                <li class="hov"><a href="course-enrollment-Gc.html" class="clr">GC-MS/MS</a></li>
-                                <li class="hov"><a href="course-enrollment-icp.html" class="clr" style="margin-bottom: 1px;">ICP-MS</a></li>
+                                <li class="hov"><a href="lcEnrollment.fssai" class="clr">LC-MS/MS</a></li>
+                                <li class="hov"><a href="gcEnrollment.fssai" class="clr">GC-MS/MS</a></li>
+                                <li class="hov"><a href="icpEnrollment.fssai" class="clr" style="margin-bottom: 1px;">ICP-MS</a></li>
                             </ul>
                         </li>
                         <li>
@@ -61,7 +61,7 @@
 <div id="sidebar-wrapper">
 	<ul class="sidebar-nav">
 		<!-- <li><a href="search-and-apply.fssai">Search	& Apply Vacancy</a></li> -->
-	<li><a href="TrainerRequest.fssai">Training Request</a></li>
+	<li><a href="applyForPost.fssai">Apply For Post</a></li>
 	<li> <a href="commonfeedback.fssai">Feedback</a> </li>
 	</ul>
 </div>
@@ -106,7 +106,7 @@
 		<li><a href="createviewcalendar.fssai">Create View Calendar</a></li>
 		<li> <a href="updatecalendar.fssai">Update Calendar</a> </li>
 		<li><a href="applicationstatus.fssai">Application Status</a></li>
-		<li> <a href="markattendance.fssai">Mark Attendance</a> </li>
+		<li> <a href="markAttendance.fssai">Mark Attendance</a> </li>
 	<li> <a href="trainingPartnerActivateTraining.fssai">Activate Training</a> </li>
 	<li> <a href="trainingPartnerActivateAssessment.fssai">Activate Assessment</a> </li>
 		<li> <a href="commonfeedback.fssai">Feedback for Trainer</a> </li>

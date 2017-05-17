@@ -33,6 +33,7 @@ import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.GenerateCourseCertificateForm;
+import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TraineeAttendanceForm;
@@ -840,7 +841,7 @@ public class TrainingPartnerController {
 		
 	}
 	
-	//markTraineeAttendance
+	/*//markTraineeAttendance
 
 	@RequestMapping(value="/markTraineeAttendance" , method=RequestMethod.POST)
 	@ResponseBody
@@ -856,7 +857,7 @@ public class TrainingPartnerController {
 		out.write(res );
 		out.flush();
 		
-	}
+	}*/
 	
 	
 	@RequestMapping(value="/getAttendanceDeatils" , method=RequestMethod.POST)
@@ -1130,4 +1131,25 @@ public class TrainingPartnerController {
 				  model.addAttribute("listtrainingPartnerFeedback", this.trainingPartnerService.listtrainingPartnerFeedback());
 				  return "trainingPartnerFeedback";
 				}*/
+	//mark attendance
+	
+	@RequestMapping(value = "/markAttendance", method = RequestMethod.GET)
+  	public String markAttendance(Model model) {
+  		System.out.println("markAttendance");
+  		Map<String , String> courseNameMap = lst.courseNameMap;
+  		model.addAttribute("courseNameMap", courseNameMap);
+  		model.addAttribute("MarkAttendanceForm" , new MarkAttendanceForm());
+
+  		return "markAttendance";
+  	}
+   	
+      @RequestMapping(value="/markAttendancelist" , method = RequestMethod.POST)
+      public String listmarkAttendance(@ModelAttribute("MarkAttendanceForm") MarkAttendanceForm p , Model model){
+          model.addAttribute("listmarkAttendance", this.trainingPartnerService.listmarkAttendance(p));
+          List<MarkAttendanceForm> list = this.trainingPartnerService.listmarkAttendance(p);
+          for( MarkAttendanceForm li :   list){
+          	System.out.println("li "+li.getCourseName());
+          }
+          return "markAttendance";
+      }
 }

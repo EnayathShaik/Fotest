@@ -54,11 +54,15 @@ import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.RegistrationFormTrainer;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.gcEnrollmentForm;
 import com.ir.form.generalCourseEnrollmentForm;
+import com.ir.form.icpEnrollmentForm;
+import com.ir.form.lcEnrollmentForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.AssessmentQuestion_old;
 import com.ir.model.AssessmentQuestions;
 import com.ir.model.CertificateInfo;
+import com.ir.model.City;
 import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
 import com.ir.model.District;
@@ -633,7 +637,8 @@ public class TraineeController {
 			}
 		
 			model.addAttribute("listStateMaster", this.adminService.listStateMaster());
-		    Map<String, String> titleMap = lst.titleMap;
+		   
+			Map<String, String> titleMap = lst.titleMap;
 			Map<String, String> opt = lst.noOfOptionMap;
 			Map<String, String> qual = lst.QualCategoryMap;
 			Map<String, String> subqual = lst.SubQualCategoryMap;
@@ -982,13 +987,14 @@ public String listcertification( Model model){
 		System.out.println("applyForPost");
 		Map<String , String> trainingLabMap = lst.trainingLabMap;
 		model.addAttribute("trainingLabMap", trainingLabMap);
+		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
 		model.addAttribute("generalCourseEnrollmentForm" , new generalCourseEnrollmentForm());
 
 		return "GeneralCourseEnrollment";
 	}
 	
   @RequestMapping(value="/GeneralCourseEnrollmentlist" , method = RequestMethod.POST)
-  public String listtraineeTrainerFeedback(@ModelAttribute("applyForPost") generalCourseEnrollmentForm p , Model model){
+  public String listtraineeTrainerFeedback(@ModelAttribute("generalCourseEnrollmentForm") generalCourseEnrollmentForm p , Model model){
       model.addAttribute("listgeneralCourseEnrollment", this.traineeService.listgeneralCourseEnrollment(p));
       model.addAttribute("generalCourseEnrollmentForm" , new generalCourseEnrollmentForm());
       List<generalCourseEnrollmentForm> list = this.traineeService.listgeneralCourseEnrollment(p);
@@ -997,6 +1003,71 @@ public String listcertification( Model model){
       }
       return "GeneralCourseEnrollment";
   }
+  
+//LC - MS/MS Enrollment
+  
+  @RequestMapping(value = "/lcEnrollment", method = RequestMethod.GET)
+	public String lcEnrollment(Model model) {
+		System.out.println("lcEnrollment");
+		Map<String , String> trainingLabMap = lst.trainingLabMap;
+		model.addAttribute("trainingLabMap", trainingLabMap);
+		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
+		model.addAttribute("lcEnrollmentForm" , new lcEnrollmentForm());
+
+		return "lcEnrollment";
+	}
+ 	
+    @RequestMapping(value="/lcEnrollmentlist" , method = RequestMethod.POST)
+    public String listlcEnrollment(@ModelAttribute("lcEnrollmentForm") lcEnrollmentForm p , Model model){
+        model.addAttribute("listlcEnrollment", this.traineeService.listlcEnrollment(p));
+        model.addAttribute("lcEnrollmentForm" , new lcEnrollmentForm());
+        List<lcEnrollmentForm> list = this.traineeService.listlcEnrollment(p);
+        for( lcEnrollmentForm li :   list){
+        	System.out.println("li "+li.getTrainingLab());
+        }
+        return "lcEnrollment";
+    }
+    
+    //GC - MS/MS Enrollment
+    
+    @RequestMapping(value = "/gcEnrollment", method = RequestMethod.GET)
+  	public String gcEnrollment(Model model) {
+  		System.out.println("gcEnrollment");
+  		Map<String , String> trainingLabMap = lst.trainingLabMap;
+		model.addAttribute("trainingLabMap", trainingLabMap);
+		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
+  		model.addAttribute("gcEnrollmentForm" , new gcEnrollmentForm());
+
+  		return "gcEnrollment";
+  	}
+   	
+      @RequestMapping(value="/gcEnrollmentlist" , method = RequestMethod.POST)
+      public String listgcEnrollment(@ModelAttribute("gcEnrollmentForm") gcEnrollmentForm p , Model model){
+          model.addAttribute("listgcEnrollment", this.traineeService.listgcEnrollment(p));
+          model.addAttribute("gcEnrollmentForm" , new gcEnrollmentForm());
+          
+          return "gcEnrollment";
+      }
+      //IPC - MS/MS Enrollment
+      
+        @RequestMapping(value = "/icpEnrollment", method = RequestMethod.GET)
+      	public String ipcEnrollment(Model model) {
+      		System.out.println("icpEnrollment");
+      		Map<String , String> trainingLabMap = lst.trainingLabMap;
+    		model.addAttribute("trainingLabMap", trainingLabMap);
+    		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
+    		//model.addAttribute("listDistrictMaster", this.adminService.listDistrictMaster());
+      		model.addAttribute("icpEnrollmentForm" , new icpEnrollmentForm());
+
+      		return "icpEnrollment";
+      	}
+       	
+          @RequestMapping(value="/icpEnrollmentlist" , method = RequestMethod.POST)
+          public String listipcEnrollment(@ModelAttribute("icpEnrollmentForm") icpEnrollmentForm p , Model model){
+              model.addAttribute("listicpEnrollment", this.traineeService.listicpEnrollment(p));
+              model.addAttribute("icpEnrollmentForm" , new icpEnrollmentForm());
+              return "icpEnrollment";
+          }
   
 //Before Training
 @RequestMapping(value="/beforeTraining" , method = { RequestMethod.POST , RequestMethod.GET })

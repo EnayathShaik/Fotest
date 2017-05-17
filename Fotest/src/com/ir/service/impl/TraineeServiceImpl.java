@@ -27,7 +27,10 @@ import com.ir.form.MarkAttendanceForm;
 import com.ir.form.MyCoursesForm;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.gcEnrollmentForm;
 import com.ir.form.generalCourseEnrollmentForm;
+import com.ir.form.icpEnrollmentForm;
+import com.ir.form.lcEnrollmentForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CheckAadhar;
@@ -417,13 +420,35 @@ public class TraineeServiceImpl implements TraineeService {
 				// TODO Auto-generated method stub
 				return this.traineeDAO.listFeedback();
 			}
-	
+	//general course
 			@Override
 			@Transactional
 			public List<generalCourseEnrollmentForm> listgeneralCourseEnrollment(generalCourseEnrollmentForm p) {
 				// TODO Auto-generated method stub
 				return this.traineeDAO.listgeneralCourseEnrollment(p);
 			}
+			
+			@Override
+			@Transactional
+			public List<lcEnrollmentForm> listlcEnrollment(lcEnrollmentForm p) {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listlcEnrollment(p);
+			}
+			
+			@Override
+			@Transactional
+			public List<gcEnrollmentForm> listgcEnrollment(gcEnrollmentForm p) {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listgcEnrollment(p);
+			}
+			
+			@Override
+			@Transactional
+			public List<icpEnrollmentForm> listicpEnrollment(icpEnrollmentForm p) {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.listicpEnrollment(p);
+			}
+			
 			@Override
 			@Transactional
 			public List<BeforeTraining> listBeforeTraining() {

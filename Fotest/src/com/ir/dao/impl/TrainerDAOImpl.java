@@ -20,12 +20,12 @@ import com.ir.constantes.TableLink;
 import com.ir.dao.AdminDAO;
 import com.ir.dao.TraineeDAO;
 import com.ir.dao.TrainerDAO;
+import com.ir.form.ApplyForPostForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
-import com.ir.form.MyCoursesForm;
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainerFeedbackForm;
@@ -204,6 +204,28 @@ public class TrainerDAOImpl implements TrainerDAO {
 					bean.setStatus((String) li[6]);
 					new ZLogger("MyCoursesForm", "List:" + li, "TraineeDAOImpl.java");
 					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
+			
+			//apply for post
+			@Override
+			public List<ApplyForPostForm> listapplyForPost(ApplyForPostForm form) {
+				// TODO Auto-generated method stub
+
+				ApplyForPostForm bean = new ApplyForPostForm();
+				List<ApplyForPostForm> resulList = new ArrayList<ApplyForPostForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				List<Object[]> list = session.createSQLQuery("select cast('GC MS/MS' as varchar(20)) as courseName , cast('Adlab' as varchar(20)) as trainingCenter ,  cast(' 	Mr. Anuj, WA-10, Kotla Marg, New Delhi, 9900112288' as varchar(50)) as contactPerson , cast('20' as varchar(20)) as vacancy   ").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainingCenter((String) li[1]);
+					bean.setContactPerson((String) li[2]);
+					bean.setVacancy((String) li[3]);
+					
+					//logger.info("listapplyForPost List::" + li);
 					resulList.add(bean);
 				}
 				return resulList;

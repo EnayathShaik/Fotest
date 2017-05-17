@@ -17,8 +17,8 @@
             </script>
 
  <%-- <ct:url var="addAction" value="/verifyTraineeEnrollment/list.fssai"></ct:url> --%> 
-<cf:form action="verifyTraineeEnrollmentlist.fssai" name="myForm" method="POST"
-	commandName="verifyTraineeEnrollmentForm" onsubmit="return validateFields();">
+<cf:form action="applyForPostlist.fssai" name="myForm" method="POST"
+	commandName="ApplyForPostForm" onsubmit="return validateFields();">
 
 	<section>
 		<%@include file="/website/roles/top-menu.jsp"%>
@@ -48,31 +48,16 @@
 
 							<div class="col-xs-12">
 								<h1>
-									Verify Trainee Enrollment <label id="created">${created }</label>
+									Apply For Post <label id="created">${created }</label>
 								</h1>
 								<div class="row">
 									<div class="col-xs-12">
 										<fieldset>
-											<legend>Verify Trainee Enrollment</legend>
+											<legend>Apply For Post</legend>
 										<cf:input path="id" type="hidden" /> 
 
 											<!-- left side -->
 											<div class="col-xs-6">
-												<div class="form-group">
-													<div>
-														<ul class="lab-no">
-															<li class="style-li"><strong>Training Lab: <span
-																	style="color: red;">*</span>
-
-															</strong></li>
-															<li id="trainingLabErr" style="display:none;" class="style-li error-red" > Training Lab should not be blank.</li>
-
-														</ul>
-													</div>
-													<cf:input path="trainingLab" placeholder="Training Lab"
-														class="form-control" />
-													
-												</div>
 												
 												<div class="form-group">
 														<div>
@@ -88,6 +73,23 @@
 															<cf:options items="${courseNameMap}" />
 														</cf:select>
 													</div>
+												
+										        <div class="form-group">
+                                                     <div>
+                                                         <ul class="lab-no">
+                                                         <li class="style-li"><strong>District:</strong></li>  <li class="style-li error-red"> * </li>
+                                                         <!--  valid -->
+                                                         <!-- <li id="correspondenceDistrictErr" style="display:none;" class="style-li error-red" >District can not be blank.</li> -->
+                                          
+                                                         </ul>
+                                                     </div>
+                                                       <cf:select path="district" class="form-control">
+                                                       <cf:option value="0" label="select District"></cf:option>
+                                                       <cf:options items="${listDistrictMaster}" itemValue="districtId" itemLabel="districtName"/>
+                                                       </cf:select>
+                                                </div>
+												
+												    
 
 
 											</div>
@@ -96,6 +98,21 @@
 
 												<!-- left -->
 												<div class="col-xs-6">
+												
+												<div class="form-group">
+														<div>
+															<ul class="lab-no">
+																<li class="style-li"><strong>Training Center:</strong></li>
+																<li class="style-li error-red"></li>
+																<li id="trainingCenterErr" style="display:none;" class="style-li error-red" > training Center should not be blank.</li>
+															</ul>
+														</div>
+
+														<cf:select path="trainingCenter" class="form-control">
+															<cf:option value="" label="Select training Center" />
+															<cf:options items="${trainingCenterMap}" />
+														</cf:select>
+													</div>
 
 													<div class="form-group">
 												          <div>
@@ -112,26 +129,12 @@
 													type="text" placeholder="Training Date" />
 											       </div>
 											
-													<div class="form-group">
-													<div>
-														<ul class="lab-no">
-															<li class="style-li"><strong>Trainee Name: <span
-																	style="color: red;">*</span>
-
-															</strong></li>
-															<li id="traineeNameErr" style="display:none;" class="style-li error-red" > Training Name should not be blank.</li>
-
-														</ul>
-													</div>
-													<cf:input path="traineeName" placeholder="Training Lab"
-														class="form-control" />
 													
-												</div>
                                                            <div class="col-md-4 hidden-xs"></div>
                                                         <div class="col-md-4 col-xs-12">
                                                             <a href="login.html">
                                                             
-                                                                <input type="submit" class="form-control login-btn" value="Search"> </a>
+                                                                <input type="submit" class="form-control login-btn" value="Show Details"> </a>
                                                         </div>
                                                         <div class="col-md-4 hidden-xs"></div>
 
@@ -155,47 +158,33 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<fieldset>
-											<legend>Verify Trainee Enrollment</legend>
-											<ct:if test="${!empty listVerifyTraineeEnrollment}">
+											<legend>Search Results</legend>
+											<ct:if test="${!empty listapplyForPost}">
 												<table id="datatablesfosrest" class="table table-bordered table-responsive">
 														<thead>
 														<tr class="background-open-vacancies">
 															<th>S.No.</th>
 															<th>Course Name</th>
-															<th>Training Date</th>
-															<th>Training Time</th>
-															<th>Training Lab</th>
-															<th>Trainee Name</th>
-															<th>View Profile</th>
-															<th>Activate</th>
-															<th>Deactivate</th>
+															<th>Training Center Name</th>
+															<th>Contact Person Name, Address, Phone</th>
+															<th>Vacancy</th>
 														</tr>
 													</thead>
 
-													<ct:forEach items="${listVerifyTraineeEnrollment}" var="VerifyTraineeEnrollment"
+													<ct:forEach items="${listapplyForPost}" var="applyForPost"
 														varStatus="loop">
 
 														<tr>
-															<td>${VerifyTraineeEnrollment.id}</td>
-															<td>${VerifyTraineeEnrollment.courseName}</td>
-															<td>${VerifyTraineeEnrollment.trainingDate}</td>
-															<td>${VerifyTraineeEnrollment.trainingTime}</td>
-															<td>${VerifyTraineeEnrollment.trainingLab}</td>
-															<td>${VerifyTraineeEnrollment.traineeName}</td>
-															<td><a href="">open</a>
-															 <td class="text-center">
-                                                            <input type="radio" name="act">
-                                                             </td>
-			                                                  <td class="text-center">
-                                                            <input type="radio" name="act">
-                                                             </td>
-															<%-- <td><button onclick='editRegion(${RegionMapping.id});return false;' >Edit</button></td>
-														<td><a href="<ct:url value='/RegionMapping/remove/${RegionMapping.id}.fssai' />" >Delete</a></td> --%>
+															<td>${loop.count}<input type="checkbox"></td>
+															<td>${applyForPost.courseName}</td>
+															<td>${applyForPost.trainingCenter}</td>
+															<td>${applyForPost.contactPerson}</td>
+															<td>${applyForPost.vacancy}</td>
 														</tr>
 													</ct:forEach>
 												</table>
 												<div class="col-md-12 col-xs-12 text-right" >
-                                                          <input type="button" style="float: right; width:20%;margin-top:-75px;" class="form-control login-btn" value="Save">
+                                                          <input type="button" style="float: right; width:20%;margin-top:-75px;" class="form-control login-btn" value="Apply">
                                                 </div>
 											</ct:if>
 										</fieldset>
@@ -216,45 +205,4 @@
 	<input type="hidden" id="idH" value="" />
 </cf:form>
  
-  <!--<script>
-             /*    var id = localStorage.getItem('activeID');
-                document.getElementById(id).className = "active";
-                 */
-
- function editRegion(id){
-
-                var name1=JSON.stringify({
-            		courseName:0
-              })
-            	$.ajax({
-            	      type: 'post',
-            	      url: 'RegionMapping/edit/'+id+'.fssai',
-            	      contentType : "application/json",
-            		  data:name1,
-            	      success: function (response) {      
-            	      var mainData1 = jQuery.parseJSON(response);
-            	    $("#id").val(mainData1.id);
-            	    $("#regionName").val(mainData1.regionName);
-            	    $("#district").val(mainData1.district);
-            	     $("#updatebtn").css("display" , "block");
-            	     
-            	     $("#createbtn").css("display" , "none");
-            	      }
-            	      });     
-                
-                }
-                 
-                 
-                 
-                 function validateFields(){
-                     
-                  	if($("#regionName").val() == ''){
-                 		 $("#regionNameErr").css("display" , "block");
-                  		return false; 
-                 	 }
-                  	if($("#district").val() == 0){
-                		 $("#districtErr").css("display" , "block");
-                 		return false; 
-                	 }
-              }
-                </script> -->
+  

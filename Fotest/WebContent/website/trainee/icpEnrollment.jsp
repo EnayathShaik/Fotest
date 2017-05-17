@@ -4,13 +4,12 @@
 
 <script type="text/javascript"
 	src="website/js/jquery-toaster/jquery.toaster.js"></script>
-	<script src="website/js/commonController.js"></script>
+<script src="website/js/commonController.js"></script>
 
 
-
-<ct:url var="addAction" value="/GeneralCourseEnrollmentlist.fssai"></ct:url>
+<ct:url var="addAction" value="/icpEnrollmentlist.fssai"></ct:url>
 <cf:form action="${addAction}" name="myForm" method="POST"
-	commandName="generalCourseEnrollmentForm" onsubmit="return validateFields();">
+	commandName="icpEnrollmentForm" onsubmit="return validateFields();">
 
 	<section>
 		<%@include file="/website/roles/top-menu.jsp"%>
@@ -40,7 +39,7 @@
 
 							<div class="col-xs-12">
 								<h1>
-									General Course Enrollment <label id="created">${created }</label>
+									ICP-Ms/MS Enrollment <label id="created">${created }</label>
 								</h1>
 								<div class="row">
 									<div class="col-xs-12">
@@ -147,7 +146,7 @@
 									<div class="col-xs-12">
 										<fieldset>
 											<legend>Training Schedule</legend>
-											<ct:if test="${!empty listgeneralCourseEnrollment}">
+											<ct:if test="${!empty listicpEnrollment}">
 												<table border="1" id="datatablesfosrest" class="table table-bordered table-responsive">
 													
 													<thead>
@@ -162,15 +161,15 @@
 														</tr>
 													</thead>
 
-													<ct:forEach items="${listgeneralCourseEnrollment}" var="generalCourseEnrollment">
+													<ct:forEach items="${listicpEnrollment}" var="icpEnrollment">
 
 														<tr>
 															<td><input type="radio" ></td>
-															<td>${generalCourseEnrollment.trainingLab}</td>
-			                                                <td>${generalCourseEnrollment.trainingDate} &nbsp;&nbsp;&nbsp; ${generalCourseEnrollment.trainingTime}</td>
-			                                                <td>${generalCourseEnrollment.contactPerson}</td>
-			                                                <td>${generalCourseEnrollment.seatingCapacity}</td>
-			                                                <td>${generalCourseEnrollment.seatsavailable}</td>
+															<td>${icpEnrollment.trainingLab}</td>
+			                                                <td>${icpEnrollment.trainingDate} &nbsp;&nbsp;&nbsp; ${icpEnrollment.trainingTime}  </td>
+			                                                <td>${icpEnrollment.contactPerson}</td>
+			                                                <td>${icpEnrollment.seatingCapacity}</td>
+			                                                <td>${icpEnrollment.seatsavailable}</td>
 														</tr>
 													</ct:forEach>
 												</table>

@@ -1,8 +1,49 @@
 package com.ir.form;
 
 public class MarkAttendanceForm {
+	
+	private int id;
+	private String courseName;
+	private String participantName;
+	private String trainingDate;
 
-	private int srNo;
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getCourseName() {
+		return courseName;
+	}
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+	public String getParticipantName() {
+		return participantName;
+	}
+	public void setParticipantName(String participantName) {
+		this.participantName = participantName;
+	}
+	public String getTrainingTime() {
+		return trainingTime;
+	}
+	public void setTrainingTime(String trainingTime) {
+		this.trainingTime = trainingTime;
+	}
+	private String trainingTime;
+	
+	
+	public String getTrainingDate() {
+		return trainingDate;
+	}
+	public void setTrainingDate(String trainingDate) {
+		this.trainingDate = trainingDate;
+	}
+/*	private int srNo;
 	private String trainingType,userType,participantName,aadharNo,attendance;
 	private String trainingDate;
 	private String startTime;
@@ -59,6 +100,6 @@ public class MarkAttendanceForm {
 	
 	public String toString(){
 		return srNo+" "+trainingType+" "+userType+" "+participantName+" "+aadharNo+" "+attendance+" "+trainingDate+" "+startTime;
-	}
+	}*/
 	
 }

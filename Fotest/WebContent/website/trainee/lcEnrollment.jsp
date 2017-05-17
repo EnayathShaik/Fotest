@@ -8,9 +8,9 @@
 
 
 
-<ct:url var="addAction" value="/GeneralCourseEnrollmentlist.fssai"></ct:url>
+<ct:url var="addAction" value="/lcEnrollmentlist.fssai"></ct:url>
 <cf:form action="${addAction}" name="myForm" method="POST"
-	commandName="generalCourseEnrollmentForm" onsubmit="return validateFields();">
+	commandName="lcEnrollmentForm" onsubmit="return validateFields();">
 
 	<section>
 		<%@include file="/website/roles/top-menu.jsp"%>
@@ -40,7 +40,7 @@
 
 							<div class="col-xs-12">
 								<h1>
-									General Course Enrollment <label id="created">${created }</label>
+									Lc-Ms/MS Enrollment <label id="created">${created }</label>
 								</h1>
 								<div class="row">
 									<div class="col-xs-12">
@@ -147,7 +147,7 @@
 									<div class="col-xs-12">
 										<fieldset>
 											<legend>Training Schedule</legend>
-											<ct:if test="${!empty listgeneralCourseEnrollment}">
+											<ct:if test="${!empty listlcEnrollment}">
 												<table border="1" id="datatablesfosrest" class="table table-bordered table-responsive">
 													
 													<thead>
@@ -162,15 +162,15 @@
 														</tr>
 													</thead>
 
-													<ct:forEach items="${listgeneralCourseEnrollment}" var="generalCourseEnrollment">
+													<ct:forEach items="${listlcEnrollment}" var="lcEnrollment">
 
 														<tr>
 															<td><input type="radio" ></td>
-															<td>${generalCourseEnrollment.trainingLab}</td>
-			                                                <td>${generalCourseEnrollment.trainingDate} &nbsp;&nbsp;&nbsp; ${generalCourseEnrollment.trainingTime}</td>
-			                                                <td>${generalCourseEnrollment.contactPerson}</td>
-			                                                <td>${generalCourseEnrollment.seatingCapacity}</td>
-			                                                <td>${generalCourseEnrollment.seatsavailable}</td>
+															<td>${lcEnrollment.trainingLab}</td>
+			                                                <td>${lcEnrollment.trainingDate} &nbsp;&nbsp;&nbsp; ${lcEnrollment.trainingTime}  </td>
+			                                                <td>${lcEnrollment.contactPerson}</td>
+			                                                <td>${lcEnrollment.seatingCapacity}</td>
+			                                                <td>${lcEnrollment.seatsavailable}</td>
 														</tr>
 													</ct:forEach>
 												</table>

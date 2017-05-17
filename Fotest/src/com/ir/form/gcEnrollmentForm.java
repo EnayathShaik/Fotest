@@ -1,6 +1,7 @@
 package com.ir.form;
 
-public class generalCourseEnrollmentForm {
+public class gcEnrollmentForm {
+
 	private int id;
 	private String trainingLab;
 	private String trainingLabState;
@@ -10,20 +11,23 @@ public class generalCourseEnrollmentForm {
 	private String contactPerson;
 	private String seatingCapacity;
 	private String seatsavailable;
-	private String trainingLabDistrict;
+    private String trainingLabDistrict;
+    
+    
 	
-	public String getTrainingLabDistrict() {
-		return trainingLabDistrict;
-	}
-	public void setTrainingLabDistrict(String trainingLabDistrict) {
-		this.trainingLabDistrict = trainingLabDistrict;
-	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	public String getTrainingLabDistrict() {
+		return trainingLabDistrict;
+	}
+	public void setTrainingLabDistrict(String trainingLabDistrict) {
+		this.trainingLabDistrict = trainingLabDistrict;
+	}
+	
 	public String getTrainingTime() {
 		return trainingTime;
 	}

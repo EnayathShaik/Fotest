@@ -13,6 +13,7 @@ import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.StringStringBean;
 import com.ir.dao.TrainingPartnerDao;
 import com.ir.form.ChangePasswordForm;
+import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingPartnerActivateAssessmentForm;
@@ -391,7 +392,12 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 		return trainingPartnerDAO.updateTrainingPartner(p);
 		
 	}
-
+	@Override
+	@Transactional
+	public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm p ) {
+		// TODO Auto-generated method stub
+		return this.trainingPartnerDAO.listmarkAttendance(p);
+	}
 	@Override
 	@Transactional
 	public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(
@@ -414,4 +420,5 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 		// TODO Auto-generated method stub
 		return trainingPartnerDAO.listtrainingPartnerFeedback();
 	}
+	
 }

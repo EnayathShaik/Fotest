@@ -7,6 +7,7 @@ import com.ir.bean.common.StringStringBean;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
+import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainingCalendarForm;
@@ -169,4 +170,7 @@ public interface TrainingPartnerService {
 
 
 
+	//mark attendance
+	public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm p);
+	
 }

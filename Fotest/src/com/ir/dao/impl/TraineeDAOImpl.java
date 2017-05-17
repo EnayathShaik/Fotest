@@ -39,7 +39,10 @@ import com.ir.form.OnlineTrainingForm;
 import com.ir.form.PrintAdmitCard;
 import com.ir.form.RegistrationFormTrainee;
 import com.ir.form.TrainingRequestForm;
+import com.ir.form.gcEnrollmentForm;
 import com.ir.form.generalCourseEnrollmentForm;
+import com.ir.form.icpEnrollmentForm;
+import com.ir.form.lcEnrollmentForm;
 import com.ir.form.TrainingClosureForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -1557,7 +1560,7 @@ System.out.println("list "+list);
 							}
 							return resulList;
 						}
-						
+			//general course			
 
 				@Override
 				public List<generalCourseEnrollmentForm> listgeneralCourseEnrollment(generalCourseEnrollmentForm form) {
@@ -1566,7 +1569,7 @@ System.out.println("list "+list);
 					generalCourseEnrollmentForm bean = new generalCourseEnrollmentForm();
 					List<generalCourseEnrollmentForm> resulList = new ArrayList<generalCourseEnrollmentForm>();
 					Session session = this.sessionFactory.getCurrentSession();
-					List<Object[]> list = session.createSQLQuery("select cast('FSSAI - ITO' as varchar(20)) as trainingLab , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Mr Anuj, 123456789, anuj@gmail.com' as varchar(20)) as contactPerson  , cast('150' as varchar(20)) as seatingCapacity , cast('250' as varchar(20)) as seatsAvailable   ").list();
+					List<Object[]> list = session.createSQLQuery("select cast('FSSAI - ITO' as varchar(20)) as trainingLab , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Mr Anuj, 123456789, anuj@gmail.com' as varchar(30)) as contactPerson  , cast('150' as varchar(20)) as seatingCapacity , cast('250' as varchar(20)) as seatsAvailable   ").list();
 					for (Object[] li : list ) {
 						
 						bean.setTrainingLab((String) li[0]);
@@ -1580,6 +1583,74 @@ System.out.println("list "+list);
 					}
 					return resulList;
 				}
+				
+				@Override
+				public List<lcEnrollmentForm> listlcEnrollment(lcEnrollmentForm form) {
+					// TODO Auto-generated method stub
+					System.out.println("inside listlcEnrollment");
+					lcEnrollmentForm bean = new lcEnrollmentForm();
+					List<lcEnrollmentForm> resulList = new ArrayList<lcEnrollmentForm>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('FSSAI - ITO' as varchar(20)) as trainingLab , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Mr Anuj, 123456789, anuj@gmail.com' as varchar(30)) as contactPerson  , cast('150' as varchar(20)) as seatingCapacity , cast('250' as varchar(20)) as seatsAvailable   ").list();
+					for (Object[] li : list ) {
+						
+						bean.setTrainingLab((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						
+						bean.setContactPerson((String) li[3]);
+						bean.setSeatingCapacity((String) li[4]);
+						bean.setSeatsavailable((String) li[5]);
+						//logger.info("lcEnrollmentForm List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
+				
+				@Override
+				public List<gcEnrollmentForm> listgcEnrollment(gcEnrollmentForm form) {
+					// TODO Auto-generated method stub
+					System.out.println("inside listgcEnrollment");
+					gcEnrollmentForm bean = new gcEnrollmentForm();
+					List<gcEnrollmentForm> resulList = new ArrayList<gcEnrollmentForm>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('FSSAI - ITO' as varchar(20)) as trainingLab , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Mr Anuj, 123456789, anuj@gmail.com' as varchar(30)) as contactPerson  , cast('150' as varchar(20)) as seatingCapacity , cast('250' as varchar(20)) as seatsAvailable   ").list();
+					for (Object[] li : list ) {
+						
+						bean.setTrainingLab((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setContactPerson((String) li[3]);
+						bean.setSeatingCapacity((String) li[4]);
+						bean.setSeatsavailable((String) li[5]);
+						//logger.info("gcEnrollmentForm List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
+				
+				@Override
+				public List<icpEnrollmentForm> listicpEnrollment(icpEnrollmentForm form) {
+					// TODO Auto-generated method stub
+					System.out.println("inside listicpEnrollment");
+					icpEnrollmentForm bean = new icpEnrollmentForm();
+					List<icpEnrollmentForm> resulList = new ArrayList<icpEnrollmentForm>();
+					Session session = this.sessionFactory.getCurrentSession();
+					List<Object[]> list = session.createSQLQuery("select cast('FSSAI - ITO' as varchar(20)) as trainingLab , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Mr Anuj, 123456789, anuj@gmail.com' as varchar(30)) as contactPerson  , cast('150' as varchar(20)) as seatingCapacity , cast('250' as varchar(20)) as seatsAvailable   ").list();
+					for (Object[] li : list ) {
+						
+						bean.setTrainingLab((String) li[0]);
+						bean.setTrainingDate((String) li[1]);
+						bean.setTrainingTime((String) li[2]);
+						bean.setContactPerson((String) li[3]);
+						bean.setSeatingCapacity((String) li[4]);
+						bean.setSeatsavailable((String) li[5]);
+						//logger.info("ipcEnrollmentForm List::" + li);
+						resulList.add(bean);
+					}
+					return resulList;
+				}
+				
 				
 				//BeforeTraining
 				@Override
@@ -1671,6 +1742,7 @@ System.out.println("list "+list);
 					}
 					return resulList;
 				}
+				
 				
 				
 		}

@@ -118,14 +118,14 @@ System.out.println("list "+list);
 		List<Object[]> lst = session.createSQLQuery("select cast('1' as int) as srNo, cast('Refresher' as varchar(20)) as trainingType ,cast('type' as varchar(40)) as userType,cast('26-03-2017' as varchar(40)) as trainingDate,cast('12:09' as varchar(40)) as startTime,cast('partName' as varchar(20)) as participantName").list();//, cast('7t5875858' as varchar(20)) as aadharNo,cast('uphis' as varchar(20)) as attendance")
 		for (Object[] li : lst ) { 
 			
-			System.out.println(li[0].toString()+li[2]+li[3]);
+			/*System.out.println(li[0].toString()+li[2]+li[3]);
 			bean.setSrNo((int) li[0]);
 			bean.setTrainingType((String) li[1]);
 			bean.setUserType((String) li[2]);
 			bean.setTrainingDate((String) li[3]);
 			bean.setStartTime((String) li[4]);
 			bean.setParticipantName((String) li[5]);
-			
+			*/
 			//bean.setAccept((String) li[7]);
 			//bean.setCancel(cancel);
 			

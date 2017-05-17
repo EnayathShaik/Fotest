@@ -2,6 +2,7 @@ package com.ir.service;
 
 import java.util.List;
 
+import com.ir.form.ApplyForPostForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -40,6 +41,6 @@ public interface TrainerService {
 	 */
 	public List<PlannedTrainingCalendarForm> listPlannedTrainingCalendar();
 
-	
+	public List<ApplyForPostForm> listapplyForPost(ApplyForPostForm p);
 	
 }

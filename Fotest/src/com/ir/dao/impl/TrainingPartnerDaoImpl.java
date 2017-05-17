@@ -27,6 +27,7 @@ import com.ir.dao.TrainingPartnerDao;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
+import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainingCalendarForm;
@@ -1703,110 +1704,132 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		return passwordString+"&"+nextSequenceUserID;
 	}
 
-	// listrainingPartnerActivateTraining
-			/*	@Override
-				public List<TrainingPartnerActivateTrainingForm> listrainingPartnerActivateTraining(TrainingPartnerActivateTrainingForm form) {
-					// TODO Auto-generated method stub
-					System.out.println("inside listactivaaaaaaaaaaateTrainingOfTrainee");
-					TrainingPartnerActivateTrainingForm bean = new TrainingPartnerActivateTrainingForm();
-					List<TrainingPartnerActivateTrainingForm> resulList = new ArrayList<TrainingPartnerActivateTrainingForm>();
-
-					Session session = this.sessionFactory.getCurrentSession();
-					List<Object[]> list = session
-							.createSQLQuery(
-									"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
-							.list();
-					for (Object[] li : list) {
-
-						bean.setCourseName((String) li[0]);
-						bean.setTrainingDate((String) li[1]);
-						bean.setTrainingLab((String) li[2]);
-						bean.setTraineeName((String) li[3]);
-						bean.setAttendance((String) li[4]);
-						new ZLogger("listactivateTrainingOfTrainee List::" + li,"","");
-						//logger.info("listactivateTrainingOfTrainee List::" + li);
-						resulList.add(bean);
-					}
-					return resulList;
-				}*/
-			
-				@Override
-				public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(TrainingPartnerActivateTrainingForm p) {
-					// TODO Auto-generated method stub
-					Session session = this.sessionFactory.getCurrentSession();
-					System.out.println("inside listactivateTrainingOfTrainee");
-					String courseName = p.getCourseName();
-					String traineeName = p.getTrainingDate();
-					TrainingPartnerActivateTrainingForm bean = new TrainingPartnerActivateTrainingForm();
-					List<TrainingPartnerActivateTrainingForm> resulList = new ArrayList<TrainingPartnerActivateTrainingForm>();
-					System.out.println("courseName " + courseName + " traineeName " + traineeName);
-
-					List<Object[]> list = session
-							.createSQLQuery(
-									"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
-							.list();
-					for (Object[] li : list) {
-
-						bean.setCourseName((String) li[0]);
-						bean.setTrainingDate((String) li[1]);
-						bean.setTrainingLab((String) li[2]);
-						bean.setTraineeName((String) li[3]);
-						bean.setAttendance((String) li[4]);
-						new ZLogger("listactivateTrainingOfTrainee", "", "List:" + li);
-						// logger.info("listactivateTrainingOfTrainee List::" + li);
-						resulList.add(bean);
-					}
-					return resulList;
-				}
+	
+	//listmarkAttendance
+		@Override
+		public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm form) {
+			// TODO Auto-generated method stub
+			System.out.println("inside markAttendanceForm");
+			String courseName = form.getCourseName();
+			String trainingDate = form.getTrainingDate();
+			MarkAttendanceForm bean = new MarkAttendanceForm();
+			List<MarkAttendanceForm> resulList = new ArrayList<MarkAttendanceForm>();
+			System.out.println("courseName "+courseName + " trainingDate "+trainingDate);
+			Session session = this.sessionFactory.getCurrentSession();
+			List<Object[]> list = session.createSQLQuery("select cast('GC-MS/MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Jyoti' as varchar(20)) as participantName    ").list();
+			for (Object[] li : list ) {
 				
-				@Override
-				public List<TrainingPartnerActivateAssessmentForm> listtrainingPartnerActivateAssessor(TrainingPartnerActivateAssessmentForm p) {
-					// TODO Auto-generated method stub
-					Session session = this.sessionFactory.getCurrentSession();
-					System.out.println("inside listactivateTrainingOfTrainee");
-					String courseName = p.getCourseName();
-					String traineeName = p.getTrainingDate();
-					TrainingPartnerActivateAssessmentForm bean = new TrainingPartnerActivateAssessmentForm();
-					List<TrainingPartnerActivateAssessmentForm> resulList = new ArrayList<TrainingPartnerActivateAssessmentForm>();
-					System.out.println("courseName " + courseName + " traineeName " + traineeName);
+				bean.setCourseName((String) li[0]);
+				bean.setTrainingDate((String) li[1]);
+				bean.setTrainingTime((String) li[2]);
+				bean.setParticipantName((String) li[3]);
+				//logger.info("markAttendanceForm List::" + li);
+				resulList.add(bean);
+			}
+			return resulList;
+		}
+		// listrainingPartnerActivateTraining
+					/*	@Override
+						public List<TrainingPartnerActivateTrainingForm> listrainingPartnerActivateTraining(TrainingPartnerActivateTrainingForm form) {
+							// TODO Auto-generated method stub
+							System.out.println("inside listactivaaaaaaaaaaateTrainingOfTrainee");
+							TrainingPartnerActivateTrainingForm bean = new TrainingPartnerActivateTrainingForm();
+							List<TrainingPartnerActivateTrainingForm> resulList = new ArrayList<TrainingPartnerActivateTrainingForm>();
 
-					List<Object[]> list = session
-							.createSQLQuery(
-									"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
-							.list();
-					for (Object[] li : list) {
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
+									.list();
+							for (Object[] li : list) {
 
-						bean.setCourseName((String) li[0]);
-						bean.setTrainingDate((String) li[1]);
-						bean.setTrainingLab((String) li[2]);
-						bean.setTraineeName((String) li[3]);
-						bean.setAttendance((String) li[4]);
-						new ZLogger("listactivateTrainingOfTrainee", "", "List:" + li);
-						// logger.info("listactivateTrainingOfTrainee List::" + li);
-						resulList.add(bean);
-					}
-					return resulList;
-				}
-				//traineeFeedback
-				@Override
-				public List<TrainingPartnerFeedbackForm> listtrainingPartnerFeedback() {
-					System.out.println("inside TrainingPartnerFeedbackForm");
-					TrainingPartnerFeedbackForm bean = new TrainingPartnerFeedbackForm();
-					List<TrainingPartnerFeedbackForm> resulList = new ArrayList<TrainingPartnerFeedbackForm>();
-					Session session = this.sessionFactory.getCurrentSession();
-					List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/06/1995' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
-					for (Object[] li : list ) {
+								bean.setCourseName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								bean.setTrainingLab((String) li[2]);
+								bean.setTraineeName((String) li[3]);
+								bean.setAttendance((String) li[4]);
+								new ZLogger("listactivateTrainingOfTrainee List::" + li,"","");
+								//logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}*/
+					
+						@Override
+						public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(TrainingPartnerActivateTrainingForm p) {
+							// TODO Auto-generated method stub
+							Session session = this.sessionFactory.getCurrentSession();
+							System.out.println("inside listactivateTrainingOfTrainee");
+							String courseName = p.getCourseName();
+							String traineeName = p.getTrainingDate();
+							TrainingPartnerActivateTrainingForm bean = new TrainingPartnerActivateTrainingForm();
+							List<TrainingPartnerActivateTrainingForm> resulList = new ArrayList<TrainingPartnerActivateTrainingForm>();
+							System.out.println("courseName " + courseName + " traineeName " + traineeName);
+
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
+									.list();
+							for (Object[] li : list) {
+
+								bean.setCourseName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								bean.setTrainingLab((String) li[2]);
+								bean.setTraineeName((String) li[3]);
+								bean.setAttendance((String) li[4]);
+								new ZLogger("listactivateTrainingOfTrainee", "", "List:" + li);
+								// logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
 						
-						bean.setCourseName((String) li[0]);
-						bean.setTrainingDate((String) li[1]);
-						bean.setTrainingTime((String) li[2]);
-						bean.setTrainingLab((String) li[3]);
-						new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
-						//logger.info("traineeFeedback List::" + li);
-						resulList.add(bean);
-					}
-					return resulList;
-				}
-			
-				
+						@Override
+						public List<TrainingPartnerActivateAssessmentForm> listtrainingPartnerActivateAssessor(TrainingPartnerActivateAssessmentForm p) {
+							// TODO Auto-generated method stub
+							Session session = this.sessionFactory.getCurrentSession();
+							System.out.println("inside listactivateTrainingOfTrainee");
+							String courseName = p.getCourseName();
+							String traineeName = p.getTrainingDate();
+							TrainingPartnerActivateAssessmentForm bean = new TrainingPartnerActivateAssessmentForm();
+							List<TrainingPartnerActivateAssessmentForm> resulList = new ArrayList<TrainingPartnerActivateAssessmentForm>();
+							System.out.println("courseName " + courseName + " traineeName " + traineeName);
+
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
+									.list();
+							for (Object[] li : list) {
+
+								bean.setCourseName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								bean.setTrainingLab((String) li[2]);
+								bean.setTraineeName((String) li[3]);
+								bean.setAttendance((String) li[4]);
+								new ZLogger("listactivateTrainingOfTrainee", "", "List:" + li);
+								// logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
+						//traineeFeedback
+						@Override
+						public List<TrainingPartnerFeedbackForm> listtrainingPartnerFeedback() {
+							System.out.println("inside TrainingPartnerFeedbackForm");
+							TrainingPartnerFeedbackForm bean = new TrainingPartnerFeedbackForm();
+							List<TrainingPartnerFeedbackForm> resulList = new ArrayList<TrainingPartnerFeedbackForm>();
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/06/1995' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
+							for (Object[] li : list ) {
+								
+								bean.setCourseName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								bean.setTrainingTime((String) li[2]);
+								bean.setTrainingLab((String) li[3]);
+								new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
+								//logger.info("traineeFeedback List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
 }

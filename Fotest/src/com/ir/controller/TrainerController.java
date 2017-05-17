@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.ir.form.ApplyForPostForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
-import com.ir.form.MyCoursesForm;
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainer;
 import com.ir.form.TrainerFeedbackForm;
@@ -526,6 +526,29 @@ public class TrainerController {
 	return "plannedTrainingCalendar";
 	}
 	
-	
+	//Apply for post
+	@RequestMapping(value = "/applyForPost", method = RequestMethod.GET)
+   	public String applyForPost(Model model) {
+   		System.out.println("applyForPost");
+   		Map<String , String> trainingCenterMap = lst.trainingCenterMap;
+   		Map<String , String> courseNameMap = lst.courseNameMap;
+   		model.addAttribute("trainingCenterMap", trainingCenterMap);
+   		model.addAttribute("courseNameMap", courseNameMap);
+   		model.addAttribute("listDistrictMaster",this.adminService.listDistrictMaster());
+   		model.addAttribute("ApplyForPostForm" , new ApplyForPostForm());
+
+   		return "applyForPost";
+   	}
+    	
+       @RequestMapping(value="/applyForPostlist" , method = RequestMethod.POST)
+       public String listtraineeTrainerFeedback(@ModelAttribute("ApplyForPostForm") ApplyForPostForm p , Model model){
+           model.addAttribute("listapplyForPost", this.trainerService.listapplyForPost(p));
+           model.addAttribute("ApplyForPostForm" , new ApplyForPostForm());
+           List<ApplyForPostForm> list = this.trainerService.listapplyForPost(p);
+           for( ApplyForPostForm li :   list){
+           	System.out.println("li "+li.getCourseName());
+           }
+           return "applyForPost";
+       }
 	
 }

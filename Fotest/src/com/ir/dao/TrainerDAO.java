@@ -2,6 +2,7 @@ package com.ir.dao;
 
 import java.util.List;
 
+import com.ir.form.ApplyForPostForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
@@ -37,11 +38,10 @@ public interface TrainerDAO {
 
 	public List<PlannedTrainingCalendarForm> listPlannedTrainingCalendar();
 
+	public List<ApplyForPostForm> listapplyForPost(ApplyForPostForm p);
 	public List<TrainerFeedbackForm> listtrainingPartnerFeedback();
 
 	public List<TrainerFeedbackForm> listFeedback();
-
-
 
 	/*
 	 * public List<UnitMaster> listTrainingType(); public List<UnitMaster>
