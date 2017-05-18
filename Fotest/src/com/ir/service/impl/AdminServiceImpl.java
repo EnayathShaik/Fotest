@@ -36,7 +36,6 @@ import com.ir.form.TrainerUserManagementForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingCenterUserManagementForm;
 import com.ir.form.TrainingClosureForm;
-import com.ir.form.TrainingPartnerActivateAssessmentForm;
 import com.ir.form.TrainingScheduleForm;
 import com.ir.form.ViewTrainingCalendarForm;
 import com.ir.form.verifyTraineeEnrollmentForm;
@@ -509,8 +508,22 @@ public class AdminServiceImpl implements AdminService {
 			// TODO Auto-generated method stub
 			return this.adminDAO.listgenerateCertificate(p);
 		}
+/*
+		@Override
+		public List<PersonalInformationTrainer> trainerUserManagementSearch(
+				TrainerUserManagementForm trainerUserManagementForm) {
+			// TODO Auto-generated method stub
+			return null;
+		}*/
 
-		
+		@Override
+		@Transactional
+		public List<PersonalInformationTrainer> trainerUserManagementSearch(
+				TrainerUserManagementForm trainerUserManagementForm) {
+			List<PersonalInformationTrainer> trainerUserManagementSearch = adminDAO
+					.trainerUserManagementSearch(trainerUserManagementForm);
+			return trainerUserManagementSearch;
+		}
 
 		
 }

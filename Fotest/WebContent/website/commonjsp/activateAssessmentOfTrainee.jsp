@@ -16,8 +16,8 @@
 	window.onload = OnStart;
 </script>
 <%-- <ct:url var="addAction" value="/activateAssessmentOfTraineelist.fssai"></ct:url> --%>
-<cf:form action="trainingPartnerActivateAssessmentlist.fssai" name="myForm"
-	method="POST" commandName="TrainingPartnerActivateAssessmentForm">
+<cf:form action="activateAssessmentOfTraineelist.fssai" name="myForm"
+	method="POST" commandName="ActivateAssessmentOfTraineeForm">
 
 	<section>
 		<%@include file="/website/roles/top-menu.jsp"%>
@@ -47,12 +47,12 @@
 
 							<div class="col-xs-12">
 								<h1>
-									Activate Training of Trainee <label id="created">${created }</label>
+									Activate Assessment of Trainee <label id="created">${created }</label>
 								</h1>
 								<div class="row">
 									<div class="col-xs-12">
 										<fieldset>
-											<legend>Activate Training of Trainee</legend>
+											<legend>Activate Assessment of Trainee</legend>
 											<!-- left side -->
 											<div class="col-xs-6">
 												<div class="form-group">
@@ -156,8 +156,8 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<fieldset>
-											<legend>Training Partner Activate Assessor</legend>
-											<ct:if test="${!empty listtrainingPartnerActivateAssessor}">
+											<legend>Activate Assessment Of Trainee</legend>
+											<ct:if test="${!empty listactivateAssessmentOfTrainee}">
 												<table id="datatablesfosrest"
 													class="table table-bordered table-responsive">
 													<thead>
@@ -171,15 +171,15 @@
 															<th>Activate Training</th>
 														</tr>
 													</thead>
-													<ct:forEach items="${listtrainingPartnerActivateAssessor}"
-														var="listtrainingPartnerActivateAssessor">
+													<ct:forEach items="${listactivateAssessmentOfTrainee}"
+														var="listactivateAssessmentOfTrainee">
 														<tr>
 															<td>1</td>
-															<td>${listtrainingPartnerActivateAssessor.courseName}</td>
-															<td>${listtrainingPartnerActivateAssessor.trainingDate}</td>
-															<td>${listtrainingPartnerActivateAssessor.trainingLab}</td>
-															<td>${listtrainingPartnerActivateAssessor.traineeName}</td>
-															<td>${listtrainingPartnerActivateAssessor.attendance}</td>
+															<td>${listactivateAssessmentOfTrainee.courseName}</td>
+															<td>${listactivateAssessmentOfTrainee.trainingDate}</td>
+															<td>${listactivateAssessmentOfTrainee.trainingLab}</td>
+															<td>${listactivateAssessmentOfTrainee.traineeName}</td>
+															<td>${listactivateAssessmentOfTrainee.attendance}</td>
 															<td><input type="checkbox"></td>
 														</tr>
 													</ct:forEach>

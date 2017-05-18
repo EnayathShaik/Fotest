@@ -21,7 +21,7 @@
 		var isUpdate = '${isUpdate}';
 		if (isUpdate != null && isUpdate == "Y") {
 
-			/* 	var name = '${PersonalInformationTrainer.firstName}';
+			 	var name = '${PersonalInformationTrainer.firstName}';
 				$("#correspondenceState").val(
 						'${PersonalInformationTrainer.correspondenceState}');
 				$("#correspondenceState").trigger("change");
@@ -40,68 +40,29 @@
 																		'${PersonalInformationTrainer.correspondenceCity}');
 													}, 1000);
 								}, 1000);
-				$("#resState").val('');
+			/* 	$("#resState").val('');
 				$("#residentialDistrict").val('');
-				$("#resCity").val('');
+				$("#resCity").val(''); 
 				$("#ResidentialLine1").val('');
-				$("#ResidentialLine2").val('');
+				$("#ResidentialLine2").val('');*/
+				/* $("#ResidenceAddress1").val('');
+				$("#ResidenceAddress2").val('');
+				$("#emaill").val('');
+				$("#Mobile1").val('');
+				$("#Mobile2").val(''); */
+				
 				$("#createUpdateBtn").val("Update");
 				$("#captcha").css("display", "none");
 				$("#chkunit").css("display", "none");
-				$("#check").attr("checked", "checked"); */
+				$("#check").attr("checked", "checked"); 
 
 		}
 		DrawCaptcha();
 
 		flatpickr("#dob", {});
 
-		/* $('#sameAddr')
-				.change(
-						function() {
-
-							if (this.checked) {
-								$("#resState").val(
-										$("#correspondenceState").val());
-								$("#resState").trigger("change");
-								window
-										.setTimeout(
-												function() {
-													$("#residentialDistrict")
-															.val(
-																	$(
-																			"#correspondenceDistrict")
-																			.val());
-													$("#residentialDistrict")
-															.trigger("change");
-													window
-															.setTimeout(
-																	function() {
-																		$(
-																				"#resCity")
-																				.val(
-																						$(
-																								"#correspondenceCity")
-																								.val());
-																	}, 1000);
-												}, 1000);
-
-								$("#resPincode").val(
-										$("#correspondencePincode").val());
-								$("#ResidentialLine1").val(
-										$("#correspondenceAddress1").val());
-								$("#ResidentialLine2").val(
-										$("#correspondenceAddress2").val())
-								//
-							} else {
-								$("#resState").val('');
-								$("#residentialDistrict").val('');
-								$("#resCity").val('');
-								$("#resPincode").val('');
-								$("#ResidentialLine1").val('');
-								$("#ResidentialLine2").val('');
-							}
-						});
-		 */
+	
+		
 	}
 	window.onload = OnStart;
 	// Remove the spaces from the entered and generated code
@@ -415,7 +376,7 @@
 
 										</ul>
 									</div>
-									<cf:input type="text" path="Email" class="form-control"
+									<cf:input type="text" path="Email" class="form-control" id="emaill"
 										placeholder="Email" onblur="emailVal(this.id,this.value)"
 										required="" />
 
@@ -651,7 +612,7 @@
 										</div>
 										<div class="col-xs-6">
 
-											<cf:select path="trRxpInMonth" class="form-control">
+											<cf:select path="trExpInMonth" class="form-control">
 												<cf:option value="0" label="Select Exp in Month" />
 												<cf:options items="${ExpInMonthMap}" />
 											</cf:select>

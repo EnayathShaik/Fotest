@@ -25,9 +25,7 @@ import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainer;
-import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
-import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CourseName;
 import com.ir.model.FeedbackMaster;
@@ -268,7 +266,6 @@ public class TrainerController {
 			BindingResult result, Model model) {
 		System.out.println("Add PersonalInformationTrainer");
 		String personalInformationTrainer = null;
-
 		try {
 
 			if (p.getId() == 0) {
@@ -501,7 +498,7 @@ public class TrainerController {
 	public String listtrainerFeedback( Model model,HttpSession session){
 		System.out.println("profile id="+session.getAttribute("profileId"));
 		int profileid= (int) session.getAttribute("profileId");
-		model.addAttribute("TrainerFeedbackForm",  new TrainerFeedbackForm());
+		model.addAttribute("FeedbackForm",  new FeedbackForm());
 		if(profileid==3){
 			
 			 model.addAttribute("listFeedback", this.trainerService.listFeedback());

@@ -107,8 +107,8 @@
 		<li> <a href="updatecalendar.fssai">Update Calendar</a> </li>
 		<li><a href="applicationstatus.fssai">Application Status</a></li>
 		<li> <a href="markAttendance.fssai">Mark Attendance</a> </li>
-	<li> <a href="trainingPartnerActivateTraining.fssai">Activate Training</a> </li>
-	<li> <a href="trainingPartnerActivateAssessment.fssai">Activate Assessment</a> </li>
+	<li> <a href="activateTrainingOfTrainee.fssai">Activate Training</a> </li>
+	<li> <a href="activateAssessmentOfTrainee.fssai">Activate Assessment</a> </li>
 		<li> <a href="commonfeedback.fssai">Feedback for Trainer</a> </li>
 	</ul>
 </div>

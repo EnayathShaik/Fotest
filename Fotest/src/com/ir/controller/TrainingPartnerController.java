@@ -29,8 +29,6 @@ import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.JsonResponse;
 import com.ir.bean.common.StringStringBean;
 import com.ir.form.ApplicationStatusForm;
-import com.ir.form.ActivateAssessmentOfTraineeForm;
-import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.GenerateCourseCertificateForm;
@@ -38,17 +36,12 @@ import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TraineeAttendanceForm;
-import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainingCalendarForm;
-import com.ir.form.TrainingPartnerActivateTrainingForm;
-import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.form.ViewFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.form.trainingPartner.TrainingPartnerSearchForm;
 import com.ir.model.CertificateInfo;
-import com.ir.model.CourseTrainee;
 import com.ir.model.CourseType;
-import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
@@ -61,7 +54,6 @@ import com.ir.service.TrainingPartnerService;
 import com.zentech.backgroundservices.Mail;
 import com.zentech.logger.ZLogger;
 import com.zentect.list.constant.ListConstant;
-import com.ir.form.TrainingPartnerActivateAssessmentForm;
 @Controller
 public class TrainingPartnerController {
 	
@@ -1094,23 +1086,8 @@ public class TrainingPartnerController {
 		}
 
 	}
-	// trainingPartnerActivateTraining
-@RequestMapping(value = "/trainingPartnerActivateTraining", method = RequestMethod.GET)
-				public String TrainingPartnerActivateTrainingForm(Model model) {
-					System.out.println("viewEnrolledCourses");
-					Map<String, String> courseNameMap = lst.courseNameMap;
-		            model.addAttribute("TrainingPartnerActivateTrainingForm", new TrainingPartnerActivateTrainingForm());
-					model.addAttribute("courseNameMap", courseNameMap);
-					return "trainingPartnerActivateTraining";
-				}
-				@RequestMapping(value = "/trainingPartnerActivateTraininglist", method = RequestMethod.POST)
-				public String listtrainingPartnerActivateAssessment(
-						@ModelAttribute("TrainingPartnerActivateTrainingForm") TrainingPartnerActivateTrainingForm p, Model model) {
-					model.addAttribute("listtrainingPartnerActivateTraining", this.trainingPartnerService.listtrainingPartnerActivateTraining(p));
-					return "trainingPartnerActivateTraining";
-				}
 				
-				// trainingPartnerActivateAssessment
+				/*// trainingPartnerActivateAssessment
 
 				@RequestMapping(value = "/trainingPartnerActivateAssessment", method = RequestMethod.GET)
 				public String TrainingPartnerActivateAssessmentForm(Model model) {
@@ -1126,14 +1103,8 @@ public class TrainingPartnerController {
 						@ModelAttribute("TrainingPartnerActivateAssessmentForm") TrainingPartnerActivateAssessmentForm p, Model model) {
 					model.addAttribute("listtrainingPartnerActivateAssessor", this.trainingPartnerService.listtrainingPartnerActivateAssessor(p));
 					return "trainingPartnerActivateAssessment";
-				}
-				/*//training Partner Feedback
-				@RequestMapping(value="/trainingPartnerFeedback" , method = { RequestMethod.POST , RequestMethod.GET })
-				public String listtrainerFeedback( Model model){
-					  model.addAttribute("TrainingPartnerFeedbackForm",  new TrainingPartnerFeedbackForm());
-				  model.addAttribute("listtrainingPartnerFeedback", this.trainingPartnerService.listtrainingPartnerFeedback());
-				  return "trainingPartnerFeedback";
 				}*/
+			
 	@RequestMapping(value="/applicationstatus" , method=RequestMethod.GET)
 	public String applicationStatus(@ModelAttribute("applicationStatusForm") ApplicationStatusForm ApplicationStatusForm,HttpSession session,BindingResult result , Model model){
 	

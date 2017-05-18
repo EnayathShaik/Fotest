@@ -774,7 +774,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 		List<Object[]> list = session
 				.createSQLQuery(
-						"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
+						"select cast('Java' as varchar(20)) as CourseName , cast('2040-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
 				.list();
 		for (Object[] li : list) {
 
@@ -801,7 +801,7 @@ public class AdminDAOImpl implements AdminDAO {
 				Session session = this.sessionFactory.getCurrentSession();
 				List<Object[]> list = session
 						.createSQLQuery(
-								"select cast('Java' as varchar(20)) as CourseName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
+								"select cast('Java' as varchar(20)) as CourseName , cast('2025-12-16 12:00' as varchar(20)) as TrainingDate , cast('Mahape' as varchar(20) ) as TrainingLab , cast('Jyoti' as varchar(20)) as traineeName , cast('Present' as varchar(20)) as attendance  ")
 						.list();
 				for (Object[] li : list) {
 
@@ -998,5 +998,49 @@ public class AdminDAOImpl implements AdminDAO {
 				return list;
 				
 			}
+			@Override
+			public List<PersonalInformationTrainer> trainerUserManagementSearch(
+					TrainerUserManagementForm trainerUserManagementForm) {
+				Session session = sessionFactory.getCurrentSession();
+				String FirstName = trainerUserManagementForm.getFirstName();
+				String MiddleName = trainerUserManagementForm.getMiddleName();
+				String LastName = trainerUserManagementForm.getLastName();
+				String AadharNumber = trainerUserManagementForm.getAadharNumber();
+				String status = trainerUserManagementForm.getStatus();
 
+				if (FirstName.length() == 0) {
+					FirstName = "%";
+				}
+				if (MiddleName.length() == 0) {
+					MiddleName = "%";
+				}
+				if (LastName.length() == 0) {
+					LastName = "%";
+				}
+				if (AadharNumber.length() == 0) {
+					AadharNumber = "%";
+				}
+				if (status.equals("0")) {
+					status = "%";
+				}
+
+				String join = " inner join loginDetails as ld on pitp.loginDetails = ld.id";
+				String like = " where upper(pitp.FirstName) like '" + FirstName.toUpperCase() + "' and pitp.MiddleName like '"
+						+ MiddleName + "' and pitp.LastName like '" + LastName + "' and " + "pitp.AadharNumber like '"
+						+ AadharNumber + "' and ld.status like '" + status + "'";
+				String select = "pitp.id,ld.loginid,pitp.FirstName,pitp.MiddleName,pitp.LastName,pitp.AadharNumber,pitp.logindetails ,(CASE WHEN ld.isActive = 'Y' THEN 'INACTIVE' ELSE 'ACTIVE' END) as updateStatus,(CASE WHEN ld.isActive = 'Y' THEN 'ACTIVE' ELSE 'INACTIVE' END) as currentstatus ";
+
+				String sql = "Select " + select + "  from PersonalInformationTrainer as pitp " + join + like;
+				Query query = session.createSQLQuery(sql);
+				List<PersonalInformationTrainer> list = query.list();
+				new ZLogger("trainerUserManagementSearch", "list  " + list, "AdminDAOImpl.java");
+				if (list.size() > 0) {
+					return list;
+				} else {
+					new ZLogger("trainerUserManagementSearch", "list size null", "AdminDAOImpl.java");
+					list = null;
+					return list;
+				}
+			}
+			
 }

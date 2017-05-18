@@ -35,6 +35,7 @@ import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.RegionMappingForm;
 import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.RegionMasterForm;
+import com.ir.form.TrainerUserManagementForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ViewTrainingCalendarForm;
 import com.ir.form.manageTrainingForm;
@@ -47,11 +48,13 @@ import com.ir.model.FeedbackMaster;
 import com.ir.model.RegionMapping;
 import com.ir.model.ManageCourseCarricullum;
 import com.ir.model.ManageTraining;
+import com.ir.model.PersonalInformationTrainer;
 import com.ir.model.RegionMaster;
 import com.ir.model.StateMaster;
 import com.ir.model.ViewTrainingCalendar;
 import com.ir.service.AdminService;
 import com.ir.service.PageLoadService;
+import com.ir.service.TrainingPartnerService;
 import com.zentech.logger.ZLogger;
 import com.zentect.list.constant.ListConstant;
 
@@ -67,6 +70,11 @@ public class AdminController {
 	@Qualifier("pageLoadService")
 	PageLoadService pageLoadService;
 
+	@Autowired
+	@Qualifier("trainingPartnerService")
+	TrainingPartnerService trainingPartnerService; 
+	
+	
 	ListConstant lst = new ListConstant();
 
 	
@@ -459,41 +467,8 @@ public class AdminController {
 		return "changePasswordTp";
 	}
 	
-	// Activate Assessment of Trainer
-
-			@RequestMapping(value = "/activateAssessmentOfTrainee", method = RequestMethod.GET)
-			public String activateAssessmentOfTrainee(Model model) {
-				System.out.println("activateAssessmentOfTrainee");
-				model.addAttribute("ActivateAssessmentOfTraineeForm", new ActivateAssessmentOfTraineeForm());
-				Map<String, String> courseNameMap = lst.courseNameMap;
-				model.addAttribute("courseNameMap", courseNameMap);
-				return "activateAssessmentOfTrainee";
-			}
-
-			@RequestMapping(value = "/activateAssessmentOfTraineelist", method = RequestMethod.POST)
-			public String listactivateAssessmentOfTrainee(
-					@ModelAttribute("ActivateAssessmentOfTraineeForm") ActivateAssessmentOfTraineeForm p, Model model) {
-				model.addAttribute("listactivateAssessmentOfTrainee", this.adminService.listactivateAssessmentOfTrainee(p));
-				return "activateAssessmentOfTrainee";
-			}
-	// Activate Training of Trainee
-
-			@RequestMapping(value = "/activateTrainingOfTrainee", method = RequestMethod.GET)
-			public String activateTrainingOfTrainee(Model model) {
-				System.out.println("viewEnrolledCourses");
-				Map<String, String> courseNameMap = lst.courseNameMap;
-	            model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
-				model.addAttribute("courseNameMap", courseNameMap);
-				return "activateTrainingOfTrainee";
-			}
-
-			@RequestMapping(value = "/activateTrainingOfTraineelist", method = RequestMethod.POST)
-			public String listactivateTrainingOfTrainee(
-					@ModelAttribute("activateTrainingOfTraineeForm") ActivateTrainingOfTraineeForm p, Model model) {
-				model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
-				model.addAttribute("listActivateTrainingOfTrainee", this.adminService.listactivateTrainingOfTrainee(p));
-				return "activateTrainingOfTrainee";
-			}
+	
+	
 			// For add and update region mapping both
 
 			@RequestMapping(value = "/regionMapping", method = RequestMethod.GET)
@@ -848,4 +823,86 @@ public class AdminController {
 						out.flush();
 
 					}
+					
+					
+					@RequestMapping(value = "/trainerUserManagementForm", method = RequestMethod.GET)
+					public String trainerUserManagementForm(
+							@ModelAttribute("trainerUserManagementForm") TrainerUserManagementForm trainerUserManagementForm) {
+						return "trainerUserManagementForm";
+					}
+					@RequestMapping(value = "/trainerUserManagementSearch", method = RequestMethod.POST)
+					public String trainerUserManagementSave(
+							@Valid @ModelAttribute("trainerUserManagementForm") TrainerUserManagementForm trainerUserManagementForm,
+							BindingResult result, Model model) {
+						if (result.hasErrors()) {
+							new ZLogger("trainerUserManagementSearch", "bindingResult.hasErrors  " + result.hasErrors(),
+									"AdminController.java");
+							new ZLogger("trainerUserManagementSearch",
+									"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+									"AdminController.java");
+							return "trainerUserManagementForm";
+						}
+						try {
+							List<PersonalInformationTrainer> trainerUserManagementSearch = adminService
+									.trainerUserManagementSearch(trainerUserManagementForm);
+							if (trainerUserManagementSearch != null && trainerUserManagementSearch.size() > 0) {
+								model.addAttribute("searchTrainerUsermanagement", trainerUserManagementSearch);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+							new ZLogger("trainerUserManagementSearch",
+									"Exception while trainerUserManagementSearch :  " + e.getMessage(), "AdminController.java");
+						}
+						return "trainerUserManagementForm";
+					}
+					
+	            // Activate Training of Trainee
+
+									@RequestMapping(value = "/activateTrainingOfTrainee", method = RequestMethod.GET)
+									public String activateTrainingOfTrainee(Model model,HttpSession session) {
+										int profileid= (int) session.getAttribute("profileId");
+										System.out.println("viewEnrolledCourses");
+										Map<String, String> courseNameMap = lst.courseNameMap;
+										model.addAttribute("courseNameMap", courseNameMap);
+										 model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
+										return "activateTrainingOfTrainee";
+									}
+
+									@RequestMapping(value = "/activateTrainingOfTraineelist", method = RequestMethod.POST)
+									public String listactivateTrainingOfTrainee(
+											@ModelAttribute("activateTrainingOfTraineeForm") ActivateTrainingOfTraineeForm p, Model model,HttpSession session) {
+										int profileid= (int) session.getAttribute("profileId");
+										model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
+										if(profileid==1){
+											model.addAttribute("listActivateTrainingOfTrainee", this.adminService.listactivateTrainingOfTrainee(p));
+										}
+										else{
+											model.addAttribute("listActivateTrainingOfTrainee", this.trainingPartnerService.listtrainingPartnerActivateTraining(p));
+										}
+				
+										return "activateTrainingOfTrainee";
+									}
+									// Activate Assessment of Trainer
+
+									@RequestMapping(value = "/activateAssessmentOfTrainee", method = RequestMethod.GET)
+									public String activateAssessmentOfTrainee(Model model) {
+										System.out.println("activateAssessmentOfTrainee");
+										Map<String, String> courseNameMap = lst.courseNameMap;
+										model.addAttribute("courseNameMap", courseNameMap);
+										model.addAttribute("ActivateAssessmentOfTraineeForm", new ActivateAssessmentOfTraineeForm());
+										return "activateAssessmentOfTrainee";
+									}
+
+									@RequestMapping(value = "/activateAssessmentOfTraineelist", method = RequestMethod.POST)
+									public String listactivateAssessmentOfTrainee(
+											@ModelAttribute("ActivateAssessmentOfTraineeForm") ActivateAssessmentOfTraineeForm p, Model model,HttpSession session) {
+								int profileid= (int) session.getAttribute("profileId");
+										if(profileid==1){
+											model.addAttribute("listactivateAssessmentOfTrainee", this.adminService.listactivateAssessmentOfTrainee(p));
+										}
+										else{
+											model.addAttribute("listactivateAssessmentOfTrainee", this.trainingPartnerService.listtrainingPartnerActivateAssessor(p));
+										}
+										return "activateAssessmentOfTrainee";
+									}
 }

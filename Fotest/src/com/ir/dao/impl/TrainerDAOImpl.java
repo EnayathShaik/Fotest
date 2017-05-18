@@ -29,9 +29,7 @@ import com.ir.form.MyCalendarForm;
 
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
-import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
-import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CheckAadhar;
@@ -166,10 +164,10 @@ public class TrainerDAOImpl implements TrainerDAO {
 	 */
 	//traineeFeedback
 			@Override
-			public List<TrainerFeedbackForm> listtrainerFeedback() {
+			public List<FeedbackForm> listtrainerFeedback() {
 				System.out.println("inside listprintAdmitCard");
-				TrainerFeedbackForm bean = new TrainerFeedbackForm();
-				List<TrainerFeedbackForm> resulList = new ArrayList<TrainerFeedbackForm>();
+				FeedbackForm bean = new FeedbackForm();
+				List<FeedbackForm> resulList = new ArrayList<FeedbackForm>();
 				Session session = this.sessionFactory.getCurrentSession();
 				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
 				for (Object[] li : list ) {
@@ -233,10 +231,10 @@ public class TrainerDAOImpl implements TrainerDAO {
 			}
 			//traineeFeedback
 			@Override
-			public List<TrainerFeedbackForm> listtrainingPartnerFeedback() {
+			public List<FeedbackForm> listtrainingPartnerFeedback() {
 				System.out.println("inside TrainingPartnerFeedbackForm");
-				TrainerFeedbackForm bean = new TrainerFeedbackForm();
-				List<TrainerFeedbackForm> resulList = new ArrayList<TrainerFeedbackForm>();
+				FeedbackForm bean = new FeedbackForm();
+				List<FeedbackForm> resulList = new ArrayList<FeedbackForm>();
 				Session session = this.sessionFactory.getCurrentSession();
 				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('02/06/1995' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
 				for (Object[] li : list ) {
@@ -253,10 +251,10 @@ public class TrainerDAOImpl implements TrainerDAO {
 			}
 			//traineeFeedback
 			@Override
-			public List<TrainerFeedbackForm> listFeedback() {
+			public List<FeedbackForm> listFeedback() {
 				System.out.println("inside listprintAdmitCard");
-				TrainerFeedbackForm bean = new TrainerFeedbackForm();
-				List<TrainerFeedbackForm> resulList = new ArrayList<TrainerFeedbackForm>();
+				FeedbackForm bean = new FeedbackForm();
+				List<FeedbackForm> resulList = new ArrayList<FeedbackForm>();
 				Session session = this.sessionFactory.getCurrentSession();
 				System.out.println("fffffffffffffffffffffffffffff");
 				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('19/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();

@@ -1256,7 +1256,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 	
 	@Override
 	public  String addPersonalInfoTrainer(PersonalInformationTrainer p){
-
+System.out.println("createeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		PasswordGenerator passwordGenerator = new PasswordGenerator(6);
 		char[] pass = passwordGenerator.get();
 		String passwordString = String.valueOf(pass);
@@ -1291,34 +1291,33 @@ public class TraineeDAOImpl implements TraineeDAO {
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformationTrainer personalInformationTrainer = (PersonalInformationTrainer) session.load(PersonalInformationTrainer.class, id);
 		//personalInformationTrainer.setUserType(p.getUserType());
+		personalInformationTrainer.setUserId(p.getUserId());
 		personalInformationTrainer.setTitle(p.getTitle());
-		personalInformationTrainer.setAadharNumber(p.getAadharNumber());
-		/*personalInformationTrainer.setEmpID(p.getEmpID());*/
 		personalInformationTrainer.setDob(p.getDob());
-		personalInformationTrainer.setGender(p.getGender());
+		personalInformationTrainer.setAadharNumber(p.getAadharNumber());
+		personalInformationTrainer.setMobile1(p.getMobile1());
 		personalInformationTrainer.setFirstName(p.getFirstName());
-		//personalInformationTrainer.setFatherName(p.getFatherName());
-		personalInformationTrainer.setLastName(p.getLastName());
 		personalInformationTrainer.setMiddleName(p.getMiddleName());
-		personalInformationTrainer.setEmail(p.getEmail());
-		//personalInformationTrainer.setMobile(p.getMobile1());
-		/*personalInformationTrainer.setCorrespondenceAddress1(p.getCorrespondenceAddress1());
-		personalInformationTrainer.setCorrespondenceAddress2(p.getCorrespondenceAddress2());
+		personalInformationTrainer.setLastName(p.getLastName());
+		personalInformationTrainer.setGender(p.getGender());
+		personalInformationTrainer.setResidenceAddress1(p.getResidenceAddress1());
+		personalInformationTrainer.setResidenceAddress2(p.getResidenceAddress2());
 		personalInformationTrainer.setCorrespondenceState(p.getCorrespondenceState());
 		personalInformationTrainer.setCorrespondenceDistrict(p.getCorrespondenceDistrict());
 		personalInformationTrainer.setCorrespondenceCity(p.getCorrespondenceCity());
-		personalInformationTrainer.setCorrespondencePincode(p.getCorrespondencePincode());
-		personalInformationTrainer.setResidentialLine1(p.getResidentialLine1());
-		personalInformationTrainer.setResidentialLine2(p.getResidentialLine2());
-		personalInformationTrainer.setResState(p.getResState());
-		personalInformationTrainer.setResidentialDistrict(p.getResidentialDistrict());
-		personalInformationTrainer.setResCity(p.getResCity());
-		personalInformationTrainer.setResPincode(p.getResPincode());
-		personalInformationTrainer.setExpBackground(p.getExpBackground());
-		personalInformationTrainer.setExpInMonth(p.getExpInMonth());
-		personalInformationTrainer.setExpInYear(p.getExpInYear());
-		personalInformationTrainer.setSessWishToConduct(p.getSessWishToConduct());
-		personalInformationTrainer.setAssociatedWithAnyTrainingInstitute(p.getAssociatedWithAnyTrainingInstitute());*/
+		personalInformationTrainer.setEmail(p.getEmail());
+		personalInformationTrainer.setMobile2(p.getMobile2());
+		personalInformationTrainer.setQualCategory(p.getQualCategory());
+		personalInformationTrainer.setOthers1(p.getOthers1());
+		personalInformationTrainer.setQualSubCategory(p.getQualSubCategory());
+		personalInformationTrainer.setOthers2(p.getOthers2());
+		personalInformationTrainer.setAssExpInYear(p.getAssExpInYear());
+		personalInformationTrainer.setAssExpInMonth(p.getAssExpInMonth());
+		System.out.println(p.getModules());
+		personalInformationTrainer.setModules(p.getModules());
+		personalInformationTrainer.setTrExpInYear(p.getTrExpInYear());
+		personalInformationTrainer.setTrExpInMonth(p.getTrExpInMonth());
+		personalInformationTrainer.setAreaSpecialization(p.getAreaSpecialization());
 		session.update(personalInformationTrainer);
 		return "updated";
 	}	

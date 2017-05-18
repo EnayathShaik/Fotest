@@ -6,10 +6,10 @@ import com.ir.form.ApplyForPostForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
+import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
-import com.ir.form.TrainerFeedbackForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -32,9 +32,9 @@ public interface TrainerService {
 
 	public List<MyCalendarForm> listMyCalendar();
 
-	public List<TrainerFeedbackForm> listFeedback();
-	public List<TrainerFeedbackForm> listtrainingPartnerFeedback();
-	public List<TrainerFeedbackForm> listtrainerFeedback();
+	public List<FeedbackForm> listFeedback();
+	public List<FeedbackForm> listtrainingPartnerFeedback();
+	public List<FeedbackForm> listtrainerFeedback();
 	/*
 	 * public List<UnitMaster> listTrainingType(); public List<UnitMaster>
 	 * listUserType(); public List<UnitMaster> listStatusType();;

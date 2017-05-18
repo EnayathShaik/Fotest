@@ -4,15 +4,14 @@ import java.util.List;
 
 import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.StringStringBean;
+import com.ir.form.ActivateAssessmentOfTraineeForm;
+import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
-import com.ir.form.TrainingPartnerActivateAssessmentForm;
-import com.ir.form.TrainingPartnerActivateTrainingForm;
-import com.ir.form.TrainingPartnerFeedbackForm;
 import com.ir.form.ViewFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.model.ApplicationStatus;
@@ -118,10 +117,7 @@ public interface TrainingPartnerDao {
 	
 	public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm p);
 	
-	public List<TrainingPartnerActivateTrainingForm> listtrainingPartnerActivateTraining(
-			TrainingPartnerActivateTrainingForm p);
-	public List<TrainingPartnerActivateAssessmentForm> listtrainingPartnerActivateAssessor(
-			TrainingPartnerActivateAssessmentForm p);
-	public List<TrainingPartnerFeedbackForm> listtrainingPartnerFeedback();
 	public List<ViewFeedback> viewFeedbackSearch(ViewFeedbackForm vff);
+	public List<ActivateTrainingOfTraineeForm> listtrainingPartnerActivateTraining(ActivateTrainingOfTraineeForm p);
+	public List<ActivateAssessmentOfTraineeForm> listtrainingPartnerActivateAssessor(ActivateAssessmentOfTraineeForm p);
 }

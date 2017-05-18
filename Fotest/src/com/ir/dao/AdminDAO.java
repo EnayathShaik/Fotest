@@ -187,4 +187,7 @@ public interface AdminDAO {
 			public	List<ManageTrainingCalendarForm> listmanageTrainingCalendar(ManageTrainingCalendarForm p);
 						
 			public List getQuestions(String data);
+
+			public List<PersonalInformationTrainer> trainerUserManagementSearch(
+					TrainerUserManagementForm trainerUserManagementForm);
 }
