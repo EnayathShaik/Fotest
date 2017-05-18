@@ -125,11 +125,11 @@
 						<ul class="nav navbar-nav">
 						<%System.out.println("topmenu");%>
 							<li class="active hori"><a href="loginProcess.fssai">Home</a></li>
-					<!-- 		<li class="hori"><a href="mycalendar.fssai">My Calendar</a></li> -->
-							<!-- <li class="hori"><a href="viewFeedbackDetails.fssai">View
-									Feedback Details</a></li>
-							<li class="hori"><a href="contactTrainee.fssai">Contact
-									Us</a></li> -->
+						<li class="hori"><a href="viewfeedback.fssai">View Feedback</a></li>
+							<li class="hori"><a href="updateinfotrainingpartner.fssai">View
+									Update Info</a></li>
+							<li class="hori"><a href="contactus.fssai">Contact
+									Us</a></li> 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown active"><a href="#"
@@ -208,12 +208,7 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 						<%System.out.println("topmenu");%>
-							<li class="active hori"><a href="loginProcess.fssai">Home</a></li>
-						<li class="hori"><a href="viewfeedback.fssai">View Feedback</a></li>
-							<li class="hori"><a href="updateinfotrainingpartner.fssai">View
-									Update Info</a></li>
-							<li class="hori"><a href="contactus.fssai">Contact
-									Us</a></li> 
+						
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown active"><a href="#"
@@ -343,7 +338,7 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="traineeUserManagementForm.fssai" class="clr">Trainee</a></li>
                                             <li><a href="trainerUserManagementForm.fssai" class="clr">Trainer</a></li>
-                                            <li><a href="trainingCenterUserManagementForm.fssai" class="clr">Training Institude</a></li>
+                                            <li><a href="trainingpartnerusermanagementform.fssai" class="clr">Training-Partner</a></li>
                                             <li><a href="assessorUserManagementForm.fssai" class="clr">Assessor</a></li>
                                             <li><a href="adminUserManagementForm.fssai" class="clr">Admin</a></li>
                                         </ul>

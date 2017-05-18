@@ -1698,7 +1698,7 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		loginDetails.setPassword(passwordString);
 		loginDetails.setEncrypted_Password(encryprPassword);
 		loginDetails.setStatus("A");
-		loginDetails.setProfileId(7);
+		loginDetails.setProfileId(5);
 		p.setLoginDetails(loginDetails);
 		
 		session.save(p);
