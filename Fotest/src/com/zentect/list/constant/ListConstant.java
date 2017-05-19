@@ -327,5 +327,13 @@ public class ListConstant {
         auserTypeMap.put("Ecolab", "Ecolab");
         trainingCenterMap = Collections.unmodifiableMap(auserTypeMap);
     }
-    
+  //Training Center
+    public static final Map<String, String> profileCodeMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("Trainee", "Trainee");
+        auserTypeMap.put("Trainer", "Trainer");
+        auserTypeMap.put("Training Partner", "Training Partner");
+        profileCodeMap = Collections.unmodifiableMap(auserTypeMap);
+    }
 }

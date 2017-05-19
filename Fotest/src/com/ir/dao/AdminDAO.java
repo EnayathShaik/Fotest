@@ -4,6 +4,8 @@ import java.util.List;
 import com.ir.bean.common.IntStringBean;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
+import com.ir.form.ActivateUserIdForm;
+import com.ir.form.AdminHomePageForm;
 import com.ir.form.AdminUserManagementForm;
 import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
@@ -38,6 +40,7 @@ import com.ir.model.City;
 import com.ir.model.CityMaster;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
+import com.ir.model.CreateCalendar;
 import com.ir.model.CustomerDetails;
 import com.ir.model.CustomerMaster;
 import com.ir.model.District;
@@ -190,4 +193,15 @@ public interface AdminDAO {
 
 			public List<PersonalInformationTrainer> trainerUserManagementSearch(
 					TrainerUserManagementForm trainerUserManagementForm);
+
+			public List<ActivateUserIdForm> listactivateUserId(ActivateUserIdForm p);
+
+			public List<AdminHomePageForm> listPendingTraineeEnrollment(AdminHomePageForm p);
+
+			public List<AdminHomePageForm> listuserIdActivation(AdminHomePageForm p);
+
+			public List<AdminHomePageForm> listpendingRequestForCalendar(AdminHomePageForm p);
+
+			
+
 }

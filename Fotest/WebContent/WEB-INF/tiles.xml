@@ -1355,4 +1355,16 @@
 		<put-attribute name="body"
 			value="/website/commonjsp/activateAssessmentOfTrainee.jsp" />
 	</definition>
+	<definition name="createCalendar" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainingPartner/createCalendar.jsp" />
+	</definition>
+	<definition name="updateCalendar" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainingPartner/updateCalendar.jsp" />
+	</definition>
+	<definition name="activateUserId" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/admin/activateUserId.jsp" />
+	</definition>
 </tiles-definitions>

@@ -28,6 +28,7 @@ import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
+import com.ir.form.CreateCalendarForm;
 import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
@@ -39,6 +40,7 @@ import com.ir.model.City;
 import com.ir.model.CourseEnrolledUser;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
+import com.ir.model.CreateCalendar;
 import com.ir.model.District;
 import com.ir.model.LoginDetails;
 import com.ir.model.ManageCourseContent;
@@ -46,6 +48,7 @@ import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
+import com.ir.model.RegionMaster;
 import com.ir.model.State;
 import com.ir.model.TraineeDailyAttendance;
 import com.ir.model.TrainingCalendar;
@@ -1837,5 +1840,60 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 							}
 							return resulList;
 						}
-					
+						@Override
+						public void addCalendar(CreateCalendar p) {
+							
+							Session session = this.sessionFactory.getCurrentSession();
+							session.persist(p);
+							new ZLogger("CreateCalendar saved successfully", "", "CreateCalendar Details=" + p);
+							
+						}
+
+						@Override
+						public void updateCalendar(CreateCalendar p) {
+							Session session = this.sessionFactory.getCurrentSession();
+							session.update(p);
+							new ZLogger("CreateCalendar updated successfully", "", "CreateCalendar Details=" + p);
+						}
+
+
+						@Override
+						public List<CreateCalendar> listCreateCalendarForm() {
+								
+								
+								Session session = this.sessionFactory.getCurrentSession();
+								List<CreateCalendar> mccList = session.createQuery("from CreateCalendar ").list();
+								for (CreateCalendar o : mccList) {
+									System.out.println("Region List::" + o);
+								}
+								return mccList;
+							}
+						
+						
+						@Override
+						public List<CreateCalendarForm> listupdateCalendar(CreateCalendarForm p) {
+							// TODO Auto-generated method stub
+							Session session = this.sessionFactory.getCurrentSession();
+							System.out.println("inside listactivateTrainingOfTrainee");
+							String courseName = p.getCourseName();
+							String traineeName = p.getTrainingDate();
+							CreateCalendarForm bean = new CreateCalendarForm();
+							List<CreateCalendarForm> resulList = new ArrayList<CreateCalendarForm>();
+							System.out.println("courseName " + courseName + " traineeName " + traineeName);
+
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Java' as varchar(20)) as CourseName , cast('2040-12-16 12:00' as varchar(20)) as TrainingDate  ")
+									.list();
+							for (Object[] li : list) {
+
+								bean.setCourseName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								new ZLogger("listactivateTrainingOfTrainee", "", "List:" + li);
+								// logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
+						
 }

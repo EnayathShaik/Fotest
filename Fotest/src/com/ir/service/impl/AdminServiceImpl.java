@@ -13,6 +13,8 @@ import com.ir.bean.common.IntStringBean;
 import com.ir.dao.AdminDAO;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
+import com.ir.form.ActivateUserIdForm;
+import com.ir.form.AdminHomePageForm;
 import com.ir.form.AdminUserManagementForm;
 import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
@@ -45,6 +47,7 @@ import com.ir.model.AssessmentQuestions;
 import com.ir.model.CityMaster;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
+import com.ir.model.CreateCalendar;
 import com.ir.model.CustomerDetails;
 import com.ir.model.CustomerMaster;
 import com.ir.model.District;
@@ -508,13 +511,6 @@ public class AdminServiceImpl implements AdminService {
 			// TODO Auto-generated method stub
 			return this.adminDAO.listgenerateCertificate(p);
 		}
-/*
-		@Override
-		public List<PersonalInformationTrainer> trainerUserManagementSearch(
-				TrainerUserManagementForm trainerUserManagementForm) {
-			// TODO Auto-generated method stub
-			return null;
-		}*/
 
 		@Override
 		@Transactional
@@ -524,6 +520,35 @@ public class AdminServiceImpl implements AdminService {
 					.trainerUserManagementSearch(trainerUserManagementForm);
 			return trainerUserManagementSearch;
 		}
+
+		@Override
+		@Transactional
+		public List<ActivateUserIdForm> listactivateUserId(ActivateUserIdForm p) {
+			// TODO Auto-generated method stub
+			return this.adminDAO.listactivateUserId(p);
+		}
+
+		@Override
+		@Transactional
+		public List<AdminHomePageForm> listPendingTraineeEnrollment(AdminHomePageForm p) {
+			// TODO Auto-generated method stub
+			return this.adminDAO.listPendingTraineeEnrollment(p);
+		}
+
+		@Override
+		@Transactional
+		public List<AdminHomePageForm> listuserIdActivation(AdminHomePageForm p) {
+			// TODO Auto-generated method stub
+			return this.adminDAO.listuserIdActivation(p);
+		}
+
+		@Override
+		@Transactional
+		public List<AdminHomePageForm> listpendingRequestForCalendar(AdminHomePageForm p) {
+			// TODO Auto-generated method stub
+			return this.adminDAO.listpendingRequestForCalendar(p);
+		}
+
 
 		
 }

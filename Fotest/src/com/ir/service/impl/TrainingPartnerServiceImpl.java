@@ -16,6 +16,7 @@ import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ChangePasswordForm;
+import com.ir.form.CreateCalendarForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
@@ -24,10 +25,12 @@ import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.model.ApplicationStatus;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
+import com.ir.model.CreateCalendar;
 import com.ir.model.PersonalInformationTrainingInstitute;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
+import com.ir.model.RegionMaster;
 import com.ir.model.Utility;
 import com.ir.model.ViewFeedback;
 import com.ir.service.TrainingPartnerService;
@@ -432,4 +435,33 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 		return this.trainingPartnerDAO.listtrainingPartnerActivateAssessor(p);
 	}
 
+
+	@Override
+	@Transactional
+	public void addCalendar(CreateCalendar p) {
+		// TODO Auto-generated method stub
+		this.trainingPartnerDAO.addCalendar(p);
+	}
+
+	@Override
+	@Transactional
+	public void updateCalendar(CreateCalendar p) {
+		this.trainingPartnerDAO.updateCalendar(p);
+		
+	}
+
+	@Override
+	@Transactional
+	public List<CreateCalendar> listCreateCalendarForm() {
+		// TODO Auto-generated method stub
+		return this.trainingPartnerDAO.listCreateCalendarForm();
+	}
+
+	@Override
+	@Transactional
+	public List<CreateCalendarForm> listupdateCalendar(CreateCalendarForm p) {
+		// TODO Auto-generated method stub
+		return this.trainingPartnerDAO.listupdateCalendar(p);
+	}
+	
 }

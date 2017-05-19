@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,9 +29,12 @@ import com.google.gson.Gson;
 import com.ir.bean.common.IntStringBean;
 import com.ir.bean.common.JsonResponse;
 import com.ir.bean.common.StringStringBean;
+import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.ContactTrainee;
+import com.ir.form.CreateCalendarForm;
+import com.ir.form.FeedbackMasterForm;
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PersonalInformationTrainingPartnerForm;
@@ -42,6 +46,8 @@ import com.ir.form.trainingPartner.TrainingPartnerSearch;
 import com.ir.form.trainingPartner.TrainingPartnerSearchForm;
 import com.ir.model.CertificateInfo;
 import com.ir.model.CourseType;
+import com.ir.model.CreateCalendar;
+import com.ir.model.FeedbackMaster;
 import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
@@ -1087,23 +1093,6 @@ public class TrainingPartnerController {
 
 	}
 				
-				/*// trainingPartnerActivateAssessment
-
-				@RequestMapping(value = "/trainingPartnerActivateAssessment", method = RequestMethod.GET)
-				public String TrainingPartnerActivateAssessmentForm(Model model) {
-					System.out.println("activateAssessmentOfTrainee");
-					model.addAttribute("TrainingPartnerActivateAssessmentForm", new TrainingPartnerActivateAssessmentForm());
-					Map<String, String> courseNameMap = lst.courseNameMap;
-					model.addAttribute("courseNameMap", courseNameMap);
-					return "trainingPartnerActivateAssessment";
-				}
-
-				@RequestMapping(value = "/trainingPartnerActivateAssessmentlist", method = RequestMethod.POST)
-				public String listtrainingPartnerActivateAssessment(
-						@ModelAttribute("TrainingPartnerActivateAssessmentForm") TrainingPartnerActivateAssessmentForm p, Model model) {
-					model.addAttribute("listtrainingPartnerActivateAssessor", this.trainingPartnerService.listtrainingPartnerActivateAssessor(p));
-					return "trainingPartnerActivateAssessment";
-				}*/
 			
 	@RequestMapping(value="/applicationstatus" , method=RequestMethod.GET)
 	public String applicationStatus(@ModelAttribute("applicationStatusForm") ApplicationStatusForm ApplicationStatusForm,HttpSession session,BindingResult result , Model model){
@@ -1154,4 +1143,44 @@ public class TrainingPartnerController {
 	          }
 	          return "markAttendance";
 	      }
+	      
+	             // createCalendar
+                @RequestMapping(value = "/createCalendar", method = RequestMethod.GET)
+	   			public String listFeedbackMaster(Model model, CreateCalendar p,HttpSession session) {
+	   				System.out.println("createCalendar");
+	   				model.addAttribute("createCalendarForm", new CreateCalendarForm());
+	   				Map<String, String> courseNameMap = lst.courseNameMap;
+	   				model.addAttribute("courseNameMap", courseNameMap);
+	   			    model.addAttribute("listcreateCalendarForm", this.trainingPartnerService.listCreateCalendarForm());
+	   				return "createCalendar";
+	   			}
+
+	   			// For add and update state both
+	   			@RequestMapping(value = "/createCalendarAdd", method = RequestMethod.POST)
+	   			public String addCalendar(@ModelAttribute("CreateCalendarForm") CreateCalendar p) {
+	   				if (p.getId() == 0) {
+	   					// new person, add it
+	   					this.trainingPartnerService.addCalendar(p);
+	   				} else {
+	   					// existing person, call update
+	   					this.trainingPartnerService.updateCalendar(p);
+	   				}
+	   				return "redirect:/createCalendar.fssai";
+	   			}
+	   		
+	   			@RequestMapping(value = "/updateCalendar", method = RequestMethod.GET)
+				public String CreateCalendarForm(Model model) {
+				
+					model.addAttribute("createCalendarForm", new CreateCalendarForm());
+					Map<String, String> courseNameMap = lst.courseNameMap;
+					model.addAttribute("courseNameMap", courseNameMap);
+					return "updateCalendar";
+				}
+	   			@RequestMapping(value = "/updateCalendarlist", method = RequestMethod.POST)
+				public String listupdateCalendar(
+						@ModelAttribute("createCalendarForm") CreateCalendarForm p, Model model) {
+	   				
+					model.addAttribute("listupdateCalendar", this.trainingPartnerService.listupdateCalendar(p));
+					return "updateCalendar";
+				}
 }

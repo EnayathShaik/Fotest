@@ -26,6 +26,8 @@ import com.ir.bean.common.IntStringBean;
 import com.ir.dao.AdminDAO;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
+import com.ir.form.ActivateUserIdForm;
+import com.ir.form.AdminHomePageForm;
 import com.ir.form.AdminUserManagementForm;
 import com.ir.form.AssessmentQuestionsForm;
 import com.ir.form.AssessmentQuestionForm_old;
@@ -67,6 +69,7 @@ import com.ir.model.CityMaster;
 import com.ir.model.ContactTraineee;
 import com.ir.model.CourseName;
 import com.ir.model.CourseType;
+import com.ir.model.CreateCalendar;
 import com.ir.model.CustomerDetails;
 import com.ir.model.CustomerMaster;
 import com.ir.model.District;
@@ -1042,5 +1045,140 @@ public class AdminDAOImpl implements AdminDAO {
 					return list;
 				}
 			}
+			
+			// listactivateTrainingOfTrainee
+						@Override
+						public List<ActivateUserIdForm> listactivateUserId(ActivateUserIdForm form) {
+							// TODO Auto-generated method stub
+							System.out.println("inside listactivaaaaaaaaaaateTrainingOfTrainee");
+							ActivateUserIdForm bean = new ActivateUserIdForm();
+							List<ActivateUserIdForm> resulList = new ArrayList<ActivateUserIdForm>();
+
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Supriya' as varchar(20)) as UserName , cast('1122' as varchar(20)) as UserId , cast('Trainer' as varchar(20) ) as ProfileCode ")
+									.list();
+							for (Object[] li : list) {
+
+								
+								bean.setUserName((String) li[0]);
+								bean.setUserId((String) li[1]);
+								bean.setProfileCode((String) li[2]);
+								
+								new ZLogger("listactivateTrainingOfTrainee List::" + li,"","");
+								//logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
+
+						
+						
+						
+						
+						
+						// listactivateTrainingOfTrainee
+						@Override
+						public List<AdminHomePageForm> listPendingTraineeEnrollment(AdminHomePageForm form) {
+							// TODO Auto-generated method stub
+							System.out.println("inside listactivaaaaaaaaaaateTrainingOfTrainee");
+							AdminHomePageForm bean = new AdminHomePageForm();
+							List<AdminHomePageForm> resulList = new ArrayList<AdminHomePageForm>();
+
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Lc-Ims' as varchar(20)) as courseName , cast('20' as varchar(20)) as noOfEnroll , cast('12/05/2017' as varchar(20) ) as trainingDate ")
+									.list();
+							for (Object[] li : list) {
+
+								bean.setCourseName((String) li[0]);
+								bean.setNoOfEnroll((String) li[1]);
+								bean.setTrainingDate((String) li[2]);
+								
+								new ZLogger("listactivateTrainingOfTrainee List::" + li,"","");
+								//logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
+						
+						
+						
+						
+						
+						
+						
+						
+						// listactivateTrainingOfTrainee
+						@Override
+						public List<AdminHomePageForm> listuserIdActivation(AdminHomePageForm form) {
+							// TODO Auto-generated method stub
+							System.out.println("inside listactivaaaaaaaaaaateTrainingOfTrainee");
+							AdminHomePageForm bean = new AdminHomePageForm();
+							List<AdminHomePageForm> resulList = new ArrayList<AdminHomePageForm>();
+
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Trainer' as varchar(20)) as UserType, cast('30' as varchar(20)) as noOfUsers ")
+									.list();
+							for (Object[] li : list) {
+
+								
+								bean.setUserType((String) li[0]);
+								bean.setNoOfUsers((String) li[1]);
+								
+								
+								new ZLogger("listactivateTrainingOfTrainee List::" + li,"","");
+								//logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						// listactivateTrainingOfTrainee
+						@Override
+						public List<AdminHomePageForm> listpendingRequestForCalendar(AdminHomePageForm form) {
+							// TODO Auto-generated method stub
+							System.out.println("inside listactivaaaaaaaaaaateTrainingOfTrainee");
+							AdminHomePageForm bean = new AdminHomePageForm();
+							List<AdminHomePageForm> resulList = new ArrayList<AdminHomePageForm>();
+
+							Session session = this.sessionFactory.getCurrentSession();
+							List<Object[]> list = session
+									.createSQLQuery(
+											"select cast('Lc-MS/IS' as varchar(20)) as courseName , cast('12/05/2017' as varchar(20)) as trainingDate , cast('update' as varchar(20) ) as requestType  , cast('220' as varchar(20) ) as noOfRequest ")
+									.list();
+							for (Object[] li : list) {
+
+								
+								bean.setCourseName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								bean.setRequestType((String) li[2]);
+								bean.setNoOfRequest((String) li[3]);
+								new ZLogger("listactivateTrainingOfTrainee List::" + li,"","");
+								//logger.info("listactivateTrainingOfTrainee List::" + li);
+								resulList.add(bean);
+							}
+							return resulList;
+						}
+						
+						
+					
+						
 			
 }

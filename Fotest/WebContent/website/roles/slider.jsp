@@ -73,8 +73,8 @@
 	<ul class="sidebar-nav">
 		<!-- <li class="sidebar-brand">
                         </li> -->
-		<li><a href="createviewcalendar.fssai">Create View Calendar</a></li>
-		<li> <a href="updatecalendar.fssai">Update Calendar</a> </li>
+		<li><a href="createCalendar.fssai">Create View Calendar</a></li>
+		<li> <a href="updateCalendar.fssai">Update Calendar</a> </li>
 		<li><a href="applicationstatus.fssai">Application Status</a></li>
 		<li> <a href="markAttendance.fssai">Mark Attendance</a> </li>
 	<li> <a href="activateTrainingOfTrainee.fssai">Activate Training</a> </li>

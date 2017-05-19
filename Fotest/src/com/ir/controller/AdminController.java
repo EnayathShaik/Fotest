@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import com.google.gson.Gson;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
@@ -57,56 +56,49 @@ import com.ir.service.PageLoadService;
 import com.ir.service.TrainingPartnerService;
 import com.zentech.logger.ZLogger;
 import com.zentect.list.constant.ListConstant;
-
-
+import com.ir.form.ActivateUserIdForm;
+import com.ir.form.AdminHomePageForm;
 @Controller
 public class AdminController {
 
 	@Autowired
 	@Qualifier("adminService")
 	AdminService adminService;
-	
+
 	@Autowired
 	@Qualifier("pageLoadService")
 	PageLoadService pageLoadService;
 
 	@Autowired
 	@Qualifier("trainingPartnerService")
-	TrainingPartnerService trainingPartnerService; 
-	
-	
+	TrainingPartnerService trainingPartnerService;
+
 	ListConstant lst = new ListConstant();
 
-	
-/**
+	/**
 	 * @author Jyoti Mekal
 	 *
 	 *         All Add Edit delete for State Master
 	 */
 
 	@RequestMapping(value = "/StateMaster", method = RequestMethod.GET)
-	public String listStateMaster(
-			@ModelAttribute("StateMaster") StateMaster StateMaster, Model model) {
+	public String listStateMaster(@ModelAttribute("StateMaster") StateMaster StateMaster, Model model) {
 		System.out.println("listStateMaster");
 		model.addAttribute("StateMaster", new StateMaster());
-		model.addAttribute("listStateMaster",
-				this.adminService.listStateMaster());
+		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
 		return "StateMaster";
 	}
 
 	@RequestMapping(value = "/StateMaster/add", method = RequestMethod.POST)
-	public String addStateMaster(
-			@Valid @ModelAttribute("StateMaster") StateMaster p,
-			BindingResult result) {
+	public String addStateMaster(@Valid @ModelAttribute("StateMaster") StateMaster p, BindingResult result) {
 		System.out.println(result.hasErrors());
 
 		if (result.hasErrors()) {
 
-			new ZLogger("StateMaster", "bindingResult.hasErrors  "
-					+ result.hasErrors(), "AdminController.java");
-			new ZLogger("StateMaster", "bindingResult.hasErrors  "
-					+ result.getErrorCount() + " All Errors "
-					+ result.getAllErrors(), "AdminController.java");
+			new ZLogger("StateMaster", "bindingResult.hasErrors  " + result.hasErrors(), "AdminController.java");
+			new ZLogger("StateMaster",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
 			return "redirect:/StateMaster.fssai";
 		}
 
@@ -131,13 +123,10 @@ public class AdminController {
 
 	@RequestMapping(value = "/StateMaster/edit/{id}", method = RequestMethod.POST)
 	@ResponseBody
-	public void editStateMaster(
-			@PathVariable("id") int id,
+	public void editStateMaster(@PathVariable("id") int id,
 			@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-			HttpServletRequest httpServletRequest, HttpServletResponse response)
-			throws IOException {
-		new ZLogger("StateMaster/edit", "StateMaster/edit............" + id,
-				"AdminController.java");
+			HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+		new ZLogger("StateMaster/edit", "StateMaster/edit............" + id, "AdminController.java");
 
 		StateMaster hm = this.adminService.getStateMasterById(id);
 		// List courseList = adminService.searchFeedbackMaster(data);
@@ -157,39 +146,32 @@ public class AdminController {
 	 */
 
 	@RequestMapping(value = "/DistrictMaster", method = RequestMethod.GET)
-	public String listDistrictMaster(
-			@ModelAttribute("DistrictMasterForm") DistrictMaster DistrictMaster,
-			Model model) {
+	public String listDistrictMaster(@ModelAttribute("DistrictMasterForm") DistrictMaster DistrictMaster, Model model) {
 		System.out.println("listDistrictMaster");
 		model.addAttribute("DistrictMasterForm", new DistrictMasterForm());
-		model.addAttribute("listStateMaster",
-				this.adminService.listStateMaster());
-		model.addAttribute("listDistrictMaster",
-				this.adminService.listDistrictMaster());
+		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
+		model.addAttribute("listDistrictMaster", this.adminService.listDistrictMaster());
 		return "DistrictMaster";
 	}
 
 	@RequestMapping(value = "/DistrictMaster/add", method = RequestMethod.POST)
-	public String addDistrictMaster(
-			@Valid @ModelAttribute("DistrictMasterForm") DistrictMasterForm p,
+	public String addDistrictMaster(@Valid @ModelAttribute("DistrictMasterForm") DistrictMasterForm p,
 			BindingResult result) {
 		System.out.println(result.hasErrors());
 
 		if (result.hasErrors()) {
 
-			new ZLogger("DistrictMaster", "bindingResult.hasErrors  "
-					+ result.hasErrors(), "AdminController.java");
-			new ZLogger("DistrictMaster", "bindingResult.hasErrors  "
-					+ result.getErrorCount() + " All Errors "
-					+ result.getAllErrors(), "AdminController.java");
+			new ZLogger("DistrictMaster", "bindingResult.hasErrors  " + result.hasErrors(), "AdminController.java");
+			new ZLogger("DistrictMaster",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
 			return "redirect:/DistrictMaster.fssai";
 		}
 
 		DistrictMaster districtMaster = new DistrictMaster();
 		districtMaster.setDistrictId(p.getDistrictId());
 		districtMaster.setDistrictName(p.getDistrictName());
-		districtMaster.setStateMaster(this.adminService.getStateMasterById(p
-				.getStateId()));
+		districtMaster.setStateMaster(this.adminService.getStateMasterById(p.getStateId()));
 		districtMaster.setStatus(p.getStatus());
 		if (p.getDistrictId() == 0) {
 			// new person, add it
@@ -211,13 +193,10 @@ public class AdminController {
 
 	@RequestMapping(value = "/DistrictMaster/edit/{id}", method = RequestMethod.POST)
 	@ResponseBody
-	public void editDistrictMaster(
-			@PathVariable("id") int id,
+	public void editDistrictMaster(@PathVariable("id") int id,
 			@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-			HttpServletRequest httpServletRequest, HttpServletResponse response)
-			throws IOException {
-		new ZLogger("DistrictMaster/edit", "DistrictMaster/edit............"
-				+ id, "AdminController.java");
+			HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+		new ZLogger("DistrictMaster/edit", "DistrictMaster/edit............" + id, "AdminController.java");
 
 		DistrictMaster hm = this.adminService.getDistrictMasterById(id);
 		// List courseList = adminService.searchFeedbackMaster(data);
@@ -237,39 +216,32 @@ public class AdminController {
 	 */
 
 	@RequestMapping(value = "/CityMaster", method = RequestMethod.GET)
-	public String listCityMaster(
-			@ModelAttribute("CityMasterForm") CityMaster CityMaster, Model model) {
+	public String listCityMaster(@ModelAttribute("CityMasterForm") CityMaster CityMaster, Model model) {
 		System.out.println("listCityMaster");
 		model.addAttribute("CityMasterForm", new CityMasterForm());
-		model.addAttribute("listStateMaster",
-				this.adminService.listStateMaster());
-		model.addAttribute("listDistrictMaster",
-				this.adminService.listDistrictMaster());
+		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
+		model.addAttribute("listDistrictMaster", this.adminService.listDistrictMaster());
 		model.addAttribute("listCityMaster", this.adminService.listCityMaster());
 		return "CityMaster";
 	}
 
 	@RequestMapping(value = "/CityMaster/add", method = RequestMethod.POST)
-	public String addCityMaster(
-			@Valid @ModelAttribute("CityMasterForm") CityMasterForm p,
-			BindingResult result) {
+	public String addCityMaster(@Valid @ModelAttribute("CityMasterForm") CityMasterForm p, BindingResult result) {
 		System.out.println(result.hasErrors());
 
 		if (result.hasErrors()) {
 
-			new ZLogger("CityMaster", "bindingResult.hasErrors  "
-					+ result.hasErrors(), "AdminController.java");
-			new ZLogger("CityMaster", "bindingResult.hasErrors  "
-					+ result.getErrorCount() + " All Errors "
-					+ result.getAllErrors(), "AdminController.java");
+			new ZLogger("CityMaster", "bindingResult.hasErrors  " + result.hasErrors(), "AdminController.java");
+			new ZLogger("CityMaster",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
 			return "redirect:/CityMaster.fssai";
 		}
 
 		CityMaster CityMaster = new CityMaster();
 		CityMaster.setCityId(p.getCityId());
 		CityMaster.setCityName(p.getCityName());
-		CityMaster.setDistrictMaster(this.adminService.getDistrictMasterById(p
-				.getDistrictId()));
+		CityMaster.setDistrictMaster(this.adminService.getDistrictMasterById(p.getDistrictId()));
 		CityMaster.setStatus(p.getStatus());
 		if (p.getCityId() == 0) {
 			// new person, add it
@@ -291,13 +263,10 @@ public class AdminController {
 
 	@RequestMapping(value = "/CityMaster/edit/{id}", method = RequestMethod.POST)
 	@ResponseBody
-	public void editCityMaster(
-			@PathVariable("id") int id,
+	public void editCityMaster(@PathVariable("id") int id,
 			@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-			HttpServletRequest httpServletRequest, HttpServletResponse response)
-			throws IOException {
-		new ZLogger("CityMaster/edit", "CityMaster/edit............" + id,
-				"AdminController.java");
+			HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+		new ZLogger("CityMaster/edit", "CityMaster/edit............" + id, "AdminController.java");
 
 		CityMaster hm = this.adminService.getCityMasterById(id);
 		// List courseList = adminService.searchFeedbackMaster(data);
@@ -317,42 +286,33 @@ public class AdminController {
 	 */
 
 	@RequestMapping(value = "/RegionMaster", method = RequestMethod.GET)
-	public String listRegionMaster(
-			@ModelAttribute("RegionMasterForm") RegionMaster RegionMaster,
-			Model model) {
+	public String listRegionMaster(@ModelAttribute("RegionMasterForm") RegionMaster RegionMaster, Model model) {
 		System.out.println("listRegionMaster");
 		model.addAttribute("RegionMasterForm", new RegionMasterForm());
-		model.addAttribute("listStateMaster",
-				this.adminService.listStateMaster());
-		model.addAttribute("listDistrictMaster",
-				this.adminService.listDistrictMaster());
+		model.addAttribute("listStateMaster", this.adminService.listStateMaster());
+		model.addAttribute("listDistrictMaster", this.adminService.listDistrictMaster());
 		model.addAttribute("listCityMaster", this.adminService.listCityMaster());
-		model.addAttribute("listRegionMaster",
-				this.adminService.listRegionMaster());
+		model.addAttribute("listRegionMaster", this.adminService.listRegionMaster());
 		return "RegionMaster";
 	}
 
 	@RequestMapping(value = "/RegionMaster/add", method = RequestMethod.POST)
-	public String addRegionMaster(
-			@Valid @ModelAttribute("RegionMasterForm") RegionMasterForm p,
-			BindingResult result) {
+	public String addRegionMaster(@Valid @ModelAttribute("RegionMasterForm") RegionMasterForm p, BindingResult result) {
 		System.out.println(result.hasErrors());
 
 		if (result.hasErrors()) {
 
-			new ZLogger("RegionMaster", "bindingResult.hasErrors  "
-					+ result.hasErrors(), "AdminController.java");
-			new ZLogger("RegionMaster", "bindingResult.hasErrors  "
-					+ result.getErrorCount() + " All Errors "
-					+ result.getAllErrors(), "AdminController.java");
+			new ZLogger("RegionMaster", "bindingResult.hasErrors  " + result.hasErrors(), "AdminController.java");
+			new ZLogger("RegionMaster",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
 			return "redirect:/RegionMaster.fssai";
 		}
 
 		RegionMaster RegionMaster = new RegionMaster();
 		RegionMaster.setId(p.getRegionId());
 		RegionMaster.setRegionName(p.getRegionName());
-		RegionMaster.setCityMaster(this.adminService.getCityMasterById(p
-				.getCityId()));
+		RegionMaster.setCityMaster(this.adminService.getCityMasterById(p.getCityId()));
 		RegionMaster.setStatus(p.getStatus());
 		if (p.getRegionId() == 0) {
 			// new person, add it
@@ -374,13 +334,10 @@ public class AdminController {
 
 	@RequestMapping(value = "/RegionMaster/edit/{id}", method = RequestMethod.POST)
 	@ResponseBody
-	public void editRegionMaster(
-			@PathVariable("id") int id,
+	public void editRegionMaster(@PathVariable("id") int id,
 			@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-			HttpServletRequest httpServletRequest, HttpServletResponse response)
-			throws IOException {
-		new ZLogger("RegionMaster/edit", "RegionMaster/edit............" + id,
-				"AdminController.java");
+			HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+		new ZLogger("RegionMaster/edit", "RegionMaster/edit............" + id, "AdminController.java");
 
 		RegionMaster hm = this.adminService.getRegionMasterById(id);
 		// List courseList = adminService.searchFeedbackMaster(data);
@@ -394,28 +351,25 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/changePasswordAdminPage", method = RequestMethod.GET)
-	public String changePasswordAdminPage(
-			@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm) {
+	public String changePasswordAdminPage(@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm) {
 		return "changePasswordAdminPage";
 	}
 
 	@RequestMapping(value = "/changePasswordAdminSave", method = RequestMethod.POST)
-	public String changePasswordAdminSave(
-			@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm,
+	public String changePasswordAdminSave(@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm,
 			HttpSession session, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			new ZLogger("changePasswordAdminSave", "bindingResult.hasErrors  "
-					+ result.hasErrors(), "AdminController.java");
-			new ZLogger("changePasswordAdminSave", "bindingResult.hasErrors  "
-					+ result.getErrorCount() + " All Errors "
-					+ result.getAllErrors(), "AdminController.java");
+			new ZLogger("changePasswordAdminSave", "bindingResult.hasErrors  " + result.hasErrors(),
+					"AdminController.java");
+			new ZLogger("changePasswordAdminSave",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
 
 			return "changePasswordAdminPage";
 		}
 		try {
 			String id = (String) session.getAttribute("logId");
-			boolean changePasswordTraineeSave = adminService
-					.changePasswordadminSave(changePasswordForm, id);
+			boolean changePasswordTraineeSave = adminService.changePasswordadminSave(changePasswordForm, id);
 			if (changePasswordTraineeSave) {
 				model.addAttribute("created", "Your password has changed !!!");
 			} else {
@@ -423,36 +377,31 @@ public class AdminController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			new ZLogger("changePasswordAdminSave",
-					"changePasswordAdminSave Loading Exception "
-							+ e.getMessage(),
+			new ZLogger("changePasswordAdminSave", "changePasswordAdminSave Loading Exception " + e.getMessage(),
 					"RegistrationControllerAssessor.java");
 		}
 		return "changePasswordAdminPage";
 	}
 
 	@RequestMapping(value = "/changePasswordTp", method = RequestMethod.GET)
-	public String changePasswordTp(
-			@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm) {
+	public String changePasswordTp(@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm) {
 		return "changePasswordTp";
 	}
 
 	@RequestMapping(value = "/changePasswordTPSave", method = RequestMethod.POST)
-	public String changePasswordTPSave(
-			@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm,
+	public String changePasswordTPSave(@ModelAttribute("changePasswordForm") ChangePasswordForm changePasswordForm,
 			HttpSession session, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			new ZLogger("changePasswordTPSave", "bindingResult.hasErrors  "
-					+ result.hasErrors(), "AdminController.java");
-			new ZLogger("changePasswordTPSave", "bindingResult.hasErrors  "
-					+ result.getErrorCount() + " All Errors "
-					+ result.getAllErrors(), "AdminController.java");
+			new ZLogger("changePasswordTPSave", "bindingResult.hasErrors  " + result.hasErrors(),
+					"AdminController.java");
+			new ZLogger("changePasswordTPSave",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
 			return "changePasswordTp";
 		}
 		try {
 			String id = (String) session.getAttribute("logId");
-			boolean changePasswordTraineeSave = adminService
-					.changePasswordTPSave(changePasswordForm, id);
+			boolean changePasswordTraineeSave = adminService.changePasswordTPSave(changePasswordForm, id);
 			if (changePasswordTraineeSave) {
 				model.addAttribute("created", "Your password has changed !!!");
 			} else {
@@ -460,39 +409,36 @@ public class AdminController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			new ZLogger("changePasswordTPSave",
-					"changePasswordTPSave exception  " + e.getMessage(),
+			new ZLogger("changePasswordTPSave", "changePasswordTPSave exception  " + e.getMessage(),
 					"AdminController.java");
 		}
 		return "changePasswordTp";
 	}
-	
-	
-	
-			// For add and update region mapping both
 
-			@RequestMapping(value = "/regionMapping", method = RequestMethod.GET)
-			public String listRegionMapping(Model model) {
-				System.out.println("listRegionMapping");
-				model.addAttribute("RegionMappingForm", new RegionMappingForm());
-				Map<String, String> DistrictMap = lst.DistrictMap;
-				model.addAttribute("DistrictMap", DistrictMap);
-				model.addAttribute("listRegionMapping", this.adminService.listRegionMapping());
-				return "regionMapping";
-			}
+	// For add and update region mapping both
 
-			@RequestMapping(value = "/regionMappingAdd", method = RequestMethod.POST)
-			public String addRegionMapping(@ModelAttribute("RegionMappingForm") RegionMapping p) {
-				System.out.println("p.getId() " + p.getId());
-				if (p.getId() == 0) {
-					// new person, add it
-					this.adminService.addRegionMapping(p);
-				} else {
-					// existing person, call update
-					this.adminService.updateRegionMapping(p);
-				}
-				return "redirect:/regionMapping.fssai";
-			}
+	@RequestMapping(value = "/regionMapping", method = RequestMethod.GET)
+	public String listRegionMapping(Model model) {
+		System.out.println("listRegionMapping");
+		model.addAttribute("RegionMappingForm", new RegionMappingForm());
+		Map<String, String> DistrictMap = lst.DistrictMap;
+		model.addAttribute("DistrictMap", DistrictMap);
+		model.addAttribute("listRegionMapping", this.adminService.listRegionMapping());
+		return "regionMapping";
+	}
+
+	@RequestMapping(value = "/regionMappingAdd", method = RequestMethod.POST)
+	public String addRegionMapping(@ModelAttribute("RegionMappingForm") RegionMapping p) {
+		System.out.println("p.getId() " + p.getId());
+		if (p.getId() == 0) {
+			// new person, add it
+			this.adminService.addRegionMapping(p);
+		} else {
+			// existing person, call update
+			this.adminService.updateRegionMapping(p);
+		}
+		return "redirect:/regionMapping.fssai";
+	}
 	// Manage Training
 
 	@RequestMapping(value = "/manageTraining", method = RequestMethod.GET)
@@ -540,369 +486,394 @@ public class AdminController {
 
 	// Verify Trainee Enrollment
 
-			@RequestMapping(value = "/verifyTraineeEnrollment", method = RequestMethod.GET)
-			public String verifyTraineeEnrollment(Model model) {
-				System.out.println("verifyTraineeEnrollment");
-				Map<String, String> courseNameMap = lst.courseNameMap;
-				model.addAttribute("verifyTraineeEnrollmentForm", new verifyTraineeEnrollmentForm());
-				model.addAttribute("courseNameMap", courseNameMap);
-				return "verifyTraineeEnrollment";
-			}
+	@RequestMapping(value = "/verifyTraineeEnrollment", method = RequestMethod.GET)
+	public String verifyTraineeEnrollment(Model model) {
+		System.out.println("verifyTraineeEnrollment");
+		Map<String, String> courseNameMap = lst.courseNameMap;
+		model.addAttribute("verifyTraineeEnrollmentForm", new verifyTraineeEnrollmentForm());
+		model.addAttribute("courseNameMap", courseNameMap);
+		return "verifyTraineeEnrollment";
+	}
 
-			@RequestMapping(value = "/verifyTraineeEnrollmentlist", method = RequestMethod.POST)
-			public String listVerifyTraineeEnrollment(
-					@ModelAttribute("verifyTraineeEnrollmentForm") verifyTraineeEnrollmentForm p, Model model) {
-				model.addAttribute("listVerifyTraineeEnrollment", this.adminService.listVerifyTraineeEnrollment(p));
-				List<verifyTraineeEnrollmentForm> list = this.adminService.listVerifyTraineeEnrollment(p);
-				return "verifyTraineeEnrollment";
-			}
-			
-			// View Enrolled Courses
+	@RequestMapping(value = "/verifyTraineeEnrollmentlist", method = RequestMethod.POST)
+	public String listVerifyTraineeEnrollment(
+			@ModelAttribute("verifyTraineeEnrollmentForm") verifyTraineeEnrollmentForm p, Model model) {
+		model.addAttribute("listVerifyTraineeEnrollment", this.adminService.listVerifyTraineeEnrollment(p));
+		List<verifyTraineeEnrollmentForm> list = this.adminService.listVerifyTraineeEnrollment(p);
+		return "verifyTraineeEnrollment";
+	}
 
-			@RequestMapping(value = "/viewEnrolledCourses", method = RequestMethod.GET)
-			public String viewEnrolledCourses(Model model) {
-				System.out.println("viewEnrolledCourses");
-				Map<String, String> courseNameMap = lst.courseNameMap;
-				model.addAttribute("viewEnrolledCoursesForm", new viewEnrolledCoursesForm());
-				model.addAttribute("courseNameMap", courseNameMap);
-				return "viewEnrolledCourses";
-			}
+	// View Enrolled Courses
 
-			@RequestMapping(value = "/viewEnrolledCourseslist", method = RequestMethod.POST)
-			public String listviewEnrolledCourses(@ModelAttribute("viewEnrolledCoursesForm") viewEnrolledCoursesForm p,
-					Model model) {
-				model.addAttribute("listviewEnrolledCourses", this.adminService.listviewEnrolledCourses(p));
-				return "viewEnrolledCourses";
-			}
-			
-	
+	@RequestMapping(value = "/viewEnrolledCourses", method = RequestMethod.GET)
+	public String viewEnrolledCourses(Model model) {
+		System.out.println("viewEnrolledCourses");
+		Map<String, String> courseNameMap = lst.courseNameMap;
+		model.addAttribute("viewEnrolledCoursesForm", new viewEnrolledCoursesForm());
+		model.addAttribute("courseNameMap", courseNameMap);
+		return "viewEnrolledCourses";
+	}
+
+	@RequestMapping(value = "/viewEnrolledCourseslist", method = RequestMethod.POST)
+	public String listviewEnrolledCourses(@ModelAttribute("viewEnrolledCoursesForm") viewEnrolledCoursesForm p,
+			Model model) {
+		model.addAttribute("listviewEnrolledCourses", this.adminService.listviewEnrolledCourses(p));
+		return "viewEnrolledCourses";
+	}
+
 	// manage course carriculum
 
-		@RequestMapping(value = "/managecoursecurriculum", method = RequestMethod.GET)
-		public String listmanageCourseCarricullum(Model model) {
-			System.out.println("listmanageCourseCarricullum");
-			model.addAttribute("manageCourseCarricullum", new ManageCourseCarricullum());
-			model.addAttribute("listmanageCourseCarricullum", this.adminService.listManageCourseCarricullum());
-			return "managecoursecurriculum";
-		}
+	@RequestMapping(value = "/managecoursecurriculum", method = RequestMethod.GET)
+	public String listmanageCourseCarricullum(Model model) {
+		System.out.println("listmanageCourseCarricullum");
+		model.addAttribute("manageCourseCarricullum", new ManageCourseCarricullum());
+		model.addAttribute("listmanageCourseCarricullum", this.adminService.listManageCourseCarricullum());
+		return "managecoursecurriculum";
+	}
 
-		// For add and update state both
-		@RequestMapping(value = "/manageCourseCarricullum/add", method = RequestMethod.POST)
-		public String addmanageCourseCarricullum(@ModelAttribute("manageCourseCarricullum") ManageCourseCarricullum p) {
-			System.out.println(p.getId());
-			if (p.getId() == 0) {
-				// new person, add it
-				this.adminService.addManageCourseCarricullum(p);
-			} else {
-				// existing person, call update
-				this.adminService.updateManageCourseCarricullum(p);
+	// For add and update state both
+	@RequestMapping(value = "/manageCourseCarricullum/add", method = RequestMethod.POST)
+	public String addmanageCourseCarricullum(@ModelAttribute("manageCourseCarricullum") ManageCourseCarricullum p) {
+		System.out.println(p.getId());
+		if (p.getId() == 0) {
+			// new person, add it
+			this.adminService.addManageCourseCarricullum(p);
+		} else {
+			// existing person, call update
+			this.adminService.updateManageCourseCarricullum(p);
+		}
+		return "redirect:/managecoursecurriculum.fssai";
+	}
+
+	@RequestMapping("/manageCourseCarricullum/remove/{id}")
+	public String removeManageCourseCarricullum(@PathVariable("id") int id) {
+
+		this.adminService.removeManageCourseCarricullum(id);
+		return "redirect:/managecoursecurriculum.fssai";
+	}
+
+	@RequestMapping("/manageCourseCarricullum/edit/{id}")
+	@ResponseBody
+	public void editManageCourseCarricullum(@PathVariable("id") int id, HttpServletRequest httpServletRequest,
+			HttpServletResponse response) throws IOException {
+		/*
+		 * model.addAttribute("manageCourseCarricullum",
+		 * this.adminService.getManageCourseCarricullumById(id));
+		 * model.addAttribute("listManageCourseCarricullum",
+		 * this.adminService.listManageCourseCarricullum()); return "temp1	";
+		 */
+
+		ManageCourseCarricullum p = this.adminService.getManageCourseCarricullumById(id);
+		PrintWriter out = response.getWriter();
+		Gson g = new Gson();
+		String newList = g.toJson(p);
+		out.write(newList);
+		out.flush();
+
+	}
+
+	@RequestMapping(value = "/viewtrainingcalendar", method = RequestMethod.GET)
+	public String viewTrainingCalendar(Model model) {
+		System.out.println("viewTrainingCalendar");
+		Map<String, String> TypeMap = lst.TypeMap;
+
+		model.addAttribute("viewTrainingCalendar", new ViewTrainingCalendar());
+
+		model.addAttribute("TypeMap", TypeMap);
+		model.addAttribute("courseNameMap", lst.courseNameMap);
+
+		return "viewtrainingcalendar";
+	}
+
+	@RequestMapping(value = "/viewTrainingCalendarlist", method = RequestMethod.POST)
+	public String listviewTrainingCalendar(@ModelAttribute("viewTrainingCalendar") ViewTrainingCalendarForm p,
+			Model model) {
+		System.out.println("aaaa");
+		model.addAttribute("viewTrainingCalendar", new ViewTrainingCalendar());
+		model.addAttribute("listviewTrainingCalendar", this.adminService.listviewTrainingCalendar(p));
+
+		return "viewtrainingcalendar";
+	}
+
+	@RequestMapping(value = "/managetrainingcalendar", method = RequestMethod.GET)
+	public String manageTrainingCalendar(Model model) {
+		System.out.println("manageTrainingCalendar");
+		Map<String, String> TypeMap = lst.TypeMap;
+
+		model.addAttribute("manageTrainingCalendar", new ManageTrainingCalendarForm());
+		model.addAttribute("TypeMap", TypeMap);
+		model.addAttribute("courseNameMap", lst.courseNameMap);
+		return "managetrainingcalendar";
+	}
+
+	@RequestMapping(value = "/managetrainingcalendarlist", method = RequestMethod.POST)
+	public String listmanageTrainingCalendar(@ModelAttribute("manageTrainingCalendar") ManageTrainingCalendarForm p,
+			Model model) {
+		model.addAttribute("manageTrainingCalendar", new ManageTrainingCalendarForm());
+		model.addAttribute("listManageTrainingCalendar", this.adminService.listmanageTrainingCalendar(p));
+		Map<String, String> TrainerMap = lst.TrainerMap;
+		model.addAttribute("TrainerMap", TrainerMap);
+		return "managetrainingcalendar";
+	}
+
+	// manage Assessment
+
+	@RequestMapping(value = "/assessmentquestions", method = RequestMethod.GET)
+	public String assessmentQuestion(Model model) {
+		System.out.println("assessmentQuestions");
+		Map<String, String> assessMap = lst.AssesmentTypeMap;
+		model.addAttribute("assessmentQuestionsForm", new AssessmentQuestionsForm());
+		// model.addAttribute("listmanageTraining",
+		// this.adminService.listManageTraining());
+		model.addAttribute("listAssessmentType", assessMap);
+
+		return "assessmentquestions";
+	}
+
+	@RequestMapping("/regionMappingRemove/{id}")
+	public String removeRegionMapping(@PathVariable("id") int id) {
+		this.adminService.removeRegionMapping(id);
+		return "redirect:/regionMapping.fssai";
+	}
+
+	@RequestMapping("/regionMappingEdit/{id}")
+	public void editRegionMapping(@PathVariable("id") int id, Model model, HttpServletRequest httpServletRequest,
+			HttpServletResponse response) throws IOException {
+		RegionMapping p = this.adminService.getRegionMappingById(id);
+		PrintWriter out = response.getWriter();
+		Gson g = new Gson();
+		String newList = g.toJson(p);
+		System.out.println("newList " + newList);
+		out.write(newList);
+		out.flush();
+	}
+	// Feedback Master
+
+	@RequestMapping(value = "/feedbackMaster", method = RequestMethod.GET)
+	public String listFeedbackMaster(Model model) {
+		System.out.println("listFeedbackMaster");
+		model.addAttribute("FeedbackMasterForm", new FeedbackMasterForm());
+		Map<String, String> userTypeMap = lst.feedbackUserTypeMap;
+		Map<String, String> feedbackCategoryMap = lst.feedbackCategoryMap;
+		model.addAttribute("listFeedbackMaster", this.adminService.listFeedbackMasterForm());
+		model.addAttribute("userTypeMap", userTypeMap);
+		model.addAttribute("feedbackCategoryMap", feedbackCategoryMap);
+		return "feedbackMaster";
+	}
+
+	// For add and update state both
+	@RequestMapping(value = "/feedbackMasterAdd", method = RequestMethod.POST)
+	public String addFeedbackMaster(@ModelAttribute("FeedbackMasterForm") FeedbackMaster p) {
+		if (p.getId() == 0) {
+			// new person, add it
+			this.adminService.addFeedbackMaster(p);
+		} else {
+			// existing person, call update
+			this.adminService.updateFeedbackMaster(p);
+		}
+		return "redirect:/feedbackMaster.fssai";
+	}
+
+	@RequestMapping("/feedbackMasterRemove/{id}")
+	public String removeFeedbackMaster(@PathVariable("id") int id) {
+		this.adminService.removeFeedbackMaster(id);
+		return "redirect:/feedbackMaster.fssai";
+	}
+
+	@RequestMapping("/feedbackMasterEdit/{id}")
+	public void editFeedbackMaster(@PathVariable("id") int id, Model model, HttpServletRequest httpServletRequest,
+			HttpServletResponse response) throws IOException {
+		FeedbackMaster p = this.adminService.getFeedbackMasterById(id);
+		PrintWriter out = response.getWriter();
+		Gson g = new Gson();
+		String newList = g.toJson(p);
+		System.out.println("newList " + newList);
+		out.write(newList);
+
+	}
+	// Generate Certificate
+
+	@RequestMapping(value = "/generateCertificate", method = RequestMethod.GET)
+	public String generateCertificate(Model model) {
+		System.out.println("GenerateCertificate");
+		Map<String, String> courseNameMap = lst.courseNameMap;
+
+		model.addAttribute("GenerateCertificateForm", new GenerateCertificateForm());
+		model.addAttribute("courseNameMap", courseNameMap);
+
+		return "generateCertificate";
+	}
+
+	@RequestMapping(value = "/getquestions", method = RequestMethod.POST)
+	@ResponseBody
+	public void getQuestions(@RequestParam("data") String data,
+			@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
+			HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+		new ZLogger("traineeAssessmentCalender", "traineeAssessmentCalender............" + data,
+				"AdminController.java");
+		System.out.println("getquestions");
+		List courseList = adminService.getQuestions(data);
+		PrintWriter out = response.getWriter();
+		Gson g = new Gson();
+		String newList = g.toJson(courseList);
+		System.out.println("newList " + newList);
+		out.write(newList);
+		out.flush();
+	}
+
+	@RequestMapping(value = "/generateCertificatelist", method = RequestMethod.POST)
+	public String listgenerateCertificate(@ModelAttribute("GenerateCertificateForm") GenerateCertificateForm p,
+			Model model) {
+		model.addAttribute("GenerateCertificateForm", new GenerateCertificateForm());
+		model.addAttribute("listgenerateCertificate", this.adminService.listgenerateCertificate(p));
+		return "generateCertificate";
+	}
+
+	// loadCity
+
+	@RequestMapping(value = "/loadCity", method = RequestMethod.POST)
+	@ResponseBody
+	public void loadCity(@RequestParam("data") String data,
+			@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
+			HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+		new ZLogger("loadCity", "loadCity............" + data, "AdminController.java");
+		String districtid = data;
+		List<City> cityList = pageLoadService.loadCity(districtid);
+		PrintWriter out = response.getWriter();
+		Gson g = new Gson();
+		String newList = g.toJson(cityList);
+		new ZLogger("loadCity", "newList " + newList, "AdminController.java");
+		out.write(newList);
+		out.flush();
+
+	}
+
+	@RequestMapping(value = "/loadDistrict", method = RequestMethod.POST)
+	@ResponseBody
+	public void getCourseName(@RequestParam("data") String data,
+			@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
+			HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+		new ZLogger("loadDistrict", "loadDistrict............" + data, "AdminController.java");
+		String stateId = data;
+		List districtList = pageLoadService.loadDistrict(stateId);
+		PrintWriter out = response.getWriter();
+		Gson g = new Gson();
+		String newList = g.toJson(districtList);
+		new ZLogger("loadDistrict", "newList " + newList, "AdminController.java");
+		out.write(newList);
+		out.flush();
+
+	}
+
+	@RequestMapping(value = "/trainerUserManagementForm", method = RequestMethod.GET)
+	public String trainerUserManagementForm(
+			@ModelAttribute("trainerUserManagementForm") TrainerUserManagementForm trainerUserManagementForm) {
+		return "trainerUserManagementForm";
+	}
+
+	@RequestMapping(value = "/trainerUserManagementSearch", method = RequestMethod.POST)
+	public String trainerUserManagementSave(
+			@Valid @ModelAttribute("trainerUserManagementForm") TrainerUserManagementForm trainerUserManagementForm,
+			BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			new ZLogger("trainerUserManagementSearch", "bindingResult.hasErrors  " + result.hasErrors(),
+					"AdminController.java");
+			new ZLogger("trainerUserManagementSearch",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
+			return "trainerUserManagementForm";
+		}
+		try {
+			List<PersonalInformationTrainer> trainerUserManagementSearch = adminService
+					.trainerUserManagementSearch(trainerUserManagementForm);
+			if (trainerUserManagementSearch != null && trainerUserManagementSearch.size() > 0) {
+				model.addAttribute("searchTrainerUsermanagement", trainerUserManagementSearch);
 			}
-			return "redirect:/managecoursecurriculum.fssai";
+		} catch (Exception e) {
+			e.printStackTrace();
+			new ZLogger("trainerUserManagementSearch",
+					"Exception while trainerUserManagementSearch :  " + e.getMessage(), "AdminController.java");
+		}
+		return "trainerUserManagementForm";
+	}
+
+	// Activate Training of Trainee
+
+	@RequestMapping(value = "/activateTrainingOfTrainee", method = RequestMethod.GET)
+	public String activateTrainingOfTrainee(Model model, HttpSession session) {
+		int profileid = (int) session.getAttribute("profileId");
+		System.out.println("viewEnrolledCourses");
+		Map<String, String> courseNameMap = lst.courseNameMap;
+		model.addAttribute("courseNameMap", courseNameMap);
+		model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
+		return "activateTrainingOfTrainee";
+	}
+
+	@RequestMapping(value = "/activateTrainingOfTraineelist", method = RequestMethod.POST)
+	public String listactivateTrainingOfTrainee(
+			@ModelAttribute("activateTrainingOfTraineeForm") ActivateTrainingOfTraineeForm p, Model model,
+			HttpSession session) {
+		int profileid = (int) session.getAttribute("profileId");
+		model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
+		if (profileid == 1) {
+			model.addAttribute("listActivateTrainingOfTrainee", this.adminService.listactivateTrainingOfTrainee(p));
+		} else {
+			model.addAttribute("listActivateTrainingOfTrainee",
+					this.trainingPartnerService.listtrainingPartnerActivateTraining(p));
 		}
 
-		@RequestMapping("/manageCourseCarricullum/remove/{id}")
-		public String removeManageCourseCarricullum(@PathVariable("id") int id) {
+		return "activateTrainingOfTrainee";
+	}
+	// Activate Assessment of Trainer
 
-			this.adminService.removeManageCourseCarricullum(id);
-			return "redirect:/managecoursecurriculum.fssai";
+	@RequestMapping(value = "/activateAssessmentOfTrainee", method = RequestMethod.GET)
+	public String activateAssessmentOfTrainee(Model model) {
+		System.out.println("activateAssessmentOfTrainee");
+		Map<String, String> courseNameMap = lst.courseNameMap;
+		model.addAttribute("courseNameMap", courseNameMap);
+		model.addAttribute("ActivateAssessmentOfTraineeForm", new ActivateAssessmentOfTraineeForm());
+		return "activateAssessmentOfTrainee";
+	}
+
+	@RequestMapping(value = "/activateAssessmentOfTraineelist", method = RequestMethod.POST)
+	public String listactivateAssessmentOfTrainee(
+			@ModelAttribute("ActivateAssessmentOfTraineeForm") ActivateAssessmentOfTraineeForm p, Model model,
+			HttpSession session) {
+		int profileid = (int) session.getAttribute("profileId");
+		if (profileid == 1) {
+			model.addAttribute("listactivateAssessmentOfTrainee", this.adminService.listactivateAssessmentOfTrainee(p));
+		} else {
+			model.addAttribute("listactivateAssessmentOfTrainee",
+					this.trainingPartnerService.listtrainingPartnerActivateAssessor(p));
 		}
+		return "activateAssessmentOfTrainee";
+	}
 
-		@RequestMapping("/manageCourseCarricullum/edit/{id}")
-		@ResponseBody
-		public void editManageCourseCarricullum(@PathVariable("id") int id, HttpServletRequest httpServletRequest,
-				HttpServletResponse response) throws IOException {
-			/*
-			 * model.addAttribute("manageCourseCarricullum",
-			 * this.adminService.getManageCourseCarricullumById(id));
-			 * model.addAttribute("listManageCourseCarricullum",
-			 * this.adminService.listManageCourseCarricullum()); return "temp1	";
-			 */
+	// Activate Assessment of Trainer
 
-			ManageCourseCarricullum p = this.adminService.getManageCourseCarricullumById(id);
-			PrintWriter out = response.getWriter();
-			Gson g = new Gson();
-			String newList = g.toJson(p);
-			out.write(newList);
-			out.flush();
+	@RequestMapping(value = "/activateUserId", method = RequestMethod.GET)
+	public String ActivateUserIdForm(Model model) {
+		System.out.println("activateUserId");
+		Map<String, String> profileCodeMap = lst.profileCodeMap;
+		model.addAttribute("profileCodeMap", profileCodeMap);
+		model.addAttribute("ActivateUserIdForm", new ActivateUserIdForm());
+		return "activateUserId";
+	}
 
-		}
-		
+	@RequestMapping(value = "/activateUserIdlist", method = RequestMethod.POST)
+	public String listactivateAssessmentOfTrainee(@ModelAttribute("ActivateUserIdForm") ActivateUserIdForm p,
+			Model model) {
+		model.addAttribute("listactivateUserId", this.adminService.listactivateUserId(p));
 
-		@RequestMapping(value = "/viewtrainingcalendar", method = RequestMethod.GET)
-		public String viewTrainingCalendar(Model model) {
-			System.out.println("viewTrainingCalendar");
-			Map<String, String> TypeMap = lst.TypeMap;
-
-			model.addAttribute("viewTrainingCalendar", new ViewTrainingCalendar());
-
-			model.addAttribute("TypeMap", TypeMap);
-			model.addAttribute("courseNameMap", lst.courseNameMap);
-
-			return "viewtrainingcalendar";
-		}
-
-		@RequestMapping(value = "/viewTrainingCalendarlist", method = RequestMethod.POST)
-		public String listviewTrainingCalendar(@ModelAttribute("viewTrainingCalendar") ViewTrainingCalendarForm p,
-				Model model) {
-			System.out.println("aaaa");
-			model.addAttribute("viewTrainingCalendar", new ViewTrainingCalendar());
-			model.addAttribute("listviewTrainingCalendar", this.adminService.listviewTrainingCalendar(p));
-
-			return "viewtrainingcalendar";
-		}
-
-		@RequestMapping(value = "/managetrainingcalendar", method = RequestMethod.GET)
-		public String manageTrainingCalendar(Model model) {
-			System.out.println("manageTrainingCalendar");
-			Map<String, String> TypeMap = lst.TypeMap;
-
-			model.addAttribute("manageTrainingCalendar", new ManageTrainingCalendarForm());
-			model.addAttribute("TypeMap", TypeMap);
-			model.addAttribute("courseNameMap", lst.courseNameMap);
-			return "managetrainingcalendar";
-		}
-
-		@RequestMapping(value = "/managetrainingcalendarlist", method = RequestMethod.POST)
-		public String listmanageTrainingCalendar(@ModelAttribute("manageTrainingCalendar") ManageTrainingCalendarForm p,
-				Model model) {
-			model.addAttribute("manageTrainingCalendar", new ManageTrainingCalendarForm());
-			model.addAttribute("listManageTrainingCalendar", this.adminService.listmanageTrainingCalendar(p));
-			Map<String, String> TrainerMap = lst.TrainerMap;
-			model.addAttribute("TrainerMap", TrainerMap);
-			return "managetrainingcalendar";
-		}
-		
-		
-		
-		// manage Assessment    
-	    
-			 	@RequestMapping(value = "/assessmentquestions", method = RequestMethod.GET)
-				public String assessmentQuestion(Model model) {
-					System.out.println("assessmentQuestions");
-					Map<String , String> assessMap = lst.AssesmentTypeMap;
-					model.addAttribute("assessmentQuestionsForm" , new AssessmentQuestionsForm());
-					//model.addAttribute("listmanageTraining", this.adminService.listManageTraining());
-					model.addAttribute("listAssessmentType", assessMap);
-					
-					return "assessmentquestions";
-				}
-				
-
-			@RequestMapping("/regionMappingRemove/{id}")
-			public String removeRegionMapping(@PathVariable("id") int id) {
-				this.adminService.removeRegionMapping(id);
-				return "redirect:/regionMapping.fssai";
-			}
-
-			@RequestMapping("/regionMappingEdit/{id}")
-			public void editRegionMapping(@PathVariable("id") int id, Model model, HttpServletRequest httpServletRequest,
-					HttpServletResponse response) throws IOException {
-				RegionMapping p = this.adminService.getRegionMappingById(id);
-				PrintWriter out = response.getWriter();
-				Gson g = new Gson();
-				String newList = g.toJson(p);
-				System.out.println("newList " + newList);
-				out.write(newList);
-				out.flush();
-			}	
-			// Feedback Master
-
-			@RequestMapping(value = "/feedbackMaster", method = RequestMethod.GET)
-			public String listFeedbackMaster(Model model) {
-				System.out.println("listFeedbackMaster");
-				model.addAttribute("FeedbackMasterForm", new FeedbackMasterForm());
-				Map<String, String> userTypeMap = lst.feedbackUserTypeMap;
-				Map<String, String> feedbackCategoryMap = lst.feedbackCategoryMap;
-				model.addAttribute("listFeedbackMaster", this.adminService.listFeedbackMasterForm());
-				model.addAttribute("userTypeMap", userTypeMap);
-				model.addAttribute("feedbackCategoryMap", feedbackCategoryMap);
-				return "feedbackMaster";
-			}
-
-			// For add and update state both
-			@RequestMapping(value = "/feedbackMasterAdd", method = RequestMethod.POST)
-			public String addFeedbackMaster(@ModelAttribute("FeedbackMasterForm") FeedbackMaster p) {
-				if (p.getId() == 0) {
-					// new person, add it
-					this.adminService.addFeedbackMaster(p);
-				} else {
-					// existing person, call update
-					this.adminService.updateFeedbackMaster(p);
-				}
-				return "redirect:/feedbackMaster.fssai";
-			}
-
-			@RequestMapping("/feedbackMasterRemove/{id}")
-			public String removeFeedbackMaster(@PathVariable("id") int id) {
-				this.adminService.removeFeedbackMaster(id);
-				return "redirect:/feedbackMaster.fssai";
-			}
-
-			@RequestMapping("/feedbackMasterEdit/{id}")
-			public void editFeedbackMaster(@PathVariable("id") int id, Model model, HttpServletRequest httpServletRequest,
-					HttpServletResponse response) throws IOException {
-				FeedbackMaster p = this.adminService.getFeedbackMasterById(id);
-				PrintWriter out = response.getWriter();
-				Gson g = new Gson();
-				String newList = g.toJson(p);
-				System.out.println("newList " + newList);
-				out.write(newList);
-
-			}
-	//Generate Certificate
-			    
-			    @RequestMapping(value = "/generateCertificate", method = RequestMethod.GET)
-			 	public String generateCertificate(Model model) {
-			 		System.out.println("GenerateCertificate");
-			 		Map<String , String> courseNameMap = lst.courseNameMap;
-			 		
-			 		model.addAttribute("GenerateCertificateForm" , new GenerateCertificateForm());
-			 		model.addAttribute("courseNameMap", courseNameMap);
-			 		
-			 		return "generateCertificate";
-			    }
-			 	@RequestMapping(value = "/getquestions", method = RequestMethod.POST)
-				@ResponseBody
-				public void getQuestions(@RequestParam("data") String data,
-						@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-						HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
-					new ZLogger("traineeAssessmentCalender", "traineeAssessmentCalender............" + data,
-							"AdminController.java");
-					System.out.println("getquestions");
-					List courseList = adminService.getQuestions(data);
-					PrintWriter out = response.getWriter();
-					Gson g = new Gson();
-					String newList = g.toJson(courseList);
-					System.out.println("newList " + newList);
-					out.write(newList);
-					out.flush();
-			 	}
-			  	
-			   
-			    
-				 @RequestMapping(value="/generateCertificatelist" , method = RequestMethod.POST)
-			    public String listgenerateCertificate(@ModelAttribute("GenerateCertificateForm") GenerateCertificateForm p , Model model){
-			  	  model.addAttribute("GenerateCertificateForm" , new GenerateCertificateForm());
-			        model.addAttribute("listgenerateCertificate", this.adminService.listgenerateCertificate(p));
-			        return "generateCertificate";
-			    } 
-				 
-				 
-				 
-				// loadCity
-
-					@RequestMapping(value = "/loadCity", method = RequestMethod.POST)
-					@ResponseBody
-					public void loadCity(@RequestParam("data") String data,
-							@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-							HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
-						new ZLogger("loadCity", "loadCity............" + data, "AdminController.java");
-						String districtid = data;
-						List<City> cityList = pageLoadService.loadCity(districtid);
-						PrintWriter out = response.getWriter();
-						Gson g = new Gson();
-						String newList = g.toJson(cityList);
-						new ZLogger("loadCity", "newList " + newList, "AdminController.java");
-						out.write(newList);
-						out.flush();
-
-					}
-					@RequestMapping(value = "/loadDistrict", method = RequestMethod.POST)
-					@ResponseBody
-					public void getCourseName(@RequestParam("data") String data,
-							@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-							HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
-						new ZLogger("loadDistrict", "loadDistrict............" + data, "AdminController.java");
-						String stateId = data;
-						List districtList = pageLoadService.loadDistrict(stateId);
-						PrintWriter out = response.getWriter();
-						Gson g = new Gson();
-						String newList = g.toJson(districtList);
-						new ZLogger("loadDistrict", "newList " + newList, "AdminController.java");
-						out.write(newList);
-						out.flush();
-
-					}
-					
-					
-					@RequestMapping(value = "/trainerUserManagementForm", method = RequestMethod.GET)
-					public String trainerUserManagementForm(
-							@ModelAttribute("trainerUserManagementForm") TrainerUserManagementForm trainerUserManagementForm) {
-						return "trainerUserManagementForm";
-					}
-					@RequestMapping(value = "/trainerUserManagementSearch", method = RequestMethod.POST)
-					public String trainerUserManagementSave(
-							@Valid @ModelAttribute("trainerUserManagementForm") TrainerUserManagementForm trainerUserManagementForm,
-							BindingResult result, Model model) {
-						if (result.hasErrors()) {
-							new ZLogger("trainerUserManagementSearch", "bindingResult.hasErrors  " + result.hasErrors(),
-									"AdminController.java");
-							new ZLogger("trainerUserManagementSearch",
-									"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
-									"AdminController.java");
-							return "trainerUserManagementForm";
-						}
-						try {
-							List<PersonalInformationTrainer> trainerUserManagementSearch = adminService
-									.trainerUserManagementSearch(trainerUserManagementForm);
-							if (trainerUserManagementSearch != null && trainerUserManagementSearch.size() > 0) {
-								model.addAttribute("searchTrainerUsermanagement", trainerUserManagementSearch);
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
-							new ZLogger("trainerUserManagementSearch",
-									"Exception while trainerUserManagementSearch :  " + e.getMessage(), "AdminController.java");
-						}
-						return "trainerUserManagementForm";
-					}
-					
-	            // Activate Training of Trainee
-
-									@RequestMapping(value = "/activateTrainingOfTrainee", method = RequestMethod.GET)
-									public String activateTrainingOfTrainee(Model model,HttpSession session) {
-										int profileid= (int) session.getAttribute("profileId");
-										System.out.println("viewEnrolledCourses");
-										Map<String, String> courseNameMap = lst.courseNameMap;
-										model.addAttribute("courseNameMap", courseNameMap);
-										 model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
-										return "activateTrainingOfTrainee";
-									}
-
-									@RequestMapping(value = "/activateTrainingOfTraineelist", method = RequestMethod.POST)
-									public String listactivateTrainingOfTrainee(
-											@ModelAttribute("activateTrainingOfTraineeForm") ActivateTrainingOfTraineeForm p, Model model,HttpSession session) {
-										int profileid= (int) session.getAttribute("profileId");
-										model.addAttribute("activateTrainingOfTraineeForm", new ActivateTrainingOfTraineeForm());
-										if(profileid==1){
-											model.addAttribute("listActivateTrainingOfTrainee", this.adminService.listactivateTrainingOfTrainee(p));
-										}
-										else{
-											model.addAttribute("listActivateTrainingOfTrainee", this.trainingPartnerService.listtrainingPartnerActivateTraining(p));
-										}
-				
-										return "activateTrainingOfTrainee";
-									}
-									// Activate Assessment of Trainer
-
-									@RequestMapping(value = "/activateAssessmentOfTrainee", method = RequestMethod.GET)
-									public String activateAssessmentOfTrainee(Model model) {
-										System.out.println("activateAssessmentOfTrainee");
-										Map<String, String> courseNameMap = lst.courseNameMap;
-										model.addAttribute("courseNameMap", courseNameMap);
-										model.addAttribute("ActivateAssessmentOfTraineeForm", new ActivateAssessmentOfTraineeForm());
-										return "activateAssessmentOfTrainee";
-									}
-
-									@RequestMapping(value = "/activateAssessmentOfTraineelist", method = RequestMethod.POST)
-									public String listactivateAssessmentOfTrainee(
-											@ModelAttribute("ActivateAssessmentOfTraineeForm") ActivateAssessmentOfTraineeForm p, Model model,HttpSession session) {
-								int profileid= (int) session.getAttribute("profileId");
-										if(profileid==1){
-											model.addAttribute("listactivateAssessmentOfTrainee", this.adminService.listactivateAssessmentOfTrainee(p));
-										}
-										else{
-											model.addAttribute("listactivateAssessmentOfTrainee", this.trainingPartnerService.listtrainingPartnerActivateAssessor(p));
-										}
-										return "activateAssessmentOfTrainee";
-									}
+		return "activateUserId";
+	}
+	@RequestMapping(value = "/adminHomepage", method = RequestMethod.GET)
+	public String listPendingTraineeEnrollment(@ModelAttribute("AdminHomePageForm") AdminHomePageForm p,
+			Model model) {
+		System.out.println("sssssssssssssssss");
+		model.addAttribute("listPendingTraineeEnrollment", this.adminService.listPendingTraineeEnrollment(p));
+		model.addAttribute("listuserIdActivation", this.adminService.listuserIdActivation(p));
+		model.addAttribute("listpendingRequestForCalendar", this.adminService.listpendingRequestForCalendar(p));
+		return "adminHomepage";
+	}
 }

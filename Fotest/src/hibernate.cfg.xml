@@ -13,7 +13,7 @@
 
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost/fotest</property>
 		<property name="hibernate.connection.username">fotestadmin</property>
-		<property name="hibernate.connection.password">Fss2iZentech</property>
+		<property name="hibernate.connection.password">fotest123</property>
 
 		<!-- <property name="hibernate.connection.url">jdbc:postgresql://localhost/FOTEST</property>
 		<property name="hibernate.connection.username">postgres</property>
@@ -108,5 +108,6 @@
 	<mapping class="com.ir.model.FeedbackMaster" />
 	<mapping class="com.ir.model.PersonalInformationTrainingPartner"/>
 		<mapping class="com.ir.model.ViewFeedback"/>
+		<mapping class="com.ir.model.CreateCalendar"/>
 	</session-factory>
 </hibernate-configuration>
