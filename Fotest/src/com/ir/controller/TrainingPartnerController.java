@@ -1039,7 +1039,6 @@ public class TrainingPartnerController {
 					.fullDetailTrainingPartner(Integer.parseInt(userId));
 			model.addAttribute("PersonalInformationTrainingPartner",
 					personalInformationTrainingPartner);
-			System.out.println(personalInformationTrainingPartner.getContactNumber());
 			model.addAttribute("isUpdate", "Y");
 		} else {
 
@@ -1055,7 +1054,7 @@ public class TrainingPartnerController {
 	public String addUpdateTrainingPartner(
 			@Valid @ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner p,
 			BindingResult result, Model model) {
-		System.out.println("Add PersonalInformationTrainingPartner");
+		System.out.println("Add/update PersonalInformationTrainingPartner "+p.getId());
 		String personalInformationTrainingPartner= null;
 
 		try {
@@ -1083,7 +1082,7 @@ public class TrainingPartnerController {
 			return "welcome";
 		} else if (personalInformationTrainingPartner
 				.equalsIgnoreCase("updated")) {
-			return "weweweweweredirect:/trainingCenterUserManagementForm.fssai";
+			return "redirect:/trainingpartnerusermanagementform.fssai";
 
 		} else {
 			return "registerpersonalinformationtrainingpartner";

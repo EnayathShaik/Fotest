@@ -45,7 +45,7 @@ window.onload = OnStart; */
 	 if(isUpdate !=null && isUpdate== "Y"){
 	 alert("Update Your Details");
 	
-	 $("#id").val('${PersonalInformationTrainingPartner.loginDetails.id}'); 
+	
 	 $("#state").val('${PersonalInformationTrainingPartner.state}');
 	 $("#state").trigger("change");
 	 window.setTimeout(function() {

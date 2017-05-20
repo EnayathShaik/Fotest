@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,9 +26,10 @@ import org.hibernate.validator.constraints.Email;
 @Table(name="personalInformationTrainingPartner")
 public class PersonalInformationTrainingPartner {
 	
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "PERSONALINFOTRAININGPARTNER_SEQ", allocationSize=1, initialValue=1)
 	private int id;
 	
 
