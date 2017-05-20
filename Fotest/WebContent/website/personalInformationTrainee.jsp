@@ -57,9 +57,9 @@
        /*  $("#ResidentialLine1").val('');
         $("#ResidentialLine2").val(''); */
 		 $("#createUpdateBtn").val("Update"); 
-		/* $("#captcha").css("display" , "none");
+	 $("#captcha").css("display" , "none");
 		 $("#chkunit").css("display" , "none");
-		 $("#check").attr("checked","checked"); */ 
+		 $("#check").attr("checked","checked");  
 	 }
 
 	
@@ -68,36 +68,7 @@
 		 flatpickr("#dob" ,{});	
 		
 	 		 
-		 		/* $('#sameAddr').change(function(){
-		 			
-		 			if(this.checked){
-		 				$("#resState").val($("#correspondenceState").val());
-		 				 $("#resState").trigger("change");
-		                    window.setTimeout(function() {
-		                    	$("#residentialDistrict").val($("#correspondenceDistrict").val());
-		                        $("#residentialDistrict").trigger("change");
-		                        window.setTimeout(function() {
-		                        	$("#resCity").val($("#correspondenceCity").val());
-		                        }, 1000);
-		                    }, 1000);
-		 				
-		 				
-		 				$("#resPincode").val($("#correspondencePincode").val());
-		 				$("#ResidentialLine1").val($("#correspondenceAddress1").val());
-		 				$("#ResidentialLine2").val($("#correspondenceAddress2").val())
-		 				//
-		 			}else{
-		 				$("#resState").val('');
-		 				$("#residentialDistrict").val('');
-		 				$("#resCity").val('');
-		 				$("#resPincode").val('');
-		 				$("#ResidentialLine1").val('');
-		 				$("#ResidentialLine2").val('');
-		 				
-		 				
-		 			}
-		 		 
-		 		}); 	 */	 
+		 		
 	}		
 	window.onload = OnStart;
 	
@@ -108,7 +79,7 @@
 <body>
 	 
 	<cf:form action="PersonalInformationTraineeAdd.fssai" name="myForm" method="POST"
-		commandName="PersonalInformationTrainee">
+		commandName="PersonalInformationTrainee" onsubmit="return validateFields();">
 
   <section>
         <div class="container">
@@ -685,7 +656,7 @@
    <script>
    
    
-   /* function validateFields(){
+    function validateFields(){
 	   var isUpdate = '${isUpdate}';
 
    	 //alert($("#userType").val());
@@ -720,7 +691,7 @@
    		return false;
    	 } else if($("#AadharNumber").val().match(/^[0-9]{12}$/) == null){
  		/* alert("Please Enter 12 digit Adhar number"); */
- 		/* $("#AadharNumberErr").css("display" , "block");
+ 		 $("#AadharNumberErr").css("display" , "block");
  	     return false;
    	 }else if($("#empID").val() == ''){
    		 $("#empIDErr").css("display" , "block");
@@ -820,7 +791,7 @@
    function removeSpaces(string) {
        return string.split(' ').join('');
    }
- */
+ 
  
 
 
