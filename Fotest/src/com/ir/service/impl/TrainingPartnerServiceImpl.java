@@ -435,6 +435,12 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 		return this.trainingPartnerDAO.listtrainingPartnerActivateAssessor(p);
 	}
 
+	@Override
+	@Transactional
+	public PersonalInformationTrainingPartner fullDetailTrainingPartner(int lid) {
+		// TODO Auto-generated method stub
+		return this.trainingPartnerDAO.fullDetailTrainingPartner(lid);
+	}
 
 	@Override
 	@Transactional

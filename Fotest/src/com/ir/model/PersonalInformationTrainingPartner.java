@@ -33,7 +33,7 @@ public class PersonalInformationTrainingPartner {
 
 
 	@OneToOne (cascade=CascadeType.ALL)  @JoinColumn(name="loginDetails")
-	private LoginDetails loginDetails;
+	public LoginDetails loginDetails;
 	
 /*	
 	@CreationTimestamp

@@ -29,6 +29,7 @@ import com.ir.form.TrainerUserManagementForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.TrainingCenterUserManagementForm;
 import com.ir.form.TrainingClosureForm;
+import com.ir.form.TrainingPartnerUserManagementForm;
 import com.ir.form.TrainingRequestForm;
 import com.ir.form.TrainingScheduleForm;
 import com.ir.form.ViewTrainingCalendarForm;
@@ -194,6 +195,10 @@ public interface AdminDAO {
 			public List<PersonalInformationTrainer> trainerUserManagementSearch(
 					TrainerUserManagementForm trainerUserManagementForm);
 
+			public List<PersonalInformationTrainingPartner> trainingPartnerUserManagementSearch(
+					TrainingPartnerUserManagementForm trainingPartnerUserManagementForm);
+				
+
 			public List<ActivateUserIdForm> listactivateUserId(ActivateUserIdForm p);
 
 			public List<AdminHomePageForm> listPendingTraineeEnrollment(AdminHomePageForm p);
@@ -202,6 +207,5 @@ public interface AdminDAO {
 
 			public List<AdminHomePageForm> listpendingRequestForCalendar(AdminHomePageForm p);
 
-			
-
+	
 }

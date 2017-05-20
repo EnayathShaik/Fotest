@@ -35,6 +35,7 @@ import com.ir.form.RegionMappingForm;
 import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.RegionMasterForm;
 import com.ir.form.TrainerUserManagementForm;
+import com.ir.form.TrainingPartnerUserManagementForm;
 import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ViewTrainingCalendarForm;
 import com.ir.form.manageTrainingForm;
@@ -48,6 +49,7 @@ import com.ir.model.RegionMapping;
 import com.ir.model.ManageCourseCarricullum;
 import com.ir.model.ManageTraining;
 import com.ir.model.PersonalInformationTrainer;
+import com.ir.model.PersonalInformationTrainingPartner;
 import com.ir.model.RegionMaster;
 import com.ir.model.StateMaster;
 import com.ir.model.ViewTrainingCalendar;
@@ -58,6 +60,7 @@ import com.zentech.logger.ZLogger;
 import com.zentect.list.constant.ListConstant;
 import com.ir.form.ActivateUserIdForm;
 import com.ir.form.AdminHomePageForm;
+
 @Controller
 public class AdminController {
 
@@ -849,31 +852,64 @@ public class AdminController {
 		return "activateAssessmentOfTrainee";
 	}
 
+	@RequestMapping(value = "/trainingpartnerusermanagementform", method = RequestMethod.GET)
+	public String traineeUserManagementForm(
+			@ModelAttribute("trainingPartnerUserManagementForm") TrainingPartnerUserManagementForm trainingPartnerUserManagementForm) {
+		return "trainingpartnerusermanagementform";
+	}
+
+	@RequestMapping(value = "/trainingpartnerusermanagementsearch", method = RequestMethod.POST)
+	public String trainingPartnerUserManagementSearch(
+			@Valid @ModelAttribute("trainingPartnerUserManagementForm") TrainingPartnerUserManagementForm trainingPartnerUserManagementForm,
+			BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			new ZLogger("trainingPartnerUserManagementSearch", "bindingResult.hasErrors  " + result.hasErrors(),
+					"AdminController.java");
+			new ZLogger("trainingPartnerUserManagementSearch",
+					"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+					"AdminController.java");
+			return "trainingpartnerusermanagementform";
+		}
+		try {
+			List<PersonalInformationTrainingPartner> searchList = adminService
+					.trainingPartnerUserManagementSearch(trainingPartnerUserManagementForm);
+			if (searchList != null && searchList.size() > 0) {
+				model.addAttribute("searchList", searchList);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			new ZLogger("trainingPartnerUserManagementSearch",
+					"Exception while trainingPartnerUserManagementSearch :  " + e.getMessage(), "AdminController.java");
+		}
+
+		return "trainingpartnerusermanagementform";
+	}
 	// Activate Assessment of Trainer
 
-	@RequestMapping(value = "/activateUserId", method = RequestMethod.GET)
-	public String ActivateUserIdForm(Model model) {
-		System.out.println("activateUserId");
-		Map<String, String> profileCodeMap = lst.profileCodeMap;
-		model.addAttribute("profileCodeMap", profileCodeMap);
-		model.addAttribute("ActivateUserIdForm", new ActivateUserIdForm());
-		return "activateUserId";
-	}
+		@RequestMapping(value = "/activateUserId", method = RequestMethod.GET)
+		public String ActivateUserIdForm(Model model) {
+			System.out.println("activateUserId");
+			Map<String, String> profileCodeMap = lst.profileCodeMap;
+			model.addAttribute("profileCodeMap", profileCodeMap);
+			model.addAttribute("ActivateUserIdForm", new ActivateUserIdForm());
+			return "activateUserId";
+		}
 
-	@RequestMapping(value = "/activateUserIdlist", method = RequestMethod.POST)
-	public String listactivateAssessmentOfTrainee(@ModelAttribute("ActivateUserIdForm") ActivateUserIdForm p,
-			Model model) {
-		model.addAttribute("listactivateUserId", this.adminService.listactivateUserId(p));
+		@RequestMapping(value = "/activateUserIdlist", method = RequestMethod.POST)
+		public String listactivateAssessmentOfTrainee(@ModelAttribute("ActivateUserIdForm") ActivateUserIdForm p,
+				Model model) {
+			model.addAttribute("listactivateUserId", this.adminService.listactivateUserId(p));
 
-		return "activateUserId";
-	}
-	@RequestMapping(value = "/adminHomepage", method = RequestMethod.GET)
-	public String listPendingTraineeEnrollment(@ModelAttribute("AdminHomePageForm") AdminHomePageForm p,
-			Model model) {
-		System.out.println("sssssssssssssssss");
-		model.addAttribute("listPendingTraineeEnrollment", this.adminService.listPendingTraineeEnrollment(p));
-		model.addAttribute("listuserIdActivation", this.adminService.listuserIdActivation(p));
-		model.addAttribute("listpendingRequestForCalendar", this.adminService.listpendingRequestForCalendar(p));
-		return "adminHomepage";
-	}
+			return "activateUserId";
+		}
+		@RequestMapping(value = "/adminHomepage", method = RequestMethod.GET)
+		public String listPendingTraineeEnrollment(@ModelAttribute("AdminHomePageForm") AdminHomePageForm p,
+				Model model) {
+			System.out.println("sssssssssssssssss");
+			model.addAttribute("listPendingTraineeEnrollment", this.adminService.listPendingTraineeEnrollment(p));
+			model.addAttribute("listuserIdActivation", this.adminService.listuserIdActivation(p));
+			model.addAttribute("listpendingRequestForCalendar", this.adminService.listpendingRequestForCalendar(p));
+			return "adminHomepage";
+		}
 }

@@ -184,7 +184,7 @@ public class LoginController {
 				session.setAttribute("profileId", loginDetails.getProfileId());
 				session.setAttribute("userId", loginDetails.getId());
 				session.setAttribute("userName", loginDetails.getLoginId());	
-				return "trainingInstitudeHomepage";
+				return "trainingpartnerhomepage";
 			}else{
 				model.addAttribute("error" , "Oops , you are not authorized !!!");
 				return "login";
@@ -266,7 +266,7 @@ public class LoginController {
 			}else if(profileID == 4){
 				return "trainerHomepage";
 			}else if(profileID == 5){
-				return "trainingInstitudeHomepage";
+				return "trainingpartnerhomepage";
 			}else if(profileID == 6){
 				return "AssessorPage";
 			}else if(profileID == 7){
@@ -302,7 +302,7 @@ public class LoginController {
 				return "trainerHomepage";
 			}else if(profileID == 5){
 				
-				return "trainingInstitudeHomepage";
+				return "trainingpartnerhomepage";
 			}else if(profileID == 6){
 				return "AssessorPage";
 			}else if(profileID == 7){

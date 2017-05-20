@@ -13,7 +13,7 @@
 
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost/fotest</property>
 		<property name="hibernate.connection.username">fotestadmin</property>
-		<property name="hibernate.connection.password">fotest123</property>
+		<property name="hibernate.connection.password">Fss2iZentech</property>
 
 		<!-- <property name="hibernate.connection.url">jdbc:postgresql://localhost/FOTEST</property>
 		<property name="hibernate.connection.username">postgres</property>

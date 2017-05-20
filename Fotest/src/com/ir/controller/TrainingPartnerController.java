@@ -37,7 +37,6 @@ import com.ir.form.CreateCalendarForm;
 import com.ir.form.FeedbackMasterForm;
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.MarkAttendanceForm;
-import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TraineeAttendanceForm;
 import com.ir.form.TrainingCalendarForm;
@@ -1009,9 +1008,9 @@ public class TrainingPartnerController {
 	// Fotest...............................................................................................................................
 	@RequestMapping(value = "/registerpersonalinformationtrainingpartner", method = RequestMethod.GET)
 	public String personalInformationTrainingPartner(
-			@ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartnerForm personalInformationTrainingPartner,
+			@ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner personalInformationTrainingPartner,
 			HttpServletRequest request, Model model) {
-		System.out.println("PersonalInformationTrainingPartnerForm");
+		System.out.println("PersonalInformationTrainingPartner");
 		Map<String, String> titleMap = lst.titleMap;
 		model.addAttribute("titleMap", titleMap);
 		
@@ -1020,36 +1019,35 @@ public class TrainingPartnerController {
 		model.addAttribute("courseNameMap",
 				lst.courseNameMap);
 	
-		/*String userId = request.getParameter("userId");
+		String userId = request.getParameter("userId");
 		Map<String, String> userType = lst.userTypeMap;
-		Map<String, String> titleMap = lst.titleMap;
-		Map<String, String> opt = lst.noOfOptionMap;
-		Map<String, String> trainingTypeMap = lst.trainingTypeMap;
+		
+		//Map<String, String> opt = lst.noOfOptionMap;
+		//Map<String, String> trainingTypeMap = lst.trainingTypeMap;
 
 		// titleMap
-		model.addAttribute("userType", userType);
-		model.addAttribute("titleMap", titleMap);
-		model.addAttribute("trainingTypeMap", trainingTypeMap);
-		model.addAttribute("ExpInYearMap", opt);
-		model.addAttribute("ExpInMonthMap", opt);
+	//	model.addAttribute("userType", userType);
+	//	model.addAttribute("titleMap", titleMap);
+		//model.addAttribute("trainingTypeMap", trainingTypeMap);
+		//model.addAttribute("ExpInYearMap", opt);
+		//model.addAttribute("ExpInMonthMap", opt);
 	//	model.addAttribute("listTrainingPartner",
 		//		adminService.listTrainingPartner());
-		model.addAttribute("listStateMaster",
-				this.adminService.listStateMaster());
+	//	model.addAttribute("listStateMaster",this.adminService.listStateMaster());
 		if (userId != null && Integer.parseInt(userId) > 0) {
-			personalInformationTrainingInstitute = this.traineeService
-					.FullDetailTrainingInstitude(Integer.parseInt(userId));
-			model.addAttribute("PersonalInformationTrainingInstitute",
-					personalInformationTrainingInstitute);
+			personalInformationTrainingPartner = this.trainingPartnerService
+					.fullDetailTrainingPartner(Integer.parseInt(userId));
+			model.addAttribute("PersonalInformationTrainingPartner",
+					personalInformationTrainingPartner);
+			System.out.println(personalInformationTrainingPartner.getContactNumber());
 			model.addAttribute("isUpdate", "Y");
 		} else {
 
-			model.addAttribute("PersonalInformationTrainingInstitute",
-					new PersonalInformationTrainingInstitute());
+			model.addAttribute("personalInformationTrainingPartner",
+					new PersonalInformationTrainingPartner());
 
-		}*/
-		model.addAttribute("PersonalInformationTrainingPartnerForm",
-				new PersonalInformationTrainingPartnerForm());
+		}
+		System.out.println("out of controller");
 		return "registerpersonalinformationtrainingpartner";
 	}
 
@@ -1085,7 +1083,7 @@ public class TrainingPartnerController {
 			return "welcome";
 		} else if (personalInformationTrainingPartner
 				.equalsIgnoreCase("updated")) {
-			return "redirect:/trainingCenterUserManagementForm.fssai";
+			return "weweweweweredirect:/trainingCenterUserManagementForm.fssai";
 
 		} else {
 			return "registerpersonalinformationtrainingpartner";

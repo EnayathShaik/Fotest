@@ -1840,6 +1840,22 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 							}
 							return resulList;
 						}
+
+						@Override
+						public PersonalInformationTrainingPartner fullDetailTrainingPartner(int loginId) {
+							// TODO Auto-generated method stub
+							System.out.println("LogintrainingPartnerDAOImpl full detail process start ");
+							Session session = sessionFactory.getCurrentSession();
+							Integer i = loginId;
+							System.out.println("search " + loginId);
+							Query query = session.createQuery("from PersonalInformationTrainingPartner where loginDetails = '"+ i +"'");
+							List<PersonalInformationTrainingPartner> list = query.list();
+							PersonalInformationTrainingPartner personalInformationTrainingPartner = null;
+							for(PersonalInformationTrainingPartner j: list){
+								personalInformationTrainingPartner=j;
+							}
+							return personalInformationTrainingPartner;
+						}
 						@Override
 						public void addCalendar(CreateCalendar p) {
 							
@@ -1895,5 +1911,6 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 							}
 							return resulList;
 						}
-						
+
+
 }

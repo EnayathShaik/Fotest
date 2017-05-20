@@ -123,9 +123,11 @@ public interface TrainingPartnerDao {
 	public List<ViewFeedback> viewFeedbackSearch(ViewFeedbackForm vff);
 	public List<ActivateTrainingOfTraineeForm> listtrainingPartnerActivateTraining(ActivateTrainingOfTraineeForm p);
 	public List<ActivateAssessmentOfTraineeForm> listtrainingPartnerActivateAssessor(ActivateAssessmentOfTraineeForm p);
+	public PersonalInformationTrainingPartner fullDetailTrainingPartner(int lid);
 	public void addCalendar(CreateCalendar p);
 
 	public void updateCalendar(CreateCalendar p);
 	public List<CreateCalendar> listCreateCalendarForm();
 	public List<CreateCalendarForm> listupdateCalendar(CreateCalendarForm p);
+
 }

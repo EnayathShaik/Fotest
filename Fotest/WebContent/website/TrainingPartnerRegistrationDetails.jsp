@@ -10,7 +10,7 @@
 
 <script>
 
-function OnStart() {
+/* function OnStart() {
 
 	flatpickr("#dob", {
 		enableTime : true
@@ -18,7 +18,7 @@ function OnStart() {
 	
 	DrawCaptcha();
 }
-window.onload = OnStart;
+window.onload = OnStart; */
 
 
 	function DrawCaptcha() {
@@ -32,7 +32,7 @@ window.onload = OnStart;
 		document.getElementById("txtCaptcha").value = code
 	}
 
-	/*  function OnStart(){
+	  function OnStart(){
 	
 	 var isUpdate = '${isUpdate}';
 	 var profileId = '${profileId}';
@@ -44,26 +44,28 @@ window.onload = OnStart;
 	 }
 	 if(isUpdate !=null && isUpdate== "Y"){
 	 alert("Update Your Details");
-	 var name = '${PersonalInformationTrainee.firstName}';
-	 $("#logId").val('${PersonalInformationTrainee.loginDetails.id}');
-	 $("#correspondenceState").val('${PersonalInformationTrainee.correspondenceState}');
-	 $("#correspondenceState").trigger("change");
+	
+	 $("#id").val('${PersonalInformationTrainingPartner.loginDetails.id}'); 
+	 $("#state").val('${PersonalInformationTrainingPartner.state}');
+	 $("#state").trigger("change");
 	 window.setTimeout(function() {
-	 $("#correspondenceDistrict").val('${PersonalInformationTrainee.correspondenceDistrict}');
-	 $("#correspondenceDistrict").trigger("change");
+	 $("#district").val('${PersonalInformationTrainingPartner.district}');
+	 $("#district").trigger("change");
 	 window.setTimeout(function() {
-	 $("#correspondenceCity").val('${PersonalInformationTrainee.correspondenceCity}');
+	 $("#closestCity").val('${PersonalInformationTrainingPartner.closestCity}');
 	 }, 1000);
 	 }, 1000);
-	 $("#resState").val('');
-	 $("#residentialDistrict").val('');
-	 $("#resCity").val('');
-	 $("#ResidentialLine1").val('');
-	 $("#ResidentialLine2").val('');
+	
 	 $("#createUpdateBtn").val("Update");
 	 $("#captcha").css("display" , "none");
 	 $("#chkunit").css("display" , "none");
 	 $("#check").attr("checked","checked");
+	 
+	 var name = '${PersonalInformationTrainingPartner.testingFacilities}';
+	
+	 alert(name);
+	 $("#testingFacilities").attr("checked","checked");
+	 
 	 }
 
 	
@@ -71,7 +73,7 @@ window.onload = OnStart;
 	
 	 flatpickr("#dob" ,{});	
 	
-	
+	/* 
 	 $('#sameAddr').change(function(){
 	
 	 if(this.checked){
@@ -101,14 +103,14 @@ window.onload = OnStart;
 	
 	 }
 	
-	 }); 		  
+	 }); 	 */	  
 	
 	
 	
 	 }
 	
 	 window.onload = OnStart;
-	 */
+	 
 </script>
 
 
@@ -780,7 +782,7 @@ window.onload = OnStart;
 					<div class="row">
 						<div class="col-md-4 col-xs-12"></div>
 						<div class="col-md-4 col-xs-12">
-							<%--  <cf:input path="logId"  type="hidden"/> --%>
+							  <cf:input path="id"  type="hidden"/> 
 							<input type="submit" style="width: 100%;" class="btn login-btn"
 								id="createUpdateBtn" value="Register" />
 
