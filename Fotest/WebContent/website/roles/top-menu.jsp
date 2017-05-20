@@ -129,7 +129,7 @@
 						<%System.out.println("topmenu");%>
 							<li class="active hori"><a href="loginProcess.fssai">Home</a></li>
 						<li class="hori"><a href="viewfeedback.fssai">View Feedback</a></li>
-							<li class="hori"><a href="updateinfotrainingpartner.fssai">View
+							<li class="hori"><a href="registerpersonalinformationtrainingpartner.fssai">View
 									Update Info</a></li>
 							<li class="hori"><a href="commonContact.fssai">Contact
 									Us</a></li> 

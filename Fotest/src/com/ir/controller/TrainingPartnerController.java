@@ -39,6 +39,7 @@ import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.MarkAttendanceForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TraineeAttendanceForm;
+import com.ir.form.TrainerHomePageForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.ViewFeedbackForm;
 import com.ir.form.trainingPartner.TrainingPartnerSearch;
@@ -1009,7 +1010,7 @@ public class TrainingPartnerController {
 	@RequestMapping(value = "/registerpersonalinformationtrainingpartner", method = RequestMethod.GET)
 	public String personalInformationTrainingPartner(
 			@ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner personalInformationTrainingPartner,
-			HttpServletRequest request, Model model) {
+			HttpServletRequest request, Model model,HttpSession session) {
 		System.out.println("PersonalInformationTrainingPartner");
 		Map<String, String> titleMap = lst.titleMap;
 		model.addAttribute("titleMap", titleMap);
@@ -1034,15 +1035,47 @@ public class TrainingPartnerController {
 	//	model.addAttribute("listTrainingPartner",
 		//		adminService.listTrainingPartner());
 	//	model.addAttribute("listStateMaster",this.adminService.listStateMaster());
+		/*/////
+		
+		
 		if (userId != null && Integer.parseInt(userId) > 0) {
+			personalInformationTrainer = this.traineeService
+					.FullDetailTrainer(Integer.parseInt(userId));
+			model.addAttribute("PersonalInformationTrainer",
+					personalInformationTrainer);
+			model.addAttribute("isUpdate", "Y");
+		}
+			else if (session.getAttribute("userId")!=null) {
+		personalInformationTrainer = this.traineeService
+					.FullDetailTrainer((int)session.getAttribute("userId"));
+			model.addAttribute("PersonalInformationTrainer",
+					personalInformationTrainer);
+			model.addAttribute("isUpdate", "Y");
+		}
+		else {
+			model.addAttribute("PersonalInformationTrainer",
+					new PersonalInformationTrainer());
+		}
+		/////
+*/		if (userId != null && Integer.parseInt(userId) > 0) {
+
 			personalInformationTrainingPartner = this.trainingPartnerService
 					.fullDetailTrainingPartner(Integer.parseInt(userId));
 			model.addAttribute("PersonalInformationTrainingPartner",
 					personalInformationTrainingPartner);
 			model.addAttribute("isUpdate", "Y");
-		} else {
-
-			model.addAttribute("personalInformationTrainingPartner",
+		} else if (session.getAttribute("userId")!=null) {
+	
+			personalInformationTrainingPartner = this.trainingPartnerService
+					.fullDetailTrainingPartner((int)session.getAttribute("userId"));
+			model.addAttribute("PersonalInformationTrainingPartner",
+					personalInformationTrainingPartner);
+			model.addAttribute("isUpdate", "Y");
+		} 
+		
+		else {
+			
+			model.addAttribute("PersonalInformationTrainingPartner",
 					new PersonalInformationTrainingPartner());
 
 		}
@@ -1053,7 +1086,7 @@ public class TrainingPartnerController {
 	@RequestMapping(value = "/registerpersonalinformationtrainingpartnerAdd", method = RequestMethod.POST)
 	public String addUpdateTrainingPartner(
 			@Valid @ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner p,
-			BindingResult result, Model model) {
+			BindingResult result, Model model,HttpSession session) {
 		System.out.println("Add/update PersonalInformationTrainingPartner "+p.getId());
 		String personalInformationTrainingPartner= null;
 
@@ -1082,12 +1115,13 @@ public class TrainingPartnerController {
 			return "welcome";
 		} else if (personalInformationTrainingPartner
 				.equalsIgnoreCase("updated")) {
-			return "redirect:/trainingpartnerusermanagementform.fssai";
-
-		} else {
-			return "registerpersonalinformationtrainingpartner";
+			if((int)session.getAttribute("profileId")==1)
+				return "redirect:/trainingpartnerusermanagementform.fssai";
+				
+			else
+				return "trainingpartnerhomepage";
 		}
-
+			return "registerpersonalinformationtrainingpartner";
 	}
 				
 			
@@ -1180,4 +1214,5 @@ public class TrainingPartnerController {
 					model.addAttribute("listupdateCalendar", this.trainingPartnerService.listupdateCalendar(p));
 					return "updateCalendar";
 				}
+	   			
 }
