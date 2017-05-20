@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import com.ir.form.ActivateAssessmentOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.CityMasterForm;
+import com.ir.form.ContactTrainee;
 import com.ir.form.DistrictMasterForm;
 import com.ir.form.FeedbackMasterForm;
 import com.ir.form.AssessmentQuestionsForm;
@@ -918,38 +919,40 @@ public class AdminController {
 			model.addAttribute("listpendingRequestForCalendar", this.adminService.listpendingRequestForCalendar(p));
 			return "adminHomepage";
 		}
+		
+		//traineeusermanagement-
+		@RequestMapping(value = "/traineeUserManagementForm", method = RequestMethod.GET)
+		public String trainerUserManagementForm(
+				@ModelAttribute("traineeUserManagementForm") TraineeUserManagementForm traineeUserManagementForm) {
+			return "traineeUserManagementForm";
+		}
+		
+		@RequestMapping(value = "/traineeUserManagementSearch", method = RequestMethod.POST)
+		public String traineeUserManagementSave(
+				@Valid @ModelAttribute("traineeUserManagementForm") TraineeUserManagementForm traineeUserManagementForm,
+				BindingResult result, Model model) {
+			if (result.hasErrors()) {
+				new ZLogger("traineeUserManagementSearch", "bindingResult.hasErrors  " + result.hasErrors(),
+						"AdminController.java");
+				new ZLogger("traineeUserManagementSearch",
+						"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
+						"AdminController.java");
+				return "traineeUserManagementSearch";
+			}
+			try {
+				List<PersonalInformationTrainee> traineeUserManagementSearch = adminService
+						.traineeUserManagementSearch(traineeUserManagementForm);
+				if (traineeUserManagementSearch != null && traineeUserManagementSearch.size() > 0) {
+					model.addAttribute("searchTraineeUsermanagement", traineeUserManagementSearch);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				new ZLogger("traineeUserManagementSearch",
+						"Exception while traineeUserManagementSearch :  " + e.getMessage(), "AdminController.java");
+			}
+			return "traineeUserManagementForm";
+		}
+								
 									
 									
-									//traineeusermanagement-
-									@RequestMapping(value = "/traineeUserManagementForm", method = RequestMethod.GET)
-									public String trainerUserManagementForm(
-											@ModelAttribute("traineeUserManagementForm") TraineeUserManagementForm traineeUserManagementForm) {
-										return "traineeUserManagementForm";
-									}
-									
-									@RequestMapping(value = "/traineeUserManagementSearch", method = RequestMethod.POST)
-									public String traineeUserManagementSave(
-											@Valid @ModelAttribute("traineeUserManagementForm") TraineeUserManagementForm traineeUserManagementForm,
-											BindingResult result, Model model) {
-										if (result.hasErrors()) {
-											new ZLogger("traineeUserManagementSearch", "bindingResult.hasErrors  " + result.hasErrors(),
-													"AdminController.java");
-											new ZLogger("traineeUserManagementSearch",
-													"bindingResult.hasErrors  " + result.getErrorCount() + " All Errors " + result.getAllErrors(),
-													"AdminController.java");
-											return "traineeUserManagementSearch";
-										}
-										try {
-											List<PersonalInformationTrainee> traineeUserManagementSearch = adminService
-													.traineeUserManagementSearch(traineeUserManagementForm);
-											if (traineeUserManagementSearch != null && traineeUserManagementSearch.size() > 0) {
-												model.addAttribute("searchTraineeUsermanagement", traineeUserManagementSearch);
-											}
-										} catch (Exception e) {
-											e.printStackTrace();
-											new ZLogger("traineeUserManagementSearch",
-													"Exception while traineeUserManagementSearch :  " + e.getMessage(), "AdminController.java");
-										}
-										return "traineeUserManagementForm";
-									}
 }

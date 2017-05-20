@@ -32,8 +32,9 @@
 						<ul class="nav navbar-nav">
 							<li class="active hori"><a href="loginProcess.fssai">Home</a></li>
 							<!-- <li class="hori"><a href="MyTraining.fssai?userId=0">My trainings</a></li> -->
+								<li class="hori"><a href="PersonalInformationTrainee.fssai">View Update Info</a></li>	
 								<li class="hori"><a href="mycourses.fssai">My Courses</a></li>	
-							<li class="hori"><a href="contact.fssai">Contact
+							<li class="hori"><a href="traineeContact.fssai">Contact
 									Us</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
@@ -82,6 +83,8 @@
 								</a></li> -->
 							 <li class="hori"><a href="plannedTrainingCalendar.fssai">Planned Training Calendar
 									</a></li> 
+									<li class="hori"><a href="commonContact.fssai">Contact
+									Us</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown active"><a href="#"
@@ -128,7 +131,7 @@
 						<li class="hori"><a href="viewfeedback.fssai">View Feedback</a></li>
 							<li class="hori"><a href="updateinfotrainingpartner.fssai">View
 									Update Info</a></li>
-							<li class="hori"><a href="contactus.fssai">Contact
+							<li class="hori"><a href="commonContact.fssai">Contact
 									Us</a></li> 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">

@@ -625,17 +625,6 @@ public class TraineeController {
 	public String listSubjectMaster(@ModelAttribute("PersonalInformationTrainee") PersonalInformationTrainee personalInformationTrainee ,Model model , HttpServletRequest request,HttpSession session) {
 			System.out.println("PersonalInformationTrainee ");
 			String userId = request.getParameter("userId");
-			
-			
-			
-			if(userId != null && Integer.parseInt(userId) > 0){
-				personalInformationTrainee = traineeService.FullDetail(Integer.parseInt(userId));	
-				model.addAttribute("PersonalInformationTrainee", personalInformationTrainee);
-				model.addAttribute("isUpdate", "Y");
-			}else{
-				model.addAttribute("PersonalInformationTrainee", new PersonalInformationTrainee());
-			}
-		
 			model.addAttribute("listStateMaster", this.adminService.listStateMaster());
 		   
 			Map<String, String> titleMap = lst.titleMap;
@@ -653,6 +642,26 @@ public class TraineeController {
 			model.addAttribute("employerCategoryMap", empcat);
 			model.addAttribute("designationMap", des);
 			
+			
+			if (userId != null && Integer.parseInt(userId) > 0) {
+				personalInformationTrainee = this.traineeService
+						.FullDetail(Integer.parseInt(userId));
+				model.addAttribute("PersonalInformationTrainee",
+						personalInformationTrainee);
+				model.addAttribute("isUpdate", "Y");
+			}
+				else if (session.getAttribute("userId")!=null) {
+					personalInformationTrainee = this.traineeService
+						.FullDetail((int)session.getAttribute("userId"));
+				model.addAttribute("PersonalInformationTrainee",
+						personalInformationTrainee);
+				model.addAttribute("isUpdate", "Y");
+			}
+			else {
+				model.addAttribute("PersonalInformationTrainee",
+						new PersonalInformationTrainee());
+			}
+			
 			/*System.out.println("profileId"+session.getAttribute("profileId"));
 			if(session.getAttribute("profileId")==null)
 				return "PersonalInformationTrainee";*/
@@ -662,7 +671,7 @@ public class TraineeController {
 	
 	
 	@RequestMapping(value = "/PersonalInformationTraineeAdd", method = RequestMethod.POST)
-	public String addPersonalInfoTrainee(@Valid @ModelAttribute("PersonalInformationTrainee") PersonalInformationTrainee p , BindingResult result, Model model){
+	public String addPersonalInfoTrainee(@Valid @ModelAttribute("PersonalInformationTrainee") PersonalInformationTrainee p , BindingResult result, Model model,HttpSession session){
 		
 		System.out.println("Add PersonalInformationTrainee" + p.getId());
 	     String personalInformationTrainee = null;
@@ -686,8 +695,13 @@ public class TraineeController {
 			new Thread(new Mail("Thanks", p.getEmail(), all[1], all[0], p.getFirstName())).start();
 			return "welcome";
 		}else if(personalInformationTrainee.equalsIgnoreCase("updated")){
-			
-			return "redirect:/traineeUserManagementForm.fssai";
+			if((int)session.getAttribute("profileId")==1){
+				return "redirect:/traineeUserManagementForm.fssai";
+				}
+				else{
+					return "redirect:/mycourses.fssai";
+				}
+		
 		
 		}else{
 			return "PersonalInformationTrainee";
@@ -1099,17 +1113,13 @@ model.addAttribute("listMyCourses", this.traineeService.listMyCourses());
 return "mycourses";
 }
 //contact us
-/*@RequestMapping(value="/contactTrainee" , method=RequestMethod.GET)
-public String contact(@ModelAttribute("contactTraineee") ContactTrainee contactTrainee, Model model , HttpSession session){
-	try{
-		Integer userId = (Integer) session.getAttribute("userId");
-		Integer profileId = (Integer) session.getAttribute("profileId");
-		String defaultMail = traineeService.getDefaultMailID(userId, profileId);
-		model.addAttribute("defaultMail", defaultMail);
-	}catch(Exception e){
-		e.printStackTrace();
-		new ZLogger("contactTrainee", "Exception while  contactTrainee "+e.getMessage(), "TraineeController.java");
-	}
-	return "contactTrainee";
-}*/
+
+@RequestMapping(value = "/traineeContact", method = RequestMethod.GET)
+public String contact(@ModelAttribute("ContactTrainee")  ContactTrainee contactTrainee, Model model , HttpSession session) {
+	        Map<String , String> subjectMap = lst.subjectMap;
+    		model.addAttribute("subjectMap", subjectMap);
+    		 model.addAttribute("ContactTrainee",  new ContactTrainee());
+	return "traineeContact";
+
+}
 }

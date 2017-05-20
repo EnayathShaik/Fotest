@@ -336,4 +336,12 @@ public class ListConstant {
         auserTypeMap.put("Training Partner", "Training Partner");
         profileCodeMap = Collections.unmodifiableMap(auserTypeMap);
     }
+    //Training Lab
+    public static final Map<String, String> subjectMap;
+    static {
+        Map<String, String> auserTypeMap = new HashMap<String, String>();
+        auserTypeMap.put("aaaa", "aaa");
+        auserTypeMap.put("bbb", "bbb");
+        subjectMap = Collections.unmodifiableMap(auserTypeMap);
+    }
 }

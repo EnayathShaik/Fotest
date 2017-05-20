@@ -561,6 +561,13 @@ public class TrainerController {
          return "trainerHomepage";
        } 
          
-       
+       @RequestMapping(value = "/commonContact", method = RequestMethod.GET)
+       public String contact(@ModelAttribute("ContactTrainee")  ContactTrainee contactTrainee, Model model , HttpSession session) {
+       	        Map<String , String> subjectMap = lst.subjectMap;
+           		model.addAttribute("subjectMap", subjectMap);
+           		 model.addAttribute("ContactTrainee",  new ContactTrainee());
+       	return "commonContact";
+
+       }
 	
 }

@@ -6,7 +6,29 @@ public class ContactTrainee {
 	
 	private  String emailAddress;
 	private String messageDetails;
+	private String subject;
+	private String queryCatagory;
+	private String querySubCatagory;
 	
+	
+	public String getQueryCatagory() {
+		return queryCatagory;
+	}
+	public void setQueryCatagory(String queryCatagory) {
+		this.queryCatagory = queryCatagory;
+	}
+	public String getQuerySubCatagory() {
+		return querySubCatagory;
+	}
+	public void setQuerySubCatagory(String querySubCatagory) {
+		this.querySubCatagory = querySubCatagory;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
 	@NotNull
 	private String userId;
 	
