@@ -195,8 +195,8 @@ public interface AdminDAO {
 			public List<PersonalInformationTrainer> trainerUserManagementSearch(
 					TrainerUserManagementForm trainerUserManagementForm);
 
-			public List<PersonalInformationTrainingPartner> trainingPartnerUserManagementSearch(
-					TrainingPartnerUserManagementForm trainingPartnerUserManagementForm);
+			public List<PersonalInformationTrainee> traineeUserManagementSearch(TraineeUserManagementForm traineeUserManagementForm);
+			
 				
 
 			public List<ActivateUserIdForm> listactivateUserId(ActivateUserIdForm p);
@@ -206,6 +206,9 @@ public interface AdminDAO {
 			public List<AdminHomePageForm> listuserIdActivation(AdminHomePageForm p);
 
 			public List<AdminHomePageForm> listpendingRequestForCalendar(AdminHomePageForm p);
+			public List<PersonalInformationTrainingPartner> trainingPartnerUserManagementSearch(TrainingPartnerUserManagementForm trainingPartnerUserManagementForm);
+					
+				
 
-	
+			
 }

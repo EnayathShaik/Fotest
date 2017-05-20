@@ -161,7 +161,7 @@
                                                                             <tr>
                                                                                 <td>
                                                                                     <%-- <label><a href="updateInformation.fssai?userId=${listValue[6]}" value="${listValue[0]}">${listValue[1]}</a></label> --%>
-                                                                                    <label><a href="PersonalInformationTrainee.fssai?userId=${listValue[6]}&logId=${listValue[9]}" value="${listValue[0]}">${listValue[1]}</a></label>
+                                                                                    <label><a href="PersonalInformationTrainee.fssai?userId=${listValue[6]}" value="${listValue[0]}">${listValue[1]}</a></label>
                                                                                 </td>
                                                                                 <td>
                                                                                     <label>${listValue[2] }</label>
@@ -208,8 +208,6 @@
                 </section>
             </cf:form>
             <script>
-                /* var id = localStorage.getItem('activeID');
-                document.getElementById(id).className = "active"; */
                 function activateDeActivateUser(userId,status,profileID){
                 	if(confirm("Are you Sure ?")){
                 		

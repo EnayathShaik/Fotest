@@ -22,7 +22,7 @@
      var f = Math.ceil(Math.random() * 7)+ '';  
      var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' '+ f ;
      document.getElementById("txtCaptcha").value = code
- } 
+ }  
   
  
  
@@ -30,17 +30,16 @@
  function OnStart(){
 	 
 	 var isUpdate = '${isUpdate}';
-	 var profileId = '${profileId}';
+	/*  var profileId = '${profileId}';
 	 if(profileId ==2 || profileId == 1 ){ 
 		
 		 $("#statusDIV").css("display" , "block");
 		
 	 
-	 }
+	 } */
 	 if(isUpdate !=null && isUpdate== "Y"){
-		 alert("Update Your Details");
 		 var name = '${PersonalInformationTrainee.firstName}';
-		/* $("#logId").val('${PersonalInformationTrainee.loginDetails.id}');
+		 $("#logId").val('${PersonalInformationTrainee.loginDetails.id}');
 		$("#correspondenceState").val('${PersonalInformationTrainee.correspondenceState}');
 		$("#correspondenceState").trigger("change");
         window.setTimeout(function() {
@@ -48,17 +47,19 @@
             $("#correspondenceDistrict").trigger("change");
             window.setTimeout(function() {
             	$("#correspondenceCity").val('${PersonalInformationTrainee.correspondenceCity}');
+            	$("#correspondenceCity").trigger("change");
             }, 1000);
         }, 1000);
-		$("#resState").val('');
+        
+		/* $("#resState").val('');
         $("#residentialDistrict").val('');
         $("#resCity").val('');
-        $("#ResidentialLine1").val('');
-        $("#ResidentialLine2").val('');
-		 $("#createUpdateBtn").val("Update"); */
-		$("#captcha").css("display" , "none");
+       /*  $("#ResidentialLine1").val('');
+        $("#ResidentialLine2").val(''); */
+		 $("#createUpdateBtn").val("Update"); 
+		/* $("#captcha").css("display" , "none");
 		 $("#chkunit").css("display" , "none");
-		 $("#check").attr("checked","checked");
+		 $("#check").attr("checked","checked"); */ 
 	 }
 
 	
@@ -96,12 +97,8 @@
 		 				
 		 			}
 		 		 
-		 		}); 	 */	  
-		 		
- 
-		 
-	}
-		 		
+		 		}); 	 */	 
+	}		
 	window.onload = OnStart;
 	
 	

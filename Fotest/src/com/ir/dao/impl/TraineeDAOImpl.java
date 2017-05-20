@@ -1211,30 +1211,25 @@ public class TraineeDAOImpl implements TraineeDAO {
 		int id =  p.getId();
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformationTrainee personalInformationTrainee = (PersonalInformationTrainee) session.load(PersonalInformationTrainee.class, id);
-		/*personalInformationTrainee.setUserType(p.getUserType());
+		//personalInformationTrainee.setUserType(p.getUserType());
 		personalInformationTrainee.setTitle(p.getTitle());
 		personalInformationTrainee.setAadharNumber(p.getAadharNumber());
-		personalInformationTrainee.setEmpID(p.getEmpID());
+		personalInformationTrainee.setUserId(p.getUserId());
 		personalInformationTrainee.setDob(p.getDob());
 		personalInformationTrainee.setGender(p.getGender());
 		personalInformationTrainee.setFirstName(p.getFirstName());
-		personalInformationTrainee.setFatherName(p.getFatherName());
 		personalInformationTrainee.setLastName(p.getLastName());
 		personalInformationTrainee.setMiddleName(p.getMiddleName());
 		personalInformationTrainee.setEmail(p.getEmail());
 		personalInformationTrainee.setMobile(p.getMobile());
-		personalInformationTrainee.setCorrespondenceAddress1(p.getCorrespondenceAddress1());
-		personalInformationTrainee.setCorrespondenceAddress2(p.getCorrespondenceAddress2());
-		personalInformationTrainee.setCorrespondenceState(p.getCorrespondenceState());
-		personalInformationTrainee.setCorrespondenceDistrict(p.getCorrespondenceDistrict());
-		personalInformationTrainee.setCorrespondenceCity(p.getCorrespondenceCity());
-		personalInformationTrainee.setCorrespondencePincode(p.getCorrespondencePincode());
 		personalInformationTrainee.setResidentialLine1(p.getResidentialLine1());
 		personalInformationTrainee.setResidentialLine2(p.getResidentialLine2());
-		personalInformationTrainee.setResState(p.getResState());
-		personalInformationTrainee.setResidentialDistrict(p.getResidentialDistrict());
-		personalInformationTrainee.setResCity(p.getResCity());
-		personalInformationTrainee.setResPincode(p.getResPincode());*/
+		personalInformationTrainee.setCorrespondenceState(p.getCorrespondenceState());
+		System.out.println("district"+p.getCorrespondenceDistrict());
+		personalInformationTrainee.setCorrespondenceDistrict(p.getCorrespondenceDistrict());
+		personalInformationTrainee.setCorrespondenceCity(p.getCorrespondenceCity());
+		
+		
 		System.out.println(" status "+p.getStatus());
 		if(p.getStatus() != null){
 			System.out.println(" loginId "+p.getLogId() );

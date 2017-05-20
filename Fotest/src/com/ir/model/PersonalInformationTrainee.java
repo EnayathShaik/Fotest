@@ -206,25 +206,6 @@ public class PersonalInformationTrainee {
 		this.empID = empID;
 	}*/
 
-
-
-/*	public String getUserType() {
-		return userType;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-
-	public String getInductionTrainee() {
-		return inductionTrainee;
-	}
-
-	public void setInductionTrainee(String inductionTrainee) {
-		this.inductionTrainee = inductionTrainee;
-	}*/
-
-
 	private String title;
 	
 	

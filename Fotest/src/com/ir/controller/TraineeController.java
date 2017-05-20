@@ -653,10 +653,10 @@ public class TraineeController {
 			model.addAttribute("employerCategoryMap", empcat);
 			model.addAttribute("designationMap", des);
 			
-			System.out.println("ttt"+session.getAttribute("profileId"));
+			/*System.out.println("profileId"+session.getAttribute("profileId"));
 			if(session.getAttribute("profileId")==null)
-				return "PersonalInformationTrainee";
-			return "updatetraineeinfo";
+				return "PersonalInformationTrainee";*/
+			return "PersonalInformationTrainee";
 			}
 	
 	
@@ -1098,4 +1098,18 @@ public String listMyCourses( Model model){
 model.addAttribute("listMyCourses", this.traineeService.listMyCourses());
 return "mycourses";
 }
+//contact us
+/*@RequestMapping(value="/contactTrainee" , method=RequestMethod.GET)
+public String contact(@ModelAttribute("contactTraineee") ContactTrainee contactTrainee, Model model , HttpSession session){
+	try{
+		Integer userId = (Integer) session.getAttribute("userId");
+		Integer profileId = (Integer) session.getAttribute("profileId");
+		String defaultMail = traineeService.getDefaultMailID(userId, profileId);
+		model.addAttribute("defaultMail", defaultMail);
+	}catch(Exception e){
+		e.printStackTrace();
+		new ZLogger("contactTrainee", "Exception while  contactTrainee "+e.getMessage(), "TraineeController.java");
+	}
+	return "contactTrainee";
+}*/
 }

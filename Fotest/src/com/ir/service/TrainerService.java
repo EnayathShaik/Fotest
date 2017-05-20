@@ -10,6 +10,7 @@ import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
+import com.ir.form.TrainerHomePageForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -42,5 +43,10 @@ public interface TrainerService {
 	public List<PlannedTrainingCalendarForm> listPlannedTrainingCalendar();
 
 	public List<ApplyForPostForm> listapplyForPost(ApplyForPostForm p);
+	
+	public List<TrainerHomePageForm> listtrainerHomepage();
+	public List<TrainerHomePageForm> listopenVacancies();
+	public List<TrainerHomePageForm> listjobApplication();
+
 	
 }

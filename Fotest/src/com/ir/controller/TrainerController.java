@@ -23,8 +23,10 @@ import com.ir.form.ContactTrainee;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
+import com.ir.form.OnlineTrainingForm;
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainer;
+import com.ir.form.TrainerHomePageForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CourseName;
@@ -547,5 +549,18 @@ public class TrainerController {
            }
            return "applyForPost";
        }
+       
+       //trainerhomepage
+       @RequestMapping(value="/trainerHomepage" , method = { RequestMethod.POST , RequestMethod.GET })
+       public String trainerHomepage( Model model){
+       	  model.addAttribute("TrainerHomePageForm",  new TrainerHomePageForm());
+         model.addAttribute("listtrainerHomepage", this.trainerService.listtrainerHomepage());
+         model.addAttribute("listopenVacancies", this.trainerService.listopenVacancies());
+         model.addAttribute("listjobApplication", this.trainerService.listjobApplication());
+
+         return "trainerHomepage";
+       } 
+         
+       
 	
 }

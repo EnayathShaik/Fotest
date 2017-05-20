@@ -29,6 +29,7 @@ import com.ir.form.MyCalendarForm;
 
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
+import com.ir.form.TrainerHomePageForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -265,6 +266,71 @@ public class TrainerDAOImpl implements TrainerDAO {
 					bean.setTrainingTime((String) li[2]);
 					bean.setTrainingLab((String) li[3]);
 					new ZLogger("traineeFeedback", "List:" + li, "TraineeDAOImpl.java");
+					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
+			
+			//trainerHomepage
+			@Override
+			public List<TrainerHomePageForm> listtrainerHomepage() {
+				System.out.println("inside trainerHomepage");
+				TrainerHomePageForm bean = new TrainerHomePageForm();
+				List<TrainerHomePageForm> resulList = new ArrayList<TrainerHomePageForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('19/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab ,cast('Mr.Smith' as varchar(20)) as contactPersonName,cast('lorem@ipsum.com' as varchar(20)) as email").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainingDate((String) li[1]);
+					bean.setTrainingTime((String) li[2]);
+					bean.setTrainingLab((String) li[3]);
+					bean.setContactPersonName((String) li[4]);
+					bean.setEmail((String) li[5]);
+					new ZLogger("trainerHomepage", "List:" + li, "TraineeDAOImpl.java");
+					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
+			
+			@Override
+			public List<TrainerHomePageForm> listopenVacancies() {
+				System.out.println("inside trainerHomepage");
+				TrainerHomePageForm bean = new TrainerHomePageForm();
+				List<TrainerHomePageForm> resulList = new ArrayList<TrainerHomePageForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				System.out.println("fffffffffffffffffffffffffffff");
+				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('ICP-MS Certification' as varchar(20)) as trainerProgram , cast('ICP-MS Certification' as varchar(20)) as trainerCourse , cast('ICP-MS Certification' as varchar(20)) as trainingSlot").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainerProgram((String) li[1]);
+					bean.setTrainerCourse((String) li[2]);
+					bean.setTrainingSlot((String) li[3]);
+					new ZLogger("trainerHomepage", "List:" + li, "TraineeDAOImpl.java");
+					//logger.info("traineeFeedback List::" + li);
+					resulList.add(bean);
+				}
+				return resulList;
+			}
+			@Override
+			public List<TrainerHomePageForm> listjobApplication() {
+				System.out.println("inside trainerHomepage");
+				TrainerHomePageForm bean = new TrainerHomePageForm();
+				List<TrainerHomePageForm> resulList = new ArrayList<TrainerHomePageForm>();
+				Session session = this.sessionFactory.getCurrentSession();
+				System.out.println("fffffffffffffffffffffffffffff");
+				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('ICP-MS Certification' as varchar(20)) as trainerProgram , cast('ICP-MS Certification' as varchar(20)) as trainerCourse , cast('ICP-MS Certification' as varchar(20)) as trainingSlot,cast('selected' as varchar(20)) as status").list();
+				for (Object[] li : list ) {
+					
+					bean.setCourseName((String) li[0]);
+					bean.setTrainerProgram((String) li[1]);
+					bean.setTrainerCourse((String) li[2]);
+					bean.setTrainingSlot((String) li[3]);
+					bean.setStatus((String) li[4]);
+					new ZLogger("trainerHomepage", "List:" + li, "TraineeDAOImpl.java");
 					//logger.info("traineeFeedback List::" + li);
 					resulList.add(bean);
 				}

@@ -521,6 +521,15 @@ public class AdminServiceImpl implements AdminService {
 					.trainerUserManagementSearch(trainerUserManagementForm);
 			return trainerUserManagementSearch;
 		}
+		
+		@Override
+		@Transactional
+		public List<PersonalInformationTrainee> traineeUserManagementSearch(
+				TraineeUserManagementForm traineeUserManagementForm) {
+			List<PersonalInformationTrainee> traineeUserManagementSearch = 
+					adminDAO.traineeUserManagementSearch(traineeUserManagementForm);
+			return traineeUserManagementSearch;
+		}
 
 		@Override
 		@Transactional
@@ -557,7 +566,6 @@ public class AdminServiceImpl implements AdminService {
 			// TODO Auto-generated method stub
 			return this.adminDAO.listpendingRequestForCalendar(p);
 		}
-
 
 		
 }

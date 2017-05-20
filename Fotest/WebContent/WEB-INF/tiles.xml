@@ -655,11 +655,12 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/adminHomepage.jsp" />
 	</definition>
-	<definition name="trainerUserManagementForm" extends="base.user.afterLogin">
+	<definition name="traineeUserManagementForm" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"
-			value="/website/admin/trainer-user-management.jsp" />
+			value="/website/admin/traineeUserManagementForm.jsp" />
 	</definition>
+	
 	<definition name="trainingCenterUserManagementForm" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"
@@ -1359,6 +1360,11 @@
 		<put-attribute name="body"
 			value="/website/commonjsp/activateAssessmentOfTrainee.jsp" />
 	</definition>
+	<!--  <definition name="contactTrainee" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/trainee/contact.jsp" />
+	</definition> -->
 	<definition name="createCalendar" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainingPartner/createCalendar.jsp" />
@@ -1370,5 +1376,10 @@
 	<definition name="activateUserId" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/admin/activateUserId.jsp" />
+	</definition>
+	<definition name="trainerUserManagementForm" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/admin/trainer-user-management.jsp" />
 	</definition>
 </tiles-definitions>

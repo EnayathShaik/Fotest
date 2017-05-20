@@ -177,16 +177,28 @@ public interface AdminService {
 		public FeedbackMaster getFeedbackMasterById(int id);
 
 		public void removeFeedbackMaster(int id);
+	
 		List<PersonalInformationTrainer> trainerUserManagementSearch(TrainerUserManagementForm trainerUserManagementForm);
+
+		public List<PersonalInformationTrainee> traineeUserManagementSearch(TraineeUserManagementForm traineeUserManagementForm);
 		public List<PersonalInformationTrainingPartner> trainingPartnerUserManagementSearch(
 				TrainingPartnerUserManagementForm trainingPartnerUserManagementForm);
-
 		
 		public List<ActivateUserIdForm> listactivateUserId(ActivateUserIdForm p);
 		
 		public List<AdminHomePageForm> listPendingTraineeEnrollment(AdminHomePageForm p);
 		public List<AdminHomePageForm> listuserIdActivation(AdminHomePageForm p);
 		public List<AdminHomePageForm> listpendingRequestForCalendar(AdminHomePageForm p);
+		
+
+
+		
+
+
+
+
+		
+		
 		
 
 }

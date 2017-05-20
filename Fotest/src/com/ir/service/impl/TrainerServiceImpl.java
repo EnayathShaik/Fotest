@@ -18,6 +18,7 @@ import com.ir.form.FeedbackForm;
 import com.ir.form.MyCalendarForm;
 import com.ir.form.PlannedTrainingCalendarForm;
 import com.ir.form.RegistrationFormTrainee;
+import com.ir.form.TrainerHomePageForm;
 import com.ir.form.TrainerRequestForm;
 import com.ir.model.AdmitCardForm;
 import com.ir.model.CertificateInfo;
@@ -109,5 +110,24 @@ public class TrainerServiceImpl implements TrainerService {
 		// TODO Auto-generated method stub
 		return this.trainerDAO.listStatusType();
 	}*/
+	//trainerhomepage
+	@Override
+	@Transactional
+	public List<TrainerHomePageForm> listtrainerHomepage() {
+		// TODO Auto-generated method stub
+		return this.trainerDAO.listtrainerHomepage();
+	}
+	@Override
+	@Transactional
+	public List<TrainerHomePageForm> listopenVacancies() {
+		// TODO Auto-generated method stub
+		return this.trainerDAO.listopenVacancies();
+	}
+	@Override
+	@Transactional
+	public List<TrainerHomePageForm> listjobApplication() {
+		// TODO Auto-generated method stub
+		return this.trainerDAO.listjobApplication();
+	}
 
 }
