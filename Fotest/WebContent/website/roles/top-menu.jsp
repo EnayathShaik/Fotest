@@ -81,6 +81,8 @@
 									& Apply Vacancy</a></li> -->
 					<!-- 		<li class="hori"><a href="MyCalendar.fssai">My Calendar
 								</a></li> -->
+								 <li class="hori"><a href="PersonalInformationTrainer.fssai">Update Information
+									</a></li> 
 							 <li class="hori"><a href="plannedTrainingCalendar.fssai">Planned Training Calendar
 									</a></li> 
 									<li class="hori"><a href="commonContact.fssai">Contact

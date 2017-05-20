@@ -75,7 +75,7 @@
 													</div>
 
 													<cf:select path="courseName" class="form-control">
-														<cf:option value="" label="Select userType" />
+														<cf:option value="" label="Select courseName" />
 														<cf:options items="${courseNameMap}" />
 													</cf:select>
 												</div>
@@ -110,7 +110,7 @@
 															</ul>
 														</div>
 														<cf:input path="noOfSeats"
-															placeholder="noOfSeats" class="form-control" />
+															placeholder="no Of Seats" class="form-control" />
 													</div>
 													<div class="col-md-06 col-xs-12" style="margin-top:39px;">
 												<input type="submit" id="createbtn" value="Create"

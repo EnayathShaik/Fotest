@@ -228,16 +228,14 @@ public class TrainerController {
 	@RequestMapping(value = "/PersonalInformationTrainer", method = RequestMethod.GET)
 	public String listSubjectMaster(
 			@ModelAttribute("PersonalInformationTrainer") PersonalInformationTrainer personalInformationTrainer,
-			Model model, HttpServletRequest request) {
+			Model model, HttpServletRequest request,HttpSession session) {
 		System.out.println("PersonalInformationTrainer");
 		String userId = request.getParameter("userId");
-		
 		Map<String, String> titleMap = lst.titleMap;
 		Map<String, String> opt = lst.noOfOptionMap;
 		Map<String, String> qual = lst.QualCategoryMap;
 		Map<String, String> subqual = lst.SubQualCategoryMap;
 		Map<String, String> courseNameMap = lst.courseNameMap;
-		/*model.addAttribute("userType", userType);*/
 		model.addAttribute("titleMap", titleMap);
 		model.addAttribute("ExpInYearMap", opt);
 		model.addAttribute("ExpInMonthMap", opt);
@@ -246,26 +244,33 @@ public class TrainerController {
 		model.addAttribute("courseNameMap", courseNameMap);
 		model.addAttribute("listStateMaster",
 				this.adminService.listStateMaster());
-		//model.addAttribute("listTrainingInstitude",
-		//		this.adminService.listTrainingInstitude());
+		
 		if (userId != null && Integer.parseInt(userId) > 0) {
 			personalInformationTrainer = this.traineeService
 					.FullDetailTrainer(Integer.parseInt(userId));
 			model.addAttribute("PersonalInformationTrainer",
 					personalInformationTrainer);
 			model.addAttribute("isUpdate", "Y");
-		} else {
+		}
+			else if (session.getAttribute("userId")!=null) {
+		personalInformationTrainer = this.traineeService
+					.FullDetailTrainer((int)session.getAttribute("userId"));
+			model.addAttribute("PersonalInformationTrainer",
+					personalInformationTrainer);
+			model.addAttribute("isUpdate", "Y");
+		}
+		else {
 			model.addAttribute("PersonalInformationTrainer",
 					new PersonalInformationTrainer());
 		}
-
+		
 		return "PersonalInformationTrainer";
 	}
 
 	@RequestMapping(value = "/PersonalInformationTrainerAdd", method = RequestMethod.POST)
 	public String addPersonalInfoTrainer(
 			@Valid @ModelAttribute("PersonalInformationTrainer") PersonalInformationTrainer p,
-			BindingResult result, Model model) {
+			BindingResult result, Model model,HttpSession session) {
 		System.out.println("Add PersonalInformationTrainer");
 		String personalInformationTrainer = null;
 		try {
@@ -283,7 +288,7 @@ public class TrainerController {
 
 			return "PersonalInformationTrainer";
 		}
-
+	
 		if (personalInformationTrainer != null
 				&& !personalInformationTrainer.equalsIgnoreCase("updated")) {
 			String[] all = personalInformationTrainer.split("&");
@@ -293,11 +298,16 @@ public class TrainerController {
 					p.getFirstName())).start();
 			return "welcome";
 		} else if (personalInformationTrainer.equalsIgnoreCase("updated")) {
+			if((int)session.getAttribute("profileId")==1){
 			return "redirect:/trainerUserManagementForm.fssai";
+			}
+			else{
+				return "redirect:/trainerHomepage.fssai";
+			}
 		} else {
 			return "PersonalInformationTrainer";
 		}
-
+		
 	}
 
 	/**

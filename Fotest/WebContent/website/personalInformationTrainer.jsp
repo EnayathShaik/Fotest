@@ -40,16 +40,7 @@
 																		'${PersonalInformationTrainer.correspondenceCity}');
 													}, 1000);
 								}, 1000);
-			/* 	$("#resState").val('');
-				$("#residentialDistrict").val('');
-				$("#resCity").val(''); 
-				$("#ResidentialLine1").val('');
-				$("#ResidentialLine2").val('');*/
-				/* $("#ResidenceAddress1").val('');
-				$("#ResidenceAddress2").val('');
-				$("#emaill").val('');
-				$("#Mobile1").val('');
-				$("#Mobile2").val(''); */
+		
 				
 				$("#createUpdateBtn").val("Update");
 				$("#captcha").css("display", "none");

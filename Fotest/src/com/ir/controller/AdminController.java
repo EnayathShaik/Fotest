@@ -913,7 +913,6 @@ public class AdminController {
 		@RequestMapping(value = "/adminHomepage", method = RequestMethod.GET)
 		public String listPendingTraineeEnrollment(@ModelAttribute("AdminHomePageForm") AdminHomePageForm p,
 				Model model) {
-			System.out.println("sssssssssssssssss");
 			model.addAttribute("listPendingTraineeEnrollment", this.adminService.listPendingTraineeEnrollment(p));
 			model.addAttribute("listuserIdActivation", this.adminService.listuserIdActivation(p));
 			model.addAttribute("listpendingRequestForCalendar", this.adminService.listpendingRequestForCalendar(p));

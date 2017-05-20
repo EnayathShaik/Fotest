@@ -75,7 +75,7 @@
 													</div>
 
 													<cf:select path="courseName" class="form-control">
-														<cf:option value="" label="Select userType" />
+														<cf:option value="" label="Select Course Name" />
 														<cf:options items="${courseNameMap}" />
 													</cf:select>
 												</div>
