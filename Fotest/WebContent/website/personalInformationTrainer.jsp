@@ -21,39 +21,36 @@
 		var isUpdate = '${isUpdate}';
 		if (isUpdate != null && isUpdate == "Y") {
 
-			 	var name = '${PersonalInformationTrainer.firstName}';
-				$("#correspondenceState").val(
-						'${PersonalInformationTrainer.correspondenceState}');
-				$("#correspondenceState").trigger("change");
-				window
-						.setTimeout(
-								function() {
-									$("#correspondenceDistrict")
-											.val(
-													'${PersonalInformationTrainer.correspondenceDistrict}');
-									$("#correspondenceDistrict").trigger("change");
-									window
-											.setTimeout(
-													function() {
-														$("#correspondenceCity")
-																.val(
-																		'${PersonalInformationTrainer.correspondenceCity}');
-													}, 1000);
-								}, 1000);
-		
-				
-				$("#createUpdateBtn").val("Update");
-				$("#captcha").css("display", "none");
-				$("#chkunit").css("display", "none");
-				$("#check").attr("checked", "checked"); 
+			var name = '${PersonalInformationTrainer.firstName}';
+			$("#correspondenceState").val(
+					'${PersonalInformationTrainer.correspondenceState}');
+			$("#correspondenceState").trigger("change");
+			window
+					.setTimeout(
+							function() {
+								$("#correspondenceDistrict")
+										.val(
+												'${PersonalInformationTrainer.correspondenceDistrict}');
+								$("#correspondenceDistrict").trigger("change");
+								window
+										.setTimeout(
+												function() {
+													$("#correspondenceCity")
+															.val(
+																	'${PersonalInformationTrainer.correspondenceCity}');
+												}, 1000);
+							}, 1000);
+
+			$("#createUpdateBtn").val("Update");
+			$("#captcha").css("display", "none");
+			$("#chkunit").css("display", "none");
+			$("#check").attr("checked", "checked");
 
 		}
 		DrawCaptcha();
 
 		flatpickr("#dob", {});
 
-	
-		
 	}
 	window.onload = OnStart;
 	// Remove the spaces from the entered and generated code
@@ -75,30 +72,22 @@
 				<div class="col-md-10  col-xs-12">
 					<h3 class="text-capitalize heading-3-padding">Trainer
 						Registration Form</h3>
-
 					<form>
-
 						<!-- personal information -->
 						<fieldset>
 							<legend>Personal Information</legend>
 
 							<!-- form field starts here -->
-
-
-
 							<!-- left side -->
 							<div class="col-md-6 col-xs-12">
-
-
-
 								<cf:input type="hidden" path="id" />
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>User Id:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="userTypeErr" style="display: none;"
-												class="style-li error-red">Please Select User Type.</li>
+											<li id="userIdErr" style="display: none;"
+												class="style-li error-red">User Id can not be blank.</li>
 										</ul>
 									</div>
 									<cf:input type="text" path="userId" class="form-control"
@@ -109,7 +98,7 @@
 										<ul class="lab-no">
 											<li class="style-li"><strong>Date of Birth:</strong></li>
 											<li id="dobErr" style="display: none;"
-												class="style-li error-red">Please Select DOB.</li>
+												class="style-li error-red">Please Select Date Of Birth.</li>
 											<li class="style-li error-red">*</li>
 										</ul>
 									</div>
@@ -132,26 +121,12 @@
 										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
 										onblur="ck_aadhar('personalinformationtrainer');" />
 								</div>
-
-								<%-- <div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Emp Id:</strong></li>
-											<li class="style-li error-red">*</li>
-											<li id="empIDErr" style="display: none;"
-												class="style-li error-red">Please Enter Emp ID.</li>
-										</ul>
-									</div>
-									<cf:input type="text" path="empID" class="form-control"
-										placeholder="Emp ID" />
-								</div>
- --%>
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Mobile:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="mobileErr" style="display: none;"
+											<li id="mobile1Err" style="display: none;"
 												class="style-li error-red">Mobile cannot be blank</li>
 										</ul>
 									</div>
@@ -160,13 +135,11 @@
 										required=""
 										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" />
 								</div>
-
 							</div>
 							<!-- left side ends -->
 
 							<!-- right side -->
 							<div class="col-md-6 col-xs-12">
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -174,7 +147,6 @@
 											<li class="style-li error-red">*</li>
 											<li id="titleErr" style="display: none;"
 												class="style-li error-red">Please Select Title.</li>
-
 										</ul>
 									</div>
 									<cf:select path="title" class="form-control">
@@ -182,7 +154,6 @@
 										<cf:options items="${titleMap}" />
 									</cf:select>
 								</div>
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -197,7 +168,6 @@
 										placeholder="First Name"
 										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -212,7 +182,6 @@
 										placeholder="Middle Name"
 										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -240,15 +209,10 @@
 									<cf:radiobutton path="gender" value="F" />
 									Female
 								</div>
-
 							</div>
 							<!-- right side ends -->
 						</fieldset>
 
-
-
-
-						<!-- Correspondence Address -->
 						<fieldset>
 							<legend>Contact Details</legend>
 
@@ -263,9 +227,8 @@
 											<li class="style-li"><strong>Residence Address
 													Line 1:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="correspondenceAddress1Err" style="display: none;"
-												class="style-li error-red">Please Enter Address.</li>
-
+											<li id="residenceAddress1Err" style="display: none;"
+												class="style-li error-red">Address can not be blank.</li>
 										</ul>
 									</div>
 									<cf:input type="text" path="residenceAddress1"
@@ -288,7 +251,7 @@
 										<ul class="lab-no">
 											<li class="style-li"><strong>State:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="residenceStateErr" style="display: none;"
+											<li id="correspondenceStateErr" style="display: none;"
 												class="style-li error-red">Please Select State.</li>
 
 										</ul>
@@ -305,8 +268,8 @@
 										<ul class="lab-no">
 											<li class="style-li"><strong>District:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="residenceDistrictErr" style="display: none;"
-												class="style-li error-red">Please Select District.</li>
+											<li id="correspondenceDistrictErr" style="display: none;"
+												class="style-li error-red">District can not be blank.</li>
 
 										</ul>
 									</div>
@@ -315,23 +278,18 @@
 
 									</cf:select>
 								</div>
-
-
 							</div>
 							<!-- left side ends -->
 
 							<!-- right side -->
 							<div class="col-md-6 col-xs-12">
-
-
-
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>City:</strong></li>
 											<li class="style-li error-red">*</li>
 											<li id="correspondenceCityErr" style="display: none;"
-												class="style-li error-red">Please Select City.</li>
+												class="style-li error-red">City can not be blank.</li>
 
 										</ul>
 									</div>
@@ -339,24 +297,6 @@
 
 									</cf:select>
 								</div>
-
-
-
-								<%--  <div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Pin Code:</strong></li>
-											<li class="style-li error-red">*</li>
-											<li id="correspondencePincodeErr" style="display: none;"
-												class="style-li error-red">Please Enter Pin Code.</li>
-											<li id="correspondencePincodeErr1" style="display: none;"
-												class="style-li error-red">Please Enter valid Pin Code.</li>
-										</ul>
-									</div>
-									<cf:input type="text" path="correspondencePincode"
-										class="form-control" minlength="6" maxlength="6"
-										placeholder="Pin Code" required=""  onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
-								</div> --%>
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -367,7 +307,7 @@
 
 										</ul>
 									</div>
-									<cf:input type="text" path="Email" class="form-control" id="emaill"
+									<cf:input type="text" path="Email" class="form-control"
 										placeholder="Email" onblur="emailVal(this.id,this.value)"
 										required="" />
 
@@ -377,7 +317,7 @@
 										<ul class="lab-no">
 											<li class="style-li"><strong>Mobile:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="mobileErr" style="display: none;"
+											<li id="mobile2Err" style="display: none;"
 												class="style-li error-red">Mobile cannot be blank</li>
 										</ul>
 									</div>
@@ -391,10 +331,6 @@
 							</div>
 							<!-- right side ends -->
 						</fieldset>
-						<!-- Correspondence address ends -->
-
-
-						<!-- permanent Address -->
 						<fieldset>
 							<legend>Qualification Details</legend>
 
@@ -408,9 +344,9 @@
 											<li class="style-li"><strong>Qualification
 													Category:</strong></li>
 											<li class="style-li error-red"></li>
-											<li id="ResidentialLine1Err" style="display: none;"
-												class="style-li error-red">Correspondence Address can
-												not be blank.</li>
+											<li id="qualCategoryErr" style="display: none;"
+												class="style-li error-red">Please select Qualification
+												Category.</li>
 
 										</ul>
 									</div>
@@ -443,8 +379,9 @@
 											<li class="style-li"><strong>Qualification Sub
 													Category:</strong></li>
 											<li class="style-li error-red"></li>
-											<li id="residentialDistrictErr" style="display: none;"
-												class="style-li error-red">District can not be blank.</li>
+											<li id="qualSubCategoryErr" style="display: none;"
+												class="style-li error-red">Please select Qualification
+												Sub Category.</li>
 										</ul>
 									</div>
 
@@ -466,20 +403,6 @@
 									<cf:input type="text" path="others2" class="form-control"
 										placeholder="Address" required="" />
 								</div>
-
-
-
-								<%-- 	<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Pin Code:</strong></li>
-											<li class="style-li error-red"></li>
-											 <li id="resPincodeErr" style="display:none;" class="style-li error-red" >Pin code can not be blank.</li>
-										</ul>
-									</div>
-									<cf:input type="text" path="resPincode" class="form-control" minlength="6"  maxlength="6"
-										placeholder="Pin Code" required=""  onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
-								</div> --%>
 							</div>
 							<!-- right side ends -->
 						</fieldset>
@@ -503,17 +426,15 @@
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
+											<li id="assExpInYearErr" style="display: none;"
+												class="style-li error-red">Exp. in YEAR can not be
+												blank.</li>
+											<li id="assExpInMonthErr" style="display: none;"
+												class="style-li error-red">Exp. in MONTH can not be
+												blank.</li>
 											<li class="style-li"><strong>If Yes Relevant
 													Experience as Assessor:</strong></li>
 											<li class="style-li error-red"></li>
-
-											<li id="expInYearErr" style="display: none;"
-												class="style-li error-red">Exp. in YEAR can not be
-												blank.</li>
-											<li id="expInMonthErr" style="display: none;"
-												class="style-li error-red">Exp. in MONTH can not be
-												blank.</li>
-
 										</ul>
 									</div>
 									<div class="row">
@@ -532,47 +453,22 @@
 										</div>
 									</div>
 								</div>
-								<%-- <div class="form-group">
-									<label>Modules wish to conduct training on it ?</label>
+								<div class="form-group">
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Modules wish to
+													conduct training on it ?</strong></li>
+											<li id="testingFacilitiesErr" style="display: none;"
+												class="style-li error-red">Correspondence Address can
+												not be blank.</li>
+										</ul>
+									</div>
+									<ct:forEach items="${courseNameMap}" var="map">
+										<cf:checkbox path="modules" id="testingFacilities"
+											value="${map.value}" label=" ${map.value}" />
+										<br>
+									</ct:forEach>
 								</div>
-								<!-- <div id=a1 style="float: left; width: 99%;">
-									<input type="checkbox" id="check" style="margin-left: 1%;">
-									General Training
-								</div>
-								<div id=a2 style="float: left; width: 99%;">
-									<input type="checkbox" id="check" style="margin-left: 1%;">
-									GC MS/MS
-								</div>
-								<div id=a3 style="float: left; width: 99%;">
-									<input type="checkbox" id="check" style="margin-left: 1%;">
-									LC MS/MS
-								</div>
-								<div id=a4 style="float: left; width: 99%;">
-									<input type="checkbox" id="check" style="margin-left: 1%;">
-									ICP-MS
-								</div> -->
-								<ct:forEach items="${courseNameMap}" var="map">
-									<cf:checkbox path="testingFacilities" id="testingFacilities"
-										value="${map.value}" label=" ${map.value}" />
-									<br>
-								</ct:forEach>
-							</div> --%>
-							
-							<div class="form-group">
-								<div>
-									<ul class="lab-no">
-										<li class="style-li"><strong>Modules wish to conduct training on it ?</strong></li>
-										<li id="testingFacilitiesErr" style="display: none;"
-											class="style-li error-red">Correspondence Address can
-											not be blank.</li>
-									</ul>
-								</div>
-								<ct:forEach items="${courseNameMap}" var="map">
-									<cf:checkbox path="modules" id="testingFacilities"
-										value="${map.value}" label=" ${map.value}" />
-									<br>
-								</ct:forEach>
-							</div>
 							</div>
 							<!-- left side ends -->
 							<!-- right side -->
@@ -581,16 +477,17 @@
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
+
 											<li class="style-li"><strong>Training
 													experience related to food sector:</strong></li>
 											<li class="style-li error-red"></li>
+											<li id="trExpInYearErr" style="display: none;"
+												class="style-li error-red">Exp. in YEAR can not
+												beblank.</li>
+											<li id="trExpInMonthErr" style="display: none;"
+												class="style-li error-red">Exp. in MONTH can not
+												beblank.</li>
 
-											<li id="expInYearErr" style="display: none;"
-												class="style-li error-red">Exp. in YEAR can not be
-												blank.</li>
-											<li id="expInMonthErr" style="display: none;"
-												class="style-li error-red">Exp. in MONTH can not be
-												blank.</li>
 
 										</ul>
 									</div>
@@ -611,13 +508,14 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label>Area Specialization</label>
-									<div id="sessWishToConductErr" style="display: none;"
-										class="style-li error-red">Session hrs cannot be 0 or
-										blank .</div>
-									<cf:textarea class="form-control" path="areaSpecialization"
-										placeholder="Enter Your Message (250 Words)" />
-
+									<ul class="lab-no">
+										<li class="style-li"><strong>Area Specialization</strong></li>
+										<li id="areaSpecializationErr" style="display: none;"
+											class="style-li error-red">Area Specialization cannot be
+											blank.</li>
+										<cf:textarea class="form-control" path="areaSpecialization"
+											placeholder="Enter Your Message (250 Words)" />
+									</ul>
 								</div>
 
 							</div>
@@ -688,90 +586,34 @@
 </cf:form>
 
 
-
-
-
-
 <script>
-	function editTrainingSchedule(id) {
-
-		var name1 = JSON.stringify({
-			courseName : 0
-		})
-		$.ajax({
-			type : 'post',
-			url : 'PersonalInformationTrainer/edit/' + id + '.fssai',
-			contentType : "application/json",
-			data : name1,
-			success : function(response) {
-				var mainData1 = jQuery.parseJSON(response);
-				//  $("#trainingScheduleId").val(mainData1.trainingScheduleId);
-				/* $("#userType").val(mainData1.userType);
-				$("#title").val(mainData1.title);
-				$("#AadharNumber").val(mainData1.AadharNumber);
-				$("#firstName").val(mainData1.firstName);
-				$("#MiddleName").val(mainData1.MiddleName);
-				$("#LastName").val(mainData1.LastName);
-				$("#FatherName").val(mainData1.FatherName);
-				$("#dob").val(mainData1.dob);
-
-				$("#correspondenceAddress1").val(
-						mainData1.correspondenceAddress1);
-				$("#correspondenceState").val(mainData1.correspondenceState);
-				$("#Email").val(mainData1.Email);
-				$("#correspondenceDistrict").val(
-						mainData1.correspondenceDistrict);
-
-				$("#correspondenceCity").val(mainData1.correspondenceCity);
-				$("#correspondencePincode")
-						.val(mainData1.correspondencePincode);
-				$("#mobile").val(mainData1.mobile);
-				$("#empID").val(mainData1.empID); */
-
-				$("#updatebtn").css("display", "block");
-
-				$("#createbtn").css("display", "none");
-			}
-		});
-
-	}
 	function validateFields() {
 		var isUpdate = '${isUpdate}';
 
-		$("#userTypeErr").css("display", "none");
+		$("#userIdErr").css("display", "none");
 		$("#titleErr").css("display", "none");
-		$("#correspondencePincodeErr").css("display", "none");
-		$("#correspondencePincodeErr1").css("display", "none");
-		$("#mobileErr").css("display", "none");
-		$("#AadharNumberErr").css("display", "none");
+		$("#dobErr").css("display", "none");
 		$("#firstNameErr").css("display", "none");
 		$("#MiddleNameErr").css("display", "none");
 		$("#LastNameErr").css("display", "none");
-		$("#FatherNameErr").css("display", "none");
-		$("#empIDErr").css("display", "none");
-		$("#dobErr").css("display", "none");
-		$("#correspondenceAddress1Err").css("display", "none");
+		$("#AadharNumberErr").css("display", "none");
+		$("#mobile1Err").css("display", "none");
+
+		$("#residenceAddress1Err").css("display", "none");
 		$("#correspondenceStateErr").css("display", "none");
-		$("#EmailErr").css("display", "none");
 		$("#correspondenceDistrictErr").css("display", "none");
 		$("#correspondenceCityErr").css("display", "none");
-
-		$("#ResidentialLine1Err").css("display", "none");
-		$("#ResidentialLine2Err").css("display", "none");
-		$("#resStateErr").css("display", "none");
-		$("#residentialDistrictErr").css("display", "none");
-		$("#resCityErr").css("display", "none");
-		$("#resPincodeErr").css("display", "none");
-
-		$("#txtInputErr").css("display", "none");
-		$("#ExpBackgroundErr").css("display", "none");
-		$("#sessWishToConductErr").css("display", "none");
-		$("#expInYearErr").css("display", "none");
-		$("#expInMonthErr").css("display", "none");
-		$("#AssociatedWithAnyTrainingInstituteErr").css("display", "none");
-
-		if ($("#userType").val() == '') {
-			$("#userTypeErr").css("display", "block");
+		$("#EmailErr").css("display", "none");
+		$("#mobile2Err").css("display", "none");
+		$("#qualCategoryErr").css("display", "none");
+		$("#qualSubCategoryErr").css("display", "none");
+		$("#trExpInYearErr").css("display", "none");
+		$("#trExpInMonthErr").css("display", "none");
+		$("#assExpInYearErr").css("display", "none");
+		$("#assExpInMonthErr").css("display", "none");
+		$("#areaSpecializationErr").css("display", "none");
+		if ($("#userId").val() == '') {
+			$("#userIdErr").css("display", "block");
 
 			return false;
 		}
@@ -780,13 +622,11 @@
 			$("#titleErr").css("display", "block");
 			return false;
 		}
+		if ($("#dob").val() == 0) {
 
-		if ($("#AadharNumber").val() == 0) {
-
-			$("#AadharNumberErr").css("display", "block");
+			$("#dobErr").css("display", "block");
 			return false;
 		}
-
 		if ($("#firstName").val() == 0) {
 
 			$("#firstNameErr").css("display", "block");
@@ -802,35 +642,29 @@
 			$("#LastNameErr").css("display", "block");
 			return false;
 		}
-		if ($("#FatherName").val() == 0) {
+		if ($("#AadharNumber").val() == 0) {
 
-			$("#FatherNameErr").css("display", "block");
-			return false;
-		}
-		if ($("#empID").val() == 0) {
-
-			$("#empIDErr").css("display", "block");
-			return false;
-		}
-		if ($("#dob").val() == 0) {
-
-			$("#dobErr").css("display", "block");
-			return false;
-		}
-		if ($("#correspondenceAddress1").val() == 0) {
-
-			$("#correspondenceAddress1Err").css("display", "block");
+			$("#AadharNumberErr").css("display", "block");
 			return false;
 		}
 
-		/* if ($("#correspondenceState").val() == 0) {
+		if ($("#mobile1").val().match(/^[0-9]{10}$/) == null) {
 
+			$("#mobile1Err").css("display", "block");
+			return false;
+		}
+		if ($("#mobile1").val() == 0) {
+
+			$("#mobileErr").css("display", "block");
+			return false;
+		}
+		if ($("#residenceAddress1").val() == 0) {
+
+			$("#residenceAddress1Err").css("display", "block");
+			return false;
+		}
+		if ($("#correspondenceState").val() == 0) {
 			$("#correspondenceStateErr").css("display", "block");
-			return false;
-		} */
-		if ($("#Email").val() == 0) {
-
-			$("#EmailErr").css("display", "block");
 			return false;
 		}
 		if ($("#correspondenceDistrict").val() == 0) {
@@ -843,80 +677,67 @@
 			$("#correspondenceCityErr").css("display", "block");
 			return false;
 		}
+		if ($("#Email").val() == '') {
 
-		if ($("#correspondencePincode").val() == '') {
-
-			$("#correspondencePincodeErr").css("display", "block");
+			$("#EmailErr").css("display", "block");
 			return false;
+		}
+		if ($("#mobile2").val() == 0) {
+
+			$("#mobile2Err").css("display", "block");
+			return false;
+		}
+		if ($("#mobile2").val().match(/^[0-9]{10}$/) == null) {
+
+			$("#mobile2Err").css("display", "block");
+			return false;
+		}
+
+		if ($("#qualCategory").val() == 0) {
+			$("#qualCategoryErr").css("display", "block");
+			return false;
+		}
+		if ($("#qualSubCategory").val() == 0) {
+
+			$("#qualSubCategoryErr").css("display", "block");
+			return false;
+		}
+
+		if ($("#assExpInYear").val() == 0) {
+			$("#assExpInYearErr").css("display", "block");
+			return false;
+		}
+		if ($("#assExpInMonth").val() == 0) {
+			$("#assExpInMonthErr").css("display", "block");
+			return false;
+		}
+
+		if ($("#trExpInYear").val() == 0) {
+
+			$("#trExpInYearErr").css("display", "block");
+			return false;
+		}
+		if ($("#trExpInMonth").val() == 0) {
+
+			$("#trExpInMonthErr").css("display", "block");
+			return false;
+		}
+		if ($("#areaSpecialization").val() == 0) {
+			$("#areaSpecializationErr").css("display", "block");
+			return false;
+		}
+
+		/* if ($("#correspondencePincode").val() == '') {
+
+		$("#correspondencePincodeErr").css("display", "block");
+		return false;
 
 		}
 		if (($("#correspondencePincode").val()).match(/^[0-9]{6}$/) == null) {
 
-			$("#correspondencePincodeErr1").css("display", "block");
-			return false;
-		}
-
-		/* if($("#mobile").val() == 0){
-		
-		$("#mobileErr").css("display" , "block");
+		$("#correspondencePincodeErr1").css("display", "block");
 		return false;
-		} */
-		if ($("#mobile").val().match(/^[0-9]{10}$/) == null) {
-
-			$("#mobileErr").css("display", "block");
-			return false;
-		}
-
-		if ($("#ResidentialLine1").val() == '') {
-			$("#ResidentialLine1Err").css("display", "block");
-			return false;
-		}
-
-		if ($("#resState").val() == 0) {
-			$("#resStateErr").css("display", "block");
-			return false;
-		}
-		if ($("#residentialDistrict").val() == 0) {
-			$("#residentialDistrictErr").css("display", "block");
-			return false;
-		}
-
-		if ($("#resCity").val() == 0) {
-			$("#resCityErr").css("display", "block");
-			return false;
-		}
-		if ($("#resPincode").val().match(/^[0-9]{6}$/) == null) {
-			$("#resPincodeErr").css("display", "block");
-			return false;
-		}
-
-		if ($("#ExpBackground").val() == '') {
-			$("#ExpBackgroundErr").css("display", "block");
-			return false;
-		}
-
-		if ($("#expInYear").val() == 0) {
-			$("#expInYearErr").css("display", "block");
-			return false;
-		}
-		if ($("#expInMonth").val() == 0) {
-			$("#expInMonthErr").css("display", "block");
-			return false;
-		}
-		if ($("#noOfSessionConducted").val() == '') {
-			$("#noOfSessionConductedErr").css("display", "block");
-			return false;
-
-		}
-		if ($("#sessWishToConduct").val() < 1) {
-			$("#sessWishToConductErr").css("display", "block");
-			return false;
-
-		}
-		if ($("#AssociatedWithAnyTrainingInstitute").val() == 0) {
-			$("#AssociatedWithAnyTrainingInstituteErr").css("display", "block");
-			return false;
-		}
+		}  */
 
 		if (!(isUpdate != null && isUpdate == "Y")) {
 
