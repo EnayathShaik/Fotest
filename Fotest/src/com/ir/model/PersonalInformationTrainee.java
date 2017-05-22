@@ -243,7 +243,7 @@ public class PersonalInformationTrainee {
 	@NotNull
 	@Size(min=1, max=100 , message="enter your ResidentialAddress1 ")
 	private String ResidentialLine1;
-	@Size(min=1, max=100 , message="enter your ResidentialAddress2")
+
 	private String ResidentialLine2;
 /*	
 	

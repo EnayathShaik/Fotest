@@ -107,7 +107,7 @@
                                                   <ul class="lab-no">
                                                    <li class="style-li"><strong>User Id:</strong></li><li class="style-li error-red"> * </li>
                                                    <!--  valid -->
-                                                  <!-- <li id="userIdErr" style="display:none;" class="style-li error-red" >User Id can not be blank.</li> -->
+                                                <li id="userIdErr" style="display:none;" class="style-li error-red" >User Id can not be blank.</li>
                                             
                                                  </ul>
                                              </div>
@@ -119,7 +119,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Date of Birth:</strong></li> <li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                          <!--   <li id="dobErr" style="display:none;" class="style-li error-red" >Date of Birth can not be blank.</li> -->
+                                           <li id="dobErr" style="display:none;" class="style-li error-red" >Please select Date of Birth.</li> 
                                            
                                         </ul>
                                     </div>
@@ -131,7 +131,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Aadhar Number:</strong></li><li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                            <!-- <li id="AadharNumberErr" style="display:none;" class="style-li error-red" >Aadhar Number can not be blank.</li> -->
+                                            <li id="AadharNumberErr" style="display:none;" class="style-li error-red" >Aadhar Number can not be blank.</li>
                                             <li class="style-li error-red">
                                             <span id="aadhar_status" ></span>
 									
@@ -154,19 +154,7 @@
 										path="gender" value="M" checked="true" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<cf:radiobutton path="gender" value="F" />Female
                                 </div>
-
-                                <%-- <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Induction Training Completed:</strong></li>
-                                            <li class="style-li error-red"> * </li>
-                                        </ul>
-                                    </div>
-                                      
-                                          <cf:radiobutton
-										path="inductionTrainee" value="Y" checked="true" />Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<cf:radiobutton path="inductionTrainee" value="N" />No
-                                </div> --%>
+             
 
                             </div>
                             <!-- left side ends -->
@@ -179,7 +167,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Title:</strong></li>
                                             <!--  valid -->
-                                          <!--   <li id="titleErr" style="display:none;" class="style-li error-red" >Title can not be blank.</li> -->
+                                           <li id="titleErr" style="display:none;" class="style-li error-red" >Title can not be blank.</li> 
                                             <li class="style-li error-red"> * </li>
                                         </ul>
                                     </div>
@@ -194,7 +182,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>First Name:</strong></li> <li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                                            <!-- <li id="firstNameErr" style="display:none;" class="style-li error-red" >First Name can not be blank.</li> -->
+                                              <li id="firstNameErr" style="display:none;" class="style-li error-red" >First Name can not be blank.</li>
                                            
                                         </ul>
                                     </div>
@@ -205,9 +193,9 @@
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>Middle Name:</strong></li> <li class="style-li error-red"> </li>
+                                            <li class="style-li"><strong>Middle Name:</strong></li> <li class="style-li error-red">* </li>
                                              <!--  valid -->
-                                                          <!--   <li id="MiddleNameErr" style="display:none;" class="style-li error-red" >Middle Name can not be blank.</li> -->
+                                            <li id="MiddleNameErr" style="display:none;" class="style-li error-red" >Middle Name can not be blank.</li> 
                                            
                                         </ul>
                                     </div>
@@ -218,9 +206,9 @@
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
-                                            <li class="style-li"><strong>Last Name:</strong></li><li class="style-li error-red"> </li>
+                                            <li class="style-li"><strong>Last Name:</strong></li><li class="style-li error-red"> *</li>
                                              <!--  valid -->
-                                                            <!-- <li id="LastNameErr" style="display:none;" class="style-li error-red" >Last Name can not be blank.</li> -->
+                                         <li id="LastNameErr" style="display:none;" class="style-li error-red" >Last Name can not be blank.</li> 
                                             
                                         </ul>
                                     </div>
@@ -246,7 +234,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Residence Address Line1:</strong></li> <li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                            <!--  <li id="ResidentialLine1Err" style="display:none;" class="style-li error-red" >correspondence Address can not be blank.</li> -->
+                                             <li id="ResidentialLine1Err" style="display:none;" class="style-li error-red" >correspondence Address can not be blank.</li>
                                            
                                         </ul>
                                     </div>
@@ -257,8 +245,7 @@
                                     <div>
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Residence Address Line2:</strong></li> <li class="style-li error-red"> </li>
-                                             <!--  valid -->
-                                            <!--  <li id="correspondenceAddress2Err" style="display:none;" class="style-li error-red" >correspondence Address can not be blank.</li> -->
+                                            
                                            
                                         </ul>
                                     </div>
@@ -273,7 +260,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>State:</strong></li><li class="style-li error-red"> * </li>
                                             <!--  valid -->
-                                            <!--  <li id="correspondenceStateErr" style="display:none;" class="style-li error-red" >correspondence State can not be blank.</li> -->
+                                         <li id="correspondenceStateErr" style="display:none;" class="style-li error-red" >State can not be blank.</li>
                                             
                                         </ul>
                                     </div>
@@ -288,7 +275,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>District:</strong></li>  <li class="style-li error-red"> * </li>
                                              <!--  valid -->
-                                            <!-- <li id="correspondenceDistrictErr" style="display:none;" class="style-li error-red" >District can not be blank.</li> -->
+                                            <li id="correspondenceDistrictErr" style="display:none;" class="style-li error-red" >District can not be blank.</li>
                                           
                                         </ul>
                                     </div>
@@ -308,7 +295,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Closest City:</strong></li> <li class="style-li error-red"> * </li>
                                             <!--  valid -->
-                                            <!-- <li id="correspondenceCityErr" style="display:none;" class="style-li error-red" >City can not be blank.</li> -->
+                                            <li id="correspondenceCityErr" style="display:none;" class="style-li error-red" >City can not be blank.</li>
                                            
                                         </ul>
                                     </div>
@@ -322,7 +309,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Email:</strong></li> <li class="style-li error-red"> * </li>
                                             <!--  valid -->
-                                            <!-- <li id="EmailErr" style="display:none;" class="style-li error-red" >Email can not be blank.</li> -->
+                                            <li id="EmailErr" style="display:none;" class="style-li error-red" >Email can not be blank.</li> 
                                            
                                         </ul>
                                     </div>
@@ -335,7 +322,7 @@
                                         <ul class="lab-no">
                                             <li class="style-li"><strong>Mobile:</strong></li> <li class="style-li error-red"> * </li>
                                               <!--  valid -->
-                                            <!-- <li id="mobileErr" style="display:none;" class="style-li error-red" >Mobile can not be blank.</li> -->
+                                            <li id="mobileErr" style="display:none;" class="style-li error-red" >Mobile can not be blank.</li>
                                            
                                         </ul>
                                     </div>
@@ -344,23 +331,7 @@
                                      onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
                                     
                                 </div>
-
-                                <%-- <div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Pin Code:</strong></li> <li class="style-li error-red"> * </li>
-                                           <!--  valid -->
-                                            <li id="correspondencePincodeErr" style="display:none;" class="style-li error-red" >Pin code can not be blank.</li>
-                                           
-                                        </ul>
-                                    </div>
-                                    <cf:input type="text" path="correspondencePincode" class="form-control"  minlength="6"  maxlength="6" placeholder="Pin Code" required=""
-                                    onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
-                                </div> --%>
-
                                 
-
-
                             </div>
                             <!-- right side ends -->
                         </fieldset>
@@ -380,7 +351,7 @@
 											<li class="style-li"><strong>Qualification Category:</strong></li>
 											<li class="style-li error-red">*</li>
 											<li id="qualificationCategoryErr" style="display: none;"
-												class="style-li error-red">Please Qualification Category.</li>
+												class="style-li error-red">Please select Qualification Category.</li>
 										</ul>
 									</div>
 									
@@ -393,7 +364,7 @@
 								         <div class="form-group">
                                               <div>
                                                   <ul class="lab-no">
-                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> * </li>
+                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> </li>
                                                    <!--  valid -->
                                                  <!--  <li id="other1Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> -->
                                             
@@ -413,7 +384,7 @@
 											<li class="style-li"><strong>Qualification Sub Category:</strong></li>
 											<li class="style-li error-red">*</li>
 											<li id="qsubCategoryErr" style="display: none;"
-												class="style-li error-red">Please Qualification Sub Category.</li>
+												class="style-li error-red">Please select Qualification Sub Category.</li>
 										</ul>
 									</div>
 									
@@ -426,9 +397,9 @@
                                  <div class="form-group">
                                               <div>
                                                   <ul class="lab-no">
-                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> * </li>
+                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> </li>
                                                    <!--  valid -->
-                                                  <li id="other2Err" style="display:none;" class="style-li error-red" >others can not be blank.</li>
+                                                 <!--  <li id="other2Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> -->
                                             
                                                  </ul>
                                              </div>
@@ -507,8 +478,8 @@
 										<ul class="lab-no">
 											<li class="style-li"><strong>Employer Category:</strong></li>
 											<li class="style-li error-red">*</li>
-											<li id="qsubCategoryErr" style="display: none;"
-												class="style-li error-red">Please Employer Category.</li>
+											<li id="employerCategoryErr" style="display: none;"
+												class="style-li error-red">Please select Employer Category.</li>
 										</ul>
 									</div>
 									 <cf:select path="employerCategory" class="form-control">
@@ -553,9 +524,9 @@
 								 <div class="form-group">
                                               <div>
                                                   <ul class="lab-no">
-                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> * </li>
+                                                   <li class="style-li"><strong>Others:</strong></li><li class="style-li error-red"> </li>
                                                    <!--  valid -->
-                                                  <li id="other3Err" style="display:none;" class="style-li error-red" >others can not be blank.</li>
+                                                  <!-- <li id="other3Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> -->
                                             
                                                  </ul>
                                              </div>
@@ -581,7 +552,7 @@
                                                    <li class="style-li"><strong>Training program undergone in the past:</strong></li>
                                                    <li class="style-li error-red"> * </li>
                                                    <!--  valid -->
-                                                  <li id="trProgramErr" style="display:none;" class="style-li error-red" >others can not be blank.</li>
+                                                  <li id="trProgramErr" style="display:none;" class="style-li error-red" >Training program can not be blank.</li>
                                             
                                                  </ul>
                                              </div>
@@ -661,109 +632,141 @@
 
    	 //alert($("#userType").val());
    	// alert($("#holidayReason").val());
-   		 $("#userTypeErr").css("display" , "none");
-			$("#titleErr").css("display" , "none");
-		$("#correspondencePincodeErr").css("display", "none");
-		$("#correspondencePincodeErr1").css("display", "none");
-		$("#mobileErr").css("display" , "none");
-		$("#AadharNumberErr").css("display" , "none");
+   		$("#userIdErr").css("display" , "none");
+   		$("#dobErr").css("display" , "none");
+   		$("#AadharNumberErr").css("display" , "none");
+		$("#titleErr").css("display" , "none");
 		$("#firstNameErr").css("display" , "none");
 		$("#MiddleNameErr").css("display" , "none");
 		$("#LastNameErr").css("display" , "none");
-		$("#FatherNameErr").css("display" , "none");
-		$("#empIDErr").css("display" , "none");
-		$("#dobErr").css("display" , "none");
-		$("#correspondenceAddress1Err").css("display" , "none");
+		$("#ResidentialLine1Err").css("display" , "none");
 		$("#correspondenceStateErr").css("display" , "none");
+		$("#correspondenceDistrictErr").css("display" , "none");
+		$("#correspondenceCityErr").css("display" , "none");
 		$("#EmailErr").css("display" , "none");
-		 $("#correspondenceDistrictErr").css("display" , "none");
-		 $("#correspondenceCityErr").css("display" , "none");
-		 $("#txtInputErr").css("display" , "none");
-		 $("#ResidentialLine1Err").css("display" , "none");
-		 $("#resStateErr").css("display" , "none");
-		 $("#residentialDistrictErr").css("display" , "none");
-		 $("#resCityErr").css("display" , "none");
+		$("#mobileErr").css("display" , "none");
+		 $("#qsubCategoryErr").css("display" , "none");
+		 $("#qualificationCategoryErr").css("display" , "none");
+		 $("#expInYearErr").css("display" , "none");
+		 $("#expInMonthErr").css("display" , "none");
+		 $("#rexpInYearErr").css("display" , "none");
+		 $("#rexpInMonthErr").css("display" , "none");
+		 $("#employerCategoryErr").css("display" , "none");
+		 $("#currentOrganizationErr").css("display" , "none");
+		 $("#designationErr").css("display" , "none");
+		 $("#jobDescriptionErr").css("display" , "none");
+		 $("#trProgramErr").css("display" , "none");
+		 
+		$("#txtInputErr").css("display" , "none");
+		$("#ResidentialLine1Err").css("display" , "none");
+		
 		 
 		 
-   	    if($("#userType").val() == ''){
+   	    if($("#userId").val() == ''){
    		 
-   		$("#userTypeErr").css("display" , "block");
+   		$("#userIdErr").css("display" , "block");
    		return false;
-   	 } else if($("#AadharNumber").val().match(/^[0-9]{12}$/) == null){
+   	 } 
+   	 if($("#dob").val() == ''){
+   		 $("#dobErr").css("display" , "block");
+  		return false;
+   	 }
+   	    if($("#AadharNumber").val().match(/^[0-9]{12}$/) == null){
  		/* alert("Please Enter 12 digit Adhar number"); */
  		 $("#AadharNumberErr").css("display" , "block");
  	     return false;
-   	 }else if($("#empID").val() == ''){
-   		 $("#empIDErr").css("display" , "block");
- 		return false; 
-   	 }else if($("#dob").val() == ''){
-   		 $("#dobErr").css("display" , "block");
-  		return false;
-   	 }else if($("#title").val() == ''){
+   	 }
+   	 if($("#title").val() == ''){
    		 $("#titleErr").css("display" , "block");
     		return false; 
-   	 }else if($("#firstName").val() == ''){
+   	 }
+   	 if($("#firstName").val() == ''){
    		 $("#firstNameErr").css("display" , "block");
  		return false; 
-	 }else if($("#MiddleName").val() == ''){
-   		 $("#MiddleNameErr").css("display" , "block");
+	 }
+   	if($("#MiddleName").val() == ''){
+  		 $("#MiddleNameErr").css("display" , "block");
+		return false; 
+	 }  
+   	if($("#LastName").val() == ''){
+  		 $("#LastNameErr").css("display" , "block");
  		return false; 
-	 } else if($("#LastName").val() == ''){
-   		 $("#LastNameErr").css("display" , "block");
-  		return false; 
- 	 }else if($("#FatherName").val() == ''){
-   		 $("#FatherNameErr").css("display" , "block");
-   		return false; 
-  	 }else if($("#correspondenceAddress1").val() == ''){
-   		 $("#correspondenceAddress1Err").css("display" , "block");
-    		return false; 
-  	 }
-  	 else if($("#correspondenceState").val() == 0){
+	 } 
+   	
+    if($("#ResidentialLine1").val() == ''){
+ 		 $("#ResidentialLine1Err").css("display" , "block");
+  		return false;
+	 }
+ 	 if($("#correspondenceState").val() == 0){
    		 $("#correspondenceStateErr").css("display" , "block");
-  		return false; 
- 	 }else if($("#Email").val() == ''){
-   		 $("#EmailErr").css("display" , "block");
-   		return false; 
-  	 }else if($("#correspondenceDistrict").val() == 0){
+    		return false;
+  	 }
+   	 if($("#correspondenceDistrict").val() == 0){
    		 $("#correspondenceDistrictErr").css("display" , "block");
     		return false;
-  	 }else if($("#correspondenceCity").val() == 0){
+  	 }
+   	 if($("#correspondenceCity").val() == 0){
    		 $("#correspondenceCityErr").css("display" , "block");
     		return false;
-  	 }else if($("#correspondencePincode").val().match(/^[0-9]{6}$/) == null){
-  		 alert("invalid pin");
-  		 $("#correspondencePincodeErr").css("display" , "block");
-  		return false;
-  	 }else if($("#mobile").val().match(/^[0-9]{10}$/) == null){
+  	 }
+   	 if($("#Email").val() == ''){
+   		 $("#EmailErr").css("display" , "block");
+   		return false; 
+  	 }
+ 	  if($("#mobile").val().match(/^[0-9]{10}$/) == null){
     	
       		 $("#mobileErr").css("display" , "block");
       		return false;
   	 }
-   	   
-   	
-   	else  if($("#ResidentialLine1").val() == ''){
-  		 $("#ResidentialLine1Err").css("display" , "block");
+ 	
+ 	 if($("#qualificationCategory").val() == 0){
+   		 $("#qualificationCategoryErr").css("display" , "block");
+    		return false;
+  	 }
+ 	 if($("#qsubCategory").val() == 0){
+   		 $("#qsubCategoryErr").css("display" , "block");
+    		return false;
+  	 }
+ 	if($("#expInYear").val() == 0){
+  		 $("#expInYearErr").css("display" , "block");
    		return false;
+ 	 }
+ 	if($("#expInMonth").val() == 0){
+ 		 $("#expInMonthErr").css("display" , "block");
+  		return false;
 	 }
-   	   
-  
-	else if($("#resState").val() == 0){
-		 $("#resStateErr").css("display" , "block");
+ 	if($("#rexpInYear").val() == 0){
+		 $("#rexpInYearErr").css("display" , "block");
  		return false;
 	 }
-	else if($("#residentialDistrict").val() == 0){
-		 $("#residentialDistrictErr").css("display" , "block");
+ 	if($("#rexpInMonth").val() == 0){
+		 $("#rexpInMonthErr").css("display" , "block");
 		return false;
 	 }
-	
-	else if($("#resCity").val() == 0){
-		 $("#resCityErr").css("display" , "block");
+ 	if($("#employerCategory").val() == 0){
+		 $("#employerCategoryErr").css("display" , "block");
 		return false;
 	 }
-	else if($("#resPincode").val().match(/^[0-9]{6}$/) == null){
-		 $("#resPincodeErr").css("display" , "block");
+ 	if($("#currentOrganization").val() == 0){
+		 $("#currentOrganizationErr").css("display" , "block");
 		return false;
-	} 
+	 }
+ 	if($("#designation").val() == 0){
+		 $("#designationErr").css("display" , "block");
+		return false;
+	 }
+ 	if($("#jobDescription").val() == 0){
+		 $("#jobDescriptionErr").css("display" , "block");
+		return false;
+	 }
+ 	if($("#trProgram").val() == 0){
+		 $("#trProgramErr").css("display" , "block");
+		return false;
+	 }
+ 	
+   	   
+   	
+ 	
 		else if(!(isUpdate !=null && isUpdate== "Y")){
 			if($("#txtInput").val() == ''){
 			 $("#txtInputErr").css("display" , "block");
@@ -784,7 +787,7 @@
   	 } 
     }
    
-
+    
  
 
    // Remove the spaces from the entered and generated code
