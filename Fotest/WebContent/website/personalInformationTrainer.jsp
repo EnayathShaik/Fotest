@@ -483,10 +483,10 @@
 											<li class="style-li error-red"></li>
 											<li id="trExpInYearErr" style="display: none;"
 												class="style-li error-red">Exp. in YEAR can not
-												beblank.</li>
+												be blank.</li>
 											<li id="trExpInMonthErr" style="display: none;"
 												class="style-li error-red">Exp. in MONTH can not
-												beblank.</li>
+												be blank.</li>
 
 
 										</ul>
