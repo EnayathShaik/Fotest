@@ -178,5 +178,11 @@
 			</div>
 		</div>
 	</section>
+			<br />
+									<h3 style="float: right; margin-right: 200px;">Overall Rating:</h3>
+										<br />
+												<br />
+														<br />
+																<br />
 </cf:form>
 
