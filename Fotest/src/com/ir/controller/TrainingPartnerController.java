@@ -1023,41 +1023,7 @@ public class TrainingPartnerController {
 		String userId = request.getParameter("userId");
 		Map<String, String> userType = lst.userTypeMap;
 		
-		//Map<String, String> opt = lst.noOfOptionMap;
-		//Map<String, String> trainingTypeMap = lst.trainingTypeMap;
-
-		// titleMap
-	//	model.addAttribute("userType", userType);
-	//	model.addAttribute("titleMap", titleMap);
-		//model.addAttribute("trainingTypeMap", trainingTypeMap);
-		//model.addAttribute("ExpInYearMap", opt);
-		//model.addAttribute("ExpInMonthMap", opt);
-	//	model.addAttribute("listTrainingPartner",
-		//		adminService.listTrainingPartner());
-	//	model.addAttribute("listStateMaster",this.adminService.listStateMaster());
-		/*/////
-		
-		
 		if (userId != null && Integer.parseInt(userId) > 0) {
-			personalInformationTrainer = this.traineeService
-					.FullDetailTrainer(Integer.parseInt(userId));
-			model.addAttribute("PersonalInformationTrainer",
-					personalInformationTrainer);
-			model.addAttribute("isUpdate", "Y");
-		}
-			else if (session.getAttribute("userId")!=null) {
-		personalInformationTrainer = this.traineeService
-					.FullDetailTrainer((int)session.getAttribute("userId"));
-			model.addAttribute("PersonalInformationTrainer",
-					personalInformationTrainer);
-			model.addAttribute("isUpdate", "Y");
-		}
-		else {
-			model.addAttribute("PersonalInformationTrainer",
-					new PersonalInformationTrainer());
-		}
-		/////
-*/		if (userId != null && Integer.parseInt(userId) > 0) {
 
 			personalInformationTrainingPartner = this.trainingPartnerService
 					.fullDetailTrainingPartner(Integer.parseInt(userId));

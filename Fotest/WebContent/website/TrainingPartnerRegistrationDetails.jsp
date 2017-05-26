@@ -3,10 +3,10 @@
 <%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<script src="website/js/jquery-2.1.0.min.js"></script>
-
-
-<script src="website/js/commonController.js"></script>
+		<script src="website/js/jquery-2.1.0.min.js"></script>
+		
+		
+		<script src="website/js/commonController.js"></script>
 
 <script>
 
@@ -60,19 +60,39 @@ window.onload = OnStart; */
 	 $("#captcha").css("display" , "none");
 	 $("#chkunit").css("display" , "none");
 	 $("#check").attr("checked","checked");
-	 
-	 var name = '${PersonalInformationTrainingPartner.testingFacilities}';
-	
-	 alert(name);
-	 $("#testingFacilities").attr("checked","checked");
-	 
+	 var a='${PersonalInformationTrainingPartner.NABLStatus}';
+	 //alert(a);
+	 if(a!='Yes'){	 
+		// alert("if loop "+a);
+		 $("#chemicalField").css("display" , "none");
+		 $("#biologyField").css("display" , "none");
+		
 	 }
+	 
+	 if('${PersonalInformationTrainingPartner.labNotified}'!='Yes')
+		 $("#regNum").css("display" , "none");
+	 $("#state").val('${PersonalInformationTrainingPartner.state}');
+	 $("#state").val('${PersonalInformationTrainingPartner.state}');
 
+/* 	   alert('${PersonalInformationTrainingPartner.testingFacilities}');
+	 var fields = '${PersonalInformationTrainingPartner.testingFacilities}'.split(',');
+	 alert("aaa "+fields.length);
+	 
+	 for(i=0;i<fields.length;i++){
+		 $("#testingFacilities").attr("checked","checked");
+	 }
+	 
+	 alert("last");  */
 	
+	 }
+ 
+	 
 	 DrawCaptcha(); 
 	
 	 flatpickr("#dob" ,{});	
 	
+	 
+	 
 	/* 
 	 $('#sameAddr').change(function(){
 	
@@ -171,7 +191,20 @@ window.onload = OnStart; */
 									class="form-control" />
 							</div>
 
-							<div class="form-group">
+							   <div class="form-group">
+                                    <div>
+                                        <ul class="lab-no">
+                                            <li class="style-li"><strong>Gender:</strong></li>
+                                            
+                                            <li class="style-li error-red"> * </li>
+                                        </ul>
+                                    </div>
+                                   <cf:radiobutton
+										path="gender" value="M" checked="true" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<cf:radiobutton path="gender" value="F" />Female
+                                </div>
+							
+							<%-- <div class="form-group">
 								<div>
 									<ul class="lab-no">
 										<li class="style-li"><strong>Gender:</strong></li>
@@ -183,7 +216,7 @@ window.onload = OnStart; */
 								Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<cf:radiobutton path="gender" value="F" />
 								Female
-							</div>
+							</div> --%>
 
 							<div class="form-group">
 								<div>
@@ -482,13 +515,13 @@ window.onload = OnStart; */
 										<li class="style-li error-red">*</li>
 									</ul>
 								</div>
-								<cf:radiobutton path="NABLStatus" id="YesNABL" value="Yes"  />
+								<cf:radiobutton path="NABLStatus" id="YesNABL" value="Yes" checked="true" />
 								Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<cf:radiobutton path="NABLStatus" value="No"  checked="true" />
+								<cf:radiobutton path="NABLStatus" value="No"   />
 								No
 							</div>
 
-							<div id="chemicalField" class="form-group"  style="display: none;">
+							<div id="chemicalField" class="form-group"  ">
 								<div>
 									<ul class="lab-no">
 										<li class="style-li" ><strong>If yes chemical
@@ -503,7 +536,7 @@ window.onload = OnStart; */
 									class="form-control" placeholder="Chemical Field Validity" required="" />
 							</div>
  
-							<div class="form-group" id="biologyField" style="display: none;">
+							<div class="form-group" id="biologyField" >
 								<div>
 									<ul class="lab-no">
 										<li class="style-li"><strong>If yes Biological
@@ -534,13 +567,13 @@ window.onload = OnStart; */
 										<li class="style-li error-red">*</li>
 									</ul>
 								</div>
-								<cf:radiobutton path="labNotified" id="YesLabNotified" value="Yes" />
+								<cf:radiobutton path="labNotified" id="YesLabNotified" value="Yes" checked="true"  />
 								Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<cf:radiobutton path="labNotified" value="No" checked="true" />
+								<cf:radiobutton path="labNotified" value="No" />
 								No
 							</div>
 
-							<div class="form-group" id="regNum" style="display:none" >
+							<div class="form-group" id="regNum"  >
 								<div>
 									<ul class="lab-no">
 										<li class="style-li"><strong>If yes registration
@@ -639,13 +672,15 @@ window.onload = OnStart; */
 													<li class="style-li error-red">*</li>
 										<li id="testingFacilitiesErr" style="display: none;"
 											class="style-li error-red">Select Testing Facilities</li>
-									</ul>
+									</ul> 
 								</div>
-								<ct:forEach items="${courseNameMap}" var="map">
-									<cf:checkbox path="testingFacilities" id="testingFacilities"
-										value="${map.value}" label=" ${map.value}" />
+								<div id="chkdiv">
+							
+									<cf:checkboxes element="li"   items="${courseNameMap}" path="testingFacilities" id="testingFacilities"
+										/>
 									<br>
-								</ct:forEach>
+								
+								</div>
 							</div>
 
 
@@ -657,7 +692,7 @@ window.onload = OnStart; */
 						<!-- right side ends -->
 					</fieldset>
 
-			<%-- <fieldset>
+			 <fieldset>
 						<legend>Previous Training Experience</legend>
 						<div class="col-md-6 col-xs-12">
 <br />
@@ -745,7 +780,7 @@ window.onload = OnStart; */
 	</table>
 				</div>
 					</fieldset>
- --%>
+ 
 
 					<!-- captcha -->
 					<fieldset id="captcha">
@@ -940,7 +975,7 @@ window.onload = OnStart; */
      }
 		}
    	 if($("#check").is(":checked")== false){
-   		 alert("click on check box");
+   		 alert("Click on check-box to Agree to Terms and Conditions");
    		 return false;
   	 } 
     }
