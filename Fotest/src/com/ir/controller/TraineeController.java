@@ -33,6 +33,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.google.gson.Gson;
 import com.ir.dao.TrainingInstitudeDAO;
+import com.ir.form.AadharDetails;
 import com.ir.form.AfterTraining;
 import com.ir.form.BeforeTraining;
 import com.ir.form.CertificateForm;
@@ -624,6 +625,14 @@ public class TraineeController {
 	@RequestMapping(value = "/PersonalInformationTrainee", method = RequestMethod.GET)
 	public String listSubjectMaster(@ModelAttribute("PersonalInformationTrainee") PersonalInformationTrainee personalInformationTrainee ,Model model , HttpServletRequest request,HttpSession session) {
 			System.out.println("PersonalInformationTrainee ");
+			session.setAttribute("aadhar", personalInformationTrainee == null ? "" : personalInformationTrainee.getAadharNumber());
+			session.setAttribute("name",  personalInformationTrainee == null ? "" : personalInformationTrainee.getFirstName());
+			session.setAttribute("middleName",  personalInformationTrainee == null ? "" : personalInformationTrainee.getMiddleName());
+			session.setAttribute("lastName",  personalInformationTrainee == null ? "" : personalInformationTrainee.getLastName());
+			session.setAttribute("dob" ,  personalInformationTrainee == null ? "" : personalInformationTrainee.getDob());
+			
+			
+			System.out.println("profileId"+session.getAttribute("profileId"));
 			String userId = request.getParameter("userId");
 			model.addAttribute("listStateMaster", this.adminService.listStateMaster());
 		   
@@ -1122,4 +1131,5 @@ public String contact(@ModelAttribute("ContactTrainee")  ContactTrainee contactT
 	return "traineeContact";
 
 }
+
 }

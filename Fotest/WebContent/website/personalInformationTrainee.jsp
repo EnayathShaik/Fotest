@@ -39,6 +39,20 @@
 	 } */
 	 if(isUpdate !=null && isUpdate== "Y"){
 		 var name = '${PersonalInformationTrainee.firstName}';
+		
+		 $("#traineeFirstName").val(
+			'${PersonalInformationTrainee.firstName}');
+		 
+		 $("#traineeMiddleName").val(
+			'${PersonalInformationTrainee.middleName}');
+		 
+		 $("#traineeLastName").val(
+			'${PersonalInformationTrainee.lastName}');
+		
+		 $("#dateP").val(
+			'${PersonalInformationTrainee.dob}');
+		 
+		 
 		 $("#logId").val('${PersonalInformationTrainee.loginDetails.id}');
 		$("#correspondenceState").val('${PersonalInformationTrainee.correspondenceState}');
 		$("#correspondenceState").trigger("change");
@@ -123,7 +137,9 @@
                                            
                                         </ul>
                                     </div>
-                                    <cf:input type="text" path="dob" id="dob" name="dob" class="form-control"/>
+                                   <%--  <cf:input type="text" path="dob" id="dob" name="dob" class="form-control"/> --%>
+                                    <cf:input path="dob" type="text" id="dateP" class="form-control"
+									placeholder="DOB" readonly="true" />
                                 </div>
                                 
                                 <div class="form-group">
@@ -137,7 +153,8 @@
 									
                                         </ul>
                                     </div>
-                                    <cf:input type="text" path="AadharNumber" class="form-control" maxlength="12" placeholder="Aadhar Number"
+                                  <input type="text" id="AadharNumberShow" class="form-control" placeholder="Aadhar Number" value="" disabled="true"  />
+                                    <cf:input type="hidden" path="AadharNumber" class="form-control" maxlength="12" placeholder="Aadhar Number"
                                     onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                       onblur="ck_aadhar('personalinformationtrainee');" />
                                 </div>
@@ -151,7 +168,7 @@
                                         </ul>
                                     </div>
                                    <cf:radiobutton
-										path="gender" value="M" checked="true" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										path="gender"   value="M" checked="true" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<cf:radiobutton path="gender" value="F" />Female
                                 </div>
              
@@ -186,7 +203,7 @@
                                            
                                         </ul>
                                     </div>
-                                    <cf:input type="text"  path="firstName" class="form-control"  placeholder="First Name"
+                                     <cf:input type="text" id="traineeFirstName" path="firstName" class="form-control"  placeholder="First Name"
                                     onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
                                 </div>
 
@@ -199,9 +216,11 @@
                                            
                                         </ul>
                                     </div>
-                                    <cf:input type="text" path="MiddleName" class="form-control" placeholder="Middle Name"
+                     
+                                     <cf:input type="text" id="traineeMiddleName" path="MiddleName" class="form-control"  placeholder="Middle Name"
                                     onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
                                 </div>
+                                
 
                                 <div class="form-group">
                                     <div>
@@ -212,7 +231,7 @@
                                             
                                         </ul>
                                     </div>
-                                    <cf:input type="text" path="LastName" class="form-control" placeholder="Last Name"
+                                    <cf:input type="text"  id="traineeLastName" path="LastName" class="form-control" placeholder="Last Name"
                                     onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
                                 </div>
                                
@@ -800,3 +819,26 @@
 
    
    </script>
+   <script type="text/javascript">
+	var aadhar = localStorage.getItem('aadhar');
+ 	document.getElementById( "AadharNumber" ).value = aadhar;
+ 	document.getElementById( "AadharNumberShow" ).value = aadhar;
+ 	localStorage.removeItem('aadhar');
+ 	
+ 	var DOB = localStorage.getItem('DOB');
+ 	document.getElementById( "dateP" ).value = DOB;
+ 	localStorage.removeItem('DOB');
+ 	
+ 	var firstname = localStorage.getItem('name');
+ 	document.getElementById( "traineeFirstName" ).value =firstname;
+ 	localStorage.removeItem('name');
+ 	
+ 	var middleName = localStorage.getItem('middleName');
+ 	document.getElementById( "traineeMiddleName" ).value =middleName;
+ 	localStorage.removeItem('middleName');
+ 	
+ 	var lastName = localStorage.getItem('lastName');
+ 	document.getElementById( "traineeLastName" ).value =lastName;
+ 	localStorage.removeItem('lastName');
+ 	
+	</script>

@@ -148,7 +148,7 @@
 								<div class="col-md-3 xs-hidden"></div>
 								<div class="col-md-6 col-xs-12">
 									<div class="col-md-4 col-xs-12" align="center">
-										<a href="PersonalInformationTrainee.fssai"><img
+										<a href="aadhar-verification.fssai"><img
 											src="website/images/trainee.png"></a>
 									</div>
 									<div class="col-md-4 col-xs-12" align="center">
