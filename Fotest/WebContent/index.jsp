@@ -152,14 +152,12 @@
 											src="website/images/trainee.png"></a>
 									</div>
 									<div class="col-md-4 col-xs-12" align="center">
-										<a href="PersonalInformationTrainer.fssai"><img
+										<a href="aadharVerificationTrainer.fssai"><img
 											src="website/images/trainer.png"></a>
 									</div>
 									<div class="col-md-4 col-xs-12" align="center">
 										<a href="registerpersonalinformationtrainingpartner.fssai"><img
 											src="website/images/assessor.png"></a>
-									</div>
-
 								</div>
 								<div class="col-md-3 xs-hidden"></div>
 
