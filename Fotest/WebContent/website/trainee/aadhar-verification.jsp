@@ -151,26 +151,30 @@ window.onload = OnStart;
 
             </div>
             
-            <div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainee.fssai" onclick="return isAadharCorrect();"class="btn login-btn" style="width: 40%;">Verify</a> 
-              
-              <!-- details of modal -->
-              <!-- <div id="aadhar-verification" class="modal fade" role="dialog">
-                <div class="modal-dialog"> 
-                  
-                  Modal content
-                  <div class="modal-content">
-                    <div class="modal-body"> <br>
-                      <p class="text-center" style="color: green;">Aadhar Verified!</p>
-                      <p class="text-center">Your Linked Bank Account : State Bank of India</p>
-                      button
-                      <div class="col-xs-12 text-center"> <a href="registrationFormTrainee.fssai" class="btn login-btn">Ok</a> </div>
-                      <br>
-                      <br>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-            </div>
+               <button type="button" class="btn login-btn" data-toggle="modal" data-target="#myModal" style="margin-left: 300px;">Verify</button>
+	</fieldset>
+	
+	<!-- modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											 <p class="text-center" style="color: green;">Aadhar Verified!</p>
+                                             <p class="text-center">Your Linked Bank Account : State Bank of India</p>
+										    <div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainee.fssai" onclick="return isAadharCorrect();"class="btn login-btn" style="width: 40%; margin-left: 155px;">Register</a> 
+             
+                                            </div> 
+										</div>
+									
+									</div>
+
+								</div>
+			</div>
+            
             
           </fieldset>
         </div>

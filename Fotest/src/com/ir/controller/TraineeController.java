@@ -1091,45 +1091,53 @@ public String listcertification( Model model){
               model.addAttribute("icpEnrollmentForm" , new icpEnrollmentForm());
               return "icpEnrollment";
           }
+          
+          
+        //Before Training
+          @RequestMapping(value="/beforeTraining" , method = { RequestMethod.POST , RequestMethod.GET })
+          public String listbeforeTraining( Model model){
+          	  model.addAttribute("BeforeTraining",  new BeforeTraining());
+          model.addAttribute("listBeforeTraining", this.traineeService.listBeforeTraining());
+          return "beforeTraining";
+          }
+          //After Training
+          @RequestMapping(value="/afterTraining" , method = { RequestMethod.POST , RequestMethod.GET })
+          public String listAfterTraining( Model model){
+          	  model.addAttribute("AfterTraining",  new AfterTraining());
+          model.addAttribute("listAfterTraining", this.traineeService.listAfterTraining());
+          return "afterTraining";
+          }
+          //printAdmitCard
+          @RequestMapping(value="/printAdmitCard" , method = { RequestMethod.POST , RequestMethod.GET })
+          public String listPrintAdmitCard( Model model){
+          	  model.addAttribute("PrintAdmitCard",  new PrintAdmitCard());
+          model.addAttribute("listPrintAdmitCard", this.traineeService.listPrintAdmitCard());
+          return "printAdmitCard";
+          }
+
+          //mycourses
+          @RequestMapping(value="/mycourses" , method = { RequestMethod.POST , RequestMethod.GET })
+          public String listMyCourses( Model model){
+          	  model.addAttribute("MyCoursesForm",  new MyCoursesForm());
+          model.addAttribute("listMyCourses", this.traineeService.listMyCourses());
+          return "mycourses";
+          }
+          //contact us
+
+          @RequestMapping(value = "/traineeContact", method = RequestMethod.GET)
+          public String contact(@ModelAttribute("ContactTrainee")  ContactTrainee contactTrainee, Model model , HttpSession session) {
+          	        Map<String , String> subjectMap = lst.subjectMap;
+              		model.addAttribute("subjectMap", subjectMap);
+              		 model.addAttribute("ContactTrainee",  new ContactTrainee());
+          	return "traineeContact";
+
+          }
+          //feedbackInternal
+          @RequestMapping(value="/feedbackInternalTrainee" ,method = RequestMethod.GET)
+          public String listfeedbackInternal( Model model){
+          return "feedbackInternalTrainee";
+          }
+
   
-//Before Training
-@RequestMapping(value="/beforeTraining" , method = { RequestMethod.POST , RequestMethod.GET })
-public String listbeforeTraining( Model model){
-	  model.addAttribute("BeforeTraining",  new BeforeTraining());
-model.addAttribute("listBeforeTraining", this.traineeService.listBeforeTraining());
-return "beforeTraining";
-}
-//After Training
-@RequestMapping(value="/afterTraining" , method = { RequestMethod.POST , RequestMethod.GET })
-public String listAfterTraining( Model model){
-	  model.addAttribute("AfterTraining",  new AfterTraining());
-model.addAttribute("listAfterTraining", this.traineeService.listAfterTraining());
-return "afterTraining";
-}
-//printAdmitCard
-@RequestMapping(value="/printAdmitCard" , method = { RequestMethod.POST , RequestMethod.GET })
-public String listPrintAdmitCard( Model model){
-	  model.addAttribute("PrintAdmitCard",  new PrintAdmitCard());
-model.addAttribute("listPrintAdmitCard", this.traineeService.listPrintAdmitCard());
-return "printAdmitCard";
-}
-
-//mycourses
-@RequestMapping(value="/mycourses" , method = { RequestMethod.POST , RequestMethod.GET })
-public String listMyCourses( Model model){
-	  model.addAttribute("MyCoursesForm",  new MyCoursesForm());
-model.addAttribute("listMyCourses", this.traineeService.listMyCourses());
-return "mycourses";
-}
-//contact us
-
-@RequestMapping(value = "/traineeContact", method = RequestMethod.GET)
-public String contact(@ModelAttribute("ContactTrainee")  ContactTrainee contactTrainee, Model model , HttpSession session) {
-	        Map<String , String> subjectMap = lst.subjectMap;
-    		model.addAttribute("subjectMap", subjectMap);
-    		 model.addAttribute("ContactTrainee",  new ContactTrainee());
-	return "traineeContact";
-
-}
 
 }

@@ -52,6 +52,9 @@
 		 $("#dateP").val(
 			'${PersonalInformationTrainee.dob}');
 		 
+		 $("#AadharNumber").val(
+			'${PersonalInformationTrainee.aadharNumber}');
+		 
 		 
 		 $("#logId").val('${PersonalInformationTrainee.loginDetails.id}');
 		$("#correspondenceState").val('${PersonalInformationTrainee.correspondenceState}');
