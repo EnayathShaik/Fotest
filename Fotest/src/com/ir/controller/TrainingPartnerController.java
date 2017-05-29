@@ -1093,7 +1093,8 @@ public class TrainingPartnerController {
 			
 	@RequestMapping(value="/applicationstatus" , method=RequestMethod.GET)
 	public String applicationStatus(@ModelAttribute("applicationStatusForm") ApplicationStatusForm ApplicationStatusForm,HttpSession session,BindingResult result , Model model){
-	
+			
+		model.addAttribute("courseNameMap", lst.courseNameMap);
 		System.out.println("applicationstatusGET");
 		return "applicationstatus";
 	}
@@ -1104,6 +1105,16 @@ public class TrainingPartnerController {
 		model.addAttribute("listDetails",this.trainingPartnerService.applicationStatusShowDetails(asf));
 		System.out.println("applicationstatusPOST");
 		return "applicationstatus";
+	}
+	
+	
+	@RequestMapping(value="/currentapplicationstatus" , method=RequestMethod.GET)
+	public String currentApplicationStatus(@ModelAttribute("currentApplicationStatus") ApplicationStatusForm asf,HttpSession session,BindingResult result , Model model,HttpServletRequest request){
+		
+		String trName= request.getParameter("trName");
+		System.out.println("currentApplicationStatus "+trName);
+		model.addAttribute("currentStatus",this.trainingPartnerService.currentApplicationStatus());
+		return "currentapplicationstatus";
 	}
 	
 	@RequestMapping(value="/viewfeedback" , method=RequestMethod.GET)

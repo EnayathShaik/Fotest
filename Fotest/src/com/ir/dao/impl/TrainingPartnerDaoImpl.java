@@ -1913,4 +1913,31 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 						}
 
 
+						@Override
+						public List currentApplicationStatus(){
+							// TODO Auto-generated method stub
+							System.out.println("inside currentApplicationStatus");
+						/*	String trainingName = form.getTrainingName();
+							String trainingDate = form.getTrainingDate();
+							ApplicationStatus bean = new ApplicationStatus();
+							List<ApplicationStatus> resulList = new ArrayList<ApplicationStatus>();
+							System.out.println("courseName "+trainingName + " traineeName "+trainingDate);*/
+							Session session = this.sessionFactory.getCurrentSession();
+							Query query = session.createSQLQuery("select cast('TRainer 1' as varchar(20)) as trainingName , cast('2016-12-16 12:00' as varchar(20)) as TrainingDate , cast('12:20 pm' as varchar(20) ) as numberOfVacancies , cast('20' as varchar(20)) as noOfApplicants");
+							
+							List list = query.list();
+							/*for (Object[] li : list ) {
+								
+								bean.setTrainingName((String) li[0]);
+								bean.setTrainingDate((String) li[1]);
+								bean.setNumberOfVacancies((String) li[2]);
+								bean.setNoOfApplicants((String) li[3]);
+							
+
+								//new ZLogger("listmanageTrainingCalendar List::" + li,"","");
+								resulList.add(bean);
+							}*/
+							System.out.println(list);
+							return list;
+						}
 }

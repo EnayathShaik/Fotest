@@ -470,4 +470,12 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 		return this.trainingPartnerDAO.listupdateCalendar(p);
 	}
 	
+	@Override
+	@Transactional
+	public List currentApplicationStatus() {
+		// TODO Auto-generated method stub
+		return trainingPartnerDAO.currentApplicationStatus();
+	}
+
+	
 }

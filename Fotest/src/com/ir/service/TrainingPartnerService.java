@@ -195,6 +195,8 @@ public List<CreateCalendarForm> listupdateCalendar(CreateCalendarForm p);
 
 public PersonalInformationTrainingPartner fullDetailTrainingPartner(int lid);
 
+public List currentApplicationStatus();
+
 
 
 }

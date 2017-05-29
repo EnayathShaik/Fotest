@@ -105,77 +105,30 @@ window.onload = OnStart;
 								<div class="col-xs-12">
 									<fieldset>
 										<legend>
-											<h3>Trainer Application Status</h3>
+											<h3>Current Application Status</h3>
 										</legend>
-										<!--   <script type="text/javascript">
-                                        var formObj = '${trainingpartnerapplicationstatus}';
-                                        var formData = JSON.parse(formObj);
-                                        var courseTypes = formData.courseTypes;
-                                        </script> -->
-
-										<div class="row">
-											<div class="col-xs-12">
-
-												<!-- left side -->
-												<div class="col-md-6 col-xs-12">
-
-													<div class="form-group">
-														<div>
-															<ul class="lab-no">
-																<li class="style-li"><strong>Training
-																		Name:</strong></li>
-
-															</ul>
-														</div>
-														<cf:select path="trainingName" class="form-control"
-															id="trainingName">
-													
-														<cf:option value="" label="Select Training Name" />
-														<cf:options items="${courseNameMap}" /> 
-															</cf:select>
-													</div>
-												</div>
-
-												<!-- right side -->
-												<div class="col-md-6 col-xs-12">
-													<div class="form-group">
-														<div>
-															<ul class="lab-no">
-																<li class="style-li"><strong>Training
-																		Date:</strong></li>
-																<li id="dobErr" style="display: none;"
-																	class="style-li error-red">Select Date.</li>
-
-															</ul>
-														</div>
-														<cf:input type="text" path="trainingDate" id="trainingDate"
-															class="form-control" />
-													</div>
-
-													<!-- <button
-														class="btn login-btn pull-right show-details-vacancy collapsed"
-														data-toggle="collapse" data-target="#show-result"
-														aria-expanded="false" onclick="showDetails();">Show
-														Details</button> -->
-														<input type="submit" 
-														class="btn login-btn pull-right" value="Show Details" />
-													<!-- <input type="submit" id="btnExport"
-														style="margin-right: 20px;"
-														class="btn login-btn pull-right" value="Download" /> -->
-														
-												</div>
-
-											</div>
-
-											<div class="col-md-3 hidden-xs"></div>
-										</div>
-									</fieldset>
-
-
-								</div>
-
-								<!--                                     search Results -->
-								<!--                         search Results -->
+										
+										<div class="col-xs-12 table-overflow-responsive">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            
+                                            <!-- left side -->
+                                            <div class="col-md-6 col-xs-12">
+                                                <h4><strong>Training Name :</strong> ICP-MS </h4>
+                                                <h4><strong>Training Date :</strong> 12/05/2016 </h4>
+                                                <h4><strong>Number of Vacancies :</strong> 20 </h4> </div>
+                                            <!-- left side ends -->
+                                            <!-- right side -->
+                                            <div class="col-md-6 col-xs-12"> </div>
+                                            <!-- rigth side ends -->
+                                            <!-- button -->
+                                            <!-- button row ends -->
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- search Results -->
+                               
 									<div class="col-xs-12 " id="testt">
 
 								<!-- table -->
@@ -183,25 +136,27 @@ window.onload = OnStart;
 									<div class="col-xs-12">
 										<fieldset>
 											<legend>Current Application Status</legend>
-											<ct:if test="${!empty listDetails}">
+											<ct:if test="${!empty currentStatus}">
 												<table border="1" id="datatablesfosrest" class="table table-bordered table-responsive">
 													<thead>
 														<tr class="background-open-vacancies">
 															<th>S.No.</th>
-															<th>Training Name</th>
-															<th>Training Date</th>
-															<th>Number of Vacancies</th>
-															<th>Number of Applicants</th>
+															<th>TrainerName</th>
+															<th>View Profile</th>
+															<th>Status</th>
 														</tr>
 													</thead>
-													<ct:forEach items="${listDetails}" var="listDetails" varStatus="loop">
+													<ct:forEach items="${currentStatus}" var="listDetails" varStatus="loop">
 														<tr>
 															<td>${loop.count}</td>
-															<td>${listDetails.trainingName}</td>
-															<td>${listDetails.trainingDate}</td>
-															<td>${listDetails.numberOfVacancies}</td>
-															<td><a href='currentapplicationstatus.fssai?trName=${listDetails.trainingName}'>${listDetails.noOfApplicants}</a></td>
-															</tr>
+															 <td>${listDetails[0]}</td>
+															<td><input type="button" value="View Profile"></td>
+															
+																														<td><select>
+  <option value="Pending">Pending</option>
+  <option value="Selected">Selected</option>
+</select></td>
+															  	</tr>
 													</ct:forEach>
 												</table>
 											</ct:if>
@@ -209,12 +164,15 @@ window.onload = OnStart;
 									</div>
 								</div>
 							</div>
-
+</fieldset>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
+		
 	</section>
 </cf:form>
+

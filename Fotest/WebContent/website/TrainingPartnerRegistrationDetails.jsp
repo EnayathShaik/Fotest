@@ -74,17 +74,16 @@ window.onload = OnStart; */
 	 $("#state").val('${PersonalInformationTrainingPartner.state}');
 	 $("#state").val('${PersonalInformationTrainingPartner.state}');
 
-/* 	   alert('${PersonalInformationTrainingPartner.testingFacilities}');
+ 	   //alert('${PersonalInformationTrainingPartner.testingFacilities}');
+ 	   
 	 var fields = '${PersonalInformationTrainingPartner.testingFacilities}'.split(',');
-	 alert("aaa "+fields.length);
-	 
+	//alert("lenght "+fields.length); 
 	 for(i=0;i<fields.length;i++){
-		 $("#testingFacilities").attr("checked","checked");
+		 //alert("fileds "+fields[i]);
+		 document.getElementById('testingFacilities_'+fields[i]).checked = true;
+/* 		  $("#GC-MS/MS").attr("checked","checked"); */
 	 }
-	 
-	 alert("last");  */
-	
-	 }
+ }
  
 	 
 	 DrawCaptcha(); 
@@ -673,11 +672,19 @@ window.onload = OnStart; */
 										<li id="testingFacilitiesErr" style="display: none;"
 											class="style-li error-red">Select Testing Facilities</li>
 									</ul> 
-								</div>
+								</div> 
 								<div id="chkdiv">
 							
-									<cf:checkboxes element="li"   items="${courseNameMap}" path="testingFacilities" id="testingFacilities"
-										/>
+									<%-- <cf:checkboxes element="li" id="testingFacilities'+${courseNameMap.value}+'12" items="${courseNameMap}" path="testingFacilities" 
+									
+										/> --%>
+								
+										<ct:forEach items="${courseNameMap}" var="map">
+									<cf:checkbox  path="testingFacilities" id="testingFacilities_${map.value}"
+										value="${map.value}" label=" ${map.value}" />
+									<br>
+								</ct:forEach>
+									
 									<br>
 								
 								</div>

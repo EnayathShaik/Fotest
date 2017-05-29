@@ -1403,6 +1403,10 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/aadhar-verification.jsp" />
 	</definition>
+		<definition name="currentapplicationstatus" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainingPartner/CurrentApplicationStatus.jsp" />
+	</definition>
 	<definition name="feedbackInternalTrainee" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"  value="/website/trainee/feedbackInternalTrainee.jsp" />

@@ -129,5 +129,5 @@ public interface TrainingPartnerDao {
 	public void updateCalendar(CreateCalendar p);
 	public List<CreateCalendar> listCreateCalendarForm();
 	public List<CreateCalendarForm> listupdateCalendar(CreateCalendarForm p);
-
+	public List currentApplicationStatus();
 }
