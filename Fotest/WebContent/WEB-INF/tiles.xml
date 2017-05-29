@@ -1395,9 +1395,12 @@
 		<put-attribute name="body"
 			value="/website/commonjsp/CommonContact.jsp" />
 	</definition> 
-	 <definition name="aadhar-verification" extends="base.before.login">
+	<definition name="aadharVerificationTrainer" extends="base.before.login">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainer/aadharVerificationTrainer.jsp" />
+	</definition>
+	<definition name="aadhar-verification" extends="base.before.login">
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/aadhar-verification.jsp" />
 	</definition>
-	
 </tiles-definitions>

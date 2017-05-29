@@ -18,10 +18,21 @@
 	}
 
 	function OnStart() {
+		
 		var isUpdate = '${isUpdate}';
+		alert(isUpdate);
 		if (isUpdate != null && isUpdate == "Y") {
+			$("#firstName").val(
+			'${PersonalInformationTrainer.firstName}');
+			 $("#mn").val(
+				'${PersonalInformationTrainer.middleName}'); 
+	 $("#ln").val(
+			'${PersonalInformationTrainer.lastName}'); 
+	$("#dateP").val(
+		'${PersonalInformationTrainer.dob}'); 
 
-			var name = '${PersonalInformationTrainer.firstName}';
+
+	 
 			$("#correspondenceState").val(
 					'${PersonalInformationTrainer.correspondenceState}');
 			$("#correspondenceState").trigger("change");
@@ -102,25 +113,25 @@
 											<li class="style-li error-red">*</li>
 										</ul>
 									</div>
-									<cf:input type="text" path="dob" id="dob" name="dob"
+									<cf:input type="text" path="dob" id="dateP" name="dob"
 										class="form-control" />
 								</div>
 								<div class="form-group">
-									<div>
-										<ul class="lab-no">
-											<li class="style-li"><strong>Aadhar Number:</strong></li>
-
-											<li class="style-li error-red">*</li>
-											<li id="AadharNumberErr" style="display: none;"
-												class="style-li error-red">Please Enter Aadhar No.</li>
-											<li class="style-li error-red"><span id="aadhar_status"></span>
-										</ul>
-									</div>
-									<cf:input type="text" path="AadharNumber" class="form-control"
-										minlength="12" maxlength="12" placeholder="Aadhar Number"
-										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
-										onblur="ck_aadhar('personalinformationtrainer');" />
-								</div>
+                                    <div>
+                                        <ul class="lab-no">
+                                            <li class="style-li"><strong>Aadhar Number:</strong></li><li class="style-li error-red"> * </li>
+                                             <!--  valid -->
+                                            <li id="AadharNumberErr" style="display:none;" class="style-li error-red" >Aadhar Number can not be blank.</li>
+                                            <li class="style-li error-red">
+                                            <span id="aadhar_status" ></span>
+									
+                                        </ul>
+                                    </div>
+                              <input type="text" id="AadharNumberShow" class="form-control" placeholder="Aadhar Number" value="" disabled="true"  />
+                                    <cf:input type="hidden" path="AadharNumber" class="form-control" maxlength="12" placeholder="Aadhar Number"
+                                    onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+                                      onblur="ck_aadhar('personalinformationtrainer');" />
+                                </div>
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -164,7 +175,7 @@
 
 										</ul>
 									</div>
-									<cf:input type="text" path="firstName" class="form-control"
+									<cf:input type="text" path="firstName" class="form-control" id="firstName"
 										placeholder="First Name"
 										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
@@ -179,7 +190,7 @@
 										</ul>
 									</div>
 									<cf:input type="text" path="MiddleName" class="form-control"
-										placeholder="Middle Name"
+										placeholder="Middle Name" id="mn"
 										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
 								<div class="form-group">
@@ -193,7 +204,7 @@
 										</ul>
 									</div>
 									<cf:input type="text" path="LastName" class="form-control"
-										placeholder="Last Name"
+										placeholder="Last Name" id="ln"
 										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
 								<div class="form-group">
@@ -642,11 +653,11 @@
 			$("#LastNameErr").css("display", "block");
 			return false;
 		}
-		if ($("#AadharNumber").val() == 0) {
+		/* if ($("#AadharNumber").val() == 0) {
 
 			$("#AadharNumberErr").css("display", "block");
 			return false;
-		}
+		} */
 
 		if ($("#mobile1").val().match(/^[0-9]{10}$/) == null) {
 
@@ -761,3 +772,26 @@
 
 	}
 </script>
+<script type="text/javascript">
+	var aadhar = localStorage.getItem('aadhar');
+	document.getElementById( "AadharNumber" ).value = aadhar;
+ 	document.getElementById( "AadharNumberShow" ).value = aadhar;
+ 	localStorage.removeItem('aadhar');
+ 	
+ 	var DOB = localStorage.getItem('DOB');
+ 	document.getElementById( "dateP" ).value = DOB;
+ 	localStorage.removeItem('DOB');
+ 	
+ 	var firstname = localStorage.getItem('name');
+ 	document.getElementById( "firstName" ).value =firstname;
+ 	localStorage.removeItem('name');
+ 	
+ 	var middleName = localStorage.getItem('middleName');
+ 	document.getElementById( "mn" ).value =middleName;
+ 	localStorage.removeItem('middleName');
+ 	
+ 	var lastName = localStorage.getItem('lastName');
+ 	document.getElementById( "ln" ).value =lastName;
+ 	localStorage.removeItem('lastName');
+ 	
+	</script>

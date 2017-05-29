@@ -108,4 +108,35 @@ public class RegistrationController {
 			return "registrationFormTrainee";
 		}
 	}
+	@RequestMapping(value = "/aadharVerificationTrainer", method = RequestMethod.GET)
+	public String aadharVerificationTrainer(Model model) {
+		try{
+			new ZLogger("aadharVerificationTrainer", "aadhar-verification begins ", "RegistrationController.java");
+			AadharDetails aadharDetails=new AadharDetails();
+			model.addAttribute("aadharDetails", aadharDetails);
+		}catch(Exception e){
+			e.printStackTrace();
+			new ZLogger("aadharVerificationTrainer", e.getMessage(), "RegistrationController.java");
+		}
+		new ZLogger("aadharVerificationTrainer", "aadharVerificationTrainer Ends ", "RegistrationController.java");
+		return "aadharVerificationTrainer";
+	} 
+	
+	@RequestMapping(value = "/verifyRegistrationForm", method = RequestMethod.GET)
+	public String verifyRegistrationForm(@Valid @ModelAttribute("aadharDetails") AadharDetails aadharDetails,BindingResult result, Model model , HttpSession session) {
+		System.out.println("aadhar-verification submit begins ");
+		if(result != null && result.hasErrors()){
+			new ZLogger("registrationForm", "bindingResult.hasErrors  "+result.hasErrors() , "RegistrationController.java");
+			new ZLogger("registrationForm", "bindingResult.hasErrors  "+result.getErrorCount() +" All Errors "+result.getAllErrors(), "RegistrationController.java");
+			return "aadharVerificationTrainer";
+		}
+		session.setAttribute("aadhar", aadharDetails == null ? "" : aadharDetails.getAadharNumber());
+		session.setAttribute("name",  aadharDetails == null ? "" : aadharDetails.getName());
+		session.setAttribute("dob" ,  aadharDetails == null ? "" : aadharDetails.getDob());
+		session.setAttribute("gender" ,  aadharDetails == null ? "" : aadharDetails.getGender());
+		session.setAttribute("middleName", aadharDetails == null ? "" : aadharDetails.getMiddleName());
+		session.setAttribute("lastName",  aadharDetails == null ? "" : aadharDetails.getLastName());
+		return "aadharVerificationTrainer";
+	}
+	
 }

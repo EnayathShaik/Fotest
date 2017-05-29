@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
+import com.ir.form.AadharDetails;
 import com.ir.form.CourseEnrolledUserForm;
 import com.ir.form.RegistrationFormTrainer;
 import com.ir.model.CourseName;

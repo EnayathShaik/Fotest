@@ -229,6 +229,12 @@ public class TrainerController {
 	public String listSubjectMaster(
 			@ModelAttribute("PersonalInformationTrainer") PersonalInformationTrainer personalInformationTrainer,
 			Model model, HttpServletRequest request,HttpSession session) {
+		session.setAttribute("aadhar", personalInformationTrainer == null ? "" : personalInformationTrainer.getAadharNumber());
+		session.setAttribute("name",  personalInformationTrainer == null ? "" : personalInformationTrainer.getFirstName());
+		session.setAttribute("middleName",  personalInformationTrainer == null ? "" : personalInformationTrainer.getMiddleName());
+		session.setAttribute("lastName",  personalInformationTrainer == null ? "" : personalInformationTrainer.getLastName());
+		session.setAttribute("dob" ,  personalInformationTrainer == null ? "" : personalInformationTrainer.getDob());
+		session.setAttribute("gender" ,  personalInformationTrainer == null ? "" : personalInformationTrainer.getGender());
 		System.out.println("PersonalInformationTrainer");
 		String userId = request.getParameter("userId");
 		Map<String, String> titleMap = lst.titleMap;
@@ -263,7 +269,6 @@ public class TrainerController {
 			model.addAttribute("PersonalInformationTrainer",
 					new PersonalInformationTrainer());
 		}
-		
 		return "PersonalInformationTrainer";
 	}
 
