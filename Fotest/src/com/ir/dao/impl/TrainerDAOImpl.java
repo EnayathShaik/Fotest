@@ -257,7 +257,6 @@ public class TrainerDAOImpl implements TrainerDAO {
 				FeedbackForm bean = new FeedbackForm();
 				List<FeedbackForm> resulList = new ArrayList<FeedbackForm>();
 				Session session = this.sessionFactory.getCurrentSession();
-				System.out.println("fffffffffffffffffffffffffffff");
 				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('19/05/2017' as varchar(20)) as trainingDate ,  cast('02:00 PM' as varchar(20)) as trainingTime , cast('Adlabs' as varchar(20)) as trainingLab    ").list();
 				for (Object[] li : list ) {
 					
@@ -301,7 +300,6 @@ public class TrainerDAOImpl implements TrainerDAO {
 				TrainerHomePageForm bean = new TrainerHomePageForm();
 				List<TrainerHomePageForm> resulList = new ArrayList<TrainerHomePageForm>();
 				Session session = this.sessionFactory.getCurrentSession();
-				System.out.println("fffffffffffffffffffffffffffff");
 				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('ICP-MS Certification' as varchar(20)) as trainerProgram , cast('ICP-MS Certification' as varchar(20)) as trainerCourse , cast('ICP-MS Certification' as varchar(20)) as trainingSlot").list();
 				for (Object[] li : list ) {
 					
@@ -321,7 +319,6 @@ public class TrainerDAOImpl implements TrainerDAO {
 				TrainerHomePageForm bean = new TrainerHomePageForm();
 				List<TrainerHomePageForm> resulList = new ArrayList<TrainerHomePageForm>();
 				Session session = this.sessionFactory.getCurrentSession();
-				System.out.println("fffffffffffffffffffffffffffff");
 				List<Object[]> list = session.createSQLQuery("select cast('ICP-MS' as varchar(20)) as courseName , cast('ICP-MS Certification' as varchar(20)) as trainerProgram , cast('ICP-MS Certification' as varchar(20)) as trainerCourse , cast('ICP-MS Certification' as varchar(20)) as trainingSlot,cast('selected' as varchar(20)) as status").list();
 				for (Object[] li : list ) {
 					

@@ -50,9 +50,6 @@
                         <li>
                           <a href="commonfeedback.fssai">Feedback</a>
                         </li>
-                         <li>
-                          <a href="feedbackInternalTrainee.fssai">Feedback Internal</a>
-                        </li>
                         <li>
                             <a href="certification.fssai">Certification</a>
                         </li>
@@ -66,7 +63,6 @@
 		<!-- <li><a href="search-and-apply.fssai">Search	& Apply Vacancy</a></li> -->
 	<li><a href="applyForPost.fssai">Apply For Post</a></li>
 	<li> <a href="commonfeedback.fssai">Feedback</a> </li>
-		<li> <a href="internalFeedbackTrainer.fssai">Internal Feedback</a> </li>
 	</ul>
 </div>
 

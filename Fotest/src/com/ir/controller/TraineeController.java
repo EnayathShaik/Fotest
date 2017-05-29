@@ -1132,12 +1132,5 @@ public String listcertification( Model model){
           	return "traineeContact";
 
           }
-          //feedbackInternal
-          @RequestMapping(value="/feedbackInternalTrainee" ,method = RequestMethod.GET)
-          public String listfeedbackInternal( Model model){
-          return "feedbackInternalTrainee";
-          }
-
-  
-
+    
 }

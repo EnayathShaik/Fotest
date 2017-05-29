@@ -58,7 +58,7 @@
 												<td>${listFeedback.courseName}</td>
 												<td>${listFeedback.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${listFeedback.trainingTime}  </td>
 												<td>${listFeedback.trainingLab}</td>
-												<td><input type="button" class="form-control login-btn" value="Start Here"></td>
+												<td><a href="internalFeedback.fssai"><input type="button" class="form-control login-btn" value="Start Here"></a></td>
 											</tr>
 												</ct:forEach>
                                             </table>

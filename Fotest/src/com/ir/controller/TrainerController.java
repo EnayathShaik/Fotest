@@ -575,7 +575,7 @@ public class TrainerController {
 
          return "trainerHomepage";
        } 
-         
+          
        @RequestMapping(value = "/commonContact", method = RequestMethod.GET)
        public String contact(@ModelAttribute("ContactTrainee")  ContactTrainee contactTrainee, Model model , HttpSession session) {
        	        Map<String , String> subjectMap = lst.subjectMap;
@@ -584,9 +584,18 @@ public class TrainerController {
        	return "commonContact";
 
        }
-   	@RequestMapping(value = "/internalFeedbackTrainer", method = RequestMethod.GET)
-   	public String internalfeedback( Model model) {
-   		
-   		return "internalFeedbackTrainer";
+   	@RequestMapping(value = "/internalFeedback", method = RequestMethod.GET)
+   	public String internalfeedback( Model model,HttpSession session) {
+   		int profileid= (int) session.getAttribute("profileId");
+   		if(profileid==3){
+			 model.addAttribute("trainee", "trainee");
+	}
+		else if(profileid==4){
+			model.addAttribute("trainer","trainer");
+		}
+		else{
+			  model.addAttribute("trainingPartner","trainingPartner");
+		}
+   		return "internalFeedback";
    	}
 }
