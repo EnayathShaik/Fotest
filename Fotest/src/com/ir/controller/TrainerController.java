@@ -584,5 +584,9 @@ public class TrainerController {
        	return "commonContact";
 
        }
-	
+   	@RequestMapping(value = "/internalFeedbackTrainer", method = RequestMethod.GET)
+   	public String internalfeedback( Model model) {
+   		
+   		return "internalFeedbackTrainer";
+   	}
 }

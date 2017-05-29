@@ -20,7 +20,6 @@
 	function OnStart() {
 		
 		var isUpdate = '${isUpdate}';
-		alert(isUpdate);
 		if (isUpdate != null && isUpdate == "Y") {
 			$("#firstName").val(
 			'${PersonalInformationTrainer.firstName}');
@@ -30,6 +29,10 @@
 			'${PersonalInformationTrainer.lastName}'); 
 	$("#dateP").val(
 		'${PersonalInformationTrainer.dob}'); 
+	$("#AadharNumberShow").val(
+	'${PersonalInformationTrainer.aadharNumber}'); 
+	$("#AadharNumber").val(
+	'${PersonalInformationTrainer.aadharNumber}'); 
 
 
 	 
@@ -56,6 +59,14 @@
 			$("#captcha").css("display", "none");
 			$("#chkunit").css("display", "none");
 			$("#check").attr("checked", "checked");
+			
+			 var fields = '${PersonalInformationTrainer.modules}'.split(',');
+				//alert("lenght "+fields.length); 
+				 for(i=0;i<fields.length;i++){
+					 //alert("fileds "+fields[i]);
+					 document.getElementById('modules_'+fields[i]).checked = true;
+			/* 		  $("#GC-MS/MS").attr("checked","checked"); */
+				 }
 
 		}
 		DrawCaptcha();
@@ -128,7 +139,7 @@
                                         </ul>
                                     </div>
                               <input type="text" id="AadharNumberShow" class="form-control" placeholder="Aadhar Number" value="" disabled="true"  />
-                                    <cf:input type="hidden" path="AadharNumber" class="form-control" maxlength="12" placeholder="Aadhar Number"
+                                    <cf:input type="hidden" path="AadharNumber" class="form-control" maxlength="12" placeholder="Aadhar Number" 
                                     onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
                                       onblur="ck_aadhar('personalinformationtrainer');" />
                                 </div>
@@ -475,10 +486,13 @@
 										</ul>
 									</div>
 									<ct:forEach items="${courseNameMap}" var="map">
-										<cf:checkbox path="modules" id="testingFacilities"
-											value="${map.value}" label=" ${map.value}" />
-										<br>
-									</ct:forEach>
+										<%-- <cf:checkbox path="modules" id="testingFacilities"
+											value="${map.value}" label=" ${map.value}" /> --%>
+										
+									<cf:checkbox  path="modules" id="modules_${map.value}"
+										value="${map.value}" label=" ${map.value}" />
+									<br>
+								</ct:forEach>
 								</div>
 							</div>
 							<!-- left side ends -->
@@ -584,16 +598,14 @@
 					</form>
 					<!-- form ends -->
 
-					</d>
+				
 
 
 					<div class="col-md-1 col-xs-12"></div>
 				</div>
-			</div>
+			</div></div>
 	</section>
-
-
-	<div class="col-md-2 hidden-xs"></div>
+<div class="col-md-2 hidden-xs"></div>
 </cf:form>
 
 
@@ -775,6 +787,7 @@
 <script type="text/javascript">
 	var aadhar = localStorage.getItem('aadhar');
 	document.getElementById( "AadharNumber" ).value = aadhar;
+
  	document.getElementById( "AadharNumberShow" ).value = aadhar;
  	localStorage.removeItem('aadhar');
  	

@@ -44,7 +44,6 @@
     		alert('Please enter Aadhar Number');
     		return false;
     	}
-    	
     }
 
 </script>
@@ -74,7 +73,7 @@
 									<ul class="lab-no">
 										<li class="style-li"><strong><cs:message
 													code="lbl.Trainee.AadharNumber" /></strong></li>
-										<li class="style-li error-red"><span id="aadhar_status"><label
+										<li class="style-li error-red"><span id="aadhar_status"></span><label
 												id=AadharNumberError class="error visibility">*
 													Enter your aadharNumber </label> <cf:errors path="AadharNumber"
 													cssClass="error" /></li>
@@ -148,34 +147,34 @@
                 </div>
                 <cf:input path="lastName" class="form-control" placeholder="Last Name" />
               </div>
+</div>
+           <button type="button" class="btn login-btn"
+												data-toggle="modal" data-target="#myModal" style="margin-left: 300px;">Verify</button>
+												</fieldset>
+												<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											 <p class="text-center" style="color: green;">Aadhar Verified!</p>
+                                        <p class="text-center">Your Linked Bank Account : State Bank of India</p>
+										<div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainer.fssai" onclick="return isAadharCorrect();"class="btn login-btn" style="width: 40%;">Register</a> 
+             
+            </div> 
+										</div>
+									
+										</div>
 
-            </div>
-            <div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainer.fssai" onclick="return isAadharCorrect();"class="btn login-btn" style="width: 40%;">Verify</a> 
-              
-              <!-- details of modal -->
-              <!-- <div id="aadhar-verification" class="modal fade" role="dialog">
-                <div class="modal-dialog"> 
-                  
-                  Modal content
-                  <div class="modal-content">
-                    <div class="modal-body"> <br>
-                      <p class="text-center" style="color: green;">Aadhar Verified!</p>
-                      <p class="text-center">Your Linked Bank Account : State Bank of India</p>
-                      button
-                      <div class="col-xs-12 text-center"> <a href="registrationFormTrainee.fssai" class="btn login-btn">Ok</a> </div>
-                      <br>
-                      <br>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-            </div>
-            
-          </fieldset>
+									</div>
+								</div>
+							</div>
         </div>
       </div>
       <div class="col-md-2 hidden-xs"></div>
     </div>
-  </div>
 </section>
 </cf:form>

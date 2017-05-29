@@ -1251,7 +1251,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 	
 	@Override
 	public  String addPersonalInfoTrainer(PersonalInformationTrainer p){
-System.out.println("createeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+System.out.println("createeeeeeeeeeeeeeeeeeeeeeeeeeeee" +p.getAadharNumber());
 		PasswordGenerator passwordGenerator = new PasswordGenerator(6);
 		char[] pass = passwordGenerator.get();
 		String passwordString = String.valueOf(pass);
@@ -1285,7 +1285,6 @@ System.out.println("createeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		int id =  p.getId();
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformationTrainer personalInformationTrainer = (PersonalInformationTrainer) session.load(PersonalInformationTrainer.class, id);
-		//personalInformationTrainer.setUserType(p.getUserType());
 		personalInformationTrainer.setUserId(p.getUserId());
 		personalInformationTrainer.setTitle(p.getTitle());
 		personalInformationTrainer.setDob(p.getDob());
@@ -1308,7 +1307,6 @@ System.out.println("createeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		personalInformationTrainer.setOthers2(p.getOthers2());
 		personalInformationTrainer.setAssExpInYear(p.getAssExpInYear());
 		personalInformationTrainer.setAssExpInMonth(p.getAssExpInMonth());
-		System.out.println(p.getModules());
 		personalInformationTrainer.setModules(p.getModules());
 		personalInformationTrainer.setTrExpInYear(p.getTrExpInYear());
 		personalInformationTrainer.setTrExpInMonth(p.getTrExpInMonth());

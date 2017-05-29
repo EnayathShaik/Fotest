@@ -1403,4 +1403,9 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body" value="/website/trainee/aadhar-verification.jsp" />
 	</definition>
+		<definition name="internalFeedbackTrainer" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"
+			value="/website/trainer/feedbackInternalTrainer.jsp" />
+	</definition>
 </tiles-definitions>
