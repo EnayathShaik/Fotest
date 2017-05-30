@@ -1428,27 +1428,17 @@ System.out.println("list "+list);
 		
 		
 		//@Override
-		public List<CertificateForm> listCertificate(int loginId) {
+		public List listCertificate(int loginId) {
 			// TODO Auto-generated method stub
-			System.out.println("inside listCertificateForm");
+			System.out.println("inside listCertificateForm"+loginId);
 			
-			List<CertificateForm> list = new ArrayList<CertificateForm>();
+			
 			Session session = this.sessionFactory.getCurrentSession();
-			StringBuffer sqlQuery  = new StringBuffer();
-			 sqlQuery.append("select ts.trainingtype, case when coalesce(certificateid , '') = '' then cast('Pending' as varchar(20)) else cast('Completed' as varchar(20)) end as status,  case when certificatestatus = 'Y' then cast('YES' as varchar(3)) else cast('NO' as varchar(2)) end as cerificateAvailable  , pit.id from nomineetrainee nt inner join trainingschedule ts on (nt.trainingscheduleid = ts.trainingscheduleid)  ");
-			 sqlQuery.append("left join personalinformationtrainee pit on (nt.logindetails = pit.logindetails) where nt.logindetails =  '"+loginId+"'");
-			List<Object[]> lst = session.createSQLQuery(sqlQuery.toString()).list();
-			for (Object[] li : lst ) {
-				CertificateForm bean = new CertificateForm();
-				bean.setTrainingType((String) li[0]);
-				bean.setCompletionStatus((String) li[1]);
-				bean.setCertificateAvailable((String) li[2]);
-				bean.setId((int) li[3]);	
-		
-				list.add(bean);
-			}
-	System.out.println("list "+list);
-			return list;
+			String sql="select pit.firstName,pit.MiddleName,pit.LastName from PersonalInformationTrainee pit inner join logindetails l on pit.logindetails=cast(l.id as int) where l.id='"+loginId+"'";
+			
+			Query query = session.createSQLQuery(sql);
+			List a = query.list();
+			return a;
 		}
 				
 
@@ -1734,6 +1724,10 @@ System.out.println("list "+list);
 					}
 					return resulList;
 				}
+
+				
+
+				
 				
 				
 				

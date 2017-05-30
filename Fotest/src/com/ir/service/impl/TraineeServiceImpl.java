@@ -239,6 +239,7 @@ public class TraineeServiceImpl implements TraineeService {
 		// TODO Auto-generated method stub
 		return traineeDAO.closeCourse(userId, status);
 	}
+	
 	@Override
 	@Transactional
 	public CertificateInfo getCertificateID(int userId,  String certificateID) {
@@ -355,7 +356,7 @@ public class TraineeServiceImpl implements TraineeService {
 	
 	@Override
 	@Transactional
-	public List<CertificateForm> listCertificate(int loginId) {
+	public List listCertificate(int loginId) {
 		// TODO Auto-generated method stub
 		return this.traineeDAO.listCertificate(loginId);
 	}
@@ -477,6 +478,13 @@ public class TraineeServiceImpl implements TraineeService {
 				return this.traineeDAO.listMyCourses();
 			}
 
+		/*	@Override
+			@Transactional
+			public CertificateInfo getCertificateIDById(int id2) {
+				// TODO Auto-generated method stub
+				return this.traineeDAO.getCertificateIDById(id2);
+			}
+*/
 		
 
 }

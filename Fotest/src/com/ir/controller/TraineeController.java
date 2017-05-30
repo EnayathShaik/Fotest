@@ -114,7 +114,17 @@ public class TraineeController {
 	@Autowired
 	@Qualifier("assessmentService")
 	public AssessmentService assessmentService;
-	ListConstant lst =  new ListConstant();  
+	ListConstant lst =  new ListConstant(); 
+	
+	public boolean checkAccess(HttpSession session){
+		if((int)session.getAttribute("profileId")!=3){	
+			new ZLogger("Illegal profileId Access","By profileId  " +session.getAttribute("profileId") ,"TraineeController.java");
+			return true;
+		}
+		else
+			return false;
+	}
+	
 	// Rishi 
 	@RequestMapping(value="/contactTrainee" , method=RequestMethod.GET)
 	public String contactTrainee(@ModelAttribute("contactTraineee") ContactTrainee contactTrainee, Model model , HttpSession session){
@@ -1132,5 +1142,18 @@ public String listcertification( Model model){
           	return "traineeContact";
 
           }
+          
+          
+
+                @RequestMapping(value = "/certificatetrainee", method = RequestMethod.GET)
+        		public String certificatetrainee(Model model , HttpSession session){
+        		 int loginId = (int) session.getAttribute("userId");
+        				System.out.println("listCertificate");
+                   model.addAttribute("listCertificate", this.traineeService.listCertificate(loginId));
+        				return "certificatetrainee";
+        		
+        		}
+          		
+          
     
 }

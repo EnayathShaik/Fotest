@@ -1,5 +1,10 @@
 <%@page import="java.text.SimpleDateFormat"%>
     <%@page import="java.util.Date"%>
+    <%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="cs" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core"%>
+
+    
         <html xmlns="http://www.w3.org/1999/xhtml">
         <%
 String strNewDate = null;
@@ -59,20 +64,24 @@ try{
                                                         <div class="col-xs-12 certi-width">
 						                                    <div class="col-xs-12"><img src="website/img/hra-wigeneral.jpg" class="img-responsive"></div>
 						            							
-<div class="col-xs-12 this-certify">
+                                         <div class="col-xs-12 this-certify">
                                         <h3 class="text-center th-pos">This is to certify that</h3>
-                                        <p class="text-center for-p"><span><strong>${traineeCertificateName}</strong></span></p>
-                                        <hr class="nam-hr">
+                                        	<ct:forEach items="${listCertificate}" var="listCertificate" varStatus="loop">
+										
+                                        <p class="text-center for-p"><span><strong>${listCertificate[0]}&nbsp;&nbsp;${listCertificate[1]}&nbsp;&nbsp;${listCertificate[2]} </strong></span></p>
+                                       
+                                      	</ct:forEach>
+                                          <hr class="nam-hr">
                                         <div class="di-msg">
                                             <p>has received necessary training required to be a trainer for Project Clean Streat Food . The Training</p>
                                             <p> was help on
-                                                <span class="on-dat-general">${trainingDate}</span>
+                                                <span class="on-dat-general"></span>
                                                 <span class="at-general">at</span>
                                                 <span><hr class="on-hr-general" /></span>
 
                                                 <span>
                                                     
-                                                <span class="add-pos-general">${trainingAddress}</span><span><hr class="at-hr-general"></span><span class="full-stop-general">.</span>
+                                                <span class="add-pos-general"></span><span><hr class="at-hr-general"></span><span class="full-stop-general">.</span>
                                                 </span>
 
                                             </p>

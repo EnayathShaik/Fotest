@@ -123,7 +123,7 @@ public interface TraineeDAO {
 	public List<MyTrainingForm> listMyTraining();
 	
 	public GetScoreCardForm listGetScoreCard(int id);
-	public List<CertificateForm> listCertificate(int loginId);
+	public List listCertificate(int loginId);
 	
 	
 	public String updatePersonalInfoTrainingInstitute(PersonalInformationTrainingInstitute p);
@@ -139,7 +139,7 @@ public interface TraineeDAO {
 	//traineeFeedback
 	public List<FeedbackForm> listFeedback();
 	
-		public List<CertificationForm> listcertification();
+	public List<CertificationForm> listcertification();
 		
 		//general course
 		public List<generalCourseEnrollmentForm> listgeneralCourseEnrollment(generalCourseEnrollmentForm p);

@@ -168,7 +168,7 @@ public interface TraineeService {
 
 	public GetScoreCardForm listGetScoreCard(int id);
 
-	public List<CertificateForm> listCertificate(int loginId);
+	
 
 	
 	
@@ -217,6 +217,11 @@ public List<CertificationForm> listcertification();
 	public List<MyCoursesForm> listMyCourses();
 
 
+	
+
+/*	public CertificateInfo getCertificateIDById(int id2);*/
+
+	public List  listCertificate(int loginId);
 		
 	
 	

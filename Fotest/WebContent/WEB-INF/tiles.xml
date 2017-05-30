@@ -1416,4 +1416,9 @@
 		<put-attribute name="body"
 			value="/website/commonjsp/feedbackInternal.jsp" />
 	</definition>
+	<definition name="certificatetrainee" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"  value="/website/trainee/certificatetrainee.jsp" />
+	</definition> 
+	
 </tiles-definitions>
