@@ -114,7 +114,7 @@
 
 
                             <!-- left side -->
-                            <div class="col-md-6 col-xs-12">
+                            <div class="col-md-6 col-xs-12"  style="margin-top: 223px;">
 
 
 										<cf:input type="hidden" path="id"/>
@@ -181,7 +181,11 @@
 
                             <!-- right side -->
                             <div class="col-md-6 col-xs-12">
-
+<div style="margin-left: 200px;">
+								<img  id="blah" src="#" width="200" height="200" class="img-responsive">
+									<!-- <img id="blah" src="#" alt="your image" /> --> 
+									<input type='file' onchange="readURL(this);" />
+								</div>
                                 <div class="form-group">
                                     <div>
                                         <ul class="lab-no">
@@ -845,3 +849,40 @@
  	localStorage.removeItem('lastName');
  	
 	</script>
+
+	<script type="text/javascript">
+<!--
+	//-->
+
+	function readURL(input) {
+		
+		if (input.files && input.files[0]) {
+		
+			var reader = new FileReader();
+			
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result).width(150).height(200);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("input").change(function(e) {
+		
+		for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+			
+			var file = e.originalEvent.srcElement.files[i];
+			var img = document.createElement("img");
+			var reader = new FileReader();
+			reader.onloadend = function() {
+				
+			
+				img.src = reader.result;
+				
+			}
+				reader.readAsDataURL(file);
+	
+			  //$("input").after(img);
+		}
+	});
+</script>

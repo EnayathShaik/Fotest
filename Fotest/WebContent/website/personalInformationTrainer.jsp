@@ -1,8 +1,20 @@
 <%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="cs" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core"%>
+<link class="jsbin"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+	rel="stylesheet" type="text/css" />
+<script class="jsbin"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<meta charset=utf-8 />
 
-
+<style>
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+</style>
 
 <script src="website/js/commonController.js"></script>
 <script>
@@ -18,24 +30,18 @@
 	}
 
 	function OnStart() {
-		
+
 		var isUpdate = '${isUpdate}';
 		if (isUpdate != null && isUpdate == "Y") {
-			$("#firstName").val(
-			'${PersonalInformationTrainer.firstName}');
-			 $("#mn").val(
-				'${PersonalInformationTrainer.middleName}'); 
-	 $("#ln").val(
-			'${PersonalInformationTrainer.lastName}'); 
-	$("#dateP").val(
-		'${PersonalInformationTrainer.dob}'); 
-	$("#AadharNumberShow").val(
-	'${PersonalInformationTrainer.aadharNumber}'); 
-	$("#AadharNumber").val(
-	'${PersonalInformationTrainer.aadharNumber}'); 
+			$("#firstName").val('${PersonalInformationTrainer.firstName}');
+			$("#mn").val('${PersonalInformationTrainer.middleName}');
+			$("#ln").val('${PersonalInformationTrainer.lastName}');
+			$("#dateP").val('${PersonalInformationTrainer.dob}');
+			$("#AadharNumberShow").val(
+					'${PersonalInformationTrainer.aadharNumber}');
+			$("#AadharNumber")
+					.val('${PersonalInformationTrainer.aadharNumber}');
 
-
-	 
 			$("#correspondenceState").val(
 					'${PersonalInformationTrainer.correspondenceState}');
 			$("#correspondenceState").trigger("change");
@@ -59,14 +65,14 @@
 			$("#captcha").css("display", "none");
 			$("#chkunit").css("display", "none");
 			$("#check").attr("checked", "checked");
-			
-			 var fields = '${PersonalInformationTrainer.modules}'.split(',');
-				//alert("lenght "+fields.length); 
-				 for(i=0;i<fields.length;i++){
-					 //alert("fileds "+fields[i]);
-					 document.getElementById('modules_'+fields[i]).checked = true;
-			/* 		  $("#GC-MS/MS").attr("checked","checked"); */
-				 }
+
+			var fields = '${PersonalInformationTrainer.modules}'.split(',');
+			//alert("lenght "+fields.length); 
+			for (i = 0; i < fields.length; i++) {
+				//alert("fileds "+fields[i]);
+				document.getElementById('modules_' + fields[i]).checked = true;
+				/* 		  $("#GC-MS/MS").attr("checked","checked"); */
+			}
 
 		}
 		DrawCaptcha();
@@ -85,7 +91,6 @@
 <cf:form action="PersonalInformationTrainerAdd.fssai" name="myForm"
 	method="POST" commandName="PersonalInformationTrainer"
 	onsubmit="return validateFields();">
-
 	<section>
 		<div class="container">
 			<div class="row mar-top-aadhar">
@@ -101,7 +106,7 @@
 
 							<!-- form field starts here -->
 							<!-- left side -->
-							<div class="col-md-6 col-xs-12">
+							<div class="col-md-6 col-xs-12" style="margin-top: 223px;">
 								<cf:input type="hidden" path="id" />
 								<div class="form-group">
 									<div>
@@ -128,21 +133,25 @@
 										class="form-control" />
 								</div>
 								<div class="form-group">
-                                    <div>
-                                        <ul class="lab-no">
-                                            <li class="style-li"><strong>Aadhar Number:</strong></li><li class="style-li error-red"> * </li>
-                                             <!--  valid -->
-                                            <li id="AadharNumberErr" style="display:none;" class="style-li error-red" >Aadhar Number can not be blank.</li>
-                                            <li class="style-li error-red">
-                                            <span id="aadhar_status" ></span>
-									
-                                        </ul>
-                                    </div>
-                              <input type="text" id="AadharNumberShow" class="form-control" placeholder="Aadhar Number" value="" disabled="true"  />
-                                    <cf:input type="hidden" path="AadharNumber" class="form-control" maxlength="12" placeholder="Aadhar Number" 
-                                    onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
-                                      onblur="ck_aadhar('personalinformationtrainer');" />
-                                </div>
+									<div>
+										<ul class="lab-no">
+											<li class="style-li"><strong>Aadhar Number:</strong></li>
+											<li class="style-li error-red">*</li>
+											<!--  valid -->
+											<li id="AadharNumberErr" style="display: none;"
+												class="style-li error-red">Aadhar Number can not be
+												blank.</li>
+											<li class="style-li error-red"><span id="aadhar_status"></span>
+										</ul>
+									</div>
+									<input type="text" id="AadharNumberShow" class="form-control"
+										placeholder="Aadhar Number" value="" disabled="true" />
+									<cf:input type="hidden" path="AadharNumber"
+										class="form-control" maxlength="12"
+										placeholder="Aadhar Number"
+										onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+										onblur="ck_aadhar('personalinformationtrainer');" />
+								</div>
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -161,7 +170,15 @@
 							<!-- left side ends -->
 
 							<!-- right side -->
-							<div class="col-md-6 col-xs-12">
+							<div class="col-md-6 col-xs-12" >
+								<div style="margin-left: 200px;">
+								<img  id="blah" src="#" width="200" height="200" class="img-responsive">
+									<!-- <img id="blah" src="#" alt="your image" /> --> 
+									<input type='file' onchange="readURL(this);" />
+								</div>
+
+
+
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -186,8 +203,8 @@
 
 										</ul>
 									</div>
-									<cf:input type="text" path="firstName" class="form-control" id="firstName"
-										placeholder="First Name"
+									<cf:input type="text" path="firstName" class="form-control"
+										id="firstName" placeholder="First Name"
 										onkeyup="if (/\d/g.test(this.value)) this.value = this.value.replace(/\d/g,'')" />
 								</div>
 								<div class="form-group">
@@ -231,6 +248,7 @@
 									<cf:radiobutton path="gender" value="F" />
 									Female
 								</div>
+							
 							</div>
 							<!-- right side ends -->
 						</fieldset>
@@ -305,6 +323,7 @@
 
 							<!-- right side -->
 							<div class="col-md-6 col-xs-12">
+
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
@@ -488,11 +507,11 @@
 									<ct:forEach items="${courseNameMap}" var="map">
 										<%-- <cf:checkbox path="modules" id="testingFacilities"
 											value="${map.value}" label=" ${map.value}" /> --%>
-										
-									<cf:checkbox  path="modules" id="modules_${map.value}"
-										value="${map.value}" label=" ${map.value}" />
-									<br>
-								</ct:forEach>
+
+										<cf:checkbox path="modules" id="modules_${map.value}"
+											value="${map.value}" label=" ${map.value}" />
+										<br>
+									</ct:forEach>
 								</div>
 							</div>
 							<!-- left side ends -->
@@ -507,11 +526,11 @@
 													experience related to food sector:</strong></li>
 											<li class="style-li error-red"></li>
 											<li id="trExpInYearErr" style="display: none;"
-												class="style-li error-red">Exp. in YEAR can not
-												be blank.</li>
+												class="style-li error-red">Exp. in YEAR can not be
+												blank.</li>
 											<li id="trExpInMonthErr" style="display: none;"
-												class="style-li error-red">Exp. in MONTH can not
-												be blank.</li>
+												class="style-li error-red">Exp. in MONTH can not be
+												blank.</li>
 
 
 										</ul>
@@ -598,14 +617,15 @@
 					</form>
 					<!-- form ends -->
 
-				
+
 
 
 					<div class="col-md-1 col-xs-12"></div>
 				</div>
-			</div></div>
+			</div>
+		</div>
 	</section>
-<div class="col-md-2 hidden-xs"></div>
+	<div class="col-md-2 hidden-xs"></div>
 </cf:form>
 
 
@@ -784,27 +804,64 @@
 
 	}
 </script>
+
 <script type="text/javascript">
 	var aadhar = localStorage.getItem('aadhar');
-	document.getElementById( "AadharNumber" ).value = aadhar;
+	document.getElementById("AadharNumber").value = aadhar;
 
- 	document.getElementById( "AadharNumberShow" ).value = aadhar;
- 	localStorage.removeItem('aadhar');
- 	
- 	var DOB = localStorage.getItem('DOB');
- 	document.getElementById( "dateP" ).value = DOB;
- 	localStorage.removeItem('DOB');
- 	
- 	var firstname = localStorage.getItem('name');
- 	document.getElementById( "firstName" ).value =firstname;
- 	localStorage.removeItem('name');
- 	
- 	var middleName = localStorage.getItem('middleName');
- 	document.getElementById( "mn" ).value =middleName;
- 	localStorage.removeItem('middleName');
- 	
- 	var lastName = localStorage.getItem('lastName');
- 	document.getElementById( "ln" ).value =lastName;
- 	localStorage.removeItem('lastName');
- 	
-	</script>
+	document.getElementById("AadharNumberShow").value = aadhar;
+	localStorage.removeItem('aadhar');
+
+	var DOB = localStorage.getItem('DOB');
+	document.getElementById("dateP").value = DOB;
+	localStorage.removeItem('DOB');
+
+	var firstname = localStorage.getItem('name');
+	document.getElementById("firstName").value = firstname;
+	localStorage.removeItem('name');
+
+	var middleName = localStorage.getItem('middleName');
+	document.getElementById("mn").value = middleName;
+	localStorage.removeItem('middleName');
+
+	var lastName = localStorage.getItem('lastName');
+	document.getElementById("ln").value = lastName;
+	localStorage.removeItem('lastName');
+</script>
+
+<script type="text/javascript">
+<!--
+	//-->
+
+	function readURL(input) {
+		
+		if (input.files && input.files[0]) {
+		
+			var reader = new FileReader();
+			
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result).width(150).height(200);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("input").change(function(e) {
+		
+		for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+			
+			var file = e.originalEvent.srcElement.files[i];
+			var img = document.createElement("img");
+			var reader = new FileReader();
+			reader.onloadend = function() {
+				
+			
+				img.src = reader.result;
+				
+			}
+				reader.readAsDataURL(file);
+	
+			  //$("input").after(img);
+		}
+	});
+</script>
