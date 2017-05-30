@@ -1671,6 +1671,21 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		personalInformationTrainingPartner.setUserId(p.getUserId());
 	
 		
+		personalInformationTrainingPartner.setPrevtrainingExp_0(p.getPrevtrainingExp_0());
+		personalInformationTrainingPartner.setPrevtrainingExp_1(p.getPrevtrainingExp_1());
+		personalInformationTrainingPartner.setPrevtrainingExp_2(p.getPrevtrainingExp_2());
+		personalInformationTrainingPartner.setPrevtrainingExp_3(p.getPrevtrainingExp_3());
+		personalInformationTrainingPartner.setPrevtrainingExp_4(p.getPrevtrainingExp_4());
+
+		personalInformationTrainingPartner.setTrainedStaff_0(p.getTrainedStaff_0());
+		personalInformationTrainingPartner.setTrainedStaff_1(p.getTrainedStaff_1());
+		personalInformationTrainingPartner.setTrainedStaff_2(p.getTrainedStaff_2());
+		personalInformationTrainingPartner.setTrainedStaff_3(p.getTrainedStaff_3());
+		personalInformationTrainingPartner.setTrainedStaff_4(p.getTrainedStaff_4());
+		
+		personalInformationTrainingPartner.setFoodAnalyst_0(p.getFoodAnalyst_0());
+		personalInformationTrainingPartner.setFoodAnalyst_1(p.getFoodAnalyst_1());
+		
 		session.update(personalInformationTrainingPartner);
 		return "updated";
 	}	

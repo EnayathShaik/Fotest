@@ -74,60 +74,50 @@ window.onload = OnStart; */
 	 $("#state").val('${PersonalInformationTrainingPartner.state}');
 	 $("#state").val('${PersonalInformationTrainingPartner.state}');
 
- 	   //alert('${PersonalInformationTrainingPartner.testingFacilities}');
- 	   
-	 var fields = '${PersonalInformationTrainingPartner.testingFacilities}'.split(',');
-	//alert("lenght "+fields.length); 
-	 for(i=0;i<fields.length;i++){
-		 //alert("fileds "+fields[i]);
+ 	 var fields = '${PersonalInformationTrainingPartner.testingFacilities}'.split(',');
+	for(i=0;i<fields.length;i++){
 		 document.getElementById('testingFacilities_'+fields[i]).checked = true;
 /* 		  $("#GC-MS/MS").attr("checked","checked"); */
 	 }
- }
- 
 	 
+	 
+	//for tables in jsp
+	
+   	 for(i=0;i<=4;i++){
+   		var table=document.getElementById('prevtrainingExp_'+i).value.split('|');
+   		 $("#pteSubject_"+i).val(table[0]);
+   		 $("#pteFromD_"+i).val(table[1]);
+   		 $("#pteToD_"+i).val(table[2]);
+   		 $("#pteNoOfParticipants_"+i).val(table[3]);
+   		 $("#pteTrainerName_"+i).val(table[4]);
+   	
+   		table=document.getElementById('trainedStaff_'+i).value.split('|');
+      	 $("#tsName_"+i).val(table[0]);
+      	 $("#tsDetails_"+i).val(table[1]);
+      	 $("#tsRevExp_"+i).val(table[2]);
+      	 
+      	 if(i<2){
+      	table=document.getElementById('foodAnalyst_'+i).value.split('|');
+     	 $("#faName_"+i).val(table[0]);
+     	 $("#faQualYear_"+i).val(table[1]);
+      	 }
+      	 
+   		   	 }
+
+	 
+ } 
+ 
 	 DrawCaptcha(); 
 	
 	 flatpickr("#dob" ,{});	
-	
-	 
-	 
-	/* 
-	 $('#sameAddr').change(function(){
-	
-	 if(this.checked){
-	 $("#resState").val($("#correspondenceState").val());
-	 $("#resState").trigger("change");
-	 window.setTimeout(function() {
-	 $("#residentialDistrict").val($("#correspondenceDistrict").val());
-	 $("#residentialDistrict").trigger("change");
-	 window.setTimeout(function() {
-	 $("#resCity").val($("#correspondenceCity").val());
-	 }, 1000);
-	 }, 1000);
-	
-	
-	 $("#resPincode").val($("#correspondencePincode").val());
-	 $("#ResidentialLine1").val($("#correspondenceAddress1").val());
-	 $("#ResidentialLine2").val($("#correspondenceAddress2").val())
-	 //
-	 }else{
-	 $("#resState").val('');
-	 $("#residentialDistrict").val('');
-	 $("#resCity").val('');
-	 $("#resPincode").val('');
-	 $("#ResidentialLine1").val('');
-	 $("#ResidentialLine2").val('');
-	
-	
+
+   	 for(i=0;i<=4;i++){
+
+	 flatpickr("#pteFromD_"+i, {});
+	 flatpickr("#pteToD_"+i, {});
+   	 }
 	 }
-	
-	 }); 	 */	  
-	
-	
-	
-	 }
-	
+		
 	 window.onload = OnStart;
 	 
 </script>
@@ -520,7 +510,7 @@ window.onload = OnStart; */
 								No
 							</div>
 
-							<div id="chemicalField" class="form-group"  ">
+							<div id="chemicalField" class="form-group" >
 								<div>
 									<ul class="lab-no">
 										<li class="style-li" ><strong>If yes chemical
@@ -705,6 +695,7 @@ window.onload = OnStart; */
 <br />
 <div class="form-group">
 <h4>Details of previous trainings conducted by Lab in the area of food testing:</h4>
+
 						<table  id="datatablesfosrest" class="table table-bordered table-responsive">
 	<tr>
 		<th> Sr. No.</th>
@@ -715,18 +706,16 @@ window.onload = OnStart; */
 		<th >Trainer's Name</th>
 	</tr>
 	<ct:forEach var="i" begin="0" end="4" varStatus="loop">
+	<cf:input type="hidden" path="prevtrainingExp_${loop.index}" class="form-control"  />
 	
-	
-	
-		<tr>
-			<td>${loop.count}</td>
-			<td><input type="text"></td>
-			<td><input type="text" id="fromD"></td>
-			<td><input type="text" id="toD"></td>
-			<td><input type="text"></td>
-			<td><input type="text"></td>
 		
-			
+	<tr> 
+		<td>${loop.count}</td>
+			<td><input type="text" id="pteSubject_${loop.index}"></td>
+			<td><input type="text" id="pteFromD_${loop.index}"></td>
+			<td><input type="text" id="pteToD_${loop.index}"></td>
+			<td><input type="text" id="pteNoOfParticipants_${loop.index}"></td>
+			<td><input type="text" id="pteTrainerName_${loop.index}"></td> 
 		</tr>
 	</ct:forEach>
 	</table>
@@ -744,23 +733,22 @@ window.onload = OnStart; */
 		
 	</tr>
 	<ct:forEach var="i" begin="0" end="4" varStatus="loop">
-	
+	<cf:input type="hidden"  path="trainedStaff_${loop.index}" class="form-control"  />
 	
 	
 		<tr>
-			<td>${loop.count}</td>
-			<td><input type="text"></td>
-			<td><input type="text"></td>
-			<td><input type="text"></td>
-		
-			
+		<td>${loop.count}</td>
+			<td><input type="text" id="tsName_${loop.index}"></td>
+			<td><input type="text" id="tsDetails_${loop.index}"></td>
+			<td><input type="text" id="tsRevExp_${loop.index}"></td>
 		</tr>
 	</ct:forEach>
 	</table>
-	Qualified Food analyst Available in lab: <input type="radio" value="yes" /> Yes <input type="radio" value="No" /> No
-	
-	</div>
 	<br /><br />
+	Qualified Food analyst Available in lab:  <cf:radiobutton
+										path="foodAnalystAvail" value="Yes" checked="true" />Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<cf:radiobutton path="foodAnalystAvail" value="No" />No</div>
+	
 	<div class="form-group">
 		<h4>Details of ISO 17025 Trained Staff Available in Lab:</h4>
 			<table  id="datatablesfosrest" class="table table-bordered table-responsive">
@@ -771,20 +759,21 @@ window.onload = OnStart; */
 
 		
 	</tr>
-	<ct:forEach var="i" begin="0" end="4" varStatus="loop">
+	<ct:forEach var="i" begin="0" end="1" varStatus="loop">
 	
+	<cf:input type="hidden" path="foodAnalyst_${loop.index}" class="form-control"  />
 	
 	
 		<tr>
-			<td>${loop.count}</td>
-			<td><input type="text"></td>
-			<td><input type="text"></td>
+		<td>${loop.count}</td>
+			<td><input type="text" id="faName_${loop.index}"></td>
+			<td><input type="text" id="faQualYear_${loop.index}"></td>
 		
-		
-			
 		</tr>
+
 	</ct:forEach>
 	</table>
+				</div>
 				</div>
 					</fieldset>
  
@@ -864,7 +853,7 @@ window.onload = OnStart; */
    	   	
    	
    //alert("as");
-   	
+   		
    	
    		 $("#userIdErr").css("display" , "none");
 			$("#titleErr").css("display" , "none");
@@ -892,7 +881,7 @@ window.onload = OnStart; */
 		 $("#txtInputErr").css("display" , "none");
 		
 		
-		   	
+	 	   	
    	    if($("#userId").val() == ''){
    		 
    		$("#userIdErr").css("display" , "block");
@@ -980,15 +969,35 @@ window.onload = OnStart; */
          document.getElementById('txtInput').value = "";
          return false;
      }
-		}
+		} 
    	 if($("#check").is(":checked")== false){
    		 alert("Click on check-box to Agree to Terms and Conditions");
    		 return false;
   	 } 
-    }
-   
+		
 
- 
+   	//tables
+   	 for(i=0;i<=4;i++){
+   		 
+   	   		//1st table
+   	   var joined=document.getElementById('pteSubject_'+i).value.concat('|'.concat(document.getElementById('pteFromD_'+i).value.concat('|'.concat(document.getElementById('pteToD_'+i).value.concat('|'.concat(document.getElementById('pteNoOfParticipants_'+i).value.concat('|'.concat(document.getElementById('pteTrainerName_'+i).value))))))));
+   		
+   		document.getElementById('prevtrainingExp_'+i).value=joined;
+   	 
+   	//2nd table
+  	joined=document.getElementById('tsName_'+i).value.concat('|'.concat(document.getElementById('tsDetails_'+i).value.concat('|'.concat(document.getElementById('tsRevExp_'+i).value))));
+	
+	document.getElementById('trainedStaff_'+i).value=joined;
+
+	//3rd table
+if(i<2){
+joined=document.getElementById('faName_'+i).value.concat('|'.concat(document.getElementById('faQualYear_'+i).value));
+
+document.getElementById('foodAnalyst_'+i).value=joined;
+}
+   	   	 }
+ }
+   
 
    // Remove the spaces from the entered and generated code
    function removeSpaces(string) {
