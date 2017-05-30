@@ -50,7 +50,7 @@
 			<td>${listcertification.courseName}</td>
 			<td>${listcertification.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${listcertification.trainingTime}  </td>
 			<td>${listcertification.trainingLab}</td>
-			<td><input type="button" value="Get Certificate"  class="form-control login-btn"></td>
+			<td><a href="certificatetrainee.fssai"><input type="button" value="Get Certificate"  class="form-control login-btn"></a></td>
 		</tr>
 	</ct:forEach>
 	</table>
@@ -61,4 +61,5 @@
 </div>
 </div>
 </section>
+<input type="hidden" id="idHidden" value="" />
             </cf:form>
