@@ -29,7 +29,7 @@ public class ContactTrainee {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	@NotNull
+	
 	private String userId;
 	
 	
@@ -59,6 +59,10 @@ public class ContactTrainee {
 	public ContactTrainee() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public static String[] split(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

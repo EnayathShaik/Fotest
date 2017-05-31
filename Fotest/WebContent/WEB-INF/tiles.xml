@@ -1420,5 +1420,13 @@
 		<put-attribute name="title" value="Fssai E-Learning System" />
 		<put-attribute name="body"  value="/website/trainee/certificatetrainee.jsp" />
 	</definition> 
+	<definition name="admitCard" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body"  value="/website/trainee/admitCard.jsp" />
+	</definition> 
+	<definition name="assessment-instructions-trainee" extends="base.user.afterLogin">
+		<put-attribute name="title" value="Fssai E-Learning System" />
+		<put-attribute name="body" value="/website/trainee/assessment-instructions.jsp" />
+	</definition>
 	
 </tiles-definitions>

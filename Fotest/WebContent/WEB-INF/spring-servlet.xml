@@ -104,7 +104,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 		<property name="driverClassName" value="org.postgresql.Driver" />
 			<property name="url" value="jdbc:postgresql://localhost/fotest" />
 		<property name="username" value="fotestadmin" />
-		<property name="password" value="Fss2iZentech" />
+		<property name="password" value="fotest123" />
 			
 	</bean>
 
@@ -127,6 +127,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 				<value>com.ir.model.LoginDetails</value>
 				<value>com.ir.model.ManageTraining</value>
 				<value>com.ir.model.PersonalInformationTrainee</value>
+				<value>com.ir.model.ContactTraineee</value>
 			<!-- 	<value>com.ir.model.AdminUserManagement</value>
 				<value>com.ir.model.ManageTrainingPartner</value>
 				<value>com.ir.model.FeedbackMaster</value>

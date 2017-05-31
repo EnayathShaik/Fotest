@@ -102,5 +102,34 @@ public ContactTraineee() {
 	super();
 	// TODO Auto-generated constructor stub
 }
+private String subject;
+private String queryCatagory;
+private String querySubCatagory;
+
+public String getSubject() {
+	return subject;
+}
+
+public void setSubject(String subject) {
+	this.subject = subject;
+}
+
+public String getQueryCatagory() {
+	return queryCatagory;
+}
+
+public void setQueryCatagory(String queryCatagory) {
+	this.queryCatagory = queryCatagory;
+}
+
+public String getQuerySubCatagory() {
+	return querySubCatagory;
+}
+
+public void setQuerySubCatagory(String querySubCatagory) {
+	this.querySubCatagory = querySubCatagory;
+}
+
+
 	
 }

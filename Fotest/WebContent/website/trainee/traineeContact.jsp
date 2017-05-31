@@ -8,9 +8,8 @@
 
 
 
-<%-- <ct:url var="addAction" value="/lcEnrollmentlist.fssai"></ct:url> --%>
-<cf:form action="traineeContact" name="myForm" method="POST"
-	commandName="ContactTrainee" onsubmit="return validateFields();">
+ <cf:form action="contactTraineeSave.fssai" name="myForm" method="POST"
+	commandName="ContactTrainee" onsubmit="return validateFields();"> 
 
 	<section>
 		<%@include file="/website/roles/top-menu.jsp"%>
@@ -60,7 +59,7 @@
 												class="style-li error-red">Please Training Lab</li>
 										</ul>
 									</div>
-									<cf:input path="emailAddress" placeholder="Enter email"
+									<cf:input path="emailAddress" placeholder="Enter email" 
 															class="form-control" /> 
 								</div>
 												
@@ -94,23 +93,10 @@
                             
                                 </div>
                                  
-                                 
+                                 <input style="margin-top:20px; width:100px;" type="submit" class="form-control login-btn btn" value="Submit" />
                                     <!-- right side ends -->
 											
-									             <!-- <div class="col-md-4 col-xs-12">  
-                                                      <input type="submit" class="form-control login-btn" value="Show Details"> </a>
-                                                 </div> -->
-                                                 <div class="col-md-4 hidden-xs"></div>
-                                                        <div class="col-md-4 col-xs-12">
-                                                                <input type="button" class="form-control login-btn" value="Submit">
-                                                        </div>
-                                                        <div class="col-md-4 hidden-xs"></div>
-
-													<!-- <input type="submit" id="updatebtn"
-														style="display: none; float: right; margin-right: 122px;"
-														value="Update" class="btn login-btn" /> <input
-														type="submit" id="createbtn" value="Create"
-														class="btn login-btn" /> -->
+									            
 												</div>
 											</div>
 

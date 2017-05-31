@@ -58,7 +58,7 @@
 												<td>${listBeforeTraining.courseName}</td>
 												<td>${listBeforeTraining.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${listBeforeTraining.trainingTime}  </td>
 												<td>${listBeforeTraining.trainingLab}</td>
-												<td><input type="button" class="form-control login-btn" value="Start Here"></td>
+												<td><a href="assessment-instructions-trainee.fssai"><input type="button" class="form-control login-btn" value="Start Here"></a></td>
 											</tr>
 												</ct:forEach>
                                             </table>

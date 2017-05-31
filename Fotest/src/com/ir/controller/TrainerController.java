@@ -584,6 +584,33 @@ public class TrainerController {
        	return "commonContact";
 
        }
+       @RequestMapping(value="/commonContactsave" , method=RequestMethod.POST)
+   	public String contactTrainee1(@ModelAttribute("ContactTraineee") ContactTrainee contactTrainee
+   			,BindingResult result , HttpSession session, Model model
+   			){
+   		if(result.hasErrors()){
+   			new ZLogger("contactTraineeSave", "bindingResult.hasErrors  "+result.hasErrors() , "TraineeController.java");
+   			new ZLogger("contactTraineeSave", "bindingResult.hasErrors  "+result.getErrorCount() +" All Errors "+result.getAllErrors(), "TraineeController.java");
+   			return "contactTraineeSave";
+   		}
+   		model.addAttribute("ContactTrainee",  new ContactTrainee());
+   		try{
+   			String id=(String) session.getAttribute("userName");
+   			int id1=(int) session.getAttribute("userId");
+   			new ZLogger("contactTraineeSave","userid   "+ id  , "TraineeController.java");
+   			String contactTraineeSave = traineeService.contactTraineeSave(contactTrainee , id);
+   			if(contactTraineeSave.equalsIgnoreCase("created")){
+   				model.addAttribute("created" , "Your request has been sent successfully !!!");
+   			}else{
+   				model.addAttribute("created" , "Oops, something went wrong !!!");
+   			}
+   		}catch(Exception e){
+   			e.printStackTrace();
+   			new ZLogger("contactTraineeSave", "Exception while contactTraineeSave  "+e.getMessage() , "TraineeController.java");
+   		}
+   		return "commonContact";
+   	}
+       
    	@RequestMapping(value = "/internalFeedback", method = RequestMethod.GET)
    	public String internalfeedback( Model model,HttpSession session) {
    		int profileid= (int) session.getAttribute("profileId");

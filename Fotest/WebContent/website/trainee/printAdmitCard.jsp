@@ -58,7 +58,7 @@
 												<td>${listPrintAdmitCard.courseName}</td>
 												<td>${listPrintAdmitCard.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${listPrintAdmitCard.trainingTime}  </td>
 												<td>${listPrintAdmitCard.trainingLab}</td>
-												<td><input type="button" class="form-control login-btn" value="Click Here"></td>
+												<td><a href="admitCard.fssai"><input type="button" class="form-control login-btn" value="Click Here"></a></td>
 											</tr>
 												</ct:forEach>
                                             </table>

@@ -314,16 +314,18 @@ public class TraineeController {
 		return "changePasswordTrainee";
 	}
 	@RequestMapping(value="/contactTraineeSave" , method=RequestMethod.POST)
-	public String contactTrainee1(@ModelAttribute("contactTraineee") ContactTrainee contactTrainee
+	public String contactTrainee1(@ModelAttribute("ContactTraineee") ContactTrainee contactTrainee
 			,BindingResult result , HttpSession session, Model model
 			){
 		if(result.hasErrors()){
 			new ZLogger("contactTraineeSave", "bindingResult.hasErrors  "+result.hasErrors() , "TraineeController.java");
 			new ZLogger("contactTraineeSave", "bindingResult.hasErrors  "+result.getErrorCount() +" All Errors "+result.getAllErrors(), "TraineeController.java");
-			return "contactTrainee";
+			return "contactTraineeSave";
 		}
+		model.addAttribute("ContactTrainee",  new ContactTrainee());
 		try{
-			String id=(String) session.getAttribute("logId");
+			String id=(String) session.getAttribute("userName");
+			int id1=(int) session.getAttribute("userId");
 			new ZLogger("contactTraineeSave","userid   "+ id  , "TraineeController.java");
 			String contactTraineeSave = traineeService.contactTraineeSave(contactTrainee , id);
 			if(contactTraineeSave.equalsIgnoreCase("created")){
@@ -335,7 +337,7 @@ public class TraineeController {
 			e.printStackTrace();
 			new ZLogger("contactTraineeSave", "Exception while contactTraineeSave  "+e.getMessage() , "TraineeController.java");
 		}
-		return "contactTrainee";
+		return "traineeContact";
 	}
 
 
@@ -491,6 +493,7 @@ public class TraineeController {
 		}
 		return "generateCertificatetrainee";
 	}
+	
 	@RequestMapping(value="/assessment-instructions-trainee" , method=RequestMethod.GET)
 	public String assessmentinstructionstrainee(@ModelAttribute("registrationFormTrainer") RegistrationFormTrainer registrationFormTrainer,BindingResult bindingResult, HttpSession session , Model model )
 	{
@@ -511,6 +514,7 @@ public class TraineeController {
 		}
 		return "assessment-instructions-trainee";
 	}
+	
 	@RequestMapping(value="/feedback-form" , method=RequestMethod.GET)
 	public String feedbackform(@ModelAttribute("registrationFormTrainer") RegistrationFormTrainer registrationFormTrainer )
 	{
@@ -1135,16 +1139,27 @@ public String listcertification( Model model){
           //contact us
 
           @RequestMapping(value = "/traineeContact", method = RequestMethod.GET)
-          public String contact(@ModelAttribute("ContactTrainee")  ContactTrainee contactTrainee, Model model , HttpSession session) {
+          public String contact(Model model , HttpSession session) {
           	        Map<String , String> subjectMap = lst.subjectMap;
               		model.addAttribute("subjectMap", subjectMap);
               		 model.addAttribute("ContactTrainee",  new ContactTrainee());
+              		/*if(checkAccess(session))
+            			return "redirect:login.fssai";
+            		try{
+            			Integer userId = (Integer) session.getAttribute("userId");
+            			Integer profileId = (Integer) session.getAttribute("profileId");
+            			String defaultMail = traineeService.getDefaultMailID(userId, profileId);
+            			model.addAttribute("defaultMail", defaultMail);
+            		}catch(Exception e){
+            			e.printStackTrace();
+            			new ZLogger("contactTrainee", "Exception while  contactTrainee "+e.getMessage(), "TraineeController.java");
+            		}
+              		*/
           	return "traineeContact";
 
           }
-          
-          
-
+       
+//trainee certificate
                 @RequestMapping(value = "/certificatetrainee", method = RequestMethod.GET)
         		public String certificatetrainee(Model model , HttpSession session){
         		 int loginId = (int) session.getAttribute("userId");
@@ -1153,6 +1168,17 @@ public String listcertification( Model model){
         				return "certificatetrainee";
         		
         		}
+     
+                //admit card trainee
+                
+                @RequestMapping(value = "/admitCard", method = RequestMethod.GET)
+        		public String admitCard(Model model , HttpSession session){
+        				System.out.println("admitCard");
+        				return "admitCard";
+        		
+        		}
+                
+  
           		
           
     

@@ -9,7 +9,7 @@
 
 
 <%-- <ct:url var="addAction" value="/lcEnrollmentlist.fssai"></ct:url> --%>
-<cf:form action="commonContact" name="myForm" method="POST"
+<cf:form action="commonContactsave.fssai" name="myForm" method="POST"
 	commandName="ContactTrainee" onsubmit="return validateFields();">
 
 	<section>
@@ -109,24 +109,9 @@
 															class="form-control" /> 
                             
                                 </div>
+                                 <input style="margin-top:20px; width:100px;" type="submit" class="form-control login-btn btn" value="Submit" />
                                  
-                                 
-                                    <!-- right side ends -->
-											
-									             <!-- <div class="col-md-4 col-xs-12">  
-                                                      <input type="submit" class="form-control login-btn" value="Show Details"> </a>
-                                                 </div> -->
-                                                 <div class="col-md-4 hidden-xs"></div>
-                                                        <div class="col-md-4 col-xs-12">
-                                                                <input type="button" class="form-control login-btn" value="Submit">
-                                                        </div>
-                                                        <div class="col-md-4 hidden-xs"></div>
-
-													<!-- <input type="submit" id="updatebtn"
-														style="display: none; float: right; margin-right: 122px;"
-														value="Update" class="btn login-btn" /> <input
-														type="submit" id="createbtn" value="Create"
-														class="btn login-btn" /> -->
+                                   
 												</div>
 											</div>
 

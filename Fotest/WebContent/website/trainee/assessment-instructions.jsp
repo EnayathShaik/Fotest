@@ -39,7 +39,7 @@ function OnStart(){
           </div>
         <!-- add the content here for main body --> 
         <!-- timeline  -->
-        <section class="section-form-margin-top">
+       <%--  <section class="section-form-margin-top">
               <div class="container">     
             <!-- login form -->
             <div class="row btm-margin">
@@ -56,11 +56,13 @@ function OnStart(){
                   <div class="col-md-2 hidden-xs"></div>
                 </div>
           </div>
-            </section>
+            </section> --%>
             <section class="section-form-margin-top">
               <div class="container">     
             <!-- login form -->
                 <div class="row">
+                 <h1>Assessment Training</h1>
+                
                        <div class="col-md-12  col-xs-12">
                        <p>The test consists of 60 (5 point Likert scale) items across the Big 5 personality factors</p>
                             <ol>
@@ -85,7 +87,7 @@ function OnStart(){
                     <div class="row">
                        <div class="col-md-12  col-xs-12">
                        <div class="form-group">
-                         <a href="traineeAssessmentOnline.fssai"><input style="width:150px;"  type="button" class="form-control login-btn btn" value="Start Assessment" /></a>
+                         <a href=""><input style="width:150px;"  type="button" class="form-control login-btn btn" value="Start Assessment" /></a>
                         </div>
 
                         </div>
