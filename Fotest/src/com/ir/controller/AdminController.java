@@ -651,13 +651,40 @@ public class AdminController {
 					System.out.println("assessmentQuestions");
 					Map<String , String> assessMap = lst.AssesmentTypeMap;
 					model.addAttribute("assessmentQuestionsForm" , new AssessmentQuestionsForm());
-					//model.addAttribute("listmanageTraining", this.adminService.listManageTraining());
+					model.addAttribute("listmanageTraining", this.adminService.listManageTraining());
 					model.addAttribute("listAssessmentType", assessMap);
 					
 					return "assessmentquestions";
 				}
 				
-
+			 	@RequestMapping(value = "/fotestassessmentquestionssave", method = RequestMethod.POST)
+				public String assessmentQuestionSave(Model model) {
+					System.out.println("assessmentQuestions");
+					Map<String , String> assessMap = lst.AssesmentTypeMap;
+					model.addAttribute("assessmentQuestionsForm" , new AssessmentQuestionsForm());
+					model.addAttribute("listmanageTraining", this.adminService.listManageTraining());
+					model.addAttribute("listAssessmentType", assessMap);
+					
+					return "assessmentquestions";
+				}
+				
+				@RequestMapping(value = "/fotestgetquestions", method = RequestMethod.POST)
+				@ResponseBody
+				public void getQuestions(@RequestParam("data") String data,
+						@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
+						HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
+					new ZLogger("traineeAssessmentCalender", "traineeAssessmentCalender............" + data,
+							"AdminController.java");
+					System.out.println("getquestions");
+					List courseList = adminService.getQuestions(data);
+					PrintWriter out = response.getWriter();
+					Gson g = new Gson();
+					String newList = g.toJson(courseList);
+					System.out.println("newList " + newList);
+					out.write(newList);
+					out.flush();
+			 	}
+			  	
 			
 			// Feedback Master
 
@@ -715,24 +742,7 @@ public class AdminController {
 			 		
 			 		return "generateCertificate";
 			    }
-			 	@RequestMapping(value = "/getquestions", method = RequestMethod.POST)
-				@ResponseBody
-				public void getQuestions(@RequestParam("data") String data,
-						@RequestBody GenerateCourseCertificateForm generateCourseCertificateForm,
-						HttpServletRequest httpServletRequest, HttpServletResponse response) throws IOException {
-					new ZLogger("traineeAssessmentCalender", "traineeAssessmentCalender............" + data,
-							"AdminController.java");
-					System.out.println("getquestions");
-					List courseList = adminService.getQuestions(data);
-					PrintWriter out = response.getWriter();
-					Gson g = new Gson();
-					String newList = g.toJson(courseList);
-					System.out.println("newList " + newList);
-					out.write(newList);
-					out.flush();
-			 	}
-			  	
-			   
+						   
 			    
 				 @RequestMapping(value="/generateCertificatelist" , method = RequestMethod.POST)
 			    public String listgenerateCertificate(@ModelAttribute("GenerateCertificateForm") GenerateCertificateForm p , Model model){

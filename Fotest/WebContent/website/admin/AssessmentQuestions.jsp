@@ -362,13 +362,13 @@ function fotestGetQuestions(){
 	var trainingNameSearch =  $("#trainingName1").val();
 	var total = "assessmentTypeSearch="+assessmentTypeSearch+"-trainingNameSearch="+trainingNameSearch;
 	var result="";
-	alert(total);
+
 	var name1=JSON.stringify({
 		courseType:0
   })
 	$.ajax({
 	type: 'post',
-	url: 'fotestGetQuestions.fssai?data='+ total,
+	url: 'fotestgetquestions.fssai?data='+ total,
 	 contentType : "application/json",
 	 data:name1,
 	async: false, 
@@ -377,10 +377,11 @@ function fotestGetQuestions(){
 	var mainData1 = jQuery.parseJSON(data);
 	var j=1;
 	$('#newTable tr').remove();
-	$('#newTable').append('<tr  class="background-open-vacancies"><th>S.No.</th><th>Training Name</th><th>Assessment Type</th></tr>')
+	$('#newTable').append('<tr  class="background-open-vacancies"><th>S.No.</th><th>Assessment Type</th><th>Training Name</th><th>Question Number</th></tr>')
 	 $.each(mainData1 , function(i , obj)
 	{
-		$('#newTable').append('<tr id="tableRow"><td>'+j++ +'</td><td><a href="" onClick="return editAssessmentQuestion('+obj[0].getAssessmentType+')">'+obj[0]+'</a></td><td>'+obj[1]+'</td></tr>');
+	
+		$('#newTable').append('<tr id="tableRow"><td>'+j++ +'</td><td>'+obj[0]+'</td><td>'+obj[1]+'</td><td><a href="" onClick="">Question '+obj[2]+'</a></td></tr>');
 		
 	}); 
 	}
@@ -398,6 +399,7 @@ function OnStart(){
 	document.getElementById('questionTitle').value = '';
 	document.getElementById('noOfAssessmentQues').value = 0;
 	document.getElementById('correctAnswer').value = '';
+	$("#correctAnswerErr").css("display" , "none");
 
 	}
 	window.onload = OnStart;

@@ -996,7 +996,7 @@ public class AdminDAOImpl implements AdminDAO {
 				Session session = this.sessionFactory.getCurrentSession();
 				/*List<Object[]> list = session.createSQLQuery("select cast('Training' as varchar(20)) as assesmentType , cast('SCCC' as varchar(20)) as trainingName").list();
 				*/
-				Query query = session.createSQLQuery("select cast('Training' as varchar(20)) as assesmentType , cast('SCCC' as varchar(20)) as trainingName");
+				Query query = session.createSQLQuery("select cast('Basic' as varchar(20)) as assesmentType , cast('GHP-GMP' as varchar(20)) as trainingName,cast('1' as varchar(20)) as questionNumber");
 				List list = query.list();
 				System.out.println(list.size());
 				return list;
