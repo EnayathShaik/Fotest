@@ -16,6 +16,7 @@ window.onload = OnStart;
     }
     
     function isAadharCorrect(){
+    	
     	var aadhar=document.getElementById( "AadharNumber" ).value;
     	//dateP,name
     	var DOB = $("#dateP").val();
@@ -29,18 +30,29 @@ window.onload = OnStart;
     	
     	var name = $("#lastName").val();
     	localStorage.setItem("lastName", name);
-    	
+    	var i=0;
     	if(aadhar != ''){
+    		
     		if(aadhar.length == 12){
     			localStorage.setItem("aadhar", aadhar);
     		}else{
+    			i=1;
     			alert('Aadhar Number Must be 12 Digit.');
         		return false;
     		}
     	}else{
+    		i=2;
     		alert('Please enter Aadhar Number');
     		return false;
     	}
+    	 if(i==0){
+     		$('#verifyBtn').on('click',function(ev) {
+ 		        $('#myModal').modal({
+ 		            show: 'true'
+ 		        });
+ 		    });
+     		return true;
+     	} 
     	
     }
 
@@ -151,7 +163,8 @@ window.onload = OnStart;
 
             </div>
             
-               <button type="button" class="btn login-btn" data-toggle="modal" data-target="#myModal" style="margin-left: 300px;">Verify</button>
+            <button type="button" class="btn login-btn" id="verifyBtn"
+												data-toggle="modal"  style="margin-left: 300px;" onclick="return isAadharCorrect();">Verify</button>
 	</fieldset>
 	
 	<!-- modal -->
@@ -165,9 +178,9 @@ window.onload = OnStart;
 											</button>
 											 <p class="text-center" style="color: green;">Aadhar Verified!</p>
                                              <p class="text-center">Your Linked Bank Account : State Bank of India</p>
-										    <div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainee.fssai" onclick="return isAadharCorrect();"class="btn login-btn" style="width: 40%; margin-left: 155px;">Register</a> 
+										    <div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainer.fssai" class="btn login-btn" style="width: 40%;">Register</a> 
              
-                                            </div> 
+            </div> 
 										</div>
 									
 									</div>

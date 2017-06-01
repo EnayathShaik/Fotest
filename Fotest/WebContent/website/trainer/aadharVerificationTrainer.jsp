@@ -5,13 +5,12 @@
 
   <script>
                 function OnStart() {
-                   
+                
                 	flatpickr("#dob" , {
                 		
                 	});	
                 }
                 window.onload = OnStart;
-
             </script>
 <script> 
     function AvoidSpace(event) {
@@ -21,6 +20,7 @@
     }
     
     function isAadharCorrect(){
+    
     	var aadhar=document.getElementById( "AadharNumber" ).value;
     	//dateP,name
     	var DOB = $("#dateP").val();
@@ -32,18 +32,29 @@
     	localStorage.setItem("middleName", middleName);
     	var lastName = $("#lastName").val();
     	localStorage.setItem("lastName", lastName);
-    	
+    	var i=0;
     	if(aadhar != ''){
     		if(aadhar.length == 12){
     			localStorage.setItem("aadhar", aadhar);
-    		}else{
-    			alert('Aadhar Number Must be 12 Digit.');
-        		return false;
     		}
-    	}else{
-    		alert('Please enter Aadhar Number');
-    		return false;
+    		else{
+    			i=1;
+    		 alert('Aadhar Number Must be 12 Digit.');
+    		}
     	}
+    	else{
+    		i=2;
+    		 alert('Please enter Aadhar Number');
+    		 
+    	}
+ 	 if(i==0){
+    		$('#verifyBtn').on('click',function(ev) {
+		        $('#myModal').modal({
+		            show: 'true'
+		        });
+		    });
+    		return true;
+    	} 
     }
 
 </script>
@@ -59,7 +70,7 @@
     <div class="row">
       <div class="col-md-2 hidden-xs"></div>
       <div class="col-md-8  col-xs-12">
-        <h3 class="text-capitalize heading-3-padding" style="font-size: 24px; text-align: left;">Trainee Registration Form</h3>
+        <h3 class="text-capitalize heading-3-padding" style="font-size: 24px; text-align: left;">Trainer Registration Form</h3>
         <!-- personel info Start -->
         <div class="personel-info" style="margin-bottom: 40px;">
           <fieldset>
@@ -148,8 +159,8 @@
                 <cf:input path="lastName" class="form-control" placeholder="Last Name" />
               </div>
 </div>
-           <button type="button" class="btn login-btn"
-												data-toggle="modal" data-target="#myModal" style="margin-left: 300px;">Verify</button>
+           <button type="button" class="btn login-btn" id="verifyBtn"
+												data-toggle="modal"  style="margin-left: 300px;" onclick="return isAadharCorrect();">Verify</button>
 												</fieldset>
 												<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 								aria-labelledby="myModalLabel">
@@ -162,7 +173,7 @@
 											</button>
 											 <p class="text-center" style="color: green;">Aadhar Verified!</p>
                                         <p class="text-center">Your Linked Bank Account : State Bank of India</p>
-										<div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainer.fssai" onclick="return isAadharCorrect();"class="btn login-btn" style="width: 40%;">Register</a> 
+										<div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainer.fssai" class="btn login-btn" style="width: 40%;">Register</a> 
              
             </div> 
 										</div>
