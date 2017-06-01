@@ -1363,7 +1363,7 @@ h3.text-center.text-capitalize {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 } 
 .learning-resources-background{
-    background-color: #dd4108;
+    background-color: #d9041d !important;
     padding:40px;
 }
 .white{
