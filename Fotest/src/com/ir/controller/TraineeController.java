@@ -722,7 +722,7 @@ public class TraineeController {
 				return "redirect:/traineeUserManagementForm.fssai";
 				}
 				else{
-					return "redirect:/mycourses.fssai";
+					return "redirect:/loginProcess.fssai";
 				}
 		
 		
