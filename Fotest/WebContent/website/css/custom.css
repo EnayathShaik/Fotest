@@ -1305,4 +1305,73 @@ th {
         position: relative;
         margin-right: 0;
     }
+     .left-training-box{    
+    background-color: #d9041d;
+    color: #fff;
 }
+h3.text-center.text-capitalize {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.custm-news{
+    margin-top: -15px;
+    padding-bottom: 15px;
+}
+.news-font{
+    font-family: century-gothic;
+    color: #3a3a90;
+    text-transform: uppercase;
+}
+.owl-carousel{
+	display: block;
+	position: relative;
+	width: 100%;
+	-ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper{
+	display: none;
+	position: relative;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-wrapper-outer{
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.owl-carousel .owl-wrapper-outer.autoHeight{
+	-webkit-transition: height 500ms ease-in-out;
+	-moz-transition: height 500ms ease-in-out;
+	-ms-transition: height 500ms ease-in-out;
+	-o-transition: height 500ms ease-in-out;
+	transition: height 500ms ease-in-out;
+}
+	
+.owl-carousel .owl-item{
+	float: left;
+}
+ .owl-controls .owl-page,
+.owl-controls .owl-buttons div{
+	cursor: pointer;
+}
+.owl-controls {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+} 
+.learning-resources-background{
+    background-color: #dd4108;
+    padding:40px;
+}
+.white{
+    color: white;
+}
+}
+.news-blog-background{
+	 background-color: #eee;
+    height: 288px;
+}
+   

@@ -27,8 +27,9 @@ h1 {
     font-weight: bold;
 }
 h2 {
-    font-size: 32px;
-    text-align: center;
+    font-size: 28px;
+        text-align: left;
+    margin-left: 104px;
     font-weight: bold;
     color: #0b0c84 !important;
 }
@@ -440,6 +441,7 @@ input.search-form:hover {
     animation: fadeInUp 300ms linear 300ms both;
 }
 #main-slider .active .animation.animated-item-2 {
+	text-align:center;
     -webkit-animation: fadeInUp 300ms linear 600ms both;
     -moz-animation: fadeInUp 300ms linear 600ms both;
     -o-animation: fadeInUp 300ms linear 600ms both;
@@ -447,6 +449,7 @@ input.search-form:hover {
     animation: fadeInUp 300ms linear 600ms both;
 }
 #main-slider .active .animation.animated-item-3 {
+	text-align:center;
     -webkit-animation: fadeInUp 300ms linear 900ms both;
     -moz-animation: fadeInUp 300ms linear 900ms both;
     -o-animation: fadeInUp 300ms linear 900ms both;
@@ -469,8 +472,8 @@ input.search-form:hover {
 .feature-wrap {
     overflow: hidden;
     background: #fff;
-    border-top: 5px solid #158610;
-    border-bottom: 5px solid #158610;
+   /* border-top: 5px solid #158610;
+    border-bottom: 5px solid #158610;*/
     border-right: 1px solid #eeeeee;
     border-left: 1px solid #eeeeee;
 }
@@ -499,8 +502,8 @@ a:focus {
 }
 .training-box {
     background: url(../images/nearest-training-centre-bg.png) no-repeat;
-    width: 224px;
-    height: 200px;
+    width: 100%;
+    height: auto;
     border: none;
 }
 .training-box .box-heading {
@@ -587,7 +590,7 @@ a:focus {
     border-bottom: 5px solid #e6511a;
 }
 .feature-wrap img {
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 .feature-wrap h3 {
     color: #1c1b1b !important;
@@ -641,12 +644,13 @@ a:focus {
     border: 3px solid #c52d2f;
 }
 .course-heading {
-    color: #fff;
-    background: #000078;
+    color: #000078;
+    /* background: #000078; */
     font-size: 25px;
     padding: 12px;
-    width: 150px;
-    margin-left: 15px;
+    font-weight:bold;
+    width: 246px;
+    margin-left: -52px;
     text-align: center;
 }
 .course-arrow {
