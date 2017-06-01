@@ -190,17 +190,17 @@
 						data-wow-duration="1000ms" data-wow-delay="600ms">
 						<div class="feature-wrap ">
 						<div class="left-training-box" style="color:#fff !important;">
-						<a href="training-general.html" ><img src="website/images/general-training.png" class="img-responsive general-image-train" alt="image" /></a>
-								   <div><a href="training-general.html" > <h3 class="text-center text-capitalize padding-17 fon-dis-siz" style="color:#fff !important;">General Training</h3> </a>
+						<a href="" ><img src="website/images/general-training.png" class="img-responsive general-image-train" alt="image" /></a>
+								   <div><a href="" > <h3 class="text-center text-capitalize padding-17 fon-dis-siz" style="color:#fff !important;">General Training</h3> </a>
 								   </div>
 						</div>
 						</div>
 					</div>
 					    <div class="col-md-3 col-xs-12">
                     <div class="center-training-box sop-tra">
-                        <a href="training-specialized.html" ><img src="website/images/back.jpg" class="img-responsive general-image-train" alt="image" /></a>
+                        <a href="" ><img src="website/images/back.jpg" class="img-responsive general-image-train" alt="image" /></a>
 
-                        <a href="training-specialized.html" > <h3 class="text-center text-capitalize sop-head-three fon-siz-22" style="color:#fff !important;margin:0px;    background-color: #d9041d !important;">Sophisticated Instruments Training</h3> </a>
+                        <a href="" > <h3 class="text-center text-capitalize sop-head-three fon-siz-22" style="color:#fff !important;margin:0px;    background-color: #d9041d !important;">Sophisticated Instruments Training</h3> </a>
 </div>
                 </div>
 					 <div class="col-md-3 col-xs-12 news-blog-background">
@@ -290,8 +290,8 @@
       
         </div>
           <div class="col-md-3 col-xs-12 learning-resources-background">
-                    <div class="text-center"> <a href="learning-resources.html"><img src="website/images/icon workshop image.png" alt="Learning Resources" /></a> </div>
-                    <h3 class="text-center"><a href="learning-resources.html" class="white" >Learning Resources</a></h3>
+                    <div class="text-center"> <a href=""><img src="website/images/icon workshop image.png" alt="Learning Resources" /></a> </div>
+                    <h3 class="text-center"><a href="" class="white" >Learning Resources</a></h3>
                 </div>
         <!--/.col-md-4-->
        
