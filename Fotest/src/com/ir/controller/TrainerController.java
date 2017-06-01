@@ -1,5 +1,8 @@
 package com.ir.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +18,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.ir.form.ApplyForPostForm;
 import com.ir.form.ChangePasswordForm;
@@ -273,7 +278,7 @@ public class TrainerController {
 	}
 
 	@RequestMapping(value = "/PersonalInformationTrainerAdd", method = RequestMethod.POST)
-	public String addPersonalInfoTrainer(
+	public String addPersonalInfoTrainer(@RequestParam CommonsMultipartFile file, 
 			@Valid @ModelAttribute("PersonalInformationTrainer") PersonalInformationTrainer p,
 			BindingResult result, Model model,HttpSession session) {
 		System.out.println("Add PersonalInformationTrainer");
@@ -294,6 +299,30 @@ public class TrainerController {
 			return "PersonalInformationTrainer";
 		}
 	
+		//upload image
+				try{
+					String[] all = personalInformationTrainer.split("&");
+					//String ss = session.getServletContext().getRealPath("").replace("Fssai_E-Learning_System", "Fostac/Trainee");
+					String ss = session.getServletContext().getRealPath("Trainer");
+					File dir = new File(ss);
+					if (!dir.exists())
+						dir.mkdirs();
+				 	  
+			    byte[] bytes = file.getBytes();  
+			    BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(  
+			         new File(ss + File.separator +all[1]+".png")));  
+			    stream.write(bytes);  
+			    stream.flush();  
+			    stream.close();  
+				}catch(Exception e){
+					e.printStackTrace();
+					new ZLogger("saveImage", "Exception while  saveImage "+e.getMessage(), "TrainerController.java");
+				}
+
+				//upload image end
+				
+		
+		
 		if (personalInformationTrainer != null
 				&& !personalInformationTrainer.equalsIgnoreCase("updated")) {
 			String[] all = personalInformationTrainer.split("&");

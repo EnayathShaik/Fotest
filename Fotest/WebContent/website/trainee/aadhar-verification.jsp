@@ -178,7 +178,7 @@ window.onload = OnStart;
 											</button>
 											 <p class="text-center" style="color: green;">Aadhar Verified!</p>
                                              <p class="text-center">Your Linked Bank Account : State Bank of India</p>
-										    <div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainer.fssai" class="btn login-btn" style="width: 40%;">Register</a> 
+										    <div class="col-xs-12" style="margin-top: 20px; text-align: -webkit-center;"> <a href="PersonalInformationTrainee.fssai" class="btn login-btn" style="width: 40%;">Register</a> 
              
             </div> 
 										</div>

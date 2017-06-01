@@ -1,5 +1,8 @@
 package com.ir.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.google.gson.Gson;
 import com.ir.bean.common.IntStringBean;
@@ -1027,6 +1031,8 @@ public class TrainingPartnerController {
 
 			personalInformationTrainingPartner = this.trainingPartnerService
 					.fullDetailTrainingPartner(Integer.parseInt(userId));
+			//System.out.println("Superadmin login_update info "+personalInformationTrainingPartner.getLoginDetails().getLoginId());
+			session.setAttribute("userName", personalInformationTrainingPartner.getLoginDetails().getLoginId());
 			model.addAttribute("PersonalInformationTrainingPartner",
 					personalInformationTrainingPartner);
 			model.addAttribute("isUpdate", "Y");
@@ -1050,7 +1056,7 @@ public class TrainingPartnerController {
 	}
 
 	@RequestMapping(value = "/registerpersonalinformationtrainingpartnerAdd", method = RequestMethod.POST)
-	public String addUpdateTrainingPartner(
+	public String addUpdateTrainingPartner(@RequestParam CommonsMultipartFile file,  
 			@Valid @ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner p,
 			BindingResult result, Model model,HttpSession session) {
 		System.out.println("Add/update PersonalInformationTrainingPartner "+p.getId());
@@ -1070,6 +1076,29 @@ public class TrainingPartnerController {
 			return "registerpersonalinformationtrainingpartner";
 		}
 
+		//upload image
+				try{
+					String[] all = personalInformationTrainingPartner.split("&");
+					//String ss = session.getServletContext().getRealPath("").replace("Fssai_E-Learning_System", "Fostac/Trainee");
+					String ss = session.getServletContext().getRealPath("TrainingPartner");
+					File dir = new File(ss);
+					if (!dir.exists())
+						dir.mkdirs();
+				 	  
+			    byte[] bytes = file.getBytes();  
+			    BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(  
+			         new File(ss + File.separator +all[1]+".png")));  
+			    stream.write(bytes);  
+			    stream.flush();  
+			    stream.close();  
+				}catch(Exception e){
+					e.printStackTrace();
+					new ZLogger("saveImage", "Exception while  saveImage "+e.getMessage(), "TrainingPartnerController.java");
+				}
+
+				//upload image end
+				
+		
 		if (personalInformationTrainingPartner != null
 				&& !personalInformationTrainingPartner
 						.equalsIgnoreCase("updated")) {

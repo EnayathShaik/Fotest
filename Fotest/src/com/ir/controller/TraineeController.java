@@ -694,9 +694,10 @@ public class TraineeController {
 	
 	
 	@RequestMapping(value = "/PersonalInformationTraineeAdd", method = RequestMethod.POST)
-	public String addPersonalInfoTrainee(@Valid @ModelAttribute("PersonalInformationTrainee") PersonalInformationTrainee p , BindingResult result, Model model,HttpSession session){
-		
-		System.out.println("Add PersonalInformationTrainee" + p.getId());
+	public String addPersonalInfoTrainee(@RequestParam CommonsMultipartFile file,  
+			@Valid @ModelAttribute("PersonalInformationTrainee") PersonalInformationTrainee p, BindingResult result ,Model model , HttpServletRequest request,HttpSession session
+) throws Exception {
+		System.out.println("Add PersonalInformationTrainee");
 	     String personalInformationTrainee = null;
 
 		try{
@@ -711,6 +712,32 @@ public class TraineeController {
 			e.printStackTrace();
 		}
 		System.out.println("personalInformationTrainee "+personalInformationTrainee);
+		
+		//upload image
+		try{
+			String[] all = personalInformationTrainee.split("&");
+			//String ss = session.getServletContext().getRealPath("").replace("Fssai_E-Learning_System", "Fostac/Trainee");
+			String ss = session.getServletContext().getRealPath("Trainee");
+			File dir = new File(ss);
+			if (!dir.exists())
+				dir.mkdirs();
+		 	  
+	    byte[] bytes = file.getBytes();  
+	    BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(  
+	         new File(ss + File.separator +all[1]+".png")));  
+	    stream.write(bytes);  
+	    stream.flush();  
+	    stream.close();  
+		}catch(Exception e){
+			e.printStackTrace();
+			new ZLogger("saveImage", "Exception while  saveImage "+e.getMessage(), "TraineeController.java");
+		}
+
+		//upload image end
+		
+		
+		
+		
 		if(personalInformationTrainee != null && ! personalInformationTrainee.equalsIgnoreCase("updated")){
 			String[] all = personalInformationTrainee.split("&");
 			model.addAttribute("id" , all[1]);

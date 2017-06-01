@@ -90,7 +90,7 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 
 <cf:form action="PersonalInformationTrainerAdd.fssai" name="myForm"
 	method="POST" commandName="PersonalInformationTrainer"
-	onsubmit="return validateFields();">
+	onsubmit="return validateFields();"  enctype="multipart/form-data">
 	<section>
 		<div class="container">
 			<div class="row mar-top-aadhar">
@@ -171,13 +171,11 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 
 							<!-- right side -->
 							<div class="col-md-6 col-xs-12" >
-								<div style="margin-left: 200px;">
-								<img  id="blah" src="#" width="200" height="200" class="img-responsive">
-									<!-- <img id="blah" src="#" alt="your image" /> --> 
-									<input type='file' onchange="readURL(this);" />
+							
+								<div class="col-md-12 col-xs-12">
+									<span id="preview"> <img id="myimg" src="website/images/DummyProfile.png" width="200" height="190" /></span>
+									<input class="btn login-btn" type="file" id="file" name="file" />
 								</div>
-
-
 
 								<div class="form-group">
 									<div>
@@ -829,39 +827,36 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 	localStorage.removeItem('lastName');
 </script>
 
-<script type="text/javascript">
-<!--
-	//-->
+	<script>
+		function dispPrev(files) {
 
-	function readURL(input) {
-		
-		if (input.files && input.files[0]) {
-		
 			var reader = new FileReader();
-			
+			var img = new Image();
+
 			reader.onload = function(e) {
-				$('#blah').attr('src', e.target.result).width(150).height(200);
-			};
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
+				img.src = e.target.result;
+				fileSize = Math.round(files.size / 1024);
+				// alert("File size is " + fileSize + " kb");
+				///alert("width=" + this.width + " height=" + this.height);
+				img.onload = function() {
 
-	$("input").change(function(e) {
-		
-		for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
-			
-			var file = e.originalEvent.srcElement.files[i];
-			var img = document.createElement("img");
-			var reader = new FileReader();
-			reader.onloadend = function() {
-				
-			
-				img.src = reader.result;
-				
-			}
-				reader.readAsDataURL(file);
-	
-			  //$("input").after(img);
+					$('#preview')
+							.append(
+									'<img src="' + e.target.result + '" height="190px" width="200px" />');
+				};
+
+			};
+			reader.readAsDataURL(files);
+
 		}
-	});
-</script>
+
+		$(document).ready(function() {
+
+			$("#file").change(function() {
+				$("span").html("");
+				var file = this.files[0];
+				dispPrev(file);
+			});
+
+		});
+	</script>

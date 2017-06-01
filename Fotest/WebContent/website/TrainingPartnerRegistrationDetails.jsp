@@ -43,7 +43,7 @@ window.onload = OnStart; */
 	
 	 }
 	 if(isUpdate !=null && isUpdate== "Y"){
-	 alert("Update Your Details");
+	 alert("Update Your Details "+'${userName}');
 	
 	
 	 $("#state").val('${PersonalInformationTrainingPartner.state}');
@@ -126,14 +126,14 @@ window.onload = OnStart; */
 <cf:form action="registerpersonalinformationtrainingpartnerAdd.fssai"
 	name="myForm" method="POST"
 	commandName="PersonalInformationTrainingPartner"
-	onsubmit="return validateFields();">
+	onsubmit="return validateFields();" enctype="multipart/form-data">
 
 	<section>
 		<div class="container">
 			<div class="row mar-top-aadhar">
 				<div class="col-md-1 col-xs-12"></div>
 
-				<div class="col-md-10  col-xs-12">
+				<div class="col-md-10  col-xs-12" >
 					<h3 class="text-capitalize heading-3-padding">Training Partner
 						Registration Form</h3>
 					<!-- personal information -->
@@ -145,7 +145,7 @@ window.onload = OnStart; */
 
 
 						<!-- left side -->
-						<div class="col-md-6 col-xs-12">
+						<div class="col-md-6 col-xs-12" style="margin-top: 223px;">
 
 
 							<%-- <cf:input type="hidden" path="id"/> --%>
@@ -229,7 +229,19 @@ window.onload = OnStart; */
 
 						<!-- right side -->
 						<div class="col-md-6 col-xs-12">
-
+		<div class="col-md-12 col-xs-12">
+									<span id="preview"> 	
+									<ct:choose>
+									    <ct:when test="${!empty userName}">
+									   <img id="myimg" src='D:/newfosrest/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Fotest/TrainingPartner/${userName}.png' width="200" height="190" />
+									   </ct:when>
+									    <ct:otherwise>
+									<img id="myimg" src="website/images/DummyProfile.png" width="200" height="190" />
+									</ct:otherwise>
+									</ct:choose>
+									</span>
+									<input class="btn login-btn" type="file" id="file" name="file" />
+								</div>
 							<div class="form-group">
 								<div>
 									<ul class="lab-no">
@@ -1033,3 +1045,36 @@ document.getElementById('foodAnalyst_'+i).value=joined;
 
    
    </script>
+<script>
+		function dispPrev(files) {
+
+			var reader = new FileReader();
+			var img = new Image();
+
+			reader.onload = function(e) {
+				img.src = e.target.result;
+				fileSize = Math.round(files.size / 1024);
+				// alert("File size is " + fileSize + " kb");
+				///alert("width=" + this.width + " height=" + this.height);
+				img.onload = function() {
+
+					$('#preview')
+							.append(
+									'<img src="' + e.target.result + '" height="190px" width="200px" />');
+				};
+
+			};
+			reader.readAsDataURL(files);
+
+		}
+
+		$(document).ready(function() {
+
+			$("#file").change(function() {
+				$("span").html("");
+				var file = this.files[0];
+				dispPrev(file);
+			});
+
+		});
+	</script>
