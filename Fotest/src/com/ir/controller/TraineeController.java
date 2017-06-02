@@ -1023,13 +1023,13 @@ public String listtraineeFeedback( Model model){
   return "traineefeedback";
 }
 //online training
-
-@RequestMapping(value="/onlineTraining" , method = { RequestMethod.POST , RequestMethod.GET })
+						
+@RequestMapping(value="/online_training" , method = { RequestMethod.POST , RequestMethod.GET })
 public String listonlineTraining( Model model){
 	  model.addAttribute("OnlineTrainingForm",  new OnlineTrainingForm());
   model.addAttribute("listonlineTraining", this.traineeService.listonlineTraining());
 
-  return "onlineTraining";
+  return "online_training";
 } 
   
 //fotestcertification

@@ -1250,9 +1250,9 @@
 		<put-attribute name="body" value="/website/admin/generateCertificate.jsp" />
 	</definition>
 	
-	<definition name="onlineTraining" extends="base.user.afterLogin">
+	<definition name="online_training" extends="base.user.afterLogin">
 		<put-attribute name="title" value="Fssai E-Learning System" />
-		<put-attribute name="body"  value="/website/trainee/onlineTraining.jsp" />
+		<put-attribute name="body"  value="/website/trainee/Online_Training.jsp" />
 	</definition>
 
 		<definition name="managecoursecurriculum" extends="base.user.afterLogin">

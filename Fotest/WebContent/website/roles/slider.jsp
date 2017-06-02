@@ -45,7 +45,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="onlineTraining.fssai">Online Training</a>
+                            <a href="online_training.fssai">Online Training</a>
                         </li>
                         <li>
                           <a href="commonfeedback.fssai">Feedback</a>

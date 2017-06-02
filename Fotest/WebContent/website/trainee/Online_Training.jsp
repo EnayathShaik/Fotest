@@ -2,9 +2,15 @@
 <%@ taglib prefix="cs" uri="http://www.springframework.org/tags" %> 
 <%@ taglib prefix="ct" uri="http://java.sun.com/jsp/jstl/core" %>
 
+               
+<!--
 
- <cf:form action="commonfeedback.fssai" name="myForm" method="POST"
-	commandName="TrainerFeedbackForm" onsubmit="return validateFields();">
+//-->
+</script>
+
+ <%-- <ct:url var="addAction" value="/TrainingSchedule/add.fssai" ></ct:url> --%>
+<cf:form action="onlineTraining.fssai" name="myForm" method="POST" commandName="OnlineTrainingForm" onsubmit="return validateFields();"> 
+
     <section>
          <%@include file="../roles/top-menu.jsp"%>
     </section>
@@ -30,41 +36,48 @@
                         <div class="row">
 
                                 <div class="col-xs-12">
-                                    <h1></h1>
-                                                            <!-- search Results -->
+                                
+                                 <!-- search Results -->
                                             <div class="col-xs-12 " id="testt">
 
                                                 <!-- table -->
                                                 <div class="row">
                                                     <div class="col-xs-12">
                                                             <fieldset>
-                                           <legend>Feedback</legend>
-                                         <ct:if test="${!empty listFeedback}">
+                                           <legend>Online Training</legend>
+                                         <ct:if test="${!empty listonlineTraining}">
                                             <table id="datatablesfosrest" class="table table-bordered table-responsive">
                                                <thead>
                                                     <tr class="background-open-vacancies">
                                                         <th>S.No.</th>
                                                         <th>Course Name</th>
                                                          <th>Training Date & Time</th>
-                                                          <th>Training LAB Name</th>
-                                                           <th>traineeFeedback</th>
-            
+                                                          <th>Training Lab Name</th>
+                                                           <th>Online Training</th>
+                                                       
+                                                        
                                                     </tr>
                                                 </thead>
                                                 
-                                                <ct:forEach items="${listFeedback}" var="listFeedback" varStatus="loop">
+                                                <ct:forEach items="${listonlineTraining}" var="onlineTraining" varStatus="loop">
                                                 <tr>
-												<td>1</td>
-												<td>${listFeedback.courseName}</td>
-												<td>${listFeedback.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${listFeedback.trainingTime}  </td>
-												<td>${listFeedback.trainingLab}</td>
-												<td><a href="internalFeedback.fssai"><input type="button" class="form-control login-btn" value="Start Here"></a></td>
-											</tr>
+												<td>${loop.count}</td>
+												<td>${onlineTraining.courseName}</td>
+												<td>${onlineTraining.trainingDate} &nbsp;&nbsp;&nbsp;&nbsp;  ${onlineTraining.trainingTime}  </td>
+												<td>${onlineTraining.trainingLab}</td>
+												<td> <input type="button" class="form-control login-btn" value="Start Here"></td>
+                                                 </tr>
 												</ct:forEach>
                                             </table>
                                            </ct:if> 
                                         </fieldset>
-											  </div>
+												
+                                                       
+                                                        
+                                              
+											
+										
+                                                    </div>
                                                 </div>
                                             </div>
                              <!-- search div ends -->
@@ -73,9 +86,8 @@
                 </div>
             </div>
         </div>
-      </div>
     </section>
  
  <input type="hidden" id="idHidden" value="" />
  <input type="hidden" id="hiddenCourseType" value="" />                                             
-   </cf:form></html>
+   </cf:form>
