@@ -41,6 +41,7 @@ import com.ir.form.CreateCalendarForm;
 import com.ir.form.FeedbackMasterForm;
 import com.ir.form.GenerateCourseCertificateForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TraineeAttendanceForm;
 import com.ir.form.TrainerHomePageForm;
@@ -1013,7 +1014,7 @@ public class TrainingPartnerController {
 	// Fotest...............................................................................................................................
 	@RequestMapping(value = "/registerpersonalinformationtrainingpartner", method = RequestMethod.GET)
 	public String personalInformationTrainingPartner(
-			@ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner personalInformationTrainingPartner,
+			@ModelAttribute("PersonalInformationTrainingPartnerForm") PersonalInformationTrainingPartnerForm personalInformationTrainingPartnerForm,
 			HttpServletRequest request, Model model,HttpSession session) {
 		System.out.println("PersonalInformationTrainingPartner");
 		Map<String, String> titleMap = lst.titleMap;
@@ -1029,26 +1030,23 @@ public class TrainingPartnerController {
 		
 		if (userId != null && Integer.parseInt(userId) > 0) {
 
-			personalInformationTrainingPartner = this.trainingPartnerService
-					.fullDetailTrainingPartner(Integer.parseInt(userId));
-			//System.out.println("Superadmin login_update info "+personalInformationTrainingPartner.getLoginDetails().getLoginId());
-			session.setAttribute("userName", personalInformationTrainingPartner.getLoginDetails().getLoginId());
-			model.addAttribute("PersonalInformationTrainingPartner",
-					personalInformationTrainingPartner);
+			personalInformationTrainingPartnerForm = this.trainingPartnerService.fullDetailTrainingPartner(Integer.parseInt(userId));
+			System.out.println("Superadmin login_update info "+personalInformationTrainingPartnerForm.getLoginDetails().getLoginId());
+			session.setAttribute("userName", personalInformationTrainingPartnerForm.getLoginDetails().getLoginId());
+			model.addAttribute("PersonalInformationTrainingPartnerForm",
+					personalInformationTrainingPartnerForm);
 			model.addAttribute("isUpdate", "Y");
 		} else if (session.getAttribute("userId")!=null) {
-	
-			personalInformationTrainingPartner = this.trainingPartnerService
-					.fullDetailTrainingPartner((int)session.getAttribute("userId"));
-			model.addAttribute("PersonalInformationTrainingPartner",
-					personalInformationTrainingPartner);
+			
+			personalInformationTrainingPartnerForm = this.trainingPartnerService.fullDetailTrainingPartner((int)session.getAttribute("userId"));
+			model.addAttribute("PersonalInformationTrainingPartnerForm",personalInformationTrainingPartnerForm);
 			model.addAttribute("isUpdate", "Y");
 		} 
 		
 		else {
-			
-			model.addAttribute("PersonalInformationTrainingPartner",
-					new PersonalInformationTrainingPartner());
+		
+			model.addAttribute("PersonalInformationTrainingPartnerForm",
+					new PersonalInformationTrainingPartnerForm());
 
 		}
 		System.out.println("out of controller");
@@ -1057,7 +1055,7 @@ public class TrainingPartnerController {
 
 	@RequestMapping(value = "/registerpersonalinformationtrainingpartnerAdd", method = RequestMethod.POST)
 	public String addUpdateTrainingPartner(@RequestParam CommonsMultipartFile file,  
-			@Valid @ModelAttribute("PersonalInformationTrainingPartner") PersonalInformationTrainingPartner p,
+			@Valid @ModelAttribute("PersonalInformationTrainingPartnerForm") PersonalInformationTrainingPartnerForm p,
 			BindingResult result, Model model,HttpSession session) {
 		System.out.println("Add/update PersonalInformationTrainingPartner "+p.getId());
 		String personalInformationTrainingPartner= null;

@@ -1122,9 +1122,9 @@ public class AdminDAOImpl implements AdminDAO {
 
 					String join = " inner join loginDetails as ld on pitp.loginDetails = ld.id";
 					String like = " where upper(pitp.firstName) like '" + firstName.toUpperCase() + "' and pitp.middleName like '"
-							+ middleName + "' and pitp.lastName like '" + lastName + "' and " + "pitp.userId like '"
-							+ userId + "' and ld.status like '" + status + "'";
-					String select = "pitp.id,ld.loginid,pitp.firstName,pitp.middleName,pitp.lastName,pitp.userId,pitp.logindetails ,(CASE WHEN ld.isActive = 'Y' THEN 'INACTIVE' ELSE 'ACTIVE' END) as updateStatus,(CASE WHEN ld.isActive = 'Y' THEN 'ACTIVE' ELSE 'INACTIVE' END) as currentstatus ";
+							+ middleName + "' and pitp.lastName like '" + lastName +/* "' and " + "pitp.userId like '"
+							+ userId +*/ "' and ld.status like '" + status + "'";
+					String select = "pitp.id,ld.loginid,pitp.firstName,pitp.middleName,pitp.lastName,pitp.logindetails ,(CASE WHEN ld.isActive = 'Y' THEN 'INACTIVE' ELSE 'ACTIVE' END) as updateStatus,(CASE WHEN ld.isActive = 'Y' THEN 'ACTIVE' ELSE 'INACTIVE' END) as currentstatus ";
 
 					String sql = "Select " + select + "  from PersonalInformationTrainingPartner as pitp " + join + like;
 					Query query = session.createSQLQuery(sql);

@@ -16,11 +16,11 @@ function googleTranslateElementInit() {
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-xs-4">
-          <div class="top-logo"><a href="fostac.fssai"><img class="img-responsive" src="website/images/fosrest-logo.png" alt="Food Safety Training and Certification" title="Food Safety Training and Certification"></a> </div>
+          <div class="top-logo"><a href="fostac.fssai"><img class="img-responsive" src="website/afterLogin/img/fotest-logo.png" alt="Food Safety Training and Certification" title="Food Safety Training and Certification"></a> </div>
         </div>
         <div class="col-sm-6 col-xs-8">
           <div class="social">
-            <div class="social-share"><a href="http://www.fssai.gov.in/" target="_blank"><img class="img-responsive" src="website/images/fosrest-logo.png"></a></div>
+            <div class="social-share"><a href="http://www.fssai.gov.in/" target="_blank"><img class="img-responsive" src="website/afterLogin/img/fssai.png"></a></div>
           </div>
         </div>
       </div>

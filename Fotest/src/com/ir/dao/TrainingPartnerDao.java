@@ -11,6 +11,7 @@ import com.ir.form.ChangePasswordForm;
 import com.ir.form.CreateCalendarForm;
 import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.ViewFeedbackForm;
@@ -113,9 +114,9 @@ public interface TrainingPartnerDao {
 	public List editMTP(String data);
 	
 	public String updateMTP(String data);
-	public String addTrainingPartner(PersonalInformationTrainingPartner p);
+	public String addTrainingPartner(PersonalInformationTrainingPartnerForm p);
 	
-	public String updateTrainingPartner(PersonalInformationTrainingPartner p);
+	public String updateTrainingPartner(PersonalInformationTrainingPartnerForm p);
 	public List<ApplicationStatus> applicationStatusShowDetails(ApplicationStatusForm asf);
 	
 	public List<MarkAttendanceForm> listmarkAttendance(MarkAttendanceForm p);
@@ -123,7 +124,7 @@ public interface TrainingPartnerDao {
 	public List<ViewFeedback> viewFeedbackSearch(ViewFeedbackForm vff);
 	public List<ActivateTrainingOfTraineeForm> listtrainingPartnerActivateTraining(ActivateTrainingOfTraineeForm p);
 	public List<ActivateAssessmentOfTraineeForm> listtrainingPartnerActivateAssessor(ActivateAssessmentOfTraineeForm p);
-	public PersonalInformationTrainingPartner fullDetailTrainingPartner(int lid);
+	public PersonalInformationTrainingPartnerForm fullDetailTrainingPartner(int lid);
 	public void addCalendar(CreateCalendar p);
 
 	public void updateCalendar(CreateCalendar p);

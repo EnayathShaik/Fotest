@@ -46,13 +46,13 @@ window.onload = OnStart; */
 	 alert("Update Your Details "+'${userName}');
 	
 	
-	 $("#state").val('${PersonalInformationTrainingPartner.state}');
+	 $("#state").val('${PersonalInformationTrainingPartnerForm.state}');
 	 $("#state").trigger("change");
 	 window.setTimeout(function() {
-	 $("#district").val('${PersonalInformationTrainingPartner.district}');
+	 $("#district").val('${PersonalInformationTrainingPartnerForm.district}');
 	 $("#district").trigger("change");
 	 window.setTimeout(function() {
-	 $("#closestCity").val('${PersonalInformationTrainingPartner.closestCity}');
+	 $("#closestCity").val('${PersonalInformationTrainingPartnerForm.closestCity}');
 	 }, 1000);
 	 }, 1000);
 	
@@ -60,7 +60,7 @@ window.onload = OnStart; */
 	 $("#captcha").css("display" , "none");
 	 $("#chkunit").css("display" , "none");
 	 $("#check").attr("checked","checked");
-	 var a='${PersonalInformationTrainingPartner.NABLStatus}';
+	 var a='${PersonalInformationTrainingPartnerForm.NABLStatus}';
 	 //alert(a);
 	 if(a!='Yes'){	 
 		// alert("if loop "+a);
@@ -69,12 +69,10 @@ window.onload = OnStart; */
 		
 	 }
 	 
-	 if('${PersonalInformationTrainingPartner.labNotified}'!='Yes')
+	 if('${PersonalInformationTrainingPartnerForm.labNotified}'!='Yes')
 		 $("#regNum").css("display" , "none");
-	 $("#state").val('${PersonalInformationTrainingPartner.state}');
-	 $("#state").val('${PersonalInformationTrainingPartner.state}');
-
- 	 var fields = '${PersonalInformationTrainingPartner.testingFacilities}'.split(',');
+	 $("#state").val('${PersonalInformationTrainingPartnerForm.state}');
+	var fields = '${PersonalInformationTrainingPartnerForm.testingFacilities}'.split(',');
 	for(i=0;i<fields.length;i++){
 		 document.getElementById('testingFacilities_'+fields[i]).checked = true;
 /* 		  $("#GC-MS/MS").attr("checked","checked"); */
@@ -125,7 +123,7 @@ window.onload = OnStart; */
 
 <cf:form action="registerpersonalinformationtrainingpartnerAdd.fssai"
 	name="myForm" method="POST"
-	commandName="PersonalInformationTrainingPartner"
+	commandName="PersonalInformationTrainingPartnerForm"
 	onsubmit="return validateFields();" enctype="multipart/form-data">
 
 	<section>

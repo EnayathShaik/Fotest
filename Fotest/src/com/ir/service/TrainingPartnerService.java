@@ -10,6 +10,7 @@ import com.ir.form.ActivateTrainingOfTraineeForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.CreateCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.ViewFeedbackForm;
@@ -160,8 +161,8 @@ public interface TrainingPartnerService {
 	
 	//Fotest
 
-	public String addTrainingPartner(PersonalInformationTrainingPartner p );
-	public String updateTrainingPartner(PersonalInformationTrainingPartner p );
+	public String addTrainingPartner(PersonalInformationTrainingPartnerForm p );
+	public String updateTrainingPartner(PersonalInformationTrainingPartnerForm p );
 
 
 	public List<ApplicationStatus> applicationStatusShowDetails(ApplicationStatusForm asf);
@@ -193,7 +194,7 @@ public List<CreateCalendarForm> listupdateCalendar(CreateCalendarForm p);
 
 
 
-public PersonalInformationTrainingPartner fullDetailTrainingPartner(int lid);
+public PersonalInformationTrainingPartnerForm fullDetailTrainingPartner(int lid);
 
 public List currentApplicationStatus();
 

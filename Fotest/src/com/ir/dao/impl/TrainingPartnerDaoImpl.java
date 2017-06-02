@@ -31,6 +31,7 @@ import com.ir.form.ChangePasswordForm;
 import com.ir.form.CreateCalendarForm;
 import com.ir.form.ManageTrainingCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.ViewFeedbackForm;
@@ -50,6 +51,7 @@ import com.ir.model.PostVacancyTrainingCenter;
 import com.ir.model.PostVacancyTrainingCenterBean;
 import com.ir.model.RegionMaster;
 import com.ir.model.State;
+import com.ir.model.TP_RegisterationInfoTables;
 import com.ir.model.TraineeDailyAttendance;
 import com.ir.model.TrainingCalendar;
 import com.ir.model.TrainingCalendarHistoryLogs;
@@ -1633,7 +1635,7 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 	///
 
 	@Override
-	public  String updateTrainingPartner(PersonalInformationTrainingPartner p) {
+	public  String updateTrainingPartner(PersonalInformationTrainingPartnerForm p) {
 
 		int id =  p.getId();
 		Session session = sessionFactory.getCurrentSession();
@@ -1671,21 +1673,26 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		//personalInformationTrainingPartner.setUserId(p.getUserId());
 	
 		
-		personalInformationTrainingPartner.setPrevtrainingExp_0(p.getPrevtrainingExp_0());
-		personalInformationTrainingPartner.setPrevtrainingExp_1(p.getPrevtrainingExp_1());
-		personalInformationTrainingPartner.setPrevtrainingExp_2(p.getPrevtrainingExp_2());
-		personalInformationTrainingPartner.setPrevtrainingExp_3(p.getPrevtrainingExp_3());
-		personalInformationTrainingPartner.setPrevtrainingExp_4(p.getPrevtrainingExp_4());
+	TP_RegisterationInfoTables tprt = new TP_RegisterationInfoTables();
+		
+		tprt.setPrevtrainingExp_0(p.getPrevtrainingExp_0());
+		tprt.setPrevtrainingExp_1(p.getPrevtrainingExp_1());
+		tprt.setPrevtrainingExp_2(p.getPrevtrainingExp_2());
+		tprt.setPrevtrainingExp_3(p.getPrevtrainingExp_3());
+		tprt.setPrevtrainingExp_4(p.getPrevtrainingExp_4());
 
-		personalInformationTrainingPartner.setTrainedStaff_0(p.getTrainedStaff_0());
-		personalInformationTrainingPartner.setTrainedStaff_1(p.getTrainedStaff_1());
-		personalInformationTrainingPartner.setTrainedStaff_2(p.getTrainedStaff_2());
-		personalInformationTrainingPartner.setTrainedStaff_3(p.getTrainedStaff_3());
-		personalInformationTrainingPartner.setTrainedStaff_4(p.getTrainedStaff_4());
+		tprt.setTrainedStaff_0(p.getTrainedStaff_0());
+		tprt.setTrainedStaff_1(p.getTrainedStaff_1());
+		tprt.setTrainedStaff_2(p.getTrainedStaff_2());
+		tprt.setTrainedStaff_3(p.getTrainedStaff_3());
+		tprt.setTrainedStaff_4(p.getTrainedStaff_4());
 		
-		personalInformationTrainingPartner.setFoodAnalyst_0(p.getFoodAnalyst_0());
-		personalInformationTrainingPartner.setFoodAnalyst_1(p.getFoodAnalyst_1());
-		
+		tprt.setFoodAnalystAvail(p.getFoodAnalystAvail());
+		tprt.setFoodAnalyst_0(p.getFoodAnalyst_0());
+		tprt.setFoodAnalyst_1(p.getFoodAnalyst_1());
+
+
+		personalInformationTrainingPartner.setTablesinfo(tprt);
 		session.update(personalInformationTrainingPartner);
 		return "updated";
 	}	
@@ -1693,7 +1700,7 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 
 	
 	@Override
-	public  String addTrainingPartner(PersonalInformationTrainingPartner p) {
+	public  String addTrainingPartner(PersonalInformationTrainingPartnerForm p) {
 
 		PasswordGenerator passwordGenerator = new PasswordGenerator(6);
 		char[] pass = passwordGenerator.get();
@@ -1717,9 +1724,59 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		loginDetails.setEncrypted_Password(encryprPassword);
 		loginDetails.setStatus("A");
 		loginDetails.setProfileId(5);
-		p.setLoginDetails(loginDetails);
 		
-		session.save(p);
+		
+		PersonalInformationTrainingPartner tr=new PersonalInformationTrainingPartner();
+		
+		tr.setAvailabiltyAudioVideoRecording(p.getAvailabiltyAudioVideoRecording());
+		tr.setAvailabiltyOfTVProjector(p.getAvailabiltyOfTVProjector());
+		tr.setBiologicalFieldValidity(p.getBiologicalFieldValidity());
+		tr.setChemicalFieldValidity(p.getChemicalFieldValidity());
+		tr.setClosestCity(p.getClosestCity());
+		tr.setContactNumber(p.getContactNumber());
+		tr.setDesignation(p.getDesignation());
+		tr.setDistrict(p.getDistrict());
+		tr.setDob(p.getDob());
+		tr.setEmailId(p.getEmailId());
+		tr.setFirstName(p.getFirstName());
+		tr.setGender(p.getGender());
+		tr.setLabAddressLine1(p.getLabAddressLine1());
+		tr.setLabAddressLine2(p.getLabAddressLine2());
+		tr.setLabName(p.getLabName());
+		tr.setLabNotified(p.getLabNotified());
+		tr.setLastName(p.getLastName());
+		tr.setMiddleName(p.getMiddleName());
+		tr.setNABLStatus(p.getNABLStatus());
+		tr.setPincode(p.getPincode());
+		tr.setRegistrationNumber(p.getRegistrationNumber());
+		tr.setSeatingCapacity(p.getSeatingCapacity());
+		tr.setState(p.getState());
+		tr.setTestingFacilities(p.getTestingFacilities());
+		tr.setTitle(p.getTitle());
+		
+		tr.setLoginDetails(loginDetails);
+		
+		TP_RegisterationInfoTables tprt = new TP_RegisterationInfoTables();
+		
+		tprt.setPrevtrainingExp_0(p.getPrevtrainingExp_0());
+		tprt.setPrevtrainingExp_1(p.getPrevtrainingExp_1());
+		tprt.setPrevtrainingExp_2(p.getPrevtrainingExp_2());
+		tprt.setPrevtrainingExp_3(p.getPrevtrainingExp_3());
+		tprt.setPrevtrainingExp_4(p.getPrevtrainingExp_4());
+
+		tprt.setTrainedStaff_0(p.getTrainedStaff_0());
+		tprt.setTrainedStaff_1(p.getTrainedStaff_1());
+		tprt.setTrainedStaff_2(p.getTrainedStaff_2());
+		tprt.setTrainedStaff_3(p.getTrainedStaff_3());
+		tprt.setTrainedStaff_4(p.getTrainedStaff_4());
+		
+		tprt.setFoodAnalystAvail(p.getFoodAnalystAvail());
+		tprt.setFoodAnalyst_0(p.getFoodAnalyst_0());
+		tprt.setFoodAnalyst_1(p.getFoodAnalyst_1());
+
+
+		tr.setTablesinfo(tprt);
+		session.save(tr);
 		return passwordString+"&"+nextSequenceUserID;
 	}
 
@@ -1857,7 +1914,7 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 						}
 
 						@Override
-						public PersonalInformationTrainingPartner fullDetailTrainingPartner(int loginId) {
+						public PersonalInformationTrainingPartnerForm fullDetailTrainingPartner(int loginId) {
 							// TODO Auto-generated method stub
 							System.out.println("LogintrainingPartnerDAOImpl full detail process start ");
 							Session session = sessionFactory.getCurrentSession();
@@ -1865,11 +1922,56 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 							System.out.println("search " + loginId);
 							Query query = session.createQuery("from PersonalInformationTrainingPartner where loginDetails = '"+ i +"'");
 							List<PersonalInformationTrainingPartner> list = query.list();
-							PersonalInformationTrainingPartner personalInformationTrainingPartner = null;
+							PersonalInformationTrainingPartner tp= null;
 							for(PersonalInformationTrainingPartner j: list){
-								personalInformationTrainingPartner=j;
+								tp=j;
 							}
-							return personalInformationTrainingPartner;
+							PersonalInformationTrainingPartnerForm tpForm= new PersonalInformationTrainingPartnerForm();
+							
+							tpForm.setAvailabiltyAudioVideoRecording(tp.getAvailabiltyAudioVideoRecording());
+							tpForm.setAvailabiltyOfTVProjector(tp.getAvailabiltyOfTVProjector());
+							tpForm.setBiologicalFieldValidity(tp.getBiologicalFieldValidity());
+							tpForm.setChemicalFieldValidity(tp.getChemicalFieldValidity());
+							tpForm.setClosestCity(tp.getClosestCity());
+							tpForm.setContactNumber(tp.getContactNumber());
+							tpForm.setDesignation(tp.getDesignation());
+							tpForm.setDistrict(tp.getDistrict());
+							tpForm.setDob(tp.getDob());
+							tpForm.setEmailId(tp.getEmailId());
+							tpForm.setFirstName(tp.getFirstName());
+							tpForm.setGender(tp.getGender());
+							tpForm.setLabAddressLine1(tp.getLabAddressLine1());
+							tpForm.setLabAddressLine2(tp.getLabAddressLine2());
+							tpForm.setLabName(tp.getLabName());
+							tpForm.setLabNotified(tp.getLabNotified());
+							tpForm.setLastName(tp.getLastName());
+							tpForm.setMiddleName(tp.getMiddleName());
+							tpForm.setNABLStatus(tp.getNABLStatus());
+							tpForm.setPincode(tp.getPincode());
+							tpForm.setRegistrationNumber(tp.getRegistrationNumber());
+							tpForm.setSeatingCapacity(tp.getSeatingCapacity());
+							tpForm.setState(tp.getState());
+							tpForm.setTestingFacilities(tp.getTestingFacilities());
+							tpForm.setTitle(tp.getTitle());
+							tpForm.setLoginDetails(tp.getLoginDetails());
+							tpForm.setPrevtrainingExp_0(tp.getTablesinfo().getPrevtrainingExp_0());
+							tpForm.setPrevtrainingExp_1(tp.getTablesinfo().getPrevtrainingExp_1());
+							tpForm.setPrevtrainingExp_2(tp.getTablesinfo().getPrevtrainingExp_2());
+							tpForm.setPrevtrainingExp_3(tp.getTablesinfo().getPrevtrainingExp_3());
+							tpForm.setPrevtrainingExp_4(tp.getTablesinfo().getPrevtrainingExp_4());
+
+							tpForm.setTrainedStaff_0(tp.getTablesinfo().getTrainedStaff_0());
+							tpForm.setTrainedStaff_1(tp.getTablesinfo().getTrainedStaff_1());
+							tpForm.setTrainedStaff_2(tp.getTablesinfo().getTrainedStaff_2());
+							tpForm.setTrainedStaff_3(tp.getTablesinfo().getTrainedStaff_3());
+							tpForm.setTrainedStaff_4(tp.getTablesinfo().getTrainedStaff_4());
+							
+							tpForm.setFoodAnalyst_0(tp.getTablesinfo().getFoodAnalyst_0());
+							tpForm.setFoodAnalyst_1(tp.getTablesinfo().getFoodAnalyst_1());
+							
+							tpForm.setId(tp.getId());
+							
+							return tpForm;
 						}
 						@Override
 						public void addCalendar(CreateCalendar p) {

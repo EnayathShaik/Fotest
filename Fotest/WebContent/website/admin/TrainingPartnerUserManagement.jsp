@@ -142,12 +142,12 @@
                                                 <th>First Name</th>
                                                 <th>Middle Name</th>
                                                 <th>Last Name</th>
-                                                <th>UserId</th>
+                                                <th>Login Id</th>
                                             </thead>
   <tbody>
                                             
 <ct:forEach var="listValue" items="${searchList}" varStatus="loop"><tr>
-<td><label><a href="registerpersonalinformationtrainingpartner.fssai?userId=${listValue[6]}" value="${listValue[0] }">${listValue[1] }</a></label></td>
+<td><label><a href="registerpersonalinformationtrainingpartner.fssai?userId=${listValue[5]}" value="${listValue[0] }">${listValue[1] }</a></label></td>
 <td><label>${listValue[2] }</label></td>
 <td><label>${listValue[3] }</label></td>	
 <td><label>${listValue[4] }</label></td>

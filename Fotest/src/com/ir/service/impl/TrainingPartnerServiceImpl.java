@@ -18,6 +18,7 @@ import com.ir.form.ApplicationStatusForm;
 import com.ir.form.ChangePasswordForm;
 import com.ir.form.CreateCalendarForm;
 import com.ir.form.MarkAttendanceForm;
+import com.ir.form.PersonalInformationTrainingPartnerForm;
 import com.ir.form.PostVacancyTrainingCenterForm;
 import com.ir.form.TrainingCalendarForm;
 import com.ir.form.ViewFeedbackForm;
@@ -386,14 +387,14 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 
 	@Override
 	@Transactional
-	public String addTrainingPartner(PersonalInformationTrainingPartner p) {
+	public String addTrainingPartner(PersonalInformationTrainingPartnerForm p) {
 		// TODO Auto-generated method stub
 		return trainingPartnerDAO.addTrainingPartner(p);
 		
 	}
 	@Override
 	@Transactional
-	public String updateTrainingPartner(PersonalInformationTrainingPartner p) {
+	public String updateTrainingPartner(PersonalInformationTrainingPartnerForm p) {
 		// TODO Auto-generated method stub
 		return trainingPartnerDAO.updateTrainingPartner(p);
 		
@@ -437,7 +438,7 @@ public class TrainingPartnerServiceImpl implements TrainingPartnerService  {
 
 	@Override
 	@Transactional
-	public PersonalInformationTrainingPartner fullDetailTrainingPartner(int lid) {
+	public PersonalInformationTrainingPartnerForm fullDetailTrainingPartner(int lid) {
 		// TODO Auto-generated method stub
 		return this.trainingPartnerDAO.fullDetailTrainingPartner(lid);
 	}
