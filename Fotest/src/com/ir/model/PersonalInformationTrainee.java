@@ -41,7 +41,7 @@ public class PersonalInformationTrainee {
 	
 	private String logId;
 	
-	private String userId;
+	//private String userId;
 	private String qualificationCategory;
 	private String qsubCategory;
 	private String other1;
@@ -170,13 +170,13 @@ public class PersonalInformationTrainee {
 		this.other2 = other2;
 	}
 
-	public String getUserId() {
+	/*public String getUserId() {
 		return userId;
 	}
 
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
+	}*/
 
 	public String getLogId() {
 		return logId;

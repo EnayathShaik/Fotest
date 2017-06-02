@@ -108,7 +108,7 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 							<!-- left side -->
 							<div class="col-md-6 col-xs-12" style="margin-top: 223px;">
 								<cf:input type="hidden" path="id" />
-								<div class="form-group">
+								<%-- <div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>User Id:</strong></li>
@@ -119,7 +119,7 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 									</div>
 									<cf:input type="text" path="userId" class="form-control"
 										placeholder="userId" />
-								</div>
+								</div> --%>
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">

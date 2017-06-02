@@ -1214,7 +1214,7 @@ public class TraineeDAOImpl implements TraineeDAO {
 		//personalInformationTrainee.setUserType(p.getUserType());
 		personalInformationTrainee.setTitle(p.getTitle());
 		personalInformationTrainee.setAadharNumber(p.getAadharNumber());
-		personalInformationTrainee.setUserId(p.getUserId());
+		//personalInformationTrainee.setUserId(p.getUserId());
 		personalInformationTrainee.setDob(p.getDob());
 		personalInformationTrainee.setGender(p.getGender());
 		personalInformationTrainee.setFirstName(p.getFirstName());
@@ -1285,7 +1285,7 @@ System.out.println("createeeeeeeeeeeeeeeeeeeeeeeeeeeee" +p.getAadharNumber());
 		int id =  p.getId();
 		Session session = sessionFactory.getCurrentSession();
 		PersonalInformationTrainer personalInformationTrainer = (PersonalInformationTrainer) session.load(PersonalInformationTrainer.class, id);
-		personalInformationTrainer.setUserId(p.getUserId());
+		//personalInformationTrainer.setUserId(p.getUserId());
 		personalInformationTrainer.setTitle(p.getTitle());
 		personalInformationTrainer.setDob(p.getDob());
 		personalInformationTrainer.setAadharNumber(p.getAadharNumber());

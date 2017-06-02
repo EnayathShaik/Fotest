@@ -118,7 +118,7 @@
 
 								<cf:input type="hidden" path="id" />
 
-								<div class="form-group">
+								<%-- <div class="form-group">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>User Id:</strong></li>
@@ -131,7 +131,7 @@
 									</div>
 									<cf:input type="text" path="userId" class="form-control"
 										placeholder="User ID" />
-								</div>
+								</div> --%>
 
 								<div class="form-group">
 									<div>

@@ -50,7 +50,7 @@ public class PersonalInformationTrainingPartner {
 	
 	*/
 	//@NotNull @Size(min=1, max=20 , message="* Enter UserId")
-		private String userId;
+	/*	private String userId;*/
 		
 		//private String TPName;
 		
@@ -222,13 +222,13 @@ public class PersonalInformationTrainingPartner {
 			this.testingFacilities = testingFacilities;
 		}
 
-		public String getUserId() {
+		/*public String getUserId() {
 			return userId;
 		}
 
 		public void setUserId(String userId) {
 			this.userId = userId;
-		}
+		}*/
 
 		public String getTitle() {
 			return title;

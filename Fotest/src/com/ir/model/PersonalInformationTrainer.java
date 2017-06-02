@@ -27,7 +27,7 @@ public class PersonalInformationTrainer {
 	private int id;
 	
 
-	private String userId;
+	/*private String userId;*/
 	
 
 	
@@ -196,13 +196,13 @@ private String correspondenceState;
 		return gender;
 	}
 
-	public String getUserId() {
+	/*public String getUserId() {
 		return userId;
 	}
 
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
+	}*/
 
 	public String getMobile1() {
 		return mobile1;

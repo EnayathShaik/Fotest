@@ -150,7 +150,7 @@ window.onload = OnStart; */
 
 							<%-- <cf:input type="hidden" path="id"/> --%>
 
-							<div class="form-group">
+							<%-- <div class="form-group">
 								<div>
 									<ul class="lab-no">
 										<li class="style-li"><strong>User Id:</strong></li>
@@ -163,7 +163,7 @@ window.onload = OnStart; */
 								</div>
 								<cf:input type="text" path="userId" class="form-control" />
 
-							</div>
+							</div> --%>
 
 							<div class="form-group">
 								<div>

@@ -1668,7 +1668,7 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 		personalInformationTrainingPartner.setState(p.getState());
 		personalInformationTrainingPartner.setTestingFacilities(p.getTestingFacilities());
 		personalInformationTrainingPartner.setTitle(p.getTitle());
-		personalInformationTrainingPartner.setUserId(p.getUserId());
+		//personalInformationTrainingPartner.setUserId(p.getUserId());
 	
 		
 		personalInformationTrainingPartner.setPrevtrainingExp_0(p.getPrevtrainingExp_0());
@@ -1709,7 +1709,7 @@ String sql ="select mtp.managetrainingpartnerid as id, mtp.trainingpartnername ,
 			System.out.println( " no such algo exception error catch ");
 		}
 		
-	System.out.println(	p.getUserId() + " ");
+	//System.out.println(	p.getUserId() + " ");
 		String nextSequenceUserID = pageLoadService.getNextCombinationId("TP", "personalinformationtrainingpartner" , "000000");
 		LoginDetails loginDetails = new LoginDetails();
 		loginDetails.setLoginId(nextSequenceUserID);
