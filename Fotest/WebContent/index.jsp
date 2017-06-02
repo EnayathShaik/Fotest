@@ -3,8 +3,7 @@
 
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <html lang="en">
@@ -30,7 +29,7 @@
 <meta http-equiv="description" content="This is my page">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOTEST - Food Testing Staff Training </title>
+<title>FOTEST - Food Testing Staff Training</title>
 <!-- core CSS -->
 <link href="website/css/bootstrap.min.css" rel="stylesheet">
 <link href="website/css/font-awesome.min.css" rel="stylesheet">
@@ -54,7 +53,7 @@
 					<div class="col-sm-6 col-xs-4">
 						<div class="top-logo">
 							<a href="loginProcess.fssai"><img class="img-responsive"
-								src="website/images/fostac-logo.png"
+								src="website/images/fotest-logo.png"
 								alt="Food Safety Training and Certification"
 								title="Food Safety Training and Certification"></a>
 						</div>
@@ -63,7 +62,7 @@
 						<div class="social">
 							<div class="social-share">
 								<a href="http://www.fssai.gov.in/" target="_blank"><img
-									class="img-responsive" src="website/images/fosrest-logo.png"></a>
+									class="img-responsive" src="website/images/fssai.png"></a>
 							</div>
 						</div>
 					</div>
@@ -96,11 +95,11 @@
 								class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Induction Training</a></li>
-             					 <li><a href="#">Refresher Training</a></li>
-             					 <li><a href="#">Training of Trainers</a></li>
-              					<li><a href="#">Specific Training</a></li>
+								<li><a href="#">Refresher Training</a></li>
+								<li><a href="#">Training of Trainers</a></li>
+								<li><a href="#">Specific Training</a></li>
 							</ul></li>
-							<li><a href="#">Useful Links</a></li>
+						<li><a href="#">Useful Links</a></li>
 						<li id="faqpagefssai"><a onclick="setID('faqpagefssai')"
 							href="faq.fssai">FAQ</a></li>
 						<li id="contactpagefssai"><a
@@ -133,8 +132,8 @@
 						<div class="row slide-margin">
 							<div class="col-sm-12">
 								<div class="carousel-content">
-									<h1 class="animation animated-item-1">Food Testing Staff Training
-										</h1>
+									<h1 class="animation animated-item-1">Food Testing Staff
+										Training</h1>
 									<!-- <h3 class="animation animated-item-3">WE ARE LOOKING FOR
 										YOU!</h3> -->
 									<h2 class="animation animated-item-2">REGISTER HERE</h2>
@@ -158,18 +157,18 @@
 									<div class="col-md-4 col-xs-12" align="center">
 										<a href="registerpersonalinformationtrainingpartner.fssai"><img
 											src="website/images/trainingpartner.png"></a>
-								</div>
-								<div class="col-md-3 xs-hidden"></div>
+									</div>
+									<div class="col-md-3 xs-hidden"></div>
 
+								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
-				
+				<!--/.carousel-inner-->
 			</div>
-			<!--/.carousel-inner-->
-		</div>
-		<!--/.carousel-->
+			<!--/.carousel-->
 		</div>
 	</section>
 	<!--/#main-slider-->
@@ -186,119 +185,162 @@
 			</div>
 			<div class="row">
 				<div class="features">
-					  <div class="col-md-3 col-sm-4 wow fadeInDown"
+					<div class="col-md-3 col-sm-4 wow fadeInDown"
 						data-wow-duration="1000ms" data-wow-delay="600ms">
 						<div class="feature-wrap ">
-						<div class="left-training-box" style="color:#fff !important;">
-						<a href="" ><img src="website/images/general-training.png" class="img-responsive general-image-train" alt="image" /></a>
-								   <div><a href="" > <h3 class="text-center text-capitalize padding-17 fon-dis-siz" style="color:#fff !important;">General Training</h3> </a>
-								   </div>
-						</div>
+							<div class="left-training-box" style="color: #fff !important;">
+								<a href=""><img src="website/images/general-training.png"
+									class="img-responsive general-image-train" alt="image" /></a>
+								<div>
+									<a href="">
+										<h3 class="text-center text-capitalize padding-17 fon-dis-siz"
+											style="color: #fff !important;">General Training</h3>
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
-					    <div class="col-md-3 col-xs-12">
-                    <div class="center-training-box sop-tra">
-                        <a href="" ><img src="website/images/back.jpg" class="img-responsive general-image-train" alt="image" /></a>
+					<div class="col-md-3 col-xs-12">
+						<div class="center-training-box sop-tra">
+							<a href=""><img src="website/images/back.jpg"
+								class="img-responsive general-image-train" alt="image" /></a> <a
+								href="">
+								<h3
+									class="text-center text-capitalize sop-head-three fon-siz-22"
+									style="color: #fff !important; margin: 0px; background-color: #d9041d !important;">Sophisticated
+									Instruments Training</h3>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-12 news-blog-background">
+						<div class="cust-pad-blog img-center-blog">
+							<a href="#"><img src="website/images/blog.png"
+								class="img-responsive" alt="blog image" /></a>
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-12">
+						<div class="custm-news">
+							<h2 class="text-capitalize text-center news-font">News &
+								Updates</h2>
+						</div>
+						<div id="news" class="owl-carousel">
+							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+								<!-- Indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#myCarousel" data-slide-to="1"></li>
+									<li data-target="#myCarousel" data-slide-to="2"></li>
+								</ol>
 
-                        <a href="" > <h3 class="text-center text-capitalize sop-head-three fon-siz-22" style="color:#fff !important;margin:0px;    background-color: #d9041d !important;">Sophisticated Instruments Training</h3> </a>
-</div>
-                </div>
-					 <div class="col-md-3 col-xs-12 news-blog-background">
-                    <div class="cust-pad-blog img-center-blog">
-                        <a href="#" ><img src="website/images/blog.png" class="img-responsive" alt="blog image" /></a>
-                    </div>
-                </div>
-                 <div class="col-md-3 col-xs-12">
-                    <div class="custm-news">
-                        <h2 class="text-capitalize text-center news-font">News & Updates</h2>
-                    </div>
-                    <div id="news" class="owl-carousel">
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+								<!-- Wrapper for slides -->
+								<div class="carousel-inner">
+									<div class="item active">
+										<p class="txt-ellip">FSSAI vide Gazette notification
+											number S.O 2428 (E) dated the 13th July, 2016 notified 112
+											NABL accredited food testing laboratories for the purpose of
+											carrying out Analysis of samples taken under Section 47 of
+											the Food Safety and Standard Act, 2006.</p>
+										<div class="text-center">
+											<a href="#" class="btn btn-default">Read More</a>
+										</div>
+									</div>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <p class="txt-ellip">FSSAI vide Gazette notification number S.O 2428 (E) dated the 13th July, 2016 notified 112 NABL accredited food testing laboratories for the purpose of carrying out Analysis of samples taken under Section 47 of the Food Safety and Standard Act, 2006.</p>
-                            <div class="text-center"><a href="#" class="btn btn-default" >Read More</a></div>
-    </div>
+									<div class="item">
+										<p class="txt-ellip">Foods & Examinations proposed to be
+											held in December 2016.</p>
+										<div class="text-center">
+											<a href="#" class="btn btn-default">Read More</a>
+										</div>
+									</div>
 
-    <div class="item">
-       <p class="txt-ellip">Foods & Examinations proposed to be held in December 2016.</p>
-                            <div class="text-center"><a href="#" class="btn btn-default" >Read More</a></div>
-    </div>
+									<div class="item">
+										<p class="txt-ellip">More Intimation Coming Soon.</p>
+										<div class="text-center">
+											<a href="#" class="btn btn-default">Read More</a>
+										</div>
+									</div>
+								</div>
 
-    <div class="item">
-       <p class="txt-ellip">More Intimation Coming Soon.</p>
-                            <div class="text-center"><a href="#" class="btn btn-default" >Read More</a></div>
-    </div>
-  </div>
+								<!-- Left and right controls -->
 
-  <!-- Left and right controls -->
- 
-</div>
+							</div>
 
+						</div>
+						<!--/.services-->
+					</div>
+					<!--/.row-->
 				</div>
-				<!--/.services-->
+				<!--/.container-->
 			</div>
-			<!--/.row-->
-		</div>
-		<!--/.container-->
-		</div>
 	</section>
 
-<header class="header-spacing">
-<h2 class="text-capitalization">Photo Gallery</h2></header>
-	<section id="feature" style="margin:0px; padding:0px;" >
-  <div class="container">
-    <div class="row">
-      <div class="features">
-        <div class="col-md-5 col-xs-12 wow fadeInDown btm-space" data-wow-duration="1000ms" data-wow-delay="600ms">
-         
-          <div id="myCarousel1" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators hidden">
-    <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel1" data-slide-to="1"></li>
-    <li data-target="#myCarousel1" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-     <div class="item"> <a href="website/images/photo-gallery.jpg" class="swipebox" title="Event Name"> <img src="website/images/photo-gallery.jpg" alt="image"> </a> </div>
-      </div>
-
-    <div class="item">
-        <a href="website/images/photo-gallery.jpg" class="swipebox" title="Event Name"> <img src="website/images/photo-gallery.jpg" alt="image"> </a> </div>
-   
-
-   <div class="item"> <a href="website/images/photo-gallery.jpg" class="swipebox" title="Event Name"> <img src="website/images/photo-gallery.jpg" alt="image"> </a> 
-   </div>
-   
-   
-  </div>
-
-  <!-- Left and right controls -->
- 
-</div>
-      
-        </div>
-          <div class="col-md-3 col-xs-12 learning-resources-background">
-                    <div class="text-center"> <a href=""><img src="website/images/icon workshop image.png" alt="Learning Resources" /></a> </div>
-                    <h3 class="text-center"><a href="" class="white" >Learning Resources</a></h3>
-                </div>
-        <!--/.col-md-4-->
-       
-					 <div class="col-md-4 col-xs-12 wow fadeInDown"
+	<header class="header-spacing">
+		<h2 class="text-capitalization">Photo Gallery</h2>
+	</header>
+	<section id="feature" style="margin: 0px; padding: 0px;">
+		<div class="container">
+			<div class="row">
+				<div class="features">
+					<div class="col-md-5 col-xs-12 wow fadeInDown btm-space"
 						data-wow-duration="1000ms" data-wow-delay="600ms">
-						
-					
+
+						<div id="myCarousel1" class="carousel slide" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators hidden">
+								<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+								<li data-target="#myCarousel1" data-slide-to="1"></li>
+								<li data-target="#myCarousel1" data-slide-to="2"></li>
+							</ol>
+
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item active">
+									<div class="item">
+										<a href="website/images/photo-gallery.jpg" class="swipebox"
+											title="Event Name"> <img
+											src="website/images/photo-gallery.jpg" alt="image">
+										</a>
+									</div>
+								</div>
+
+								<div class="item">
+									<a href="website/images/photo-gallery.jpg" class="swipebox"
+										title="Event Name"> <img
+										src="website/images/photo-gallery.jpg" alt="image">
+									</a>
+								</div>
+
+
+								<div class="item">
+									<a href="website/images/photo-gallery.jpg" class="swipebox"
+										title="Event Name"> <img
+										src="website/images/photo-gallery.jpg" alt="image">
+									</a>
+								</div>
+
+
+							</div>
+
+							<!-- Left and right controls -->
+
+						</div>
+
+					</div>
+					<div class="col-md-3 col-xs-12 learning-resources-background">
+						<div class="text-center">
+							<a href=""><img src="website/images/icon workshop image.png"
+								alt="Learning Resources" /></a>
+						</div>
+						<h3 class="text-center">
+							<a href="" class="white">Learning Resources</a>
+						</h3>
+					</div>
+					<!--/.col-md-4-->
+
+					<div class="col-md-4 col-xs-12 wow fadeInDown"
+						data-wow-duration="1000ms" data-wow-delay="600ms">
+
+
 						<div class="page">
 							<div
 								style="width: 100%; max-width: 600px; display: inline-block;">
@@ -307,20 +349,19 @@
 						</div>
 
 
-					</div> 
-					<div class="col-md-3 col-xs-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-        
-        </div>
-        <!--/.col-md-4--> 
-        
-      </div>
-      <!--/.services--> 
-    </div>
-    <!--/.row--> 
-  </div>
-  <!--/.container--> 
-</section>
- <section id="feature" style="display:none;">
+					</div>
+					<div class="col-md-3 col-xs-12 wow fadeInDown"
+						data-wow-duration="1000ms" data-wow-delay="600ms"></div>
+					<!--/.col-md-4-->
+
+				</div>
+				<!--/.services-->
+			</div>
+			<!--/.row-->
+		</div>
+		<!--/.container-->
+	</section>
+	<section id="feature" style="display: none;">
 		<div class="container">
 			<div class="row">
 				<div class="features">
@@ -355,7 +396,7 @@
 
 					<!--/.col-md-4-->
 
-					 <div class="col-md-3 col-sm-4 wow fadeInDown"
+					<div class="col-md-3 col-sm-4 wow fadeInDown"
 						data-wow-duration="1000ms" data-wow-delay="600ms">
 						<div class="feature-wrap training-box center-block">
 							<h3 class="box-heading">Find your Nearest Training Centre</h3>
@@ -363,7 +404,7 @@
 								<jsp:include page="website/website/index.html" />
 							</div>
 						</div>
-					</div> 
+					</div>
 					<!--/.col-md-4-->
 
 				</div>
@@ -372,7 +413,7 @@
 			<!--/.row-->
 		</div>
 		<!--/.container-->
-	</section> 
+	</section>
 
 	<section>
 		<div class="container">
@@ -449,7 +490,7 @@
                 </div>
              
             </li> -->
-							
+
 							<li class="pd-top"><a href="website/android/app-release.apk"
 								target="_blank"><img src="website/images/android.png"
 									width="30" height="30"></a>&nbsp; <a href="#" target="_blank"><img
@@ -514,16 +555,15 @@
 								xmlUrl : 'website/js/events.xml'
 							});
 
-							 $('#mycalendar2').monthly({
-						            mode: 'picker',
-						            target: '#mytarget',
-						            setWidth: '250px',
-						            startHidden: true,
-						            showTrigger: '#mytarget',
-						            stylePast: true,
-						            disablePast: true
-						        });
-
+							$('#mycalendar2').monthly({
+								mode : 'picker',
+								target : '#mytarget',
+								setWidth : '250px',
+								startHidden : true,
+								showTrigger : '#mytarget',
+								stylePast : true,
+								disablePast : true
+							});
 
 							switch (window.location.protocol) {
 							case 'http:':
@@ -554,21 +594,22 @@
 
 
 </html>
-   <script src="js/jquery-2.1.0.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    <!-- carousel -->
-    <script src="js/owl.carousel.js"></script>
+<script src="js/jquery-2.1.0.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/aos.js"></script>
+<script>
+	AOS.init();
+</script>
+<!-- carousel -->
+<script src="js/owl.carousel.js"></script>
 
-    <!-- gallery -->
-    <script src="js/jquery.swipebox.js"></script>
-    <script type="text/javascript">
-    ; (function ($) {
+<!-- gallery -->
+<script src="js/jquery.swipebox.js"></script>
+<script type="text/javascript">
+	;
+	(function($) {
 
-        $('.swipebox').swipebox();
+		$('.swipebox').swipebox();
 
-    })(jQuery);
-    </script>
+	})(jQuery);
+</script>

@@ -31,11 +31,12 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6 fostac-logo-left">
-                            <a href="#"><img src="website/afterLogin/img/fosrest-logo.png" class="img-responsive fostac-logo-top-padding" alt="logo" /></a>
+                            <a href="#"><img src="website/afterLogin/img/fotest-logo.png" class="img-responsive fostac-logo-top-padding" alt="logo" /></a>
                         </div>
 
                         <div class="col-xs-6 fssai-logo-right">
-                            <a href="#"><img src="website/afterLogin/img/fssai-logo.png" class="img-responsive pull-right" alt="logo" /></a>
+                           <a href="#"><img src="website/afterLogin/img/fssai.png" class="img-responsive pull-right" alt="logo" style="margin-right: 100px;
+    height: 65px;" /></a>
                         </div>
                     </div>
                     <!--<div>

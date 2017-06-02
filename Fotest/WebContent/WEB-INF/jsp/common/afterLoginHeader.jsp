@@ -18,12 +18,13 @@ function googleTranslateElementInit() {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6 fostac-logo-left">
-                            <a href="#"><img src="website/afterLogin/img/fosrest-logo.png" class="img-responsive fostac-logo-top-padding" alt="logo" /></a>
+                            <a href="#"><img src="website/afterLogin/img/fotest-logo.png" class="img-responsive fostac-logo-top-padding" alt="logo" /></a>
                         </div>
-                       <%--  <div class="col-xs-6 fssai-logo-right">
-							<label id="uniqueId" style="margin-top:20px; font-size: 20px; font-weight: bold;">${loginUserS.loginDetails.loginId}</label>
-                            <a href="#"><img src="website/afterLogin/img/fssai-logo.png" class="img-responsive pull-right" alt="logo" /></a>
-                        </div> --%>
+                        <div class="col-xs-6 fssai-logo-right">
+							<label id="uniqueId" style="margin-top:20px; font-size: 20px; font-weight: bold; ">${loginUserS.loginDetails.loginId}</label>
+                            <a href="#"><img src="website/afterLogin/img/fssai.png" class="img-responsive pull-right" alt="logo" style="margin-right: 100px;
+    height: 65px;" /></a>
+                        </div>
                     </div>
 
                     <!--<div>
@@ -35,7 +36,7 @@ function googleTranslateElementInit() {
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><img src="img/fssai-logo.png" class="img-responsive" alt="logo" /></a></li>
                         </ul>
-                    </div>-->
+                    </div>
                     <!--/.nav-collapse -->
                 </div>
             </nav>
