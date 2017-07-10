@@ -30,6 +30,13 @@ window.onload = OnStart;
     	
     	var name = $("#lastName").val();
     	localStorage.setItem("lastName", name);
+    	
+    	if(document.getElementById('123').checked)
+    		var gender = $("#123").val();
+    	else
+    		var gender = $("#456").val();
+    
+    	localStorage.setItem("gender", gender);
     	var i=0;
     	if(aadhar != ''){
     		
@@ -46,14 +53,13 @@ window.onload = OnStart;
     		return false;
     	}
     	 if(i==0){
-     		$('#verifyBtn').on('click',function(ev) {
+     		//$('#verifyBtn').on('click',function(ev) {
  		        $('#myModal').modal({
  		            show: 'true'
  		        });
- 		    });
+ 		   // }); 
      		return true;
      	} 
-    	
     }
 
 </script>
@@ -117,8 +123,8 @@ window.onload = OnStart;
 				</ul>
 				</div>
 				<label class="radio-inline">
-				<cf:radiobutton path="gender" value="M" checked="true" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				 <cf:radiobutton path="gender" value="F" />Female
+				<cf:radiobutton path="gender" value="M" checked="true" id="123"/>Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 <cf:radiobutton path="gender" value="F" id="456" />Female
 				</label>
 				</div>
 
@@ -164,7 +170,7 @@ window.onload = OnStart;
             </div>
             
             <button type="button" class="btn login-btn" id="verifyBtn"
-												data-toggle="modal"  style="margin-left: 300px;" onclick="return isAadharCorrect();">Verify</button>
+												data-toggle="modal"  style="margin-left: 300px;" onclick="isAadharCorrect(); ">Verify</button>
 	</fieldset>
 	
 	<!-- modal -->

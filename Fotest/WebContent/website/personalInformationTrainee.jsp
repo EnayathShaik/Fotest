@@ -23,7 +23,8 @@
 	}
 
 	function OnStart() {
-
+		$("#other1").css("display", "none");
+		$("#other2").css("display", "none");
 		var isUpdate = '${isUpdate}';
 		/*  var profileId = '${profileId}';
 		 if(profileId ==2 || profileId == 1 ){ 
@@ -179,9 +180,9 @@
 											<li class="style-li error-red">*</li>
 										</ul>
 									</div>
-									<cf:radiobutton path="gender" value="M" checked="true" />
+									<cf:radiobutton path="gender" value="M" checked="true" id="Mgenderid"  />
 									Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<cf:radiobutton path="gender" value="F" />
+									<cf:radiobutton path="gender" value="F" id="Fgenderid" />
 									Female
 								</div>
 
@@ -206,7 +207,7 @@
 											<li class="style-li"><strong>Title:</strong></li>
 											<!--  valid -->
 											<li id="titleErr" style="display: none;"
-												class="style-li error-red">Title can not be blank.</li>
+												class="style-li error-red">Select Title.</li>
 											<li class="style-li error-red">*</li>
 										</ul>
 									</div>
@@ -434,23 +435,24 @@
 										</ul>
 									</div>
 
-									<cf:select path="qualificationCategory" class="form-control">
+									<cf:select path="qualificationCategory" class="form-control" onchange="Other1Hide();">
 										<cf:option value="" label="Select Qualification Category" />
 										<cf:options items="${QualCategoryMap}" />
 									</cf:select>
 								</div>
 
-								<div class="form-group">
+								<div class="form-group" id="other1">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Others:</strong></li>
 											<li class="style-li error-red"></li>
+											
 											<!--  valid -->
-											<!--  <li id="other1Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> -->
+											  <li id="other1Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> 
 
 										</ul>
 									</div>
-									<cf:input type="text" path="other1" class="form-control"
+									<cf:input type="text" path="other1" class="form-control" id="other1id"
 										placeholder="Others" />
 								</div>
 							</div>
@@ -471,23 +473,23 @@
 										</ul>
 									</div>
 
-									<cf:select path="qsubCategory" class="form-control">
+									<cf:select path="qsubCategory" class="form-control" onchange="Other2Hide();">
 										<cf:option value="" label="Select Qualification sub Category" />
 										<cf:options items="${SubQualCategoryMap}" />
 									</cf:select>
 								</div>
 
-								<div class="form-group">
+								<div class="form-group" id="other2">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Others:</strong></li>
 											<li class="style-li error-red"></li>
 											<!--  valid -->
-											<!--  <li id="other2Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> -->
+											 <li id="other2Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> 
 
 										</ul>
 									</div>
-									<cf:input type="text" path="other2" class="form-control"
+									<cf:input type="text" path="other2" class="form-control" id="other2id"
 										placeholder="Others" />
 								</div>
 
@@ -739,10 +741,8 @@
 	<script>
 		function validateFields() {
 			var isUpdate = '${isUpdate}';
-
 			//alert($("#userType").val());
-			// alert($("#holidayReason").val());
-			$("#userIdErr").css("display", "none");
+			
 			$("#dobErr").css("display", "none");
 			$("#AadharNumberErr").css("display", "none");
 			$("#titleErr").css("display", "none");
@@ -756,6 +756,7 @@
 			$("#EmailErr").css("display", "none");
 			$("#mobileErr").css("display", "none");
 			$("#qsubCategoryErr").css("display", "none");
+			$("#other1Err").css("display" , "none");
 			$("#qualificationCategoryErr").css("display", "none");
 			$("#expInYearErr").css("display", "none");
 			$("#expInMonthErr").css("display", "none");
@@ -771,17 +772,12 @@
 			$("#ResidentialLine1Err").css("display", "none");
 
 			 
-			   if($("#userId").val() == ''){
-			 
-			$("#userIdErr").css("display" , "block");
-			return false;
-			} 
-			if($("#dob").val() == ''){
+			   
+			 if($("#dateP").val() == ''){
 			 $("#dobErr").css("display" , "block");
 			return false;
 			}
 			   if($("#AadharNumber").val().match(/^[0-9]{12}$/) == null){
-			/* alert("Please Enter 12 digit Adhar number"); */
 			 $("#AadharNumberErr").css("display" , "block");
 			  return false;
 			}
@@ -789,15 +785,15 @@
 			 $("#titleErr").css("display" , "block");
 				return false; 
 			}
-			if($("#firstName").val() == ''){
+			if($("#traineeFirstName").val() == ''){
 			 $("#firstNameErr").css("display" , "block");
 			return false; 
 			}
-			if($("#MiddleName").val() == ''){
+			/* if($("#MiddleName").val() == ''){
 			 $("#MiddleNameErr").css("display" , "block");
 			return false; 
-			}  
-			if($("#LastName").val() == ''){
+			}   */
+			if($("#traineeLastName").val() == ''){
 			 $("#LastNameErr").css("display" , "block");
 			return false; 
 			} 
@@ -832,6 +828,26 @@
 			 $("#qualificationCategoryErr").css("display" , "block");
 				return false;
 			}
+			
+			if(document.getElementById('qualificationCategory').value=="Others"){
+				if($("#other1id").val() == 0){
+					 $("#other1Err").css("display" , "block");
+			return false;
+					}
+			}
+			
+			
+		
+			if(document.getElementById('qsubCategory').value=="Others"){
+			if($("#other2id").val() == 0){
+				$("#other2Err").css("display" , "block");
+					return false;
+					}
+			}
+			
+			
+			
+			
 			if($("#qsubCategory").val() == 0){
 			 $("#qsubCategoryErr").css("display" , "block");
 				return false;
@@ -922,6 +938,15 @@
 		var lastName = localStorage.getItem('lastName');
 		document.getElementById("traineeLastName").value = lastName;
 		localStorage.removeItem('lastName');
+		
+		var gender = localStorage.getItem('gender');
+		if(gender=='F'){
+		document.getElementById("Fgenderid").checked = true;
+		}
+		else{
+		document.getElementById("Mgenderid").checked = true;
+		}
+		localStorage.removeItem('gender');
 	</script>
 
 	<script>
@@ -956,4 +981,25 @@
 			});
 
 		});
+		
+		
+		
+		
+		
+		
+		
+		function Other1Hide() {
+			var a = document.getElementById('qualificationCategory').value;
+		if(a=="Others"){
+	$("#other1").css("display", "block");
+			}
+			
+		}
+		function Other2Hide() {
+			var a = document.getElementById('qsubCategory').value;
+		if(a=="Others"){
+				$("#other2").css("display", "block");
+			}
+			
+		}
 	</script>

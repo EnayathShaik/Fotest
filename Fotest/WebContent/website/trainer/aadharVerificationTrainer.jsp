@@ -32,6 +32,12 @@
     	localStorage.setItem("middleName", middleName);
     	var lastName = $("#lastName").val();
     	localStorage.setItem("lastName", lastName);
+    	if(document.getElementById('123').checked)
+    		var gender = $("#123").val();
+    	else
+    		var gender = $("#456").val();
+    
+    	localStorage.setItem("gender", gender);
     	var i=0;
     	if(aadhar != ''){
     		if(aadhar.length == 12){
@@ -48,11 +54,11 @@
     		 
     	}
  	 if(i==0){
-    		$('#verifyBtn').on('click',function(ev) {
+    		//$('#verifyBtn').on('click',function(ev) {
 		        $('#myModal').modal({
 		            show: 'true'
 		        });
-		    });
+		   // });
     		return true;
     	} 
     }
@@ -115,8 +121,8 @@
 </ul>
 </div>
 <label class="radio-inline">
-<cf:radiobutton path="gender" value="M" checked="true" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <cf:radiobutton path="gender" value="F" />Female
+<cf:radiobutton path="gender" value="M" checked="true" id="123" />Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <cf:radiobutton path="gender" value="F" id="456"/>Female
 </label>
 </div>
 

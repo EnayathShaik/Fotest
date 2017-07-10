@@ -30,7 +30,8 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 	}
 
 	function OnStart() {
-
+		$("#others1").css("display", "none");
+		$("#others2").css("display", "none");
 		var isUpdate = '${isUpdate}';
 		if (isUpdate != null && isUpdate == "Y") {
 			$("#firstName").val('${PersonalInformationTrainer.firstName}');
@@ -183,7 +184,7 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 											<li class="style-li"><strong>Title:</strong></li>
 											<li class="style-li error-red">*</li>
 											<li id="titleErr" style="display: none;"
-												class="style-li error-red">Please Select Title.</li>
+												class="style-li error-red"> Select Title.</li>
 										</ul>
 									</div>
 									<cf:select path="title" class="form-control">
@@ -241,9 +242,9 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 											<li class="style-li error-red">*</li>
 										</ul>
 									</div>
-									<cf:radiobutton path="gender" value="M" checked="true" />
+									<cf:radiobutton path="gender" value="M" checked="true" id="Fgenderid" />
 									Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<cf:radiobutton path="gender" value="F" />
+									<cf:radiobutton path="gender" value="F" id="Mgenderid" />
 									Female
 								</div>
 							
@@ -390,20 +391,21 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 										</ul>
 									</div>
 
-									<cf:select path="qualCategory" class="form-control">
+									<cf:select path="qualCategory" class="form-control" onchange="Other1Hide(); return false;">
 										<cf:option value="0" label="Select Qualification Category" />
 										<cf:options items="${QualCategoryMap}" />
 									</cf:select>
 								</div>
 
-								<div class="form-group">
+								<div class="form-group" id="others1">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Others:</strong></li>
+											 <li id="other1Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> 
 										</ul>
 									</div>
-									<cf:input type="text" path="others1" class="form-control"
-										placeholder="Address" required="" />
+									<cf:input type="text" path="others1" class="form-control" id="other1id"
+										placeholder="other" required="" />
 								</div>
 
 							</div>
@@ -424,23 +426,22 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 										</ul>
 									</div>
 
-									<cf:select path="qualSubCategory" class="form-control">
+									<cf:select path="qualSubCategory" class="form-control" onchange="Other2Hide(); return false;">
 										<cf:option value="0" label="Select Qualification SubCategory" />
-										<cf:options items="${SubQualCategoryMap}" />
+										<cf:options items="${SubQualCategoryMap}"  />
 									</cf:select>
 								</div>
 
-								<div class="form-group">
+								<div class="form-group" id="others2">
 									<div>
 										<ul class="lab-no">
 											<li class="style-li"><strong>Others:</strong></li>
 											<li class="style-li error-red"></li>
-											<li id="resCityErr" style="display: none;"
-												class="style-li error-red">City can not be blank.</li>
+											 <li id="other2Err" style="display:none;" class="style-li error-red" >others can not be blank.</li> 
 										</ul>
 									</div>
 									<cf:input type="text" path="others2" class="form-control"
-										placeholder="Address" required="" />
+										placeholder="other" required="" id="other2id"/>
 								</div>
 							</div>
 							<!-- right side ends -->
@@ -519,16 +520,16 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 								<div class="form-group">
 									<div>
 										<ul class="lab-no">
-
-											<li class="style-li"><strong>Training
-													experience related to food sector:</strong></li>
-											<li class="style-li error-red"></li>
-											<li id="trExpInYearErr" style="display: none;"
+<li id="trExpInYearErr" style="display: none;"
 												class="style-li error-red">Exp. in YEAR can not be
 												blank.</li>
 											<li id="trExpInMonthErr" style="display: none;"
 												class="style-li error-red">Exp. in MONTH can not be
 												blank.</li>
+											<li class="style-li"><strong>Training
+													experience related to food sector:</strong></li>
+											<li class="style-li error-red"></li>
+											
 
 
 										</ul>
@@ -647,48 +648,24 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 		$("#EmailErr").css("display", "none");
 		$("#mobile2Err").css("display", "none");
 		$("#qualCategoryErr").css("display", "none");
+		 $("#other1Err").css("display" , "none");
 		$("#qualSubCategoryErr").css("display", "none");
+		 $("#other2Err").css("display" , "none");
 		$("#trExpInYearErr").css("display", "none");
 		$("#trExpInMonthErr").css("display", "none");
 		$("#assExpInYearErr").css("display", "none");
 		$("#assExpInMonthErr").css("display", "none");
 		$("#areaSpecializationErr").css("display", "none");
-		if ($("#userId").val() == '') {
+		/* if ($("#userId").val() == '') {
 			$("#userIdErr").css("display", "block");
 
 			return false;
-		}
-		if ($("#title").val() == 0) {
-
-			$("#titleErr").css("display", "block");
-			return false;
-		}
-		if ($("#dob").val() == 0) {
+		} */
+		if ($("#dateP").val() == 0) {
 
 			$("#dobErr").css("display", "block");
 			return false;
 		}
-		if ($("#firstName").val() == 0) {
-
-			$("#firstNameErr").css("display", "block");
-			return false;
-		}
-		if ($("#MiddleName").val() == 0) {
-
-			$("#MiddleNameErr").css("display", "block");
-			return false;
-		}
-		if ($("#LastName").val() == 0) {
-
-			$("#LastNameErr").css("display", "block");
-			return false;
-		}
-		/* if ($("#AadharNumber").val() == 0) {
-
-			$("#AadharNumberErr").css("display", "block");
-			return false;
-		} */
-
 		if ($("#mobile1").val().match(/^[0-9]{10}$/) == null) {
 
 			$("#mobile1Err").css("display", "block");
@@ -699,6 +676,34 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 			$("#mobileErr").css("display", "block");
 			return false;
 		}
+		if ($("#title").val() == 0) {
+
+			$("#titleErr").css("display", "block");
+			return false;
+		}
+		
+		if ($("#firstName").val() == '') {
+
+			$("#firstNameErr").css("display", "block");
+			return false;
+		}
+	/* 	if ($("#MiddleName").val() == 0) {
+
+			$("#MiddleNameErr").css("display", "block");
+			return false;
+		} */
+		if ($("#ln").val() == 0) {
+
+			$("#LastNameErr").css("display", "block");
+			return false;
+		}
+		/* if ($("#AadharNumber").val() == 0) {
+
+			$("#AadharNumberErr").css("display", "block");
+			return false;
+		} */
+
+	
 		if ($("#residenceAddress1").val() == 0) {
 
 			$("#residenceAddress1Err").css("display", "block");
@@ -738,12 +743,23 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 			$("#qualCategoryErr").css("display", "block");
 			return false;
 		}
+		
+		if(document.getElementById('qualCategory').value=="Others"){
+			if($("#other1id").val() == ''){
+				 $("#other1Err").css("display" , "block");
+		return false;
+				}
+		}
 		if ($("#qualSubCategory").val() == 0) {
-
-			$("#qualSubCategoryErr").css("display", "block");
+				$("#qualSubCategoryErr").css("display", "block");
 			return false;
 		}
-
+		if(document.getElementById('qualSubCategory').value=="Others"){
+			if($("#other2id").val() == ''){
+				$("#other2Err").css("display" , "block");
+					return false;
+					}
+			}
 		if ($("#assExpInYear").val() == 0) {
 			$("#assExpInYearErr").css("display", "block");
 			return false;
@@ -825,6 +841,14 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 	var lastName = localStorage.getItem('lastName');
 	document.getElementById("ln").value = lastName;
 	localStorage.removeItem('lastName');
+	var gender = localStorage.getItem('gender');
+	if(gender=='F'){
+	document.getElementById("Fgenderid").checked = true;
+	}
+	else{
+	document.getElementById("Mgenderid").checked = true;
+	}
+	localStorage.removeItem('gender');
 </script>
 
 	<script>
@@ -859,4 +883,21 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 			});
 
 		});
+		
+		
+		
+		function Other1Hide() {
+			var a = document.getElementById('qualCategory').value;
+		if(a=="Others"){
+	$("#others1").css("display", "block");
+			}
+			
+		}
+		function Other2Hide() {
+			var a = document.getElementById('qualSubCategory').value;
+		if(a=="Others"){
+				$("#others2").css("display", "block");
+			}
+			
+		}
 	</script>
