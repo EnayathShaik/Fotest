@@ -278,11 +278,11 @@ window.onload = OnStart; */
 									<ul class="lab-no">
 										<li class="style-li"><strong>Middle
 												Name(Authorized Person):</strong></li>
-													<li class="style-li error-red">*</li>
+													<!-- <li class="style-li error-red">*</li> -->
 										<li class="style-li error-red"></li>
 										<!--  valid -->
-										<li id="middleNameErr" style="display: none;"
-											class="style-li error-red">Middle Name can not be blank.</li>
+										<!-- <li id="middleNameErr" style="display: none;"
+											class="style-li error-red">Middle Name can not be blank.</li> -->
 
 									</ul>
 								</div>
@@ -870,7 +870,7 @@ window.onload = OnStart; */
 		$("#dobErr").css("display", "none");
 		$("#designationErr").css("display", "none");
 		$("#firstNameErr").css("display" , "none");
-		$("#middleNameErr").css("display" , "none");
+		//$("#middleNameErr").css("display" , "none");
 		$("#lastNameErr").css("display" , "none");
 
 		$("#labNameErr").css("display" , "none");
@@ -913,13 +913,16 @@ window.onload = OnStart; */
 	 }else if($("#middleName").val() == ''){
    		 $("#middleNameErr").css("display" , "block");
  		return false; 
-	 } else if($("#lastName").val() == ''){
+	 }
+   	    
+   	    /* else if($("#lastName").val() == ''){
    		 $("#lastNameErr").css("display" , "block");
   		return false; 
- 	 }else if($("#labName").val() == ''){
+ 	 } */
+ 	 else if($("#labName").val() == ''){
    		 $("#labNameErr").css("display" , "block");
     		return false; 
-  	 }
+  	 } 
   	 else if($("#labAddressLine1").val() == ''){
    		 $("#labAddressLine1Err").css("display" , "block");
   		return false; 
